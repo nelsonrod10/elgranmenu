@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('/restaurantes', function () {
+    return view('resultados_busqueda.restaurantes');
+});
+
+Route::get('/menus', function () {
+    return view('resultados_busqueda.menus');
 });
