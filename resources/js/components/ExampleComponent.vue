@@ -1,23 +1,32 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
-        </div>
+<div>    
+    <input list="nombres-platos" class="input" type="text" placeholder="Text input" v-on:keyup="levanto" v-model="variable">
+        <datalist id="nombres-platos">
+            <option value="Bandeja Paisa"></option>
+            <option value="Camarones"></option>
+        </datalist>
+    <p>{{ variable }}</p>    
     </div>
 </template>
 
 <script>
+    import axios from "axios"
     export default {
         mounted() {
             console.log('Component mounted.')
-        }
+        },
+        data(){
+            return{
+                variable: 'hola',
+                variable2: 'hola ejej',
+            }
+            
+        },
+        methods:{
+            levanto(){
+                return;
+            }
+        },
+        
     }
 </script>

@@ -14,7 +14,7 @@
             @yield('content')
             @include('template.footer')
         </div>
-        <script src="{{assest('js/app.js')}}"></script>
+        <script src="{{asset('js/app.js')}}"></script>
     </body>
     
 </html>
