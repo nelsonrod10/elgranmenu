@@ -37020,6 +37020,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("pre", [_vm._v(_vm._s(_vm._f("json")(_vm.$data)))]),
+    _vm._v(" "),
     _c("input", {
       directives: [
         {
@@ -37047,9 +37049,7 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.variable))])
+    _vm._m(0)
   ])
 }
 var staticRenderFns = [
