@@ -9,13 +9,13 @@
                 </div>
                 
                 <div class="column">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in admin restaurant!
+                    <div class="tabs">
+                        <ul>
+                            <li><a href="{{route('gestion-restaurantes.index')}}">Listado</a></li>
+                            <li class="is-active"><a>Crear Nuevo</a></li>
+                        </ul>
+                    </div>
+                    y acá vamos a crear un restaurante
                 </div>
             </div>
         </div>

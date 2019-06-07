@@ -11,6 +11,9 @@
 |
 */
 
+Auth::routes();
+Route::get('/home', 'RoleVerifyController@index')->name('home');
+
 Route::get('/', function () {
     return view('inicio');
 });
@@ -33,7 +36,10 @@ Route::get('/menus', function () {
     return view('resultados_busqueda.menus');
 });
 
-Auth::routes();
 
+
+Route::prefix('administrador')->middleware('auth')->group(function () {
+    Route::resource('gestion-restaurantes','Restaurantes\RestaurantesController');
+});
 //Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', 'RoleVerifyController@index')->name('home');
+

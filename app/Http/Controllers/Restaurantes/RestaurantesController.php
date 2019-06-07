@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Restaurantes;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RestaurantesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,7 @@ class RestaurantesController extends Controller
      */
     public function index()
     {
-        //
+        return view('restaurantes.administrador.restaurantes');
     }
 
     /**
@@ -23,7 +28,7 @@ class RestaurantesController extends Controller
      */
     public function create()
     {
-        //
+        return view('restaurantes.administrador.create');
     }
 
     /**
