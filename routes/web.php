@@ -12,7 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('inicio');
+});
+
+Route::resource('platos-del-dia', 'PlatosDelDiaController')->except([
+    'index'
+]);
+
+Route::get('/buscar-plato-del-dia/{q}', 'PlatosDelDiaController@index');
+
+Route::get('/restaurantes-plato-del-dia/{idPlato}', function () {
+    return view('resultados_busqueda.restaurantes');
 });
 
 Route::get('/restaurantes', function () {
@@ -22,3 +32,8 @@ Route::get('/restaurantes', function () {
 Route::get('/menus', function () {
     return view('resultados_busqueda.menus');
 });
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'RoleVerifyController@index')->name('home');
