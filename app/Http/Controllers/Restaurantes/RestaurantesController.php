@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Restaurantes;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Restaurantes\Restaurante;
 
 class RestaurantesController extends Controller
 {
@@ -39,7 +40,32 @@ class RestaurantesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nombre'        => 'string|required|unique:restaurantes,nombre',
+            'nit'           => 'string|required|unique:restaurantes,nit',
+            'direccion'     => 'string|required|unique:restaurantes,direccion',
+            'ciudad'        => 'string|required',
+            'telefono'      => 'string|unique:restaurantes,telefono',
+            'celular'       => 'string|unique:restaurantes,celular',
+            'tradicional'   => 'string|required',
+            'vegetariano'   => 'string|required',
+            'vegano'        => 'string|required',
+        ]);
+        
+        $restaurante = Restaurante::create([
+            'administrador_id'  =>  auth()->id(),
+            'nombre'            =>  $data['nombre'],
+            'nit'               =>  $data['nit'],
+            'direccion'         =>  $data['direccion'],
+            'ciudad'            =>  $data['ciudad'],
+            'telefono'          =>  $data['telefono'],
+            'celular'           =>  $data['celular'],
+            'tradicional'       =>  $data['tradicional'],
+            'vegetariano'       =>  $data['vegetariano'],
+            'vegano'            =>  $data['vegano'],
+        ]);
+        
+        return redirect()->route('gestion-restaurantes.show', $restaurante);
     }
 
     /**
@@ -50,7 +76,8 @@ class RestaurantesController extends Controller
      */
     public function show($id)
     {
-        //
+        $restaurante = Restaurante::find($id);
+        return view('restaurantes.administrador.show')->with(compact('restaurante'));
     }
 
     /**
@@ -73,7 +100,19 @@ class RestaurantesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $restaurante = Restaurante::find($id);
+        
+        $data = $request->validate([
+            'nombre'        => 'string|required|unique:restaurantes,nombre,'.$restaurante->id,
+            'nit'           => 'string|required|unique:restaurantes,nit,'.$restaurante->id,
+            'direccion'     => 'string|required|unique:restaurantes,direccion,'.$restaurante->id,
+            'ciudad'        => 'string|required',
+            'telefono'      => 'string|unique:restaurantes,telefono,'.$restaurante->id,
+            'celular'       => 'string|unique:restaurantes,celular,'.$restaurante->id,
+            'tradicional'   => 'string|required',
+            'vegetariano'   => 'string|required',
+            'vegano'        => 'string|required',
+        ]);
     }
 
     /**
@@ -84,6 +123,8 @@ class RestaurantesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Restaurante::find($id)->delete();
+        
+        return redirect()->route('gestion-restaurantes.index');
     }
 }

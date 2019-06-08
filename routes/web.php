@@ -18,11 +18,11 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-Route::resource('platos-del-dia', 'PlatosDelDiaController')->except([
+Route::resource('platos-del-dia', 'Menus\PlatosDelDiaController')->except([
     'index'
 ]);
 
-Route::get('/buscar-plato-del-dia/{q}', 'PlatosDelDiaController@index');
+Route::get('/buscar-plato-del-dia/{q}', 'Menus\PlatosDelDiaController@index');
 
 Route::get('/restaurantes-plato-del-dia/{idPlato}', function () {
     return view('resultados_busqueda.restaurantes');

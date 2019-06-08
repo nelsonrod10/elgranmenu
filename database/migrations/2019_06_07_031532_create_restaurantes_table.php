@@ -16,15 +16,15 @@ class CreateRestaurantesTable extends Migration
         Schema::create('restaurantes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('administrador_id')->unsigned();
-            $table->string('nombre');
+            $table->string('nombre')->unique();
             $table->bigInteger('nit')->unique()->unsigned();
-            $table->bigInteger('telefono')->unsigned();
             $table->string('direccion')->unique();
             $table->string('ciudad');
-            $table->string('web')->unique();
-            $table->enum('Tradicional', ['si', 'no']);
-            $table->enum('Vegetariano', ['si', 'no']);
-            $table->enum('Vegano', ['si', 'no']);
+            $table->bigInteger('telefono')->unique()->unsigned();
+            $table->bigInteger('celular')->unique()->unsigned();
+            $table->enum('tradicional', ['si', 'no']);
+            $table->enum('vegetariano', ['si', 'no']);
+            $table->enum('vegano', ['si', 'no']);
             $table->timestamps();
             $table->foreign('administrador_id')->references('id')->on('users')->onDelete('cascade');
         });

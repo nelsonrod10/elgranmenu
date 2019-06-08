@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlatosDelDiasTable extends Migration
+class CreatePlatosCartasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreatePlatosDelDiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('platos_del_dias', function (Blueprint $table) {
+        Schema::create('platos_cartas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('restaurante_id')->unsigned();
             $table->string('nombre');
+            $table->longText('descripcion');
+            $table->enum('plato_tipo', ['tradicional','vegetariano','vegano']);
             $table->timestamps();
+            $table->foreign('restaurante_id')->references('id')->on('restaurantes')->onDelete('cascade');    
         });
     }
 
@@ -27,6 +31,6 @@ class CreatePlatosDelDiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('platos_del_dias');
+        Schema::dropIfExists('platos_cartas');
     }
 }

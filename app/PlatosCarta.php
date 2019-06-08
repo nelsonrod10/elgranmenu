@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PlatosDelDia extends Model
+class PlatosCarta extends Model
 {
     protected $guarded=[];
     
