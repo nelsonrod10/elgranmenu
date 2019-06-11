@@ -9,6 +9,6 @@ class PlatosDelDia extends Model
     protected $guarded=[];
     
     public function restaurante(){
-        return $this->belongsTo(App\Restaurantes::class);
+        return $this->belongsTo(\App\Restaurantes::class);
     }
 }

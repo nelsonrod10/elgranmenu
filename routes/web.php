@@ -40,6 +40,12 @@ Route::get('/menus', function () {
 
 Route::prefix('administrador')->middleware('auth')->group(function () {
     Route::resource('gestion-restaurantes','Restaurantes\RestaurantesController');
+    Route::resource('gestion-carta','Menus\PlatosCartasController')->except([
+        'index','create'
+    ]);
+
+    Route::get('/listado-carta/{restaurante}', 'Menus\PlatosCartasController@index')->name("listado-carta");
+    Route::get('/crear-plato-carta/{restaurante}', 'Menus\PlatosCartasController@create')->name("crear-plato-carta");
 });
 //Route::get('/home', 'HomeController@index')->name('home');
 

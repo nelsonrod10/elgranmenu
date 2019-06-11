@@ -1734,8 +1734,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -37257,57 +37255,53 @@ var render = function() {
               _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "field has-addons" }, [
-                _c("div", { staticClass: "field has-addons" }, [
-                  _c("div", { staticClass: "control is-expanded" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.buscarPlato,
-                          expression: "buscarPlato"
-                        }
-                      ],
-                      staticClass: "input",
-                      attrs: {
-                        list: "nombres-platos",
-                        type: "text",
-                        placeholder: "Text input"
-                      },
-                      domProps: { value: _vm.buscarPlato },
-                      on: {
-                        keyup: _vm.BuscarPlato,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.buscarPlato = $event.target.value
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "datalist",
-                      { attrs: { id: "nombres-platos" } },
-                      _vm._l(_vm.nombresPlatos, function(plato) {
-                        return _c("option", {
-                          domProps: { value: plato.nombre }
-                        })
-                      }),
-                      0
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "control" }, [
-                    _c(
-                      "a",
+                _c("div", { staticClass: "control is-expanded" }, [
+                  _c("input", {
+                    directives: [
                       {
-                        staticClass: "button is-info",
-                        on: { click: _vm.ListaRestaurantes }
-                      },
-                      [_vm._v("Buscar")]
-                    )
-                  ])
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.buscarPlato,
+                        expression: "buscarPlato"
+                      }
+                    ],
+                    staticClass: "input",
+                    attrs: {
+                      list: "nombres-platos",
+                      type: "text",
+                      placeholder: "Text input"
+                    },
+                    domProps: { value: _vm.buscarPlato },
+                    on: {
+                      keyup: _vm.BuscarPlato,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.buscarPlato = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "datalist",
+                    { attrs: { id: "nombres-platos" } },
+                    _vm._l(_vm.nombresPlatos, function(plato) {
+                      return _c("option", { domProps: { value: plato.nombre } })
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "control" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "button is-info",
+                      on: { click: _vm.ListaRestaurantes }
+                    },
+                    [_vm._v("Buscar")]
+                  )
                 ])
               ])
             ])
@@ -37331,9 +37325,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "field " }, [
+    return _c("div", { staticClass: "field" }, [
       _c("div", { staticClass: "control" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Hoy quiero comer...")])
+        _c("label", { staticClass: "label has-text-centered" }, [
+          _vm._v("Hoy quiero comer...")
+        ])
       ])
     ])
   }

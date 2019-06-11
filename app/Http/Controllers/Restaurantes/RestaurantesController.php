@@ -19,7 +19,8 @@ class RestaurantesController extends Controller
      */
     public function index()
     {
-        return view('restaurantes.administrador.restaurantes');
+        $restaurantes = auth()->user()->restaurantes;
+        return view('restaurantes.administrador.restaurantes')->with(['restaurantes'=>$restaurantes]);
     }
 
     /**

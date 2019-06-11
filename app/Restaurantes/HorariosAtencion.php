@@ -9,6 +9,6 @@ class HorariosAtencion extends Model
     protected $guarded=[];
     
     public function restaurante(){
-        return $this->belongsTo(App\Restaurantes\Restaurante::class);
+        return $this->belongsTo(\App\Restaurantes\Restaurante::class);
     }
 }

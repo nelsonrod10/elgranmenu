@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Menus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\PlatosCarta;
+use App\Restaurantes\Restaurante;
 
 class PlatosCartasController extends Controller
 {
@@ -13,20 +14,12 @@ class PlatosCartasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($q)
+    public function index($idRestaurante)
     {
-        $platos = PlatosCarta::all();
-        $platosEncontrados = [];
-        $count = 0;
-        foreach ($platos as $plato){
-            if (stristr(substr($plato->nombre, 0, strlen($q)),$q)) { // || stristr(substr($plato->nombre, 0, strlen($q)),$q) || stristr(substr($empleado->apellidos, 0, strlen($q)),$q)
-                if($count <=9){
-                    array_push($platosEncontrados, $plato);
-                }
-                $count++;
-            }
-        }
-        return response()->json($platosEncontrados);
+        $restaurante = Restaurante::find($idRestaurante);
+        $carta = $restaurante->platosCarta;
+        
+        return view('restaurantes.administrador.menus.index')->with(['restaurante'=>$restaurante,'carta' => $carta]);
     }
 
     /**
@@ -34,9 +27,9 @@ class PlatosCartasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Restaurante $restaurante)
     {
-        //
+        return view('restaurantes.administrador.menus.create')->with(['restaurante'=>$restaurante]);
     }
 
     /**

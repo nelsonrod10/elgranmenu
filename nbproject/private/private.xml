@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/restauriando/app/Listeners/CrearRolesHabilidades.php</file>
-            <file>file:/C:/xampp/htdocs/restauriando/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php</file>
-            <file>file:/C:/xampp/htdocs/restauriando/vendor/laravel/framework/src/Illuminate/Routing/Router.php</file>
-            <file>file:/C:/xampp/htdocs/restauriando/app/Http/Controllers/Auth/RegisterController.php</file>
-            <file>file:/C:/xampp/htdocs/restauriando/app/Http/Controllers/RoleVerifyController.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/app/Http/Controllers/Menus/PlatosCartasController.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/resources/views/restaurantes/administrador/menus/create.blade.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/resources/views/restaurantes/administrador/show.blade.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/resources/views/restaurantes/administrador/menus/index.blade.php</file>
         </group>
     </open-files>
 </project-private>

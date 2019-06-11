@@ -4,22 +4,20 @@
             <div class="container">
                 <div class="columns is-centered">
                     <div class="column is-three-fifths">
-                        <div class="field ">
+                        <div class="field">
                             <div class="control">
-                                <label class="label">Hoy quiero comer...</label>
+                                <label class="label has-text-centered">Hoy quiero comer...</label>
                             </div>
                         </div>
                         <div class="field has-addons">
-                            <div class="field has-addons">
-                                <div class="control is-expanded">
-                                    <input list="nombres-platos" class="input" type="text" placeholder="Text input" v-on:keyup="BuscarPlato" v-model="buscarPlato">
-                                    <datalist id="nombres-platos">
-                                        <option v-for="plato in nombresPlatos" :value="plato.nombre"></option>
-                                    </datalist>                     
-                                </div>
-                                <div class="control">
-                                    <a class="button is-info" v-on:click="ListaRestaurantes">Buscar</a>
-                                </div>
+                            <div class="control is-expanded">
+                                <input list="nombres-platos" class="input" type="text" placeholder="Text input" v-on:keyup="BuscarPlato" v-model="buscarPlato">
+                                <datalist id="nombres-platos">
+                                    <option v-for="plato in nombresPlatos" :value="plato.nombre"></option>
+                                </datalist>                     
+                            </div>
+                            <div class="control">
+                                <a class="button is-info" v-on:click="ListaRestaurantes">Buscar</a>
                             </div>
                         </div>
                     </div>

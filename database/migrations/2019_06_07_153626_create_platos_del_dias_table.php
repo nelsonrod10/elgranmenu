@@ -19,6 +19,7 @@ class CreatePlatosDelDiasTable extends Migration
             $table->string('nombre');
             $table->longText('descripcion');
             $table->enum('plato_tipo', ['tradicional','vegetariano','vegano']);
+            $table->string('precio');
             $table->timestamps();
             $table->foreign('restaurante_id')->references('id')->on('restaurantes')->onDelete('cascade');    
         });
