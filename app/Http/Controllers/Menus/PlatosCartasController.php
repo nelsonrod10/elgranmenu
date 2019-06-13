@@ -21,7 +21,14 @@ class PlatosCartasController extends Controller
         
         return view('restaurantes.administrador.menus.index')->with(['restaurante'=>$restaurante,'carta' => $carta]);
     }
-
+    
+    public function getPlatos($idRestaurante)
+    {
+        $restaurante = Restaurante::find($idRestaurante);
+        $carta = $restaurante->platosCarta;
+        
+        return response()->json($carta);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -39,8 +46,27 @@ class PlatosCartasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        
+        $data = $request->validate([
+            'restaurante'   =>  'integer|required',
+            'nombre'        =>  'string|required',
+            'tipoMenu'      =>  'string|in:corriente,especial|required',
+            'precio'        =>  'string|required',
+            'tipoPlato'     =>  'string|in:tradicional,vegetariano,vegano|required',
+            'descripcion'   =>  'string|required'
+        ]);
+        
+        PlatosCarta::create([
+            'restaurante_id'     =>  $data['restaurante'],
+            'nombre'             =>  $data['nombre'],
+            'descripcion'        =>  $data['descripcion'],
+            'tipo_menu'          =>  $data['tipoMenu'],
+            'tipo_plato'         =>  $data['tipoPlato'],
+            'precio'             =>  $data['precio'],
+        ]);
+        
+        return;
     }
 
     /**

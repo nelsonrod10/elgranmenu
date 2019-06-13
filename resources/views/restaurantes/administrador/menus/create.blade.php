@@ -7,7 +7,6 @@
                 <div class="column is-one-fifth">
                     @include('restaurantes.administrador.layout.menu_lateral')
                 </div>
-                
                 <div class="column">
                     <div class="box">
                         <div class="columns">

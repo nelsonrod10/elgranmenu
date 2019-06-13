@@ -4,8 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/restauriando/app/Http/Controllers/Menus/PlatosCartasController.php</file>
-            <file>file:/C:/xampp/htdocs/restauriando/resources/views/restaurantes/administrador/menus/create.blade.php</file>
-            <file>file:/C:/xampp/htdocs/restauriando/resources/views/restaurantes/administrador/show.blade.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/resources/js/components/restaurantes/PlatosMenu.vue</file>
+            <file>file:/C:/xampp/htdocs/restauriando/resources/js/components/restaurantes/NuevoPlato.vue</file>
+            <file>file:/C:/xampp/htdocs/restauriando/app/Http/Controllers/Menus/PlatosDelDiaController.php</file>
             <file>file:/C:/xampp/htdocs/restauriando/routes/web.php</file>
             <file>file:/C:/xampp/htdocs/restauriando/resources/views/restaurantes/administrador/menus/index.blade.php</file>
         </group>

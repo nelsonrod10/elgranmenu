@@ -54,7 +54,6 @@
             nombrePlato: {
                 type: String,
                 required: true
-                // default: 'Lucas'
             }
         }
     }

@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\PlatosDelDia;
+namespace App\Http\Controllers\Menus;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\PlatosDelDia;
+
+
 
 class PlatosDelDiaController extends Controller
 {
@@ -23,6 +27,9 @@ class PlatosDelDiaController extends Controller
                 }
                 $count++;
             }
+        }
+        if(count($platosEncontrados) === 0){
+            array_push($platosEncontrados, ["nombre" => "Lo sentimos, no se encontró nada"]);
         }
         return response()->json($platosEncontrados);
     }

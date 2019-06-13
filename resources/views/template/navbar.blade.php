@@ -13,35 +13,35 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
+        <!--<a class="navbar-item">
+          Home
         </a>
 
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
+        <a class="navbar-item">
+          Documentation
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More
+            </a>
+
+            <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  About
+                </a>
+                <a class="navbar-item">
+                  Jobs
+                </a>
+                <a class="navbar-item">
+                  Contact
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                  Report an issue
+                </a>
+            </div>
+        </div>-->
     </div>
 
     <div class="navbar-end">
@@ -66,15 +66,15 @@
                     </a>
 
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                          Jobs
+                        <a class="navbar-item" href="{{ route('home') }}">
+                            Inicio
                         </a>
                         <a class="navbar-item">
-                          Contact
+                            Editar Perfil
                         </a>
                         <hr class="navbar-divider">
-                        <a class="navbar-item">
-                          Report an issue
+                        <a class="navbar-item" href="{{route('gestion-restaurantes.index')}}">
+                            Listado Restaurantes
                         </a>
                         <a class="navbar-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
