@@ -1,12 +1,11 @@
 <template>
     <div class="column">
         <div class="box">
-            <form name="frm-crear-plato" method="post" v-on:submit.prevent="CrearNuevoPlato">
+            <form name="frm-crear-plato" method="post" v-on:submit.prevent="ActualizarPlato">
                 
             <div class="columns">
                 <div class="column">
-                    <p class="title is-size-4 has-text-centered">{{ restaurante['nombre'] }}</p>
-                    <p class="title is-size-4 has-text-centered">Agregar Nuevo Plato</p>
+                    <p class="title is-size-4 has-text-centered">Editar Plato {{plato["nombre"]}}</p>
                 </div>
             </div>
             <div class="columns">
@@ -53,9 +52,9 @@
                         <div class="control is-expanded">
                             <div class="select is-fullwidth">
                                 <select id="tipoPlato" name="tipoPlato" v-model="datosFrm.tipoPlato" required>
-                                  <option value="tradicional" v-if="restaurante['tradicional'] === 'si'">Tradicional</option>
-                                  <option value="vegetariano" v-if="restaurante['vegetariano'] === 'si'">Vegetariano</option>
-                                  <option value="vegano" v-if="restaurante['vegano'] === 'si'">Vegano</option>
+                                  <option value="tradicional">Tradicional</option>
+                                  <option value="vegetariano">Vegetariano</option>
+                                  <option value="vegano">Vegano</option>
                                 </select>
                             </div>
                         </div>
@@ -75,23 +74,41 @@
 
             <div class="field is-grouped">
               <div class="control ">
-                  <button type="submit" class="button is-primary">Crear</button>
+                  <button type="submit" class="button is-primary">Actualizar</button>
               </div>
               <div class="control">
-                  <button type="button" class="button is-text" v-on:click="$emit('cancelar-nuevo-plato')">Cancelar</button>
+                  <button type="button" class="button is-text" v-on:click="CancelarActualizar">Cancelar</button>
               </div>
             </div>
             </form>    
                 
         </div>
     </div>
-
 </template>
 
 <script>
     import axios from "axios";
-
+    
     export default {
+        props: {
+            plato: {
+                required: true
+                // default: 'Lucas'
+            }
+        },
+        data(){
+            return{
+                datosFrm:{
+                    idPlato     : this.plato['id'],
+                    nombre      : this.plato['nombre'],
+                    tipoMenu    : this.plato['tipo_menu'],
+                    precio      : this.plato['precio'],
+                    tipoPlato   : this.plato['tipo_plato'],
+                    descripcion : this.plato['descripcion']    
+                        
+                },
+            }
+        },
         mounted() {
             console.log('Component mounted.')
         },
@@ -99,23 +116,10 @@
         },
         created(){
         },
-        data(){
-            return{
-                datosFrm:{
-                    idRestaurante: this.restaurante['id'],
-                    nombre      : '',
-                    tipoMenu    : '',
-                    precio      : '',
-                    tipoPlato   : '',
-                    descripcion : ''    
-                        
-                },
-            }
-        },
+
         methods:{
-            CrearNuevoPlato(){
-                axios.post('plato',{
-                    restaurante : this.datosFrm.idRestaurante,
+            ActualizarPlato(){
+                axios.put(`plato/${this.plato["id"]}`,{
                     nombre      : this.datosFrm.nombre,
                     tipoMenu    : this.datosFrm.tipoMenu,
                     precio      : this.datosFrm.precio,
@@ -123,19 +127,16 @@
                     descripcion : this.datosFrm.descripcion,
                 })
                 .then(response => {
-                    this.$emit('cancelar-nuevo-plato');
+                    this.$emit('cancelar-crud-plato');
                 })    
                 .catch(error => {
                     console.log(error)
                 })
-            }
-        },
-        props: {
-            restaurante: {
-                type: Object,
-                required: true
             },
-            
+
+            CancelarActualizar(){
+                this.$emit('cancelar-crud-plato');
+            }
         },
     }
 </script>

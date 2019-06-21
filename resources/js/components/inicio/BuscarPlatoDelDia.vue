@@ -24,9 +24,9 @@
                 </div>
             </div>
         </section>
-        <listado-restaurantes v-if="platoSeleccionado" :nombrePlato="platoBuscado"></listado-restaurantes>
+        <listado-restaurantes v-if="FlagPlatoSeleccionado" :platoSeleccionado="buscarPlato"></listado-restaurantes>
         <busqueda-por-menus v-else></busqueda-por-menus>
-        <pre>{{ $data }}</pre>
+        <!--<pre>{{ $data }}</pre>-->
     </div>
 
 </template>
@@ -49,14 +49,14 @@
         data(){
             return{
                 btnBuscar:false,
-                platoSeleccionado:false,
+                FlagPlatoSeleccionado:false,
                 nombresPlatos: [],
-                buscarPlato: [],
-                platoBuscado:"",
+                buscarPlato: '',
             }
         },
         methods:{
             BuscarPlato(){
+                this.FlagPlatoSeleccionado = false;
                 axios.get('buscar-plato-del-dia/'+this.buscarPlato)
                 .then(response => {
                     this.nombresPlatos = response.data;
@@ -67,16 +67,7 @@
                 })
             },
             ListaRestaurantes(){
-                this.platoBuscado = this.nombresPlatos[0].nombre;
-                this.platoSeleccionado = true;
-                axios.get('restaurantes-plato-del-dia/'+this.nombresPlatos[0].id)
-                .then(response => {
-                    //this.nombresPlatos = response.data;
-                })    
-                .catch(error => {
-                    console.log(error)
-                })
-                
+                this.FlagPlatoSeleccionado = true;
             }    
         },
         

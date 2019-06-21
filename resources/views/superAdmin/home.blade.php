@@ -4,7 +4,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column">
+                <div class="column is-one-fifth">
                     Dashboard
                 </div>
                 <div class="column">
@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-                    You are logged in super admin!
+                    <p class="title">Bienvenido Administrador!!</p>
+                    <p class="title is-size-4">Actualizar Listado XML de ingredites</p>
+                    <a class="button is-success is-small" href="{{ route('crear-listado-ingredientes')}}">Actualizar</a>
+                    <a class="button is-success is-small" href="{{ url('/administrador/listado-carta/buscar-ingrediente/carlos')}}">Ingredientes</a>
                 </div>
             </div>
         </div>

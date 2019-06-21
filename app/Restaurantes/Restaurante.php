@@ -21,10 +21,10 @@ class Restaurante extends Model
     }
     
     public function platosCarta(){
-        return $this->hasMany(\App\PlatosCarta::class);
+        return $this->hasMany(\App\Menus\PlatosCarta::class);
     }
     
     public function platosDelDia(){
-        return $this->hasMany(\App\PlatosDelDia::class);
+        return $this->hasMany(\App\Menus\PlatosDelDia::class);
     }
 }

@@ -7,6 +7,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Vue from 'vue'
+import Routes from '@/js/routes.js'
+import DatePicker from '@/js/datePicker.js'
 
 /**
  * The following block of code may be used to automatically register your
@@ -23,7 +26,8 @@ Vue.component('buscar-platos-del-dia', require('./components/inicio/BuscarPlatoD
 Vue.component('listado-restaurantes', require('./components/inicio/ListadoRestaurantes.vue').default);
 Vue.component('busqueda-por-menus', require('./components/inicio/BusquedaPorMenus.vue').default);
 Vue.component('platos-menu', require('./components/restaurantes/PlatosMenu.vue').default);
-
+Vue.component('eliminar-plato', require('./components/restaurantes/EliminarPlato.vue').default);
+Vue.component('editar-plato', require('./components/restaurantes/EditarPlato.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,4 +37,6 @@ Vue.component('platos-menu', require('./components/restaurantes/PlatosMenu.vue')
 
 const app = new Vue({
     el: '#app',
+    router: Routes,
+    datePicker: DatePicker
 });

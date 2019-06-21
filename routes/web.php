@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Route::get('/{any}', 'SinglePageController@index')->where('any', '.*');
 Auth::routes();
 Route::get('/home', 'RoleVerifyController@index')->name('home');
 
@@ -24,9 +24,7 @@ Route::resource('platos-del-dia', 'Menus\PlatosDelDiaController')->except([
 
 Route::get('/buscar-plato-del-dia/{q}', 'Menus\PlatosDelDiaController@index');
 
-Route::get('/restaurantes-plato-del-dia/{idPlato}', function () {
-    return view('resultados_busqueda.restaurantes');
-});
+Route::get('/restaurantes-plato-del-dia/{platoSeleccionado}','Menus\PlatosDelDiaController@buscarRestaurantes');
 
 Route::get('/restaurantes', function () {
     return view('resultados_busqueda.restaurantes');
@@ -35,8 +33,6 @@ Route::get('/restaurantes', function () {
 Route::get('/menus', function () {
     return view('resultados_busqueda.menus');
 });
-
-
 
 Route::prefix('administrador')->middleware('auth')->group(function () {
     Route::resource('gestion-restaurantes','Restaurantes\RestaurantesController');
@@ -49,7 +45,22 @@ Route::prefix('administrador')->middleware('auth')->group(function () {
     
     Route::prefix('listado-carta')->group(function () {
         Route::get('/{restaurante}', 'Menus\PlatosCartasController@index')->name("listado-carta");
-        Route::resource('/nuevo-plato', 'Menus\PlatosCartasController');
+        Route::get('buscar-ingrediente/{nombre}', 'Menus\IngredientesPlatosController@buscarIngrediente');
+        Route::resource('/plato', 'Menus\PlatosCartasController');
         Route::get('platos/{restaurante}', 'Menus\PlatosCartasController@getPlatos');
+        Route::get('seleccion-del-dia/{idPlatoCarta}', 'Menus\PlatosCartasController@seleccionDelDia');
+        Route::resource('/plato-del-dia', 'Menus\PlatosDelDiaController');
+        Route::resource('/ingrediente', 'Menus\IngredientesPlatosController');
+        
+        Route::get('listado-ingredientes/{idPlato}', 'Menus\IngredientesPlatosController@getListadoPlato');
     });
+    
+    
 });
+
+Route::prefix('super-admin')->middleware('auth')->group(function () {
+    Route::get('crear-listado-ingredientes', 'SuperAdmin\IngredientesController@crearListadoXML')->name("crear-listado-ingredientes");
+});
+
+
+

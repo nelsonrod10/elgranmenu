@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Menus;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\PlatosDelDia;
-
-
+use App\Menus\PlatosDelDia;
+use App\Menus\PlatosCarta;
+use App\Restaurantes\Restaurante;
+use App\Http\Controllers\helpers;
 
 class PlatosDelDiaController extends Controller
 {
@@ -17,23 +18,42 @@ class PlatosDelDiaController extends Controller
      */
     public function index($q)
     {
-        $platos = PlatosDelDia::all();
-        $platosEncontrados = [];
-        $count = 0;
-        foreach ($platos as $plato){
-            if (stristr(substr($plato->nombre, 0, strlen($q)),$q)) { // || stristr(substr($plato->nombre, 0, strlen($q)),$q) || stristr(substr($empleado->apellidos, 0, strlen($q)),$q)
-                if($count <=9){
-                    array_push($platosEncontrados, $plato);
-                }
-                $count++;
-            }
-        }
-        if(count($platosEncontrados) === 0){
-            array_push($platosEncontrados, ["nombre" => "Lo sentimos, no se encontró nada"]);
-        }
-        return response()->json($platosEncontrados);
+        date_default_timezone_set('America/Bogota');
+        $objFechaActual = helpers::getDateNow();
+        $fechaActual = $objFechaActual->format("Y-m-d");
+        
+        $platos = PlatosDelDia::nombre($q)->descripcion($q)->fechaActual($fechaActual)->take(10)->get([
+           'restaurante_id','platosCarta_id','nombre' 
+        ]);
+        
+        return response()->json($platos);
     }
-
+    
+    public function buscarRestaurantes($platoSeleccionado){
+        date_default_timezone_set('America/Bogota');
+        $objFechaActual = helpers::getDateNow();
+        $fechaActual = $objFechaActual->format("Y-m-d");
+        
+        $restaurantes= [];
+        
+        $platos = PlatosDelDia::nombre($platoSeleccionado)->fechaActual($fechaActual)->take(10)->get();
+        
+        foreach ($platos as $plato) {
+            $restaurante = Restaurante::find($plato->restaurante_id);
+            
+            $platoRestaurante = PlatosDelDia::nombre($platoSeleccionado)->fechaActual($fechaActual)->where([
+                'restaurante_id'   =>  $restaurante->id   
+            ])->first();
+            
+            array_push($restaurantes, [
+                "restaurante" => $restaurante,
+                "plato"       => $platoRestaurante         
+            ]);
+        }
+        
+        
+        return response()->json($restaurantes);
+    }   
     /**
      * Show the form for creating a new resource.
      *
@@ -52,7 +72,28 @@ class PlatosDelDiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        date_default_timezone_set('America/Bogota');
+        $objFechaActual = helpers::getDateNow();
+        $fechaActual = $objFechaActual->format("Y-m-d");
+    
+        $data = $request->validate([
+            'idPlato'            =>  'integer|required',
+        ]);
+        
+        
+        $platoCarta = PlatosCarta::find($data["idPlato"]);
+        
+        PlatosDelDia::create([
+            'restaurante_id'    =>  $platoCarta->restaurante->id,
+            'platosCarta_id'    =>  $platoCarta->id,
+            'fecha'             =>  $fechaActual,
+            'nombre'            =>  $platoCarta->nombre,
+            'descripcion'       =>  $platoCarta->descripcion,
+            'tipo_plato'        =>  $platoCarta->tipo_plato,
+            'precio'            =>  $platoCarta->precio
+        ]);
+        
+        return;
     }
 
     /**
@@ -97,6 +138,15 @@ class PlatosDelDiaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        date_default_timezone_set('America/Bogota');
+        $objFechaActual = helpers::getDateNow();
+        $fechaActual = $objFechaActual->format("Y-m-d");
+        
+        PlatosDelDia::where([
+            'platosCarta_id' => $id,
+            'fecha' =>(string)$fechaActual
+        ])->delete();
+        
+        return ;
     }
 }

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use App\Events\RolesHabilidades;
 use Illuminate\Http\Request;
 
 class RoleVerifyController extends Controller
 {
     public function index(){
+        $this->crearRoles();
         $user = Auth::user();
-        if($user->isA('super-admin')){
-            return view('super-admin.home');
+        if($user->isAn('super-admin')){
+            return view('superAdmin.home');
         }
         if($user->isAn('administrador-restaurante')){
             //return redirect()->route('gestion-asesores.index');
@@ -17,5 +19,10 @@ class RoleVerifyController extends Controller
         }
         
         return redirect('/inicio');
+    }
+    
+    public function crearRoles(){
+        event(new RolesHabilidades());
+        return;
     }
 }
