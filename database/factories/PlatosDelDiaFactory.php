@@ -2,7 +2,7 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\PlatosDelDia;
+Use App\Menus\PlatosDelDia;
 use Faker\Generator as Faker;
 
 $factory->define(PlatosDelDia::class, function (Faker $faker) {

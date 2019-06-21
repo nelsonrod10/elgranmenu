@@ -11,6 +11,6 @@ class PlatosDelDiaSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\PlatosDelDia::class, 100)->create();
+        factory(App\Menus\PlatosDelDia::class, 100)->create();
     }
 }
