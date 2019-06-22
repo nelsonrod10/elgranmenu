@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Events\RolesHabilidades;
 use Illuminate\Http\Request;
+use Bouncer;
+use App\User;
 
 class RoleVerifyController extends Controller
 {
@@ -24,5 +26,23 @@ class RoleVerifyController extends Controller
     public function crearRoles(){
         event(new RolesHabilidades());
         return;
+    }
+    
+    public function crearUsuarioAdministrador(){
+        $user = User::where('email','nelsonrod10@gmail.com')->get();
+        
+        if($user->count() === 0){
+            $newUser = User::firstOrCreate([
+                'name' => "Nelson Rodríguez ",
+                'email' => "nelsonrod10@gmail.com",
+                'email_verified_at' => now(),
+                'password' => bcrypt('admin'), // password
+                //'remember_token' => Str::random(10),
+
+            ]);
+            Bouncer::assign('super-admin')->to($newUser);    
+        }
+    
+        return view('inicio');    
     }
 }
