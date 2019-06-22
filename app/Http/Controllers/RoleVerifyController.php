@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Events\RolesHabilidades;
 use Illuminate\Http\Request;
-use Bouncer;
-use App\User;
+//use Bouncer;
+//use App\User;
 
 class RoleVerifyController extends Controller
 {
@@ -28,7 +28,7 @@ class RoleVerifyController extends Controller
         return;
     }
     
-    public function crearUsuarioAdministrador(){
+    /*public function crearUsuarioAdministrador(){
         $user = User::where('email','nelsonrod10@gmail.com')->get();
         
         if($user->count() === 0){
@@ -44,5 +44,5 @@ class RoleVerifyController extends Controller
         }
     
         return view('inicio');    
-    }
+    }*/
 }

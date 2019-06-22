@@ -15,11 +15,11 @@ Auth::routes();
 Route::get('/home', 'RoleVerifyController@index')->name('home');
 
 //Se crea esta nueva ruta para poder crear el super-admin nelsonrod10
-Route::get('/', 'RoleVerifyController@crearUsuarioAdministrador');
+//Route::get('/', 'RoleVerifyController@crearUsuarioAdministrador');
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('inicio');
-})¨*/
+});
 
 Route::resource('platos-del-dia', 'Menus\PlatosDelDiaController')->except([
     'index'
