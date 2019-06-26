@@ -15,7 +15,7 @@
                         </div>
                     @endif
 
-                    You are logged in admin restaurant!
+                    @include('restaurantes.administrador.index', ['restaurantes'=> $user->restaurantes])
                 </div>
             </div>
         </div>
