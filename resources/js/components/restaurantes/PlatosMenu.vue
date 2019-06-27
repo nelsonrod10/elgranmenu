@@ -3,7 +3,10 @@
         <div v-if="!nuevoPlato" class="box">
             <div class="columns">
                 <div class="column">
-                    <p class="title is-size-4 has-text-centered">Menu {{ restaurante['nombre'] }}</p>
+                    <p class="title is-size-4 has-text-centered">
+                        <a v-bind:href="this.route">{{ restaurante['nombre'] }}</a>
+                    </p>
+                    <p class="title is-size-4 has-text-centered">Menu</p>
                 </div>
             </div>
             <div class="columns has-text-centered">
@@ -85,10 +88,14 @@
                 })
             }
         },
-        props: {
+        props:{
             restaurante: {
                 type: Object,
                 required: true
+            },
+            route:{
+                type:String,
+                required:true
             }
         },
     }

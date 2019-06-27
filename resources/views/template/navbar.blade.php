@@ -59,35 +59,35 @@
                 </div>
             </div>
                 
-            @else
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                      {{ Auth::user()->name }} <span class="caret"></span>
+        @else
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                  {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="{{ route('home') }}">
+                        Inicio
+                    </a>
+                    <a class="navbar-item">
+                        Editar Perfil
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" href="{{route('gestion-restaurantes.index')}}">
+                        Listado Restaurantes
+                    </a>
+                    <a class="navbar-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                         Salir
                     </a>
 
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="{{ route('home') }}">
-                            Inicio
-                        </a>
-                        <a class="navbar-item">
-                            Editar Perfil
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" href="{{route('gestion-restaurantes.index')}}">
-                            Listado Restaurantes
-                        </a>
-                        <a class="navbar-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                          document.getElementById('logout-form').submit();">
-                             Salir
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
-            @endguest
+            </div>
+        @endguest
       
     </div>
   </div>

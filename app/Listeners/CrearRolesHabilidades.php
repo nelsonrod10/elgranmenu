@@ -32,7 +32,7 @@ class CrearRolesHabilidades
         //Bouncer::allow('desarrollador')->to(['crear-empresa','configurar-empresa','crear-asesor','crear-usuarios-administrador','crear-usuarios-digitador','administrar-comunidad']);
         Bouncer::allow('super-admin')->to('crear-restaurante');
         Bouncer::allow('desarrollador')->to('crear-restaurante');
-        Bouncer::allow('administrador-restaurante')->to(['crear-menu-dia','crear-carta','crear-perfil']);
+        Bouncer::allow('administrador-restaurante')->to(['crear-restaurante','crear-menu-dia','crear-carta','crear-perfil']);
         Bouncer::allow('cliente-restaurante')->to(['crear-dieta','crear-perfil']);
         
         $userNelson = User::where("email","nelsonrod10@gmail.com")->first();

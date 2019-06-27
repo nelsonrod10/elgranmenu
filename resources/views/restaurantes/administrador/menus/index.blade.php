@@ -9,7 +9,7 @@
                     @include('restaurantes.administrador.layout.menu_lateral')
                 </div>
                 
-                <platos-menu :restaurante="{{$restaurante}}" ></platos-menu>
+                <platos-menu :restaurante="{{$restaurante}}" :route="'{{route('gestion-restaurantes.show',$restaurante)}}'"></platos-menu>
             </div>
         </div>
     </section>

@@ -9,7 +9,7 @@
                             <li><span class="title is-size-6">Menu: </span>{{plato.tipo_menu}}</li>
                             <li><span class="title is-size-6">Comida: </span>{{plato.tipo_plato}}</li>
                             <li><span class="title is-size-6">Precio: </span>$ {{plato.precio}}</li>
-                            <li><span class="title is-size-6">Descripción: </span>$ {{plato.descripcion}}</li>
+                            <li><span class="title is-size-6">Descripción: </span>{{plato.descripcion}}</li>
                             <li><span class="title is-size-6">Ingredientes: </span></li>
                             <li><span class="is-size-7">
                                 <listado-ingredientes
