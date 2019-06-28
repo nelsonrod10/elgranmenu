@@ -28,6 +28,9 @@ Route::resource('platos-del-dia', 'Menus\PlatosDelDiaController')->except([
 Route::get('/buscar-plato-del-dia/{q}', 'Menus\PlatosDelDiaController@index');
 
 Route::get('/restaurantes-plato-del-dia/{platoSeleccionado}','Menus\PlatosDelDiaController@buscarRestaurantes');
+Route::get('/otros-platos-del-dia/{restaurante}/{platoActual}','Menus\PlatosDelDiaController@otrosPlatos');
+Route::get('/otros-restaurantes-del-dia/{platoActual}','Menus\PlatosDelDiaController@buscarRestaurantes');
+Route::get('/ver-menu-restaurante/{restaurante}','Menus\PlatosDelDiaController@menuRestaurantes');
 
 Route::get('/restaurantes', function () {
     return view('resultados_busqueda.restaurantes');

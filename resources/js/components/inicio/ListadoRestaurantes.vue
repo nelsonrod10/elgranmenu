@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section v-if="!flagVerPlatoSeleccionado" class="section">
+        <section v-if="!flagVerPlatoSeleccionado && !flagVisitarRestaurante" class="section">
             <div class="container">
                 <div class="columns">
                     <div class="column">
@@ -13,7 +13,7 @@
                         <div class="box" v-for="data in listaResultados">
                             <div class="columns is-vcentered">
                                 <div class="column is-three-fifths">
-                                    <h1 class="title is-4">{{ data.restaurante.nombre }}</h1>
+                                    <h1 class="title is-4 is-capitalized">{{ data.restaurante.nombre }}</h1>
                                     <p class="title is-5">{{ data.plato.nombre }}</p>
                                     <p class="subtitle is-6">{{ data.plato.descripcion }}</p>
                                     <div><a>{{ data.restaurante.direccion }} - {{ data.restaurante.ciudad }}</a> | <a>{{ data.restaurante.telefono }} </a></div>
@@ -52,14 +52,24 @@
         <ver-plato-seleccionado 
             v-else-if="flagVerPlatoSeleccionado" 
             :restaurante="detallesRestaurante" 
-            :platoSeleccionado="detallesPlato">
+            :platoSeleccionado="detallesPlato"
+            v-on:ver-otro-plato="PlatoSeleccionado"
+            v-on:visitar-restaurante="VisitarRestaurante"
+            :key="keyVerOtroPlato">
         </ver-plato-seleccionado>
+        
+        <visitar-restaurante 
+            v-if="flagVisitarRestaurante" 
+            v-on:ver-otro-plato="PlatoSeleccionado"
+            :restaurante="visitarRestaurante"> 
+        </visitar-restaurante>
     </div>
 </template>
 
 <script>
-    import axios from "axios"
-    import PlatoSeleccionado from './PlatoSeleccionado/DetallesRestaurante.vue'
+    import axios from "axios";
+    import PlatoSeleccionado from './PlatoSeleccionado/DetallesRestaurante.vue';
+    import VisitarRestaurante from './PlatoSeleccionado/Restaurante.vue';
 
     export default {
         props: {
@@ -71,9 +81,12 @@
         data(){
             return{
                 flagVerPlatoSeleccionado:false,
+                flagVisitarRestaurante:false,
+                keyVerOtroPlato:0,
                 listaResultados:{},
                 detallesRestaurante:{},
-                detallesPlato:{}
+                detallesPlato:{},   
+                visitarRestaurante:{}    
             }
         },
         mounted(){
@@ -84,10 +97,10 @@
         },
         components: {
             verPlatoSeleccionado: PlatoSeleccionado,
+            visitarRestaurante  : VisitarRestaurante,
         },
         methods:{
             ListaRestaurantes(){
-                
                 axios.get('restaurantes-plato-del-dia/'+this.platoSeleccionado)
                 .then(response => {
                     this.listaResultados = response.data;
@@ -99,9 +112,17 @@
             },
 
             PlatoSeleccionado(restaurante,plato){
-                this.flagVerPlatoSeleccionado = true,
-                this.detallesRestaurante = restaurante,
-                this.detallesPlato = plato
+                this.keyVerOtroPlato += 1;
+                this.flagVerPlatoSeleccionado = true;
+                this.flagVisitarRestaurante = false;
+                this.detallesRestaurante = restaurante;
+                this.detallesPlato = plato;
+            },
+
+            VisitarRestaurante(restaurante){
+                this.flagVerPlatoSeleccionado = false;
+                this.flagVisitarRestaurante = true;
+                this.visitarRestaurante = restaurante;
             }
         },
     }

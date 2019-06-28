@@ -54,6 +54,31 @@ class PlatosDelDiaController extends Controller
         
         return response()->json($restaurantes);
     }   
+    
+    public function otrosPlatos($restaurante, $platoActual){
+        date_default_timezone_set('America/Bogota');
+        $objFechaActual = helpers::getDateNow();
+        $fechaActual = $objFechaActual->format("Y-m-d");
+        
+        $platos = PlatosDelDia::where('restaurante_id',$restaurante)->whereNotIn('id',[$platoActual])->fechaActual($fechaActual)->take(10)->get();
+        
+        return response()->json($platos);
+    }
+    
+    public function menuRestaurantes($restaurante){
+        date_default_timezone_set('America/Bogota');
+        $objFechaActual = helpers::getDateNow();
+        $fechaActual = $objFechaActual->format("Y-m-d");
+        
+        $delDia = PlatosDelDia::where('restaurante_id',$restaurante)->fechaActual($fechaActual)->get();
+        $carta = PlatosCarta::where('restaurante_id',$restaurante)->get();
+        
+        return response()->json([
+            "delDia"    =>  $delDia,
+            "carta"     =>  $carta     
+        ]);
+    }
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -33,7 +33,7 @@
                                     <div class="control has-icons-left">
                                         <input id="nombre" name="nombre" required class="input" type="text" placeholder="Nombre del establecimiento">
                                         <span class="icon is-small is-left">
-                                            <i class="fas fa-home"></i>
+                                            <i class="fas fa-check"></i>
                                         </span>
                                     </div>
                                 </div>
