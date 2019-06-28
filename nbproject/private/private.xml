@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/restauriando/resources/js/components/inicio/PlatoSeleccionado/Restaurante.vue</file>
+            <file>file:/C:/xampp/htdocs/restauriando/app/Http/Controllers/Menus/PlatosCartasController.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/app/Http/Controllers/Menus/PlatosDelDiaController.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/resources/js/components/restaurantes/PlatoDelDia.vue</file>
+            <file>file:/C:/xampp/htdocs/restauriando/routes/web.php</file>
         </group>
     </open-files>
 </project-private>

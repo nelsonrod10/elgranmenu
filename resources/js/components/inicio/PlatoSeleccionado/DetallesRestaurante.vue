@@ -28,7 +28,7 @@
                     </div>
                     <div class="columns is-centered">
                         <div class="column">
-                            <p class="title has-text-centered is-size-4">Otros platos del día en <span class="is-capitalized">{{ restaurante.nombre }}</span></p>
+                            <p class="title has-text-centered is-size-4">Platos del día en <span class="is-capitalized">{{ restaurante.nombre }}</span></p>
                         </div>
                     </div>
                     <div class="columns is-centered">

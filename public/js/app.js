@@ -1811,6 +1811,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -1827,7 +1828,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       btnBuscar: false,
       FlagPlatoSeleccionado: false,
-      nombresPlatos: [],
+      nombresPlatosCarta: [],
+      nombresPlatosDia: [],
       buscarPlato: ''
     };
   },
@@ -1837,7 +1839,8 @@ __webpack_require__.r(__webpack_exports__);
 
       this.FlagPlatoSeleccionado = false;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('buscar-plato-del-dia/' + this.buscarPlato).then(function (response) {
-        _this.nombresPlatos = response.data;
+        _this.nombresPlatosCarta = response.data.platosCarta;
+        _this.nombresPlatosDia = response.data.platosDia;
         _this.btnBuscar = true;
       })["catch"](function (error) {
         console.log(error);
@@ -2872,6 +2875,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PlatoDelDia_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PlatoDelDia.vue */ "./resources/js/components/restaurantes/PlatoDelDia.vue");
 /* harmony import */ var _VerificarPlatoDelDia_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./VerificarPlatoDelDia.vue */ "./resources/js/components/restaurantes/VerificarPlatoDelDia.vue");
 /* harmony import */ var _EliminarPlatoDelDia_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./EliminarPlatoDelDia.vue */ "./resources/js/components/restaurantes/EliminarPlatoDelDia.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -43032,10 +43048,20 @@ var render = function() {
                   _c(
                     "datalist",
                     { attrs: { id: "nombres-platos" } },
-                    _vm._l(_vm.nombresPlatos, function(plato) {
-                      return _c("option", { domProps: { value: plato.nombre } })
-                    }),
-                    0
+                    [
+                      _vm._l(_vm.nombresPlatosCarta, function(platoCarta) {
+                        return _c("option", {
+                          domProps: { value: platoCarta.nombre }
+                        })
+                      }),
+                      _vm._v(" "),
+                      _vm._l(_vm.nombresPlatosDia, function(platoDia) {
+                        return _c("option", {
+                          domProps: { value: platoDia.nombre }
+                        })
+                      })
+                    ],
+                    2
                   )
                 ]),
                 _vm._v(" "),
@@ -44688,10 +44714,10 @@ var render = function() {
     "span",
     [
       !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
-        ? _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
-            _vm._v("Platos que se ofrecen según la fecha")
-          ])
+        ? _c("div", { staticClass: "has-text-centered" }, [_vm._m(0)])
         : _vm._e(),
+      _vm._v(" "),
+      _c("hr"),
       _vm._v(" "),
       _vm._l(_vm.cartaPorFecha, function(platoPorFecha) {
         return !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
@@ -44733,7 +44759,7 @@ var render = function() {
                       _vm._v(_vm._s(platoPorFecha.descripcion))
                     ]),
                     _vm._v(" "),
-                    _vm._m(0, true),
+                    _vm._m(1, true),
                     _vm._v(" "),
                     _c("li", [
                       _c(
@@ -44793,7 +44819,7 @@ var render = function() {
                         }
                       },
                       [
-                        _vm._m(1, true),
+                        _vm._m(2, true),
                         _vm._v(" "),
                         _c("span", [_vm._v("Ingredientes")])
                       ]
@@ -44810,7 +44836,7 @@ var render = function() {
                         }
                       },
                       [
-                        _vm._m(2, true),
+                        _vm._m(3, true),
                         _vm._v(" "),
                         _c("span", [_vm._v("Ver y Editar")])
                       ]
@@ -44827,7 +44853,7 @@ var render = function() {
                         }
                       },
                       [
-                        _vm._m(3, true),
+                        _vm._m(4, true),
                         _vm._v(" "),
                         _c("span", [_vm._v("Eliminar")])
                       ]
@@ -44842,10 +44868,10 @@ var render = function() {
       _c("br"),
       _vm._v(" "),
       !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
-        ? _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
-            _vm._v("Platos diponibles siempre")
-          ])
+        ? _c("div", { staticClass: "has-text-centered" }, [_vm._m(5)])
         : _vm._e(),
+      _vm._v(" "),
+      _c("hr"),
       _vm._v(" "),
       _vm._l(_vm.cartaDisponible, function(platoDisponible) {
         return !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
@@ -44887,7 +44913,7 @@ var render = function() {
                       _vm._v(_vm._s(platoDisponible.descripcion))
                     ]),
                     _vm._v(" "),
-                    _vm._m(4, true),
+                    _vm._m(6, true),
                     _vm._v(" "),
                     _c("li", [
                       _c(
@@ -44947,7 +44973,7 @@ var render = function() {
                         }
                       },
                       [
-                        _vm._m(5, true),
+                        _vm._m(7, true),
                         _vm._v(" "),
                         _c("span", [_vm._v("Ingredientes")])
                       ]
@@ -44964,7 +44990,7 @@ var render = function() {
                         }
                       },
                       [
-                        _vm._m(6, true),
+                        _vm._m(8, true),
                         _vm._v(" "),
                         _c("span", [_vm._v("Ver y Editar")])
                       ]
@@ -44981,7 +45007,7 @@ var render = function() {
                         }
                       },
                       [
-                        _vm._m(7, true),
+                        _vm._m(9, true),
                         _vm._v(" "),
                         _c("span", [_vm._v("Eliminar")])
                       ]
@@ -45036,6 +45062,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "title is-size-4 has-text-centered" }, [
+      _vm._v(
+        "\n            Platos que se ofrecen ocasionalmente\n            "
+      ),
+      _c("div", { staticClass: "help" }, [
+        _vm._v(
+          "(Debe escogerlos como plato del día para que los clientes los puedan ver)"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("li", [
       _c("span", { staticClass: "title is-size-6" }, [_vm._v("Ingredientes: ")])
     ])
@@ -45062,6 +45103,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon is-small" }, [
       _c("i", { staticClass: "fas fa-trash" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "title is-size-4" }, [
+      _vm._v("\n            Platos diponibles siempre   \n            "),
+      _c("div", { staticClass: "help" }, [
+        _vm._v("(Los clientes siempre los podrán ver)")
+      ])
     ])
   },
   function() {

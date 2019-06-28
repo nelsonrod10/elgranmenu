@@ -22,11 +22,18 @@ class PlatosDelDiaController extends Controller
         $objFechaActual = helpers::getDateNow();
         $fechaActual = $objFechaActual->format("Y-m-d");
         
-        $platos = PlatosDelDia::nombre($q)->descripcion($q)->fechaActual($fechaActual)->take(10)->get([
+        $platosDia = PlatosDelDia::nombre($q)->descripcion($q)->fechaActual($fechaActual)->take(10)->get([
            'restaurante_id','platosCarta_id','nombre' 
         ]);
         
-        return response()->json($platos);
+        $platosCarta = PlatosCarta::nombre($q)->descripcion($q)->where('disponibilidad','Si')->take(10)->get([
+           'restaurante_id','id','nombre' 
+        ]); 
+        
+        return response()->json([
+            'platosCarta'   =>  $platosCarta,
+            'platosDia'     =>  $platosDia,
+        ]);
     }
     
     public function buscarRestaurantes($platoSeleccionado){
@@ -36,13 +43,28 @@ class PlatosDelDiaController extends Controller
         
         $restaurantes= [];
         
-        $platos = PlatosDelDia::nombre($platoSeleccionado)->fechaActual($fechaActual)->take(10)->get();
+        $platosDia = PlatosDelDia::nombre($platoSeleccionado)->fechaActual($fechaActual)->take(10)->get();
+        $platosCarta = PlatosCarta::nombre($platoSeleccionado)->where('disponibilidad','Si')->take(10)->get();
         
-        foreach ($platos as $plato) {
+        foreach ($platosDia as $plato) {
             $restaurante = Restaurante::find($plato->restaurante_id);
             
             $platoRestaurante = PlatosDelDia::nombre($platoSeleccionado)->fechaActual($fechaActual)->where([
                 'restaurante_id'   =>  $restaurante->id   
+            ])->first();
+            
+            array_push($restaurantes, [
+                "restaurante" => $restaurante,
+                "plato"       => $platoRestaurante         
+            ]);
+        }
+        
+        foreach ($platosCarta as $platoCarta) {
+            $restaurante = Restaurante::find($platoCarta->restaurante_id);
+            
+            $platoRestaurante = PlatosCarta::nombre($platoSeleccionado)->where([
+                'restaurante_id'   =>  $restaurante->id,
+                'disponibilidad'   =>  'Si'
             ])->first();
             
             array_push($restaurantes, [
@@ -71,7 +93,10 @@ class PlatosDelDiaController extends Controller
         $fechaActual = $objFechaActual->format("Y-m-d");
         
         $delDia = PlatosDelDia::where('restaurante_id',$restaurante)->fechaActual($fechaActual)->get();
-        $carta = PlatosCarta::where('restaurante_id',$restaurante)->get();
+        $carta = PlatosCarta::where([
+            'restaurante_id'=> $restaurante,
+            'disponibilidad'=> 'Si',
+            ])->get();
         
         return response()->json([
             "delDia"    =>  $delDia,
@@ -117,7 +142,7 @@ class PlatosDelDiaController extends Controller
             'tipo_plato'        =>  $platoCarta->tipo_plato,
             'precio'            =>  $platoCarta->precio
         ]);
-        
+
         return;
     }
 

@@ -13,7 +13,8 @@
                             <div class="control is-expanded">
                                 <input list="nombres-platos" class="input" type="text" placeholder="Que quieres comer, que restaurante buscas" v-on:keyup="BuscarPlato" v-model="buscarPlato">
                                 <datalist id="nombres-platos">
-                                    <option v-for="plato in nombresPlatos" :value="plato.nombre"></option>
+                                    <option v-for="platoCarta in nombresPlatosCarta" :value="platoCarta.nombre"></option>
+                                    <option v-for="platoDia in nombresPlatosDia" :value="platoDia.nombre"></option>    
                                 </datalist>                     
                             </div>
                             <div class="control">
@@ -50,7 +51,8 @@
             return{
                 btnBuscar:false,
                 FlagPlatoSeleccionado:false,
-                nombresPlatos: [],
+                nombresPlatosCarta: [],
+                nombresPlatosDia: [],
                 buscarPlato: '',
             }
         },
@@ -59,7 +61,8 @@
                 this.FlagPlatoSeleccionado = false;
                 axios.get('buscar-plato-del-dia/'+this.buscarPlato)
                 .then(response => {
-                    this.nombresPlatos = response.data;
+                    this.nombresPlatosCarta = response.data.platosCarta;
+                    this.nombresPlatosDia = response.data.platosDia;
                     this.btnBuscar=true;
                 })    
                 .catch(error => {

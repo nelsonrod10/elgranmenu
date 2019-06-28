@@ -1,6 +1,13 @@
 <template>
     <span>
-        <p v-if="!flagEditarPlato && !flagPlatoDelDia" class="title is-size-4 has-text-centered">Platos que se ofrecen según la fecha</p>
+        <div v-if="!flagEditarPlato && !flagPlatoDelDia" class="has-text-centered">
+            <div class="title is-size-4 has-text-centered">
+                Platos que se ofrecen ocasionalmente
+                <div class="help">(Debe escogerlos como plato del día para que los clientes los puedan ver)</div>
+            </div>
+            
+        </div>
+        <hr/>
         <div v-for="platoPorFecha in cartaPorFecha" v-if="!flagEditarPlato && !flagPlatoDelDia">
             <div class="columns">
                 <div class="column is-6">
@@ -59,7 +66,13 @@
             </div>    
         </div>
         <br/>
-        <p v-if="!flagEditarPlato && !flagPlatoDelDia" class="title is-size-4 has-text-centered">Platos diponibles siempre</p>
+        <div v-if="!flagEditarPlato && !flagPlatoDelDia" class="has-text-centered">
+            <div class="title is-size-4">
+                Platos diponibles siempre   
+                <div class="help">(Los clientes siempre los podrán ver)</div>    
+            </div>
+        </div>
+        <hr/>
         <div v-for="platoDisponible in cartaDisponible" v-if="!flagEditarPlato && !flagPlatoDelDia">
             <div class="columns">
                 <div class="column is-6">

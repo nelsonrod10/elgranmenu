@@ -17,7 +17,7 @@ class RoleVerifyController extends Controller
         }
         if($user->isAn('administrador-restaurante')){
             //return redirect()->route('gestion-asesores.index');
-            return view('restaurantes.administrador.home')->with('user',auth()->user());
+            return view('restaurantes.administrador.restaurantes')->with(['user'=>$user,'restaurantes'=>$user->restaurantes]);
         }
         
         return redirect('/inicio');

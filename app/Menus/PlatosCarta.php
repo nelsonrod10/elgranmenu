@@ -19,4 +19,12 @@ class PlatosCarta extends Model
     public function ingredientes(){
         return $this->hasMany(\App\Menus\IngredientesPlato::class,'platosCarta_id');
     }
+    
+    public function scopeNombre($query, $string){
+        return $query->where('nombre','LIKE',"%$string%");
+    }
+    
+    public function scopeDescripcion($query, $string){
+        return $query->where('descripcion','LIKE',"%$string%");
+    }
 }
