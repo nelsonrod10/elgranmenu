@@ -1,63 +1,121 @@
 <template>
     <span>
-        <div v-for="plato in carta" v-if="!flagEditarPlato && !flagPlatoDelDia">
-            <div class="box">
-                <div class="columns">
-                    <div class="column is-6">
-                        <ul>
-                            <li><span class="title is-size-4">{{plato.nombre}}</span></li>
-                            <li><span class="title is-size-6">Menu: </span>{{plato.tipo_menu}}</li>
-                            <li><span class="title is-size-6">Comida: </span>{{plato.tipo_plato}}</li>
-                            <li><span class="title is-size-6">Precio: </span>$ {{plato.precio}}</li>
-                            <li><span class="title is-size-6">Descripción: </span>{{plato.descripcion}}</li>
-                            <li><span class="title is-size-6">Ingredientes: </span></li>
-                            <li><span class="is-size-7">
-                                <listado-ingredientes
-                                    :platoIngredientes="plato"
-                                    :key="keyIngredientes"
-                                    v-on:cancelar-crud-plato="CargarListadoPlatos"
-                                ></listado-ingredientes></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <div class="columns">
-                            <div class="column">
-                                <verificar-plato-del-dia
-                                    :verificarPlato="plato"
-                                    v-on:seleccionar-plato-del-dia="PlatoDelDia(plato)"
-                                    v-on:eliminar-plato-del-dia="EliminarPlatoDelDia(plato)"
-                                    :key="keyVerificarPlatoDelDia"
-                                ></verificar-plato-del-dia>
-                            </div>
+        <p v-if="!flagEditarPlato && !flagPlatoDelDia" class="title is-size-4 has-text-centered">Platos que se ofrecen según la fecha</p>
+        <div v-for="platoPorFecha in cartaPorFecha" v-if="!flagEditarPlato && !flagPlatoDelDia">
+            <div class="columns">
+                <div class="column is-6">
+                    <ul>
+                        <li><span class="title is-size-5">{{platoPorFecha.nombre}}</span></li>
+                        <li><span class="title is-size-6">Menu: </span>{{platoPorFecha.tipo_menu}}</li>
+                        <li><span class="title is-size-6">Comida: </span>{{platoPorFecha.tipo_plato}}</li>
+                        <li><span class="title is-size-6">Precio: </span>$ {{platoPorFecha.precio}}</li>
+                        <li><span class="title is-size-6">Descripción: </span>{{platoPorFecha.descripcion}}</li>
+                        <li><span class="title is-size-6">Ingredientes: </span></li>
+                        <li><span class="is-size-7">
+                            <listado-ingredientes
+                                :platoIngredientes="platoPorFecha"
+                                :key="keyIngredientes"
+                                v-on:cancelar-crud-plato="CargarListadoPlatos"
+                            ></listado-ingredientes></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <div class="columns">
+                        <div class="column">
+                            <verificar-plato-del-dia
+                                :verificarPlato="platoPorFecha"
+                                v-on:seleccionar-plato-del-dia="PlatoDelDia(platoPorFecha)"
+                                v-on:eliminar-plato-del-dia="EliminarPlatoDelDia(platoPorFecha)"
+                                :key="keyVerificarPlatoDelDia"
+                            ></verificar-plato-del-dia>
                         </div>
                     </div>
                 </div>
-                <div class="columns">
-                    <div class="column">
-                        <div class="buttons">
-                            <a class="button is-warning is-small" v-on:click="AgregarIngrediente(plato)">
-                                <span class="icon is-small">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                                <span>Ingredientes</span>
-                            </a>
-                            <a class="button is-success is-small" v-on:click="ActualizarPlato(plato)">
-                                <span class="icon is-small">
-                                    <i class="fas fa-pen"></i>
-                                </span>
-                                <span>Ver y Editar</span>
-                            </a>
-                            <a class="button is-danger is-small" v-on:click="EliminarPlato(plato)">
-                                <span class="icon is-small">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span>Eliminar</span>
-                            </a>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <div class="buttons">
+                        <a class="button is-warning is-small" v-on:click="AgregarIngrediente(platoPorFecha)">
+                            <span class="icon is-small">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            <span>Ingredientes</span>
+                        </a>
+                        <a class="button is-success is-small" v-on:click="ActualizarPlato(platoPorFecha)">
+                            <span class="icon is-small">
+                                <i class="fas fa-pen"></i>
+                            </span>
+                            <span>Ver y Editar</span>
+                        </a>
+                        <a class="button is-danger is-small" v-on:click="EliminarPlato(platoPorFecha)">
+                            <span class="icon is-small">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                            <span>Eliminar</span>
+                        </a>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        <br/>
+        <p v-if="!flagEditarPlato && !flagPlatoDelDia" class="title is-size-4 has-text-centered">Platos diponibles siempre</p>
+        <div v-for="platoDisponible in cartaDisponible" v-if="!flagEditarPlato && !flagPlatoDelDia">
+            <div class="columns">
+                <div class="column is-6">
+                    <ul>
+                        <li><span class="title is-size-5">{{platoDisponible.nombre}}</span></li>
+                        <li><span class="title is-size-6">Menu: </span>{{platoDisponible.tipo_menu}}</li>
+                        <li><span class="title is-size-6">Comida: </span>{{platoDisponible.tipo_plato}}</li>
+                        <li><span class="title is-size-6">Precio: </span>$ {{platoDisponible.precio}}</li>
+                        <li><span class="title is-size-6">Descripción: </span>{{platoDisponible.descripcion}}</li>
+                        <li><span class="title is-size-6">Ingredientes: </span></li>
+                        <li><span class="is-size-7">
+                            <listado-ingredientes
+                                :platoIngredientes="platoDisponible"
+                                :key="keyIngredientes"
+                                v-on:cancelar-crud-plato="CargarListadoPlatos"
+                            ></listado-ingredientes></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <div class="columns">
+                        <div class="column">
+                            <verificar-plato-del-dia
+                                :verificarPlato="platoDisponible"
+                                v-on:seleccionar-plato-del-dia="PlatoDelDia(platoDisponible)"
+                                v-on:eliminar-plato-del-dia="EliminarPlatoDelDia(platoDisponible)"
+                                :key="keyVerificarPlatoDelDia"
+                            ></verificar-plato-del-dia>
                         </div>
                     </div>
-                </div>    
+                </div>
             </div>
+            <div class="columns">
+                <div class="column">
+                    <div class="buttons">
+                        <a class="button is-warning is-small" v-on:click="AgregarIngrediente(platoDisponible)">
+                            <span class="icon is-small">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            <span>Ingredientes</span>
+                        </a>
+                        <a class="button is-success is-small" v-on:click="ActualizarPlato(platoDisponible)">
+                            <span class="icon is-small">
+                                <i class="fas fa-pen"></i>
+                            </span>
+                            <span>Ver y Editar</span>
+                        </a>
+                        <a class="button is-danger is-small" v-on:click="EliminarPlato(platoDisponible)">
+                            <span class="icon is-small">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                            <span>Eliminar</span>
+                        </a>
+                    </div>
+                </div>
+            </div>    
         </div>
 
         <agregar-ingrediente
@@ -105,7 +163,11 @@
 
     export default {
         props: {
-            carta: {
+            cartaPorFecha: {
+                required: true
+                // default: 'Lucas'
+            },
+            cartaDisponible: {
                 required: true
                 // default: 'Lucas'
             },

@@ -2586,6 +2586,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2602,6 +2616,7 @@ __webpack_require__.r(__webpack_exports__);
         tipoMenu: this.plato['tipo_menu'],
         precio: this.plato['precio'],
         tipoPlato: this.plato['tipo_plato'],
+        disponibilidad: this.plato['disponibilidad'],
         descripcion: this.plato['descripcion']
       }
     };
@@ -2620,7 +2635,8 @@ __webpack_require__.r(__webpack_exports__);
         tipoMenu: this.datosFrm.tipoMenu,
         precio: this.datosFrm.precio,
         tipoPlato: this.datosFrm.tipoPlato,
-        descripcion: this.datosFrm.descripcion
+        descripcion: this.datosFrm.descripcion,
+        disponibilidad: this.datosFrm.disponibilidad
       }).then(function (response) {
         _this.$emit('cancelar-crud-plato');
       })["catch"](function (error) {
@@ -2951,6 +2967,64 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2961,7 +3035,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    carta: {
+    cartaPorFecha: {
+      required: true // default: 'Lucas'
+
+    },
+    cartaDisponible: {
       required: true // default: 'Lucas'
 
     }
@@ -3235,6 +3313,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -3250,6 +3345,7 @@ __webpack_require__.r(__webpack_exports__);
         tipoMenu: '',
         precio: '',
         tipoPlato: '',
+        disponibilidad: '',
         descripcion: ''
       }
     };
@@ -3264,7 +3360,8 @@ __webpack_require__.r(__webpack_exports__);
         tipoMenu: this.datosFrm.tipoMenu,
         precio: this.datosFrm.precio,
         tipoPlato: this.datosFrm.tipoPlato,
-        descripcion: this.datosFrm.descripcion
+        descripcion: this.datosFrm.descripcion,
+        disponibilidad: this.datosFrm.disponibilidad
       }).then(function (response) {
         _this.$emit('cancelar-nuevo-plato');
       })["catch"](function (error) {
@@ -3432,6 +3529,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3450,7 +3549,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       cartaVacia: false,
       nuevoPlato: false,
-      carta: {}
+      cartaDisponible: {},
+      cartaPorFecha: {}
     };
   },
   methods: {
@@ -3464,7 +3564,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('platos/' + this.restaurante['id']).then(function (response) {
-        _this.nuevoPlato = false, _this.carta = response.data;
+        _this.nuevoPlato = false;
+        _this.cartaDisponible = response.data.disponible;
+        _this.cartaPorFecha = response.data.porFecha;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3495,8 +3597,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
 //
 //
 //
@@ -43969,304 +44069,360 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "column" }, [
-    _c("div", { staticClass: "box" }, [
-      _c(
-        "form",
-        {
-          attrs: { name: "frm-crear-plato", method: "post" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.ActualizarPlato($event)
-            }
+    _c(
+      "form",
+      {
+        attrs: { name: "frm-crear-plato", method: "post" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.ActualizarPlato($event)
           }
-        },
-        [
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column" }, [
-              _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
-                _vm._v("Editar Plato " + _vm._s(_vm.plato["nombre"]))
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column is-6" }, [
-              _c("div", { staticClass: "field" }, [
-                _c(
-                  "label",
-                  { staticClass: "label", attrs: { for: "nombre" } },
-                  [_vm._v("Nombre del Plato")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "control has-icons-left" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.datosFrm.nombre,
-                        expression: "datosFrm.nombre"
-                      }
-                    ],
-                    staticClass: "input",
-                    attrs: {
-                      id: "nombre",
-                      name: "nombre",
-                      required: "",
-                      type: "text",
-                      placeholder: "Nombre del plato"
-                    },
-                    domProps: { value: _vm.datosFrm.nombre },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.datosFrm, "nombre", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(0)
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "column" }, [
-              _c("div", { staticClass: "field" }, [
-                _c(
-                  "label",
-                  { staticClass: "label", attrs: { for: "tipMenu" } },
-                  [_vm._v("Tipo Menu")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "control is-expanded" }, [
-                  _c("div", { staticClass: "select is-fullwidth" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.datosFrm.tipoMenu,
-                            expression: "datosFrm.tipoMenu"
-                          }
-                        ],
-                        attrs: {
-                          id: "tipoMenu",
-                          name: "tipoMenu",
-                          required: ""
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.datosFrm,
-                              "tipoMenu",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "corriente" } }, [
-                          _vm._v("Corriente")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "especial" } }, [
-                          _vm._v("Especial")
-                        ])
-                      ]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column is-6" }, [
-              _c("div", { staticClass: "field" }, [
-                _c(
-                  "label",
-                  { staticClass: "label", attrs: { for: "precio" } },
-                  [_vm._v("Precio")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "control has-icons-left" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.datosFrm.precio,
-                        expression: "datosFrm.precio"
-                      }
-                    ],
-                    staticClass: "input",
-                    attrs: {
-                      id: "precio",
-                      name: "precio",
-                      type: "number",
-                      placeholder: "Precio del plato"
-                    },
-                    domProps: { value: _vm.datosFrm.precio },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.datosFrm, "precio", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(1)
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "column" }, [
-              _c("div", { staticClass: "field" }, [
-                _c(
-                  "label",
-                  { staticClass: "label", attrs: { for: "tipoPlato" } },
-                  [_vm._v("Tipo Plato")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "control is-expanded" }, [
-                  _c("div", { staticClass: "select is-fullwidth" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.datosFrm.tipoPlato,
-                            expression: "datosFrm.tipoPlato"
-                          }
-                        ],
-                        attrs: {
-                          id: "tipoPlato",
-                          name: "tipoPlato",
-                          required: ""
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.datosFrm,
-                              "tipoPlato",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "tradicional" } }, [
-                          _vm._v("Tradicional")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "vegetariano" } }, [
-                          _vm._v("Vegetariano")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "vegano" } }, [
-                          _vm._v("Vegano")
-                        ])
-                      ]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "columns" }, [
-            _c("div", { staticClass: "column" }, [
-              _c("div", { staticClass: "field" }, [
-                _c(
-                  "label",
-                  { staticClass: "label", attrs: { for: "descripcion" } },
-                  [_vm._v("Descripción")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "control" }, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.datosFrm.descripcion,
-                        expression: "datosFrm.descripcion"
-                      }
-                    ],
-                    staticClass: "textarea",
-                    attrs: {
-                      id: "descripcion",
-                      name: "descripcion",
-                      required: "",
-                      placeholder:
-                        "Haga una descripción atractiva de este plato"
-                    },
-                    domProps: { value: _vm.datosFrm.descripcion },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.datosFrm,
-                          "descripcion",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field is-grouped" }, [
-            _vm._m(2),
-            _vm._v(" "),
-            _c("div", { staticClass: "control" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "button is-text",
-                  attrs: { type: "button" },
-                  on: { click: _vm.CancelarActualizar }
-                },
-                [_vm._v("Cancelar")]
-              )
+        }
+      },
+      [
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
+              _vm._v("Editar Plato " + _vm._s(_vm.plato["nombre"]))
             ])
           ])
-        ]
-      )
-    ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "nombre" } }, [
+                _vm._v("Nombre del Plato")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.nombre,
+                      expression: "datosFrm.nombre"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "nombre",
+                    name: "nombre",
+                    required: "",
+                    type: "text",
+                    placeholder: "Nombre del plato"
+                  },
+                  domProps: { value: _vm.datosFrm.nombre },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "nombre", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "tipMenu" } }, [
+                _vm._v("Tipo Menu")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control is-expanded" }, [
+                _c("div", { staticClass: "select is-fullwidth" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.datosFrm.tipoMenu,
+                          expression: "datosFrm.tipoMenu"
+                        }
+                      ],
+                      attrs: { id: "tipoMenu", name: "tipoMenu", required: "" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.datosFrm,
+                            "tipoMenu",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "corriente" } }, [
+                        _vm._v("Corriente")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "especial" } }, [
+                        _vm._v("Especial")
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "precio" } }, [
+                _vm._v("Precio")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.precio,
+                      expression: "datosFrm.precio"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "precio",
+                    name: "precio",
+                    type: "number",
+                    placeholder: "Precio del plato"
+                  },
+                  domProps: { value: _vm.datosFrm.precio },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "precio", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "tipoPlato" } },
+                [_vm._v("Tipo Plato")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control is-expanded" }, [
+                _c("div", { staticClass: "select is-fullwidth" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.datosFrm.tipoPlato,
+                          expression: "datosFrm.tipoPlato"
+                        }
+                      ],
+                      attrs: {
+                        id: "tipoPlato",
+                        name: "tipoPlato",
+                        required: ""
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.datosFrm,
+                            "tipoPlato",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "tradicional" } }, [
+                        _vm._v("Tradicional")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "vegetariano" } }, [
+                        _vm._v("Vegetariano")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "vegano" } }, [
+                        _vm._v("Vegano")
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "disponibilidad" } },
+                [
+                  _vm._v(
+                    "¿Este plato estará disponible siempre para los clientes?"
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.disponibilidad,
+                        expression: "datosFrm.disponibilidad"
+                      }
+                    ],
+                    attrs: {
+                      id: "disponibilidad",
+                      value: "Si",
+                      type: "radio",
+                      name: "disponibilidad"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.disponibilidad, "Si")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "disponibilidad", "Si")
+                      }
+                    }
+                  }),
+                  _vm._v("\n                      Si\n                    ")
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.disponibilidad,
+                        expression: "datosFrm.disponibilidad"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      value: "No",
+                      name: "disponibilidad"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.disponibilidad, "No")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "disponibilidad", "No")
+                      }
+                    }
+                  }),
+                  _vm._v("\n                      No\n                    ")
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "descripcion" } },
+                [_vm._v("Descripción")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.descripcion,
+                      expression: "datosFrm.descripcion"
+                    }
+                  ],
+                  staticClass: "textarea",
+                  attrs: {
+                    id: "descripcion",
+                    name: "descripcion",
+                    required: "",
+                    placeholder: "Haga una descripción atractiva de este plato"
+                  },
+                  domProps: { value: _vm.datosFrm.descripcion },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "descripcion", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field is-grouped" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c(
+              "button",
+              {
+                staticClass: "button is-text",
+                attrs: { type: "button" },
+                on: { click: _vm.CancelarActualizar }
+              },
+              [_vm._v("Cancelar")]
+            )
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -44531,84 +44687,64 @@ var render = function() {
   return _c(
     "span",
     [
-      _vm._l(_vm.carta, function(plato) {
+      !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
+        ? _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
+            _vm._v("Platos que se ofrecen según la fecha")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.cartaPorFecha, function(platoPorFecha) {
         return !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
           ? _c("div", [
-              _c("div", { staticClass: "box" }, [
-                _c("div", { staticClass: "columns" }, [
-                  _c("div", { staticClass: "column is-6" }, [
-                    _c("ul", [
-                      _c("li", [
-                        _c("span", { staticClass: "title is-size-4" }, [
-                          _vm._v(_vm._s(plato.nombre))
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("span", { staticClass: "title is-size-6" }, [
-                          _vm._v("Menu: ")
-                        ]),
-                        _vm._v(_vm._s(plato.tipo_menu))
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("span", { staticClass: "title is-size-6" }, [
-                          _vm._v("Comida: ")
-                        ]),
-                        _vm._v(_vm._s(plato.tipo_plato))
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("span", { staticClass: "title is-size-6" }, [
-                          _vm._v("Precio: ")
-                        ]),
-                        _vm._v("$ " + _vm._s(plato.precio))
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("span", { staticClass: "title is-size-6" }, [
-                          _vm._v("Descripción: ")
-                        ]),
-                        _vm._v(_vm._s(plato.descripcion))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(0, true),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c(
-                          "span",
-                          { staticClass: "is-size-7" },
-                          [
-                            _c("listado-ingredientes", {
-                              key: _vm.keyIngredientes,
-                              attrs: { platoIngredientes: plato },
-                              on: {
-                                "cancelar-crud-plato": _vm.CargarListadoPlatos
-                              }
-                            })
-                          ],
-                          1
-                        )
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column is-6" }, [
+                  _c("ul", [
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-5" }, [
+                        _vm._v(_vm._s(platoPorFecha.nombre))
                       ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "column" }, [
-                    _c("div", { staticClass: "columns" }, [
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Menu: ")
+                      ]),
+                      _vm._v(_vm._s(platoPorFecha.tipo_menu))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Comida: ")
+                      ]),
+                      _vm._v(_vm._s(platoPorFecha.tipo_plato))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Precio: ")
+                      ]),
+                      _vm._v("$ " + _vm._s(platoPorFecha.precio))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Descripción: ")
+                      ]),
+                      _vm._v(_vm._s(platoPorFecha.descripcion))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0, true),
+                    _vm._v(" "),
+                    _c("li", [
                       _c(
-                        "div",
-                        { staticClass: "column" },
+                        "span",
+                        { staticClass: "is-size-7" },
                         [
-                          _c("verificar-plato-del-dia", {
-                            key: _vm.keyVerificarPlatoDelDia,
-                            attrs: { verificarPlato: plato },
+                          _c("listado-ingredientes", {
+                            key: _vm.keyIngredientes,
+                            attrs: { platoIngredientes: platoPorFecha },
                             on: {
-                              "seleccionar-plato-del-dia": function($event) {
-                                return _vm.PlatoDelDia(plato)
-                              },
-                              "eliminar-plato-del-dia": function($event) {
-                                return _vm.EliminarPlatoDelDia(plato)
-                              }
+                              "cancelar-crud-plato": _vm.CargarListadoPlatos
                             }
                           })
                         ],
@@ -44618,60 +44754,238 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "columns" }, [
-                  _c("div", { staticClass: "column" }, [
-                    _c("div", { staticClass: "buttons" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "button is-warning is-small",
+                _c("div", { staticClass: "column" }, [
+                  _c("div", { staticClass: "columns" }, [
+                    _c(
+                      "div",
+                      { staticClass: "column" },
+                      [
+                        _c("verificar-plato-del-dia", {
+                          key: _vm.keyVerificarPlatoDelDia,
+                          attrs: { verificarPlato: platoPorFecha },
                           on: {
-                            click: function($event) {
-                              return _vm.AgregarIngrediente(plato)
+                            "seleccionar-plato-del-dia": function($event) {
+                              return _vm.PlatoDelDia(platoPorFecha)
+                            },
+                            "eliminar-plato-del-dia": function($event) {
+                              return _vm.EliminarPlatoDelDia(platoPorFecha)
                             }
                           }
-                        },
-                        [
-                          _vm._m(1, true),
-                          _vm._v(" "),
-                          _c("span", [_vm._v("Ingredientes")])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "button is-success is-small",
-                          on: {
-                            click: function($event) {
-                              return _vm.ActualizarPlato(plato)
-                            }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column" }, [
+                  _c("div", { staticClass: "buttons" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-warning is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.AgregarIngrediente(platoPorFecha)
                           }
-                        },
-                        [
-                          _vm._m(2, true),
-                          _vm._v(" "),
-                          _c("span", [_vm._v("Ver y Editar")])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "button is-danger is-small",
-                          on: {
-                            click: function($event) {
-                              return _vm.EliminarPlato(plato)
-                            }
+                        }
+                      },
+                      [
+                        _vm._m(1, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Ingredientes")])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-success is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.ActualizarPlato(platoPorFecha)
                           }
-                        },
+                        }
+                      },
+                      [
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Ver y Editar")])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-danger is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.EliminarPlato(platoPorFecha)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(3, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Eliminar")])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          : _vm._e()
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
+        ? _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
+            _vm._v("Platos diponibles siempre")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.cartaDisponible, function(platoDisponible) {
+        return !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
+          ? _c("div", [
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column is-6" }, [
+                  _c("ul", [
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-5" }, [
+                        _vm._v(_vm._s(platoDisponible.nombre))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Menu: ")
+                      ]),
+                      _vm._v(_vm._s(platoDisponible.tipo_menu))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Comida: ")
+                      ]),
+                      _vm._v(_vm._s(platoDisponible.tipo_plato))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Precio: ")
+                      ]),
+                      _vm._v("$ " + _vm._s(platoDisponible.precio))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Descripción: ")
+                      ]),
+                      _vm._v(_vm._s(platoDisponible.descripcion))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(4, true),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c(
+                        "span",
+                        { staticClass: "is-size-7" },
                         [
-                          _vm._m(3, true),
-                          _vm._v(" "),
-                          _c("span", [_vm._v("Eliminar")])
-                        ]
+                          _c("listado-ingredientes", {
+                            key: _vm.keyIngredientes,
+                            attrs: { platoIngredientes: platoDisponible },
+                            on: {
+                              "cancelar-crud-plato": _vm.CargarListadoPlatos
+                            }
+                          })
+                        ],
+                        1
                       )
                     ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "column" }, [
+                  _c("div", { staticClass: "columns" }, [
+                    _c(
+                      "div",
+                      { staticClass: "column" },
+                      [
+                        _c("verificar-plato-del-dia", {
+                          key: _vm.keyVerificarPlatoDelDia,
+                          attrs: { verificarPlato: platoDisponible },
+                          on: {
+                            "seleccionar-plato-del-dia": function($event) {
+                              return _vm.PlatoDelDia(platoDisponible)
+                            },
+                            "eliminar-plato-del-dia": function($event) {
+                              return _vm.EliminarPlatoDelDia(platoDisponible)
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column" }, [
+                  _c("div", { staticClass: "buttons" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-warning is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.AgregarIngrediente(platoDisponible)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(5, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Ingredientes")])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-success is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.ActualizarPlato(platoDisponible)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(6, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Ver y Editar")])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-danger is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.EliminarPlato(platoDisponible)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(7, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Eliminar")])
+                      ]
+                    )
                   ])
                 ])
               ])
@@ -44718,6 +45032,38 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("span", { staticClass: "title is-size-6" }, [_vm._v("Ingredientes: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-plus" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-pen" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-trash" })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -45192,6 +45538,83 @@ var render = function() {
               _c("div", { staticClass: "field" }, [
                 _c(
                   "label",
+                  { staticClass: "label", attrs: { for: "disponibilidad" } },
+                  [
+                    _vm._v(
+                      "¿Este plato estará disponible siempre para los clientes?"
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "control" }, [
+                  _c("label", { staticClass: "radio" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.datosFrm.disponibilidad,
+                          expression: "datosFrm.disponibilidad"
+                        }
+                      ],
+                      attrs: {
+                        id: "disponibilidad",
+                        value: "Si",
+                        type: "radio",
+                        name: "disponibilidad"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.datosFrm.disponibilidad, "Si")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.datosFrm, "disponibilidad", "Si")
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                          Si\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "radio" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.datosFrm.disponibilidad,
+                          expression: "datosFrm.disponibilidad"
+                        }
+                      ],
+                      attrs: {
+                        type: "radio",
+                        value: "No",
+                        name: "disponibilidad"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.datosFrm.disponibilidad, "No")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.datosFrm, "disponibilidad", "No")
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                          No\n                        "
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column" }, [
+              _c("div", { staticClass: "field" }, [
+                _c(
+                  "label",
                   { staticClass: "label", attrs: { for: "descripcion" } },
                   [_vm._v("Descripción")]
                 ),
@@ -45444,7 +45867,10 @@ var render = function() {
                   "span",
                   [
                     _c("listado-platos", {
-                      attrs: { carta: _vm.carta },
+                      attrs: {
+                        cartaDisponible: _vm.cartaDisponible,
+                        cartaPorFecha: _vm.cartaPorFecha
+                      },
                       on: { "cargar-listado-plato": _vm.GetListadoPlatos }
                     })
                   ],
@@ -45507,8 +45933,6 @@ var render = function() {
           "div",
           { staticClass: "notification is-primary has-text-centered" },
           [
-            _c("button", { staticClass: "delete" }),
-            _vm._v(" "),
             _c("div", [
               _vm._v(
                 "\n            Felicitaciones!!, Este plato hace parte del menu del día\n        "
@@ -45538,8 +45962,6 @@ var render = function() {
           ]
         )
       : _c("div", { staticClass: "notification is-link has-text-centered" }, [
-          _c("button", { staticClass: "delete" }),
-          _vm._v(" "),
           _c("div", [
             _vm._v(
               "\n            ¿Desea que este plato haga parte del menu del día?\n        "
@@ -61745,7 +62167,7 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  //mode: 'history',
+  mode: 'history',
   routes: [//{path:'foo',component : Foo }
   ]
 });

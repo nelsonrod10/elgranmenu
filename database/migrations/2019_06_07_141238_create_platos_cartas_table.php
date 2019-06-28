@@ -18,6 +18,7 @@ class CreatePlatosCartasTable extends Migration
             $table->bigInteger('restaurante_id')->unsigned();
             $table->string('nombre');
             $table->longText('descripcion');
+            $table->enum('disponibilidad',['Si','No']);
             $table->enum('tipo_menu', ['corriente','especial']);
             $table->enum('tipo_plato', ['tradicional','vegetariano','vegano']);
             $table->string('precio');

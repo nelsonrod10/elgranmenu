@@ -1,7 +1,6 @@
 <template>
     <div>
         <div v-if="flagSeleccionado" class="notification is-primary has-text-centered">
-            <button class="delete"></button>
             <div>
                 Felicitaciones!!, Este plato hace parte del menu del día
             </div>
@@ -17,7 +16,6 @@
             
         </div>
         <div v-else class="notification is-link has-text-centered">
-            <button class="delete"></button>
             <div>
                 ¿Desea que este plato haga parte del menu del día?
             </div>

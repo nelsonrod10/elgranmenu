@@ -65,6 +65,23 @@
             <div class="columns">
                 <div class="column">
                     <div class="field">
+                        <label class="label" for="disponibilidad">¿Este plato estará disponible siempre para los clientes?</label>
+                        <div class="control">
+                            <label class="radio">
+                              <input id="disponibilidad" value="Si" type="radio" name="disponibilidad" v-model="datosFrm.disponibilidad">
+                              Si
+                            </label>
+                            <label class="radio">
+                              <input type="radio" value="No" name="disponibilidad" v-model="datosFrm.disponibilidad">
+                              No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
                         <label class="label" for="descripcion">Descripción</label>
                         <div class="control">
                           <textarea id="descripcion" name="descripcion" v-model="datosFrm.descripcion" required class="textarea" placeholder="Haga una descripción atractiva de este plato"></textarea>
@@ -103,11 +120,12 @@
             return{
                 datosFrm:{
                     idRestaurante: this.restaurante['id'],
-                    nombre      : '',
-                    tipoMenu    : '',
-                    precio      : '',
-                    tipoPlato   : '',
-                    descripcion : ''    
+                    nombre          : '',
+                    tipoMenu        : '',
+                    precio          : '',
+                    tipoPlato       : '',
+                    disponibilidad  : '',
+                    descripcion     : ''    
                         
                 },
             }
@@ -115,12 +133,13 @@
         methods:{
             CrearNuevoPlato(){
                 axios.post('plato',{
-                    restaurante : this.datosFrm.idRestaurante,
-                    nombre      : this.datosFrm.nombre,
-                    tipoMenu    : this.datosFrm.tipoMenu,
-                    precio      : this.datosFrm.precio,
-                    tipoPlato   : this.datosFrm.tipoPlato,
-                    descripcion : this.datosFrm.descripcion,
+                    restaurante     : this.datosFrm.idRestaurante,
+                    nombre          : this.datosFrm.nombre,
+                    tipoMenu        : this.datosFrm.tipoMenu,
+                    precio          : this.datosFrm.precio,
+                    tipoPlato       : this.datosFrm.tipoPlato,
+                    descripcion     : this.datosFrm.descripcion,
+                    disponibilidad  : this.datosFrm.disponibilidad
                 })
                 .then(response => {
                     this.$emit('cancelar-nuevo-plato');

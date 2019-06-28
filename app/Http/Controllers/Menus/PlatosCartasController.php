@@ -27,9 +27,12 @@ class PlatosCartasController extends Controller
     public function getPlatos($idRestaurante)
     {
         $restaurante = Restaurante::find($idRestaurante);
-        $carta = $restaurante->platosCarta;
-        
-        return response()->json($carta);
+        $cartaDisponible = $restaurante->platosCarta->where('disponibilidad','Si');
+        $cartaPorFecha = $restaurante->platosCarta->where('disponibilidad','No');
+        return response()->json([
+            "disponible"    =>  $cartaDisponible,
+            "porFecha"      =>  $cartaPorFecha
+        ]);
     }
     
     public function seleccionDelDia($idPlatoCarta)
@@ -74,13 +77,15 @@ class PlatosCartasController extends Controller
             'tipoMenu'      =>  'string|in:corriente,especial|required',
             'precio'        =>  'string|required',
             'tipoPlato'     =>  'string|in:tradicional,vegetariano,vegano|required',
-            'descripcion'   =>  'string|required'
+            'descripcion'   =>  'string|required',
+            'disponibilidad'=>  'string|in:Si,No|required'
         ]);
         
         PlatosCarta::create([
             'restaurante_id'     =>  $data['restaurante'],
             'nombre'             =>  $data['nombre'],
             'descripcion'        =>  $data['descripcion'],
+            'disponibilidad'     =>  $data['disponibilidad'],    
             'tipo_menu'          =>  $data['tipoMenu'],
             'tipo_plato'         =>  $data['tipoPlato'],
             'precio'             =>  $data['precio'],
@@ -125,13 +130,15 @@ class PlatosCartasController extends Controller
             'tipoMenu'      =>  'string|in:corriente,especial|required',
             'precio'        =>  'string|required',
             'tipoPlato'     =>  'string|in:tradicional,vegetariano,vegano|required',
-            'descripcion'   =>  'string|required'
+            'descripcion'   =>  'string|required',
+            'disponibilidad'=>  'string|in:Si,No|required'
         ]);
         
         $plato = PlatosCarta::find($id);
         $plato->update([
             'nombre'             =>  $data['nombre'],
             'descripcion'        =>  $data['descripcion'],
+            'disponibilidad'     =>  $data['disponibilidad'],
             'tipo_menu'          =>  $data['tipoMenu'],
             'tipo_plato'         =>  $data['tipoPlato'],
             'precio'             =>  $data['precio'],

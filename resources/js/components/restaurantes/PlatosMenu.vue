@@ -16,7 +16,9 @@
             </div>
             
             <span v-if="cartaVacia">
-                <listado-platos :carta="carta" 
+                <listado-platos 
+                    :cartaDisponible = "cartaDisponible"
+                    :cartaPorFecha   = "cartaPorFecha"
                     v-on:cargar-listado-plato="GetListadoPlatos">
                 </listado-platos>
             </span>    
@@ -65,7 +67,8 @@
             return{
                 cartaVacia:false,
                 nuevoPlato:false,
-                carta:{}
+                cartaDisponible:{},
+                cartaPorFecha:{},
             }
         },
         methods:{
@@ -80,8 +83,9 @@
             GetListadoPlatos(){
                 axios.get('platos/'+this.restaurante['id'])
                 .then(response => {
-                    this.nuevoPlato = false,
-                    this.carta = response.data
+                    this.nuevoPlato = false;
+                    this.cartaDisponible = response.data.disponible;
+                    this.cartaPorFecha   = response.data.porFecha;
                 })    
                 .catch(error => {
                     console.log(error)
