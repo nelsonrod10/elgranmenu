@@ -3,7 +3,7 @@
         <div v-if="!flagEditarPlato && !flagPlatoDelDia" class="has-text-centered">
             <div class="title is-size-4 has-text-centered">
                 Platos que se ofrecen ocasionalmente
-                <div class="help">(Debe escogerlos como plato del día para que los clientes los puedan ver)</div>
+                <div class="help">(Para que los clientes los puedan ver, debe escogerlos como plato del día)</div>
             </div>
             
         </div>
@@ -69,7 +69,7 @@
         <div v-if="!flagEditarPlato && !flagPlatoDelDia" class="has-text-centered">
             <div class="title is-size-4">
                 Platos diponibles siempre   
-                <div class="help">(Los clientes siempre los podrán ver)</div>    
+                <div class="help">(Los clientes siempre los podrán ver y el restaurante siempre debe tenerlo)</div>    
             </div>
         </div>
         <hr/>

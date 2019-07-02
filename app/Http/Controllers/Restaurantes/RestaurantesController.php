@@ -53,11 +53,21 @@ class RestaurantesController extends Controller
             'vegano'        => 'string|required',
         ]);
         
+        $restaurantes = Restaurante::all();
+        
+        foreach ($restaurantes as $rest) {
+            $dirActual = $rest->direccion;
+            $dirNueva = str_replace(["No", " N ","#"], " ", $dirActual);
+            $rest->update([
+                "direccion" =>  $dirNueva
+            ]);
+        }
+        
         $restaurante = Restaurante::create([
             'administrador_id'  =>  auth()->id(),
             'nombre'            =>  $data['nombre'],
             'nit'               =>  $data['nit'],
-            'direccion'         =>  $data['direccion'],
+            'direccion'         =>  str_replace(["No", " N ","#"], " ", $data["direccion"]),
             'ciudad'            =>  $data['ciudad'],
             'telefono'          =>  $data['telefono'],
             'celular'           =>  $data['celular'],
