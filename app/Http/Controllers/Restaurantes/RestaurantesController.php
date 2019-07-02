@@ -53,16 +53,6 @@ class RestaurantesController extends Controller
             'vegano'        => 'string|required',
         ]);
         
-        $restaurantes = Restaurante::all();
-        
-        foreach ($restaurantes as $rest) {
-            $dirActual = $rest->direccion;
-            $dirNueva = str_replace(["No", " N ","#"], " ", $dirActual);
-            $rest->update([
-                "direccion" =>  $dirNueva
-            ]);
-        }
-        
         $restaurante = Restaurante::create([
             'administrador_id'  =>  auth()->id(),
             'nombre'            =>  $data['nombre'],
@@ -115,15 +105,27 @@ class RestaurantesController extends Controller
         
         $data = $request->validate([
             'nombre'        => 'string|required|unique:restaurantes,nombre,'.$restaurante->id,
-            'nit'           => 'string|required|unique:restaurantes,nit,'.$restaurante->id,
             'direccion'     => 'string|required|unique:restaurantes,direccion,'.$restaurante->id,
-            'ciudad'        => 'string|required',
+            //'ciudad'        => 'string|required',
             'telefono'      => 'string|unique:restaurantes,telefono,'.$restaurante->id,
             'celular'       => 'string|unique:restaurantes,celular,'.$restaurante->id,
             'tradicional'   => 'string|required',
             'vegetariano'   => 'string|required',
             'vegano'        => 'string|required',
         ]);
+        
+        $restaurante->update([
+            'nombre'            =>  $data['nombre'],
+            'direccion'         =>  str_replace(["No", " N ","#"], " ", $data["direccion"]),
+            //'ciudad'            =>  $data['ciudad'],
+            'telefono'          =>  $data['telefono'],
+            'celular'           =>  $data['celular'],
+            'tradicional'       =>  $data['tradicional'],
+            'vegetariano'       =>  $data['vegetariano'],
+            'vegano'            =>  $data['vegano'],
+        ]);
+        
+        return ;
     }
 
     /**

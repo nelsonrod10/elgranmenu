@@ -132,17 +132,27 @@ class PlatosDelDiaController extends Controller
         
         
         $platoCarta = PlatosCarta::find($data["idPlato"]);
+        $exitePlatoDelDia = PlatosDelDia::where([
+            'restaurante_id'    =>  $platoCarta->restaurante->id,    
+            'platosCarta_id'    =>  $platoCarta->id
+        ])->first();
         
-        PlatosDelDia::create([
-            'restaurante_id'    =>  $platoCarta->restaurante->id,
-            'platosCarta_id'    =>  $platoCarta->id,
-            'fecha'             =>  $fechaActual,
-            'nombre'            =>  $platoCarta->nombre,
-            'descripcion'       =>  $platoCarta->descripcion,
-            'tipo_plato'        =>  $platoCarta->tipo_plato,
-            'precio'            =>  $platoCarta->precio
-        ]);
+        if(!$exitePlatoDelDia->id){
+            PlatosDelDia::create([
+                'restaurante_id'    =>  $platoCarta->restaurante->id,
+                'platosCarta_id'    =>  $platoCarta->id,
+                'fecha'             =>  $fechaActual,
+                'nombre'            =>  $platoCarta->nombre,
+                'descripcion'       =>  $platoCarta->descripcion,
+                'tipo_plato'        =>  $platoCarta->tipo_plato,
+                'precio'            =>  $platoCarta->precio
+            ]);
 
+            return;
+        }
+        
+        $this->update($request, $exitePlatoDelDia->id);
+        
         return;
     }
 
@@ -177,7 +187,15 @@ class PlatosDelDiaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        date_default_timezone_set('America/Bogota');
+        $objFechaActual = helpers::getDateNow();
+        $fechaActual = $objFechaActual->format("Y-m-d");
+    
+        PlatosDelDia::find($id)->update([
+            'fecha'   =>  $fechaActual,
+        ]);
+        
+        return;
     }
 
     /**
@@ -195,7 +213,9 @@ class PlatosDelDiaController extends Controller
         PlatosDelDia::where([
             'platosCarta_id' => $id,
             'fecha' =>(string)$fechaActual
-        ])->delete();
+        ])->update([
+            'fecha' =>  '1900-01-01'
+        ]);
         
         return ;
     }
