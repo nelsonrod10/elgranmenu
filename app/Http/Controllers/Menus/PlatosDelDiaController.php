@@ -137,7 +137,7 @@ class PlatosDelDiaController extends Controller
             'platosCarta_id'    =>  $platoCarta->id
         ])->first();
         
-        if(!$exitePlatoDelDia->id){
+        if(!$exitePlatoDelDia){
             PlatosDelDia::create([
                 'restaurante_id'    =>  $platoCarta->restaurante->id,
                 'platosCarta_id'    =>  $platoCarta->id,
