@@ -2,7 +2,7 @@
     <section class="section">
         <div class="container">
             <div class="columns is-centered">
-                <div class="column is-four-fifths box notification">
+                <div class="column is-four-fifths">
                     <div class="columns">
                         <div class="column">
                             <p class="title has-text-centered is-capitalized">{{ restaurante.nombre }}</p>

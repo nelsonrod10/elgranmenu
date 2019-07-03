@@ -25,9 +25,73 @@
                 </div>
             </div>
         </section>
-        <listado-restaurantes v-if="FlagPlatoSeleccionado" :platoSeleccionado="buscarPlato"></listado-restaurantes>
-        <busqueda-por-menus v-else></busqueda-por-menus>
-        <!--<pre>{{ $data }}</pre>-->
+        <section v-if="flagPlatoSeleccionado || flagBusquedaPorMenu" class="section">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <a class="button is-primary" v-on:click="BuscarPorMenu('tradicional')">Menus Tradicionales</a>
+                        <a class="button is-link" v-on:click="BuscarPorMenu('vegetariano')">Menus Vegetarianos</a>
+                        <a class="button is-success" v-on:click="BuscarPorMenu('vegano')">Menus Veganos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section v-if="!flagPlatoSeleccionado && !flagBusquedaPorMenu" class="section">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column">
+                        <label class="label has-text-centered">¿No sabes que quieres?... Encuentra tu menu</label>
+                    </div>
+                </div>    
+                <div class="columns is-centered">
+                    <div class="column">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="notification is-primary">
+                                    <h1 class="title is-4 has-text-centered">Menu Tradicional</h1>
+                                    <p class="has-text-justified">Tu comida acompañada de carnes blancas o rojas en el restaurante de tu preferencia</p>
+                                    <div class="has-text-centered">
+                                        <a class="button is-dark" v-on:click="BuscarPorMenu('tradicional')">Seleccionar</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="notification is-info">
+                                    <h1 class="title is-4 has-text-centered">Menu Vegetariano</h1>
+                                    <p class="has-text-justified">Las mejores opciones vegetarianas las puedes encontrar en esta sección</p>
+                                    <div class="has-text-centered">
+                                        <a class="button is-dark" v-on:click="BuscarPorMenu('vegetariano')">Seleccionar</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="notification is-success">
+                                    <h1 class="title is-4 has-text-centered">Menu Vegano</h1>
+                                    <p class="has-text-justified">Encuentre en esta sección los restaurantes con los mejores platos veganos.</p>
+                                    <div class="has-text-centered">
+                                        <a class="button is-dark" v-on:click="BuscarPorMenu('vegano')">Seleccionar</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <listado-restaurantes 
+            v-if="flagPlatoSeleccionado" 
+            :platoSeleccionado="buscarPlato"
+        >
+        </listado-restaurantes>
+        <busqueda-por-menu 
+            v-if="flagBusquedaPorMenu"
+            :tipoMenu="tipoBusquedaPorMenu"
+            :key="keyBuscarPorMenus"
+        >
+        </busqueda-por-menu>   
+        
     </div>
 
 </template>
@@ -35,30 +99,33 @@
 <script>
     import axios from "axios";
     import ListadoRestaurantes from './ListadoRestaurantes.vue';
-    import BusquedaPorMenus from './BusquedaPorMenus.vue';
+    import BusquedaPorMenu from './menuSeleccionado/BusquedaPorMenus.vue';
 
     export default {
         mounted() {
             console.log('Component mounted.')
         },
         components: {
-            listadoRestaurantes: ListadoRestaurantes,
-            busquedaPorMenus: BusquedaPorMenus,
+            listadoRestaurantes :   ListadoRestaurantes,
+            busquedaPorMenu     :   BusquedaPorMenu,          
         },
         created(){
         },
         data(){
             return{
                 btnBuscar:false,
-                FlagPlatoSeleccionado:false,
-                nombresPlatosCarta: [],
-                nombresPlatosDia: [],
-                buscarPlato: '',
+                flagPlatoSeleccionado : false,
+                flagBusquedaPorMenu   : false,
+                tipoBusquedaPorMenu   : '',
+                keyBuscarPorMenus     : 0, 
+                nombresPlatosCarta    : [],
+                nombresPlatosDia      : [],
+                buscarPlato           : '',
             }
         },
         methods:{
             BuscarPlato(){
-                this.FlagPlatoSeleccionado = false;
+                this.ResetearFlags();
                 axios.get('buscar-plato-del-dia/'+this.buscarPlato)
                 .then(response => {
                     this.nombresPlatosCarta = response.data.platosCarta;
@@ -69,9 +136,24 @@
                     console.log(error)
                 })
             },
+
             ListaRestaurantes(){
-                this.FlagPlatoSeleccionado = true;
-            }    
+                this.ResetearFlags();
+                this.flagPlatoSeleccionado  = true;
+            },
+            
+            BuscarPorMenu(tipoMenu){
+                this.ResetearFlags();
+                this.keyBuscarPorMenus += 1;
+                this.flagBusquedaPorMenu = true;
+                this.tipoBusquedaPorMenu = tipoMenu;
+            },    
+            
+            ResetearFlags(){
+                this.flagPlatoSeleccionado = false;
+                this.flagBusquedaPorMenu = false;
+                return;
+            }
         },
         
     }
