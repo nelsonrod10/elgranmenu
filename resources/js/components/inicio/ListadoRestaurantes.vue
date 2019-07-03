@@ -14,8 +14,8 @@
                             <div class="columns is-vcentered">
                                 <div class="column is-three-fifths">
                                     <h1 class="title is-4 is-capitalized">{{ data.restaurante.nombre }}</h1>
-                                    <p class="title is-5">{{ data.plato.nombre }}</p>
-                                    <p class="subtitle is-6">{{ data.plato.descripcion }}</p>
+                                    <p class="title is-5 is-capitalized">{{ data.plato.nombre }}</p>
+                                    <p class="subtitle is-6">{{ data.plato.descripcion }} <span class="has-text-danger is-italic help"> ( Plato {{data.plato.tipo_plato}} ) </span></p>
                                     <div><a>{{ data.restaurante.direccion }} - {{ data.restaurante.ciudad }}</a> | <a>{{ data.restaurante.telefono }} </a></div>
                                 </div>
                                 <div class="column">

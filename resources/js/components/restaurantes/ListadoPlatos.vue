@@ -14,7 +14,7 @@
                     <ul>
                         <li><span class="title is-size-5">{{platoPorFecha.nombre}}</span></li>
                         <li><span class="title is-size-6">Menu: </span>{{platoPorFecha.tipo_menu}}</li>
-                        <li><span class="title is-size-6">Comida: </span>{{platoPorFecha.tipo_plato}}</li>
+                        <li><span class="title is-size-6 is-capitalized">Comida: </span>{{platoPorFecha.tipo_plato}}</li>
                         <li><span class="title is-size-6">Precio: </span>$ {{platoPorFecha.precio}}</li>
                         <li><span class="title is-size-6">Descripción: </span>{{platoPorFecha.descripcion}}</li>
                         <li><span class="title is-size-6">Ingredientes: </span></li>

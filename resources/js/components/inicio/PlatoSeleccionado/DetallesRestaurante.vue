@@ -5,7 +5,7 @@
                 <div class="column is-four-fifths box notification">
                     <div class="columns">
                         <div class="column">
-                            <p class="title has-text-centered is-capitalized">{{ restaurante.nombre }}</p>
+                            <p class="title has-text-centered is-capitalized has-text-link">{{ restaurante.nombre }}</p>
                             <p class="has-text-centered is-size-6 has-text-grey">
                                 <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
                                 <a v-bind:href="direccionMaps" target="_alt"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.direccion }}</a>
@@ -19,7 +19,7 @@
                                   <p class="is-size-5">{{ platoSeleccionado.nombre }}</p>
                                 </div>
                                 <div class="message-body">
-                                    <p><b>Tipo: </b>{{ platoSeleccionado.tipo_plato }}</p>
+                                    <p class="is-capitalized"><b>Tipo: </b>{{ platoSeleccionado.tipo_plato }}</p>
                                     <p><b>Descripción: </b>{{ platoSeleccionado.descripcion }}</p>
                                     <p><b>Precio: </b>$ {{ platoSeleccionado.precio }}</p>
                                 </div>
@@ -28,7 +28,12 @@
                     </div>
                     <div class="columns is-centered">
                         <div class="column">
-                            <p class="title has-text-centered is-size-4">Platos del día en <span class="is-capitalized">{{ restaurante.nombre }}</span></p>
+                            <p class="title has-text-centered is-size-4 has-text-info">
+                                <span class="icon is-small">
+                                    <i class="fas fa-utensils"></i>
+                                </span>
+                                Platos del día en <span class="is-capitalized">{{ restaurante.nombre }}</span>
+                            </p>
                         </div>
                     </div>
                     <div class="columns is-centered">
@@ -63,7 +68,10 @@
 
                     <div class="columns is-centered">
                         <div class="column">
-                            <p class="title has-text-centered is-size-4 notification is-info">Lugares que te pueden interesar</span></p>
+                            <p class="title has-text-centered is-size-4 has-text-success">
+                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                                Lugares que te pueden interesar
+                            </p>
                         </div>
                     </div>
                     <div class="columns is-centered">

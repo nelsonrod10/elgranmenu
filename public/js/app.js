@@ -1866,6 +1866,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ListadoRestaurantes_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListadoRestaurantes.vue */ "./resources/js/components/inicio/ListadoRestaurantes.vue");
+/* harmony import */ var _menuSeleccionado_Tradicional_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menuSeleccionado/Tradicional.vue */ "./resources/js/components/inicio/menuSeleccionado/Tradicional.vue");
+/* harmony import */ var _menuSeleccionado_Vegetariano_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./menuSeleccionado/Vegetariano.vue */ "./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue");
+/* harmony import */ var _menuSeleccionado_Vegano_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./menuSeleccionado/Vegano.vue */ "./resources/js/components/inicio/menuSeleccionado/Vegano.vue");
 //
 //
 //
@@ -1914,6 +1917,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1921,11 +1952,17 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Component mounted.');
   },
   components: {
-    listadoRestaurantes: _ListadoRestaurantes_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    listadoRestaurantes: _ListadoRestaurantes_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    menuTradicional: _menuSeleccionado_Tradicional_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    menuVegetariano: _menuSeleccionado_Vegetariano_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    menuVegano: _menuSeleccionado_Vegano_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   created: function created() {},
   data: function data() {
     return {
+      flagMenuTradicional: false,
+      flagMenuVegetariano: false,
+      flagMenuVegano: false,
       btnBuscar: false,
       platoSeleccionado: false,
       nombresPlatos: [],
@@ -1951,6 +1988,23 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    BuscarPorMenu: function BuscarPorMenu(tipoMenu) {
+      this.flagMenuTradicional = false;
+      this.flagMenuVegetariano = false;
+      this.flagMenuVegano = false;
+
+      if (tipoMenu === "Tradicional") {
+        this.flagMenuTradicional = true;
+      }
+
+      if (tipoMenu === "Vegetariano") {
+        this.flagMenuVegetariano = true;
+      }
+
+      if (tipoMenu === "Vegano") {
+        this.flagMenuVegano = true;
+      }
     }
   }
 });
@@ -2202,6 +2256,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
@@ -2337,6 +2399,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
@@ -2367,6 +2431,198 @@ __webpack_require__.r(__webpack_exports__);
       Required: true
     }
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {},
+  components: {},
+  created: function created() {
+    this.VerMenu();
+  },
+  data: function data() {
+    return {
+      listado: {}
+    };
+  },
+  methods: {
+    VerMenu: function VerMenu() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('ver-menu-general/tradicional').then(function (response) {
+        _this.listado = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  props: {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {},
+  components: {},
+  created: function created() {},
+  data: function data() {
+    return {};
+  },
+  methods: {
+    VerMenu: function VerMenu() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('ver-menu-restaurante/').then(function (response) {})["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  props: {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {},
+  components: {},
+  created: function created() {},
+  data: function data() {
+    return {};
+  },
+  methods: {
+    VerMenu: function VerMenu() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('ver-menu-restaurante/').then(function (response) {})["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  props: {}
 });
 
 /***/ }),
@@ -43125,93 +43381,163 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    [
+      !_vm.flagMenuTradicional &&
+      !_vm.flagMenuVegetariano &&
+      !_vm.flagMenuVegano
+        ? _c("section", { staticClass: "section" }, [
+            _c("div", { staticClass: "container" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns is-centered" }, [
+                _c("div", { staticClass: "column" }, [
+                  _c("div", { staticClass: "columns" }, [
+                    _c("div", { staticClass: "column" }, [
+                      _c("div", { staticClass: "notification is-primary" }, [
+                        _c(
+                          "h1",
+                          { staticClass: "title is-4 has-text-centered" },
+                          [_vm._v("Menu Tradicional")]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "has-text-justified" }, [
+                          _vm._v(
+                            "Tu comida acompañada de carnes blancas o rojas en el restaurante de tu preferencia"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "has-text-centered" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "button is-dark",
+                              on: {
+                                click: function($event) {
+                                  return _vm.BuscarPorMenu("Tradicional")
+                                }
+                              }
+                            },
+                            [_vm._v("Seleccionar")]
+                          )
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "column" }, [
+                      _c("div", { staticClass: "notification is-info" }, [
+                        _c(
+                          "h1",
+                          { staticClass: "title is-4 has-text-centered" },
+                          [_vm._v("Menu Vegetariano")]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "has-text-justified" }, [
+                          _vm._v(
+                            "Las mejores opciones vegetarianas las puedes encontrar en esta sección"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "has-text-centered" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "button is-dark",
+                              on: {
+                                click: function($event) {
+                                  return _vm.BuscarPorMenu("Vegetariano")
+                                }
+                              }
+                            },
+                            [_vm._v("Seleccionar")]
+                          )
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "column" }, [
+                      _c("div", { staticClass: "notification is-success" }, [
+                        _c(
+                          "h1",
+                          { staticClass: "title is-4 has-text-centered" },
+                          [_vm._v("Menu Vegano")]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "has-text-justified" }, [
+                          _vm._v(
+                            "Encuentre en esta sección los restaurantes con los mejores platos veganos."
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "has-text-centered" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "button is-dark",
+                              on: {
+                                click: function($event) {
+                                  return _vm.BuscarPorMenu("Vegano")
+                                }
+                              }
+                            },
+                            [_vm._v("Seleccionar")]
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.flagMenuTradicional
+        ? _c("menu-tradicional", {
+            key: _vm.keyPlato,
+            on: {
+              "ver-otro-menu": _vm.BuscarPorMenu,
+              "ver-plato": function($event) {},
+              "visitar-restaurante": function($event) {}
+            }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.flagMenuVegetariano
+        ? _c("menu-vegetariano", {
+            key: _vm.keyPlato,
+            on: {
+              "ver-otro-menu": _vm.BuscarPorMenu,
+              "ver-plato": function($event) {},
+              "visitar-restaurante": function($event) {}
+            }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.flagMenuVegano
+        ? _c("menu-vegano", {
+            key: _vm.keyPlato,
+            on: {
+              "ver-otro-menu": _vm.BuscarPorMenu,
+              "ver-plato": function($event) {},
+              "visitar-restaurante": function($event) {}
+            }
+          })
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "section" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "columns is-centered" }, [
-          _c("div", { staticClass: "column" }, [
-            _c("label", { staticClass: "label has-text-centered" }, [
-              _vm._v("¿No sabes que quieres?... Arma tu menu")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "columns is-centered" }, [
-          _c("div", { staticClass: "column" }, [
-            _c("div", { staticClass: "columns" }, [
-              _c("div", { staticClass: "column" }, [
-                _c("div", { staticClass: "notification is-primary" }, [
-                  _c("h1", { staticClass: "title is-4 has-text-centered" }, [
-                    _vm._v("Menu Tradicional")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "has-text-justified" }, [
-                    _vm._v(
-                      "Tu comida acompañada de carnes blancas o rojas en el restaurante de tu preferencia"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "has-text-centered" }, [
-                    _c(
-                      "a",
-                      { staticClass: "button is-dark", attrs: { href: "" } },
-                      [_vm._v("Seleccionar")]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "column" }, [
-                _c("div", { staticClass: "notification is-info" }, [
-                  _c("h1", { staticClass: "title is-4 has-text-centered" }, [
-                    _vm._v("Menu Vegetariano")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "has-text-justified" }, [
-                    _vm._v(
-                      "Las mejores opciones vegetarianas las puedes encontrar en esta sección"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "has-text-centered" }, [
-                    _c(
-                      "a",
-                      { staticClass: "button is-dark", attrs: { href: "" } },
-                      [_vm._v("Seleccionar")]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "column" }, [
-                _c("div", { staticClass: "notification is-success" }, [
-                  _c("h1", { staticClass: "title is-4 has-text-centered" }, [
-                    _vm._v("Menu Vegano")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "has-text-justified" }, [
-                    _vm._v(
-                      "Encuentre en esta sección los restaurantes con los mejores platos veganos."
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "has-text-centered" }, [
-                    _c(
-                      "a",
-                      { staticClass: "button is-dark", attrs: { href: "" } },
-                      [_vm._v("Seleccionar")]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ])
+    return _c("div", { staticClass: "columns is-centered" }, [
+      _c("div", { staticClass: "column" }, [
+        _c("label", { staticClass: "label has-text-centered" }, [
+          _vm._v("¿No sabes que quieres?... Encuentra tu menu")
         ])
       ])
     ])
@@ -43272,12 +43598,25 @@ var render = function() {
                             [_vm._v(_vm._s(data.restaurante.nombre))]
                           ),
                           _vm._v(" "),
-                          _c("p", { staticClass: "title is-5" }, [
-                            _vm._v(_vm._s(data.plato.nombre))
-                          ]),
+                          _c(
+                            "p",
+                            { staticClass: "title is-5 is-capitalized" },
+                            [_vm._v(_vm._s(data.plato.nombre))]
+                          ),
                           _vm._v(" "),
                           _c("p", { staticClass: "subtitle is-6" }, [
-                            _vm._v(_vm._s(data.plato.descripcion))
+                            _vm._v(_vm._s(data.plato.descripcion) + " "),
+                            _c(
+                              "span",
+                              { staticClass: "has-text-danger is-italic help" },
+                              [
+                                _vm._v(
+                                  " ( Plato " +
+                                    _vm._s(data.plato.tipo_plato) +
+                                    " ) "
+                                )
+                              ]
+                            )
                           ]),
                           _vm._v(" "),
                           _c("div", [
@@ -43401,7 +43740,10 @@ var render = function() {
             _c("div", { staticClass: "column" }, [
               _c(
                 "p",
-                { staticClass: "title has-text-centered is-capitalized" },
+                {
+                  staticClass:
+                    "title has-text-centered is-capitalized has-text-link"
+                },
                 [_vm._v(_vm._s(_vm.restaurante.nombre))]
               ),
               _vm._v(" "),
@@ -43437,7 +43779,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "message-body" }, [
-                  _c("p", [
+                  _c("p", { staticClass: "is-capitalized" }, [
                     _c("b", [_vm._v("Tipo: ")]),
                     _vm._v(_vm._s(_vm.platoSeleccionado.tipo_plato))
                   ]),
@@ -43458,12 +43800,19 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "columns is-centered" }, [
             _c("div", { staticClass: "column" }, [
-              _c("p", { staticClass: "title has-text-centered is-size-4" }, [
-                _vm._v("Platos del día en "),
-                _c("span", { staticClass: "is-capitalized" }, [
-                  _vm._v(_vm._s(_vm.restaurante.nombre))
-                ])
-              ])
+              _c(
+                "p",
+                {
+                  staticClass: "title has-text-centered is-size-4 has-text-info"
+                },
+                [
+                  _vm._m(3),
+                  _vm._v("\n                            Platos del día en "),
+                  _c("span", { staticClass: "is-capitalized" }, [
+                    _vm._v(_vm._s(_vm.restaurante.nombre))
+                  ])
+                ]
+              )
             ])
           ]),
           _vm._v(" "),
@@ -43518,7 +43867,7 @@ var render = function() {
                   staticClass: "button is-danger",
                   attrs: { href: _vm.direccionMaps, target: "_alt" }
                 },
-                [_vm._m(3), _vm._v(" "), _c("span", [_vm._v("Como Llegar")])]
+                [_vm._m(4), _vm._v(" "), _c("span", [_vm._v("Como Llegar")])]
               ),
               _vm._v(" "),
               _c(
@@ -43531,12 +43880,12 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._m(4), _vm._v(" "), _c("span", [_vm._v("Menu Completo")])]
+                [_vm._m(5), _vm._v(" "), _c("span", [_vm._v("Menu Completo")])]
               )
             ])
           ]),
           _vm._v(" "),
-          _vm._m(5),
+          _vm._m(6),
           _vm._v(" "),
           _c("div", { staticClass: "columns is-centered" }, [
             _c("div", { staticClass: "column is-6" }, [
@@ -43556,17 +43905,17 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "is-size-7" }, [
-                              _vm._m(6, true),
+                              _vm._m(7, true),
                               _vm._v(
                                 _vm._s(otroRestaurante.restaurante.telefono) +
                                   "  \n                                            "
                               ),
-                              _vm._m(7, true),
+                              _vm._m(8, true),
                               _vm._v(
                                 _vm._s(otroRestaurante.restaurante.direccion) +
                                   "\n                                            "
                               ),
-                              _vm._m(8, true),
+                              _vm._m(9, true),
                               _vm._v(
                                 _vm._s(otroRestaurante.restaurante.ciudad) +
                                   "\n                                        "
@@ -43633,6 +43982,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-utensils" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon" }, [
       _c("i", { staticClass: "fas fa-map-marker-alt" })
     ])
@@ -43653,11 +44010,15 @@ var staticRenderFns = [
       _c("div", { staticClass: "column" }, [
         _c(
           "p",
-          {
-            staticClass:
-              "title has-text-centered is-size-4 notification is-info"
-          },
-          [_vm._v("Lugares que te pueden interesar")]
+          { staticClass: "title has-text-centered is-size-4 has-text-success" },
+          [
+            _c("span", { staticClass: "icon" }, [
+              _c("i", { staticClass: "fas fa-map-marker-alt" })
+            ]),
+            _vm._v(
+              "\n                            Lugares que te pueden interesar\n                        "
+            )
+          ]
         )
       ])
     ])
@@ -43760,7 +44121,16 @@ var render = function() {
                         _c("div", { staticClass: "is-size-7" }, [
                           _vm._v(_vm._s(platoDia.descripcion) + ". "),
                           _c("b", [_vm._v("$ " + _vm._s(platoDia.precio))])
-                        ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "has-text-danger is-capitalized is-italic help"
+                          },
+                          [_vm._v("Plato " + _vm._s(platoDia.tipo_plato))]
+                        )
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "column" }, [
@@ -43806,7 +44176,16 @@ var render = function() {
                         _c("div", { staticClass: "is-size-7" }, [
                           _vm._v(_vm._s(platoCarta.descripcion) + ". "),
                           _c("b", [_vm._v("$ " + _vm._s(platoCarta.precio))])
-                        ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "has-text-danger is-capitalized is-italic help"
+                          },
+                          [_vm._v("Plato " + _vm._s(platoCarta.tipo_plato))]
+                        )
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "column" }, [
@@ -43903,6 +44282,327 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon" }, [
       _c("i", { staticClass: "fas fa-map-marker-alt" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=template&id=40a0eeb4&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=template&id=40a0eeb4& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "section" }, [
+    _c("p", [
+      _vm._v(
+        "Cuando se seleccione un plato debe llevarlos al componente DetallesRestaurante, hace falta traer del controlador los datos del restaurante"
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column has-text-centered" }, [
+          _c(
+            "a",
+            {
+              staticClass: "button is-link",
+              on: {
+                click: function($event) {
+                  return _vm.$emit("ver-otro-menu", "Vegetariano")
+                }
+              }
+            },
+            [_vm._v("Menu Vegetariano")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "button is-success",
+              on: {
+                click: function($event) {
+                  return _vm.$emit("ver-otro-menu", "Vegano")
+                }
+              }
+            },
+            [_vm._v("Menu Vegano")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column is-8" }, [
+          _c(
+            "ul",
+            _vm._l(_vm.listado.delDia, function(platoDia) {
+              return _c("li", [
+                _c("div", { staticClass: "columns is-vcentered" }, [
+                  _c("div", { staticClass: "column is-8" }, [
+                    _c("div", [_c("b", [_vm._v(_vm._s(platoDia.nombre))])]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "is-size-7" }, [
+                      _vm._v(_vm._s(platoDia.descripcion) + ". "),
+                      _c("b", [_vm._v("$ " + _vm._s(platoDia.precio))])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "has-text-danger is-capitalized is-italic help"
+                      },
+                      [_vm._v("Plato " + _vm._s(platoDia.tipo_plato))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "column" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-success is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.$emit(
+                              "ver-otro-plato",
+                              _vm.restaurante,
+                              platoDia
+                            )
+                          }
+                        }
+                      },
+                      [_vm._v("Ver más")]
+                    )
+                  ])
+                ])
+              ])
+            }),
+            0
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column is-8" }, [
+          _c(
+            "ul",
+            _vm._l(_vm.listado.carta, function(platoCarta) {
+              return _c("li", [
+                _c("div", { staticClass: "columns is-vcentered" }, [
+                  _c("div", { staticClass: "column is-8" }, [
+                    _c("div", [_c("b", [_vm._v(_vm._s(platoCarta.nombre))])]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "is-size-7" }, [
+                      _vm._v(_vm._s(platoCarta.descripcion) + ". "),
+                      _c("b", [_vm._v("$ " + _vm._s(platoCarta.precio))])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "has-text-danger is-capitalized is-italic help"
+                      },
+                      [_vm._v("Plato " + _vm._s(platoCarta.tipo_plato))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "column" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-success is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.$emit(
+                              "ver-otro-plato",
+                              _vm.restaurante,
+                              platoCarta
+                            )
+                          }
+                        }
+                      },
+                      [_vm._v("Ver más")]
+                    )
+                  ])
+                ])
+              ])
+            }),
+            0
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "columns is-centered" }, [
+      _c(
+        "div",
+        { staticClass: "column is-title is-size-4  has-text-centered" },
+        [_vm._v("\n                Menus Tradicionales.\n            ")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=template&id=7d85dfa8&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=template&id=7d85dfa8& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "section" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column has-text-centered" }, [
+          _c(
+            "a",
+            {
+              staticClass: "button is-primary",
+              on: {
+                click: function($event) {
+                  return _vm.$emit("ver-otro-menu", "Tradicional")
+                }
+              }
+            },
+            [_vm._v("Menu Tradicional")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "button is-link",
+              on: {
+                click: function($event) {
+                  return _vm.$emit("ver-otro-menu", "Vegetariano")
+                }
+              }
+            },
+            [_vm._v("Menu Vegetariano")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "columns is-centered" }, [
+      _c(
+        "div",
+        { staticClass: "column is-title is-size-4  has-text-centered" },
+        [_vm._v("\n                Componente Vegano.\n            ")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=template&id=64f0d69f&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=template&id=64f0d69f& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "section" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column has-text-centered" }, [
+          _c(
+            "a",
+            {
+              staticClass: "button is-primary",
+              on: {
+                click: function($event) {
+                  return _vm.$emit("ver-otro-menu", "Tradicional")
+                }
+              }
+            },
+            [_vm._v("Menu Tradicional")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "button is-success",
+              on: {
+                click: function($event) {
+                  return _vm.$emit("ver-otro-menu", "Vegano")
+                }
+              }
+            },
+            [_vm._v("Menu Vegano")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "columns is-centered" }, [
+      _c(
+        "div",
+        { staticClass: "column is-title is-size-4  has-text-centered" },
+        [_vm._v("\n                Componente Vegetariano.\n            ")]
+      )
     ])
   }
 ]
@@ -44739,9 +45439,11 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("li", [
-                      _c("span", { staticClass: "title is-size-6" }, [
-                        _vm._v("Comida: ")
-                      ]),
+                      _c(
+                        "span",
+                        { staticClass: "title is-size-6 is-capitalized" },
+                        [_vm._v("Comida: ")]
+                      ),
                       _vm._v(_vm._s(platoPorFecha.tipo_plato))
                     ]),
                     _vm._v(" "),
@@ -45068,7 +45770,7 @@ var staticRenderFns = [
       ),
       _c("div", { staticClass: "help" }, [
         _vm._v(
-          "(Debe escogerlos como plato del día para que los clientes los puedan ver)"
+          "(Para que los clientes los puedan ver, debe escogerlos como plato del día)"
         )
       ])
     ])
@@ -45112,7 +45814,9 @@ var staticRenderFns = [
     return _c("div", { staticClass: "title is-size-4" }, [
       _vm._v("\n            Platos diponibles siempre   \n            "),
       _c("div", { staticClass: "help" }, [
-        _vm._v("(Los clientes siempre los podrán ver)")
+        _vm._v(
+          "(Los clientes siempre los podrán ver y el restaurante siempre debe tenerlo)"
+        )
       ])
     ])
   },
@@ -61404,6 +62108,213 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Restaurante_vue_vue_type_template_id_5309e7a9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Restaurante_vue_vue_type_template_id_5309e7a9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/inicio/menuSeleccionado/Tradicional.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/inicio/menuSeleccionado/Tradicional.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Tradicional_vue_vue_type_template_id_40a0eeb4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tradicional.vue?vue&type=template&id=40a0eeb4& */ "./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=template&id=40a0eeb4&");
+/* harmony import */ var _Tradicional_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tradicional.vue?vue&type=script&lang=js& */ "./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Tradicional_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Tradicional_vue_vue_type_template_id_40a0eeb4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Tradicional_vue_vue_type_template_id_40a0eeb4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/inicio/menuSeleccionado/Tradicional.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Tradicional_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Tradicional.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Tradicional_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=template&id=40a0eeb4&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=template&id=40a0eeb4& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tradicional_vue_vue_type_template_id_40a0eeb4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Tradicional.vue?vue&type=template&id=40a0eeb4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Tradicional.vue?vue&type=template&id=40a0eeb4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tradicional_vue_vue_type_template_id_40a0eeb4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tradicional_vue_vue_type_template_id_40a0eeb4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/inicio/menuSeleccionado/Vegano.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/inicio/menuSeleccionado/Vegano.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Vegano_vue_vue_type_template_id_7d85dfa8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Vegano.vue?vue&type=template&id=7d85dfa8& */ "./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=template&id=7d85dfa8&");
+/* harmony import */ var _Vegano_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Vegano.vue?vue&type=script&lang=js& */ "./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Vegano_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Vegano_vue_vue_type_template_id_7d85dfa8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Vegano_vue_vue_type_template_id_7d85dfa8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/inicio/menuSeleccionado/Vegano.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Vegano_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Vegano.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Vegano_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=template&id=7d85dfa8&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=template&id=7d85dfa8& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Vegano_vue_vue_type_template_id_7d85dfa8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Vegano.vue?vue&type=template&id=7d85dfa8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Vegano.vue?vue&type=template&id=7d85dfa8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Vegano_vue_vue_type_template_id_7d85dfa8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Vegano_vue_vue_type_template_id_7d85dfa8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Vegetariano_vue_vue_type_template_id_64f0d69f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Vegetariano.vue?vue&type=template&id=64f0d69f& */ "./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=template&id=64f0d69f&");
+/* harmony import */ var _Vegetariano_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Vegetariano.vue?vue&type=script&lang=js& */ "./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Vegetariano_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Vegetariano_vue_vue_type_template_id_64f0d69f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Vegetariano_vue_vue_type_template_id_64f0d69f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/inicio/menuSeleccionado/Vegetariano.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Vegetariano_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Vegetariano.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Vegetariano_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=template&id=64f0d69f&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=template&id=64f0d69f& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Vegetariano_vue_vue_type_template_id_64f0d69f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Vegetariano.vue?vue&type=template&id=64f0d69f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/menuSeleccionado/Vegetariano.vue?vue&type=template&id=64f0d69f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Vegetariano_vue_vue_type_template_id_64f0d69f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Vegetariano_vue_vue_type_template_id_64f0d69f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -31,6 +31,7 @@ Route::get('/restaurantes-plato-del-dia/{platoSeleccionado}','Menus\PlatosDelDia
 Route::get('/otros-platos-del-dia/{restaurante}/{platoActual}','Menus\PlatosDelDiaController@otrosPlatos');
 Route::get('/otros-restaurantes-del-dia/{platoActual}','Menus\PlatosDelDiaController@buscarRestaurantes');
 Route::get('/ver-menu-restaurante/{restaurante}','Menus\PlatosDelDiaController@menuRestaurantes');
+Route::get('/ver-menu-general/{tipo}','Menus\MenusController@index');    
 
 Route::get('/restaurantes', function () {
     return view('resultados_busqueda.restaurantes');

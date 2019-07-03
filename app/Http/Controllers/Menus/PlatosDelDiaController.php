@@ -67,10 +67,20 @@ class PlatosDelDiaController extends Controller
                 'disponibilidad'   =>  'Si'
             ])->first();
             
-            array_push($restaurantes, [
-                "restaurante" => $restaurante,
-                "plato"       => $platoRestaurante         
-            ]);
+            $exitePlatoDelDia = PlatosDelDia::where([
+                'restaurante_id'    =>  $platoRestaurante->restaurante->id,    
+                'platosCarta_id'    =>  $platoRestaurante->id
+            ])->first();
+
+            
+            
+            if(!$exitePlatoDelDia){
+                array_push($restaurantes, [
+                    "restaurante" => $restaurante,
+                    "plato"       => $platoRestaurante         
+                ]);
+            }
+            
         }
         
         

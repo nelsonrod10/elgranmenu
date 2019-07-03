@@ -26,6 +26,7 @@
                                         <div class="column is-8">
                                             <div><b>{{platoDia.nombre}}</b></div>
                                             <div class="is-size-7">{{platoDia.descripcion}}. <b>$ {{platoDia.precio}}</b></div>    
+                                            <div class="has-text-danger is-capitalized is-italic help">Plato {{platoDia.tipo_plato}}</div>
                                         </div>
                                         <div class="column">
                                             <a class="button is-success is-small" v-on:click="$emit('ver-otro-plato',restaurante,platoDia)">Ver más</a>
@@ -49,6 +50,7 @@
                                         <div class="column is-8">
                                             <div><b>{{platoCarta.nombre}}</b></div>
                                             <div class="is-size-7">{{platoCarta.descripcion}}. <b>$ {{platoCarta.precio}}</b></div>    
+                                            <div class="has-text-danger is-capitalized is-italic help">Plato {{platoCarta.tipo_plato}}</div>
                                         </div>
                                         <div class="column">
                                             <a class="button is-success is-small" v-on:click="$emit('ver-otro-plato',restaurante,platoCarta)">Ver más</a>
