@@ -24,9 +24,7 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section v-if="flagPlatoSeleccionado || flagBusquedaPorMenu" class="section">
-            <div class="container">
+            <div v-if="flagPlatoSeleccionado || flagBusquedaPorMenu" class="container">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
                         <a class="button is-primary is-small" v-on:click="BuscarPorMenu('tradicional')">Menus Tradicionales</a>
@@ -35,9 +33,8 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section v-if="!flagPlatoSeleccionado && !flagBusquedaPorMenu" class="section">
-            <div class="container">
+            <br/>
+            <div v-if="!flagPlatoSeleccionado && !flagBusquedaPorMenu" class="container">
                 <div class="columns is-centered">
                     <div class="column">
                         <label class="label has-text-centered">¿No sabes que quieres?... Encuentra tu menu</label>
@@ -79,7 +76,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        
         <listado-restaurantes 
             v-if="flagPlatoSeleccionado" 
             :platoSeleccionado="buscarPlato"
@@ -91,7 +88,7 @@
             :key="keyBuscarPorMenus"
         >
         </busqueda-por-menu>   
-        
+        </section>
     </div>
 
 </template>

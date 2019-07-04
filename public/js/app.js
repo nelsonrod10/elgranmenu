@@ -1873,9 +1873,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 
@@ -1946,8 +1943,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _PlatoSeleccionado_DetallesRestaurante_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlatoSeleccionado/DetallesRestaurante.vue */ "./resources/js/components/inicio/PlatoSeleccionado/DetallesRestaurante.vue");
 /* harmony import */ var _PlatoSeleccionado_Restaurante_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PlatoSeleccionado/Restaurante.vue */ "./resources/js/components/inicio/PlatoSeleccionado/Restaurante.vue");
-//
-//
 //
 //
 //
@@ -2370,8 +2365,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _js_components_inicio_PlatoSeleccionado_DetallesRestaurante_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/components/inicio/PlatoSeleccionado/DetallesRestaurante.vue */ "./resources/js/components/inicio/PlatoSeleccionado/DetallesRestaurante.vue");
 /* harmony import */ var _js_components_inicio_PlatoSeleccionado_Restaurante_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/inicio/PlatoSeleccionado/Restaurante.vue */ "./resources/js/components/inicio/PlatoSeleccionado/Restaurante.vue");
-//
-//
 //
 //
 //
@@ -43105,11 +43098,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("section", { staticClass: "section" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "section",
+      { staticClass: "section" },
+      [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "columns is-centered" }, [
             _c("div", { staticClass: "column is-three-fifths" }, [
@@ -43177,18 +43170,16 @@ var render = function() {
               ])
             ])
           ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm.flagPlatoSeleccionado || _vm.flagBusquedaPorMenu
-        ? _c("section", { staticClass: "section" }, [
-            _c("div", { staticClass: "container" }, [
+        ]),
+        _vm._v(" "),
+        _vm.flagPlatoSeleccionado || _vm.flagBusquedaPorMenu
+          ? _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "columns is-centered" }, [
                 _c("div", { staticClass: "column has-text-centered" }, [
                   _c(
                     "a",
                     {
-                      staticClass: "button is-primary",
+                      staticClass: "button is-primary is-small",
                       on: {
                         click: function($event) {
                           return _vm.BuscarPorMenu("tradicional")
@@ -43201,7 +43192,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "button is-link",
+                      staticClass: "button is-link is-small",
                       on: {
                         click: function($event) {
                           return _vm.BuscarPorMenu("vegetariano")
@@ -43214,7 +43205,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "button is-success",
+                      staticClass: "button is-success is-small",
                       on: {
                         click: function($event) {
                           return _vm.BuscarPorMenu("vegano")
@@ -43226,12 +43217,12 @@ var render = function() {
                 ])
               ])
             ])
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      !_vm.flagPlatoSeleccionado && !_vm.flagBusquedaPorMenu
-        ? _c("section", { staticClass: "section" }, [
-            _c("div", { staticClass: "container" }, [
+          : _vm._e(),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        !_vm.flagPlatoSeleccionado && !_vm.flagBusquedaPorMenu
+          ? _c("div", { staticClass: "container" }, [
               _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "columns is-centered" }, [
@@ -43333,24 +43324,24 @@ var render = function() {
                 ])
               ])
             ])
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.flagPlatoSeleccionado
-        ? _c("listado-restaurantes", {
-            attrs: { platoSeleccionado: _vm.buscarPlato }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.flagBusquedaPorMenu
-        ? _c("busqueda-por-menu", {
-            key: _vm.keyBuscarPorMenus,
-            attrs: { tipoMenu: _vm.tipoBusquedaPorMenu }
-          })
-        : _vm._e()
-    ],
-    1
-  )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.flagPlatoSeleccionado
+          ? _c("listado-restaurantes", {
+              attrs: { platoSeleccionado: _vm.buscarPlato }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.flagBusquedaPorMenu
+          ? _c("busqueda-por-menu", {
+              key: _vm.keyBuscarPorMenus,
+              attrs: { tipoMenu: _vm.tipoBusquedaPorMenu }
+            })
+          : _vm._e()
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -43403,113 +43394,107 @@ var render = function() {
     "div",
     [
       !_vm.flagVerPlatoSeleccionado && !_vm.flagVisitarRestaurante
-        ? _c("section", { staticClass: "section" }, [
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "columns" }, [
-                _c("div", { staticClass: "column" }, [
-                  _c("p", { staticClass: "title has-text-centered" }),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "title has-text-centered" }, [
-                    _vm._v(
-                      'Restaurantes que hoy ofrecen "' +
-                        _vm._s(_vm.platoSeleccionado) +
-                        '"'
-                    )
-                  ])
+        ? _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "columns" }, [
+              _c("div", { staticClass: "column" }, [
+                _c("p", { staticClass: "title has-text-centered" }),
+                _vm._v(" "),
+                _c("p", { staticClass: "title has-text-centered" }, [
+                  _vm._v(
+                    'Restaurantes que hoy ofrecen "' +
+                      _vm._s(_vm.platoSeleccionado) +
+                      '"'
+                  )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "columns is-centered" }, [
-                _c(
-                  "div",
-                  { staticClass: "column is-four-fifths" },
-                  _vm._l(_vm.listaResultados, function(data) {
-                    return _c("div", { staticClass: "box" }, [
-                      _c("div", { staticClass: "columns is-vcentered" }, [
-                        _c("div", { staticClass: "column is-three-fifths" }, [
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "columns is-centered" }, [
+              _c(
+                "div",
+                { staticClass: "column is-four-fifths" },
+                _vm._l(_vm.listaResultados, function(data) {
+                  return _c("div", { staticClass: "box" }, [
+                    _c("div", { staticClass: "columns is-vcentered" }, [
+                      _c("div", { staticClass: "column is-three-fifths" }, [
+                        _c("h1", { staticClass: "title is-4 is-capitalized" }, [
+                          _vm._v(_vm._s(data.restaurante.nombre))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "title is-5 is-capitalized" }, [
+                          _vm._v(_vm._s(data.plato.nombre))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "subtitle is-6" }, [
+                          _vm._v(_vm._s(data.plato.descripcion) + " "),
                           _c(
-                            "h1",
-                            { staticClass: "title is-4 is-capitalized" },
-                            [_vm._v(_vm._s(data.restaurante.nombre))]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            { staticClass: "title is-5 is-capitalized" },
-                            [_vm._v(_vm._s(data.plato.nombre))]
-                          ),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "subtitle is-6" }, [
-                            _vm._v(_vm._s(data.plato.descripcion) + " "),
-                            _c(
-                              "span",
-                              { staticClass: "has-text-danger is-italic help" },
-                              [
-                                _vm._v(
-                                  " ( Plato " +
-                                    _vm._s(data.plato.tipo_plato) +
-                                    " ) "
-                                )
-                              ]
+                            "span",
+                            { staticClass: "has-text-danger is-italic help" },
+                            [
+                              _vm._v(
+                                " ( Plato " +
+                                  _vm._s(data.plato.tipo_plato) +
+                                  " ) "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c("a", [
+                            _vm._v(
+                              _vm._s(data.restaurante.direccion) +
+                                " - " +
+                                _vm._s(data.restaurante.ciudad)
                             )
                           ]),
+                          _vm._v(" | "),
+                          _c("a", [
+                            _vm._v(_vm._s(data.restaurante.telefono) + " ")
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "column" }, [
+                        _c("div", [
+                          _vm._m(0, true),
                           _vm._v(" "),
-                          _c("div", [
-                            _c("a", [
-                              _vm._v(
-                                _vm._s(data.restaurante.direccion) +
-                                  " - " +
-                                  _vm._s(data.restaurante.ciudad)
-                              )
-                            ]),
-                            _vm._v(" | "),
-                            _c("a", [
-                              _vm._v(_vm._s(data.restaurante.telefono) + " ")
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "column" }, [
-                          _c("div", [
-                            _vm._m(0, true),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              { staticClass: "has-text-danger is-size-5" },
-                              [
-                                _c("b", [
-                                  _vm._v(_vm._s(data.plato.precio) + " COP")
-                                ])
-                              ]
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "column" }, [
-                          _c("div", { staticClass: "has-text-centered" }, [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "button is-info",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.PlatoSeleccionado(
-                                      data.restaurante,
-                                      data.plato
-                                    )
-                                  }
+                          _c(
+                            "span",
+                            { staticClass: "has-text-danger is-size-5" },
+                            [
+                              _c("b", [
+                                _vm._v(_vm._s(data.plato.precio) + " COP")
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "column" }, [
+                        _c("div", { staticClass: "has-text-centered" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "button is-info",
+                              on: {
+                                click: function($event) {
+                                  return _vm.PlatoSeleccionado(
+                                    data.restaurante,
+                                    data.plato
+                                  )
                                 }
-                              },
-                              [_vm._v("Ver más")]
-                            )
-                          ])
+                              }
+                            },
+                            [_vm._v("Ver más")]
+                          )
                         ])
                       ])
                     ])
-                  }),
-                  0
-                )
-              ])
+                  ])
+                }),
+                0
+              )
             ])
           ])
         : _vm.flagVerPlatoSeleccionado
@@ -44145,77 +44130,73 @@ var render = function() {
     "div",
     [
       !_vm.flagPlatoSeleccionado && !_vm.flagVisitarRestaurante
-        ? _c("section", { staticClass: "section" }, [
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "columns is-centered" }, [
+        ? _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "columns is-centered" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "column is-title is-size-4  has-text-centered is-capitalized"
+                },
+                [
+                  _vm._v(
+                    "\n                    Menus " +
+                      _vm._s(_vm.tipoMenu) +
+                      ".\n                "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "columns is-centered" }, [
+              _c("div", { staticClass: "column is-8" }, [
                 _c(
-                  "div",
-                  {
-                    staticClass:
-                      "column is-title is-size-4  has-text-centered is-capitalized"
-                  },
-                  [
-                    _vm._v(
-                      "\n                    Menus " +
-                        _vm._s(_vm.tipoMenu) +
-                        ".\n                "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "columns is-centered" }, [
-                _c("div", { staticClass: "column is-8" }, [
-                  _c(
-                    "ul",
-                    _vm._l(_vm.listado, function(item) {
-                      return _c("li", [
-                        _c("div", { staticClass: "columns is-vcentered" }, [
-                          _c("div", { staticClass: "column is-8" }, [
-                            _c("div", [
-                              _c("b", [_vm._v(_vm._s(item.plato.nombre))])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "is-size-7" }, [
-                              _vm._v(_vm._s(item.plato.descripcion) + ". "),
-                              _c("b", [
-                                _vm._v("$ " + _vm._s(item.plato.precio))
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "has-text-danger is-capitalized is-italic help"
-                              },
-                              [_vm._v("Plato " + _vm._s(item.plato.tipo_plato))]
-                            )
+                  "ul",
+                  _vm._l(_vm.listado, function(item) {
+                    return _c("li", [
+                      _c("div", { staticClass: "columns is-vcentered" }, [
+                        _c("div", { staticClass: "column is-8" }, [
+                          _c("div", [
+                            _c("b", [_vm._v(_vm._s(item.plato.nombre))])
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "column" }, [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "button is-success is-small",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.VerPlato(
-                                      item.restaurante,
-                                      item.plato
-                                    )
-                                  }
+                          _c("div", { staticClass: "is-size-7" }, [
+                            _vm._v(_vm._s(item.plato.descripcion) + ". "),
+                            _c("b", [_vm._v("$ " + _vm._s(item.plato.precio))])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "has-text-danger is-capitalized is-italic help"
+                            },
+                            [_vm._v("Plato " + _vm._s(item.plato.tipo_plato))]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "column" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "button is-success is-small",
+                              on: {
+                                click: function($event) {
+                                  return _vm.VerPlato(
+                                    item.restaurante,
+                                    item.plato
+                                  )
                                 }
-                              },
-                              [_vm._v("Ver más")]
-                            )
-                          ])
+                              }
+                            },
+                            [_vm._v("Ver más")]
+                          )
                         ])
                       ])
-                    }),
-                    0
-                  )
-                ])
+                    ])
+                  }),
+                  0
+                )
               ])
             ])
           ])

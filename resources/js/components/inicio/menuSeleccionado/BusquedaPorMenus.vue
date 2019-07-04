@@ -1,7 +1,6 @@
 <template>
     <div>
-        <section v-if="!flagPlatoSeleccionado && !flagVisitarRestaurante" class="section">
-            <div class="container">
+            <div v-if="!flagPlatoSeleccionado && !flagVisitarRestaurante" class="container">
                 <div class="columns is-centered">
                     <div class="column is-title is-size-4  has-text-centered is-capitalized">
                         Menus {{ tipoMenu }}.
@@ -26,7 +25,6 @@
                     </div>
                 </div>
             </div>    
-        </section>
         <ver-plato
             v-if="flagPlatoSeleccionado"
             :platoSeleccionado = "dataPlato"

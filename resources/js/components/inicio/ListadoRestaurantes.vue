@@ -1,7 +1,6 @@
 <template>
     <div>
-        <section v-if="!flagVerPlatoSeleccionado && !flagVisitarRestaurante" class="section">
-            <div class="container">
+            <div v-if="!flagVerPlatoSeleccionado && !flagVisitarRestaurante" class="container">
                 <div class="columns">
                     <div class="column">
                         <p class="title has-text-centered"></p>
@@ -48,7 +47,6 @@
                     </div>
                 </div>
             </div>
-        </section>
         <ver-plato-seleccionado 
             v-else-if="flagVerPlatoSeleccionado" 
             :restaurante="detallesRestaurante" 
