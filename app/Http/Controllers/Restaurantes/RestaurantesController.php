@@ -89,7 +89,8 @@ class RestaurantesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $restaurante = Restaurante::find($id);
+        return view('restaurantes.administrador.update')->with(compact('restaurante'));
     }
 
     /**
@@ -125,7 +126,7 @@ class RestaurantesController extends Controller
             'vegano'            =>  $data['vegano'],
         ]);
         
-        return ;
+        return redirect()->route('gestion-restaurantes.show',$restaurante);
     }
 
     /**

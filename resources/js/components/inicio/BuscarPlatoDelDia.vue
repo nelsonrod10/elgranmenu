@@ -29,9 +29,9 @@
             <div class="container">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <a class="button is-primary" v-on:click="BuscarPorMenu('tradicional')">Menus Tradicionales</a>
-                        <a class="button is-link" v-on:click="BuscarPorMenu('vegetariano')">Menus Vegetarianos</a>
-                        <a class="button is-success" v-on:click="BuscarPorMenu('vegano')">Menus Veganos</a>
+                        <a class="button is-primary is-small" v-on:click="BuscarPorMenu('tradicional')">Menus Tradicionales</a>
+                        <a class="button is-link is-small" v-on:click="BuscarPorMenu('vegetariano')">Menus Vegetarianos</a>
+                        <a class="button is-success is-small" v-on:click="BuscarPorMenu('vegano')">Menus Veganos</a>
                     </div>
                 </div>
             </div>

@@ -9,15 +9,9 @@
                 </div>
                 
                 <div class="column">
-                    <div class="tabs">
-                        <ul>
-                            <li><a href="{{route('gestion-restaurantes.index')}}">Listado</a></li>
-                            <li class="is-active"><a>Crear Nuevo</a></li>
-                        </ul>
-                    </div>
-                
                     <div class="box">
-                        <form name="frm-crear-restaurante" method="post" action="{{route('gestion-restaurantes.store')}}">
+                        <form name="frm-update-restaurante" method="post" action="{{route('gestion-restaurantes.update',$restaurante)}}">
+                            @method('PUT')
                             @csrf
                         <div class="columns">
                             <div class="column ">
@@ -31,7 +25,7 @@
                                 <div class="field">
                                     <label class="label" for="nombre">Nombre Restaurante</label>
                                     <div class="control has-icons-left">
-                                        <input id="nombre" name="nombre" required class="input" type="text" placeholder="Nombre del establecimiento">
+                                        <input id="nombre" name="nombre" required class="input" type="text" placeholder="Nombre del establecimiento" value="{{ ucwords($restaurante->nombre) }}">
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-check"></i>
                                         </span>
@@ -42,7 +36,7 @@
                                 <div class="field">
                                     <label class="label" for="nit">Nit</label>
                                     <div class="control has-icons-left">
-                                        <input id="nit" name="nit" required class="input" type="number" placeholder="NIT">
+                                        <input id="nit" name="nit" required class="input" type="number" placeholder="NIT" value="{{ $restaurante->nit }}">
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-sort-numeric-up"></i>
                                         </span>
@@ -55,7 +49,7 @@
                                 <div class="field">
                                     <label class="label" for="direccion">Dirección</label>
                                     <div class="control has-icons-left">
-                                        <input id="direccion" name="direccion" required class="input" type="text" placeholder="Dirección del restaurante">
+                                        <input id="direccion" name="direccion" required class="input" type="text" placeholder="Dirección del restaurante" value="{{ $restaurante->direccion }}">
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-map-marker-alt"></i>
                                         </span>
@@ -66,7 +60,7 @@
                                 <div class="field">
                                     <label class="label" for="ciudad">Ciudad</label>
                                     <div class="control has-icons-left">
-                                        <input id="ciudad" name="ciudad" required class="input" type="text" placeholder="Ciudad">
+                                        <input id="ciudad" name="ciudad" required class="input" type="text" placeholder="Ciudad" value="{{ $restaurante->ciudad }}">
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-map-marker-alt"></i>
                                         </span>
@@ -79,7 +73,7 @@
                                 <div class="field">
                                     <label class="label" for="telefono">Teléfono (Domicilios)</label>
                                     <div class="control has-icons-left">
-                                        <input id="telefono" name="telefono" class="input" type="number" placeholder="Número Telefónico">
+                                        <input id="telefono" name="telefono" class="input" type="number" placeholder="Número Telefónico" value="{{ $restaurante->telefono }}">
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-phone"></i>
                                         </span>
@@ -90,7 +84,7 @@
                                 <div class="field">
                                     <label class="label" for="celular">Celular</label>
                                     <div class="control has-icons-left">
-                                        <input id="celular" name="celular" class="input" type="number" placeholder="Número Celular">
+                                        <input id="celular" name="celular" class="input" type="number" placeholder="Número Celular" value="{{ $restaurante->celular }}">
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-mobile-alt"></i>
                                         </span>
@@ -111,11 +105,11 @@
                                     <label class="label" for="tradicional">Tradicional</label>
                                     <div class="control">
                                         <label class="radio">
-                                            <input id="tradicional" name="tradicional" type="radio" value="si">
+                                            <input id="tradicional" name="tradicional" type="radio" value="si" <?php echo ($restaurante->tradicional == 'si')?'checked':''?>>
                                           Si
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" name="tradicional" checked="" value="no">
+                                            <input type="radio" name="tradicional" value="no" <?php echo ($restaurante->tradicional == 'no')?'checked':''?>>
                                           No
                                         </label>
                                     </div>
@@ -126,11 +120,11 @@
                                     <label class="label" for="vegetariano">Vegetariano</label>
                                     <div class="control">
                                         <label class="radio">
-                                            <input id="vegetariano" name="vegetariano" type="radio" value="si">
+                                            <input id="vegetariano" name="vegetariano" type="radio" value="si" <?php echo ($restaurante->vegetariano == 'si')?'checked':''?>>
                                           Si
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" name="vegetariano" checked="" value="no">
+                                            <input type="radio" name="vegetariano" value="no" <?php echo ($restaurante->vegetariano == 'no')?'checked':''?>>
                                           No
                                         </label>
                                     </div>
@@ -141,11 +135,11 @@
                                     <label class="label" for="vegano">Vegano</label>
                                     <div class="control">
                                         <label class="radio">
-                                            <input id="vegano" name="vegano" type="radio" value="si">
+                                            <input id="vegano" name="vegano" type="radio" value="si" <?php echo ($restaurante->vegano == 'si')?'checked':''?>>
                                           Si
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" name="vegano" checked="" value="no">
+                                            <input type="radio" name="vegano" value="no" <?php echo ($restaurante->vegano == 'no')?'checked':''?>>
                                           No
                                         </label>
                                     </div>
@@ -156,10 +150,10 @@
 
                         <div class="field is-grouped">
                           <div class="control ">
-                              <button type="submit" class="button is-primary">Crear</button>
+                              <button type="submit" class="button is-primary">Actualizar</button>
                           </div>
                           <div class="control">
-                              <a href="{{route('gestion-restaurantes.index')}}" class="button is-text">Cancelar</a>
+                              <a class="button is-text" href="{{route('gestion-restaurantes.show',$restaurante)}}">Cancelar</a>
                           </div>
                         </div>
                         </form>    

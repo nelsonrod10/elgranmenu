@@ -77,7 +77,7 @@
                         <div class="columns">
                             <div class="column is-6">
                                 <div class="field">
-                                    <label class="label" for="telefono">Teléfono (Domicilios)</label>
+                                    <label class="label" for="telefono">Teléfono</label>
                                     <div class="control has-icons-left">
                                         <input id="telefono" name="telefono" class="input" type="number" placeholder="Número Telefónico">
                                         <span class="icon is-small is-left">
@@ -159,7 +159,7 @@
                               <button type="submit" class="button is-primary">Crear</button>
                           </div>
                           <div class="control">
-                              <a href="{{route('gestion-restaurantes.index')}}" class="button is-text">Cancelar</a>
+                              <button type="button" class="button is-text">Cancelar</button>
                           </div>
                         </div>
                         </form>    

@@ -18,7 +18,7 @@
                         <div class="columns">
                             <div class="column">
                                 <label class="label">NIT: </label>
-                                <span>{{ $restaurante->id }}</span>
+                                <span>{{ $restaurante->nit }}</span>
                             </div>
                             <div class="column">
                                 <label class="label">Dirección: </label>
@@ -52,7 +52,7 @@
                         <div class="columns">
                             <div class="column">
                               <div class="buttons is-centered ">
-                                    <a class="button is-success is-small" href="">
+                                    <a class="button is-success is-small" href="{{ route('gestion-restaurantes.edit',$restaurante) }}">
                                         <span class="icon is-small">
                                             <i class="fas fa-pen"></i>
                                         </span>
@@ -64,7 +64,7 @@
                                         </span>
                                         <span>Horarios</span>
                                     </a>
-                                    <a class="button is-danger is-small" onclick="$('#eliminar-restaurante').addClass('is-active')">
+                                    <a class="button is-danger is-small" onclick="$('#eliminar-restaurante-{{$restaurante->id}}').addClass('is-active')">
                                         <span class="icon is-small">
                                             <i class="fas fa-trash"></i>
                                         </span>
@@ -100,25 +100,5 @@
         </div>
     </section>
 <!--MODALS-->
-<div id="eliminar-restaurante" class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Eliminar Restaurante</p>
-      <button class="delete" aria-label="close" onclick="$('#eliminar-restaurante').removeClass('is-active')"></button>
-    </header>
-    <section class="modal-card-body">
-      ¿Está seguro de eliminar el restaurante {{ $restaurante->nombre }}?
-    </section>
-    <footer class="modal-card-foot">
-        <form method="post" action="{{ route('gestion-restaurantes.destroy', $restaurante) }}" name="delete-restaurante">
-            @csrf
-            @method('DELETE')
-            <button class="button is-danger">Eliminar</button>
-            <a class="button" onclick="$('#eliminar-restaurante').removeClass('is-active')">Cancel</a>
-        </form>
-      
-    </footer>
-  </div>
-</div>
+@include('restaurantes.administrador.delete')
 @endsection
