@@ -1874,6 +1874,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -43179,6 +43180,10 @@ var render = function() {
           ? _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "columns is-centered" }, [
                 _c("div", { staticClass: "column has-text-centered" }, [
+                  _c("p", { staticClass: "title is-size-5" }, [
+                    _vm._v("Puedes hacer la busqueda por tipo de Menu")
+                  ]),
+                  _vm._v(" "),
                   _c(
                     "a",
                     {
@@ -43189,7 +43194,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Menus Tradicionales")]
+                    [_vm._v("Tradicional")]
                   ),
                   _vm._v(" "),
                   _c(
@@ -43202,7 +43207,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Menus Vegetarianos")]
+                    [_vm._v("Vegetariano")]
                   ),
                   _vm._v(" "),
                   _c(
@@ -43215,7 +43220,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Menus Veganos")]
+                    [_vm._v("Vegano")]
                   )
                 ])
               ])
