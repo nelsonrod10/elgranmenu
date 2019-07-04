@@ -43180,7 +43180,7 @@ var render = function() {
           ? _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "columns is-centered" }, [
                 _c("div", { staticClass: "column has-text-centered" }, [
-                  _c("p", { staticClass: "title is-size-5" }, [
+                  _c("p", { staticClass: "title is-size-6" }, [
                     _vm._v("Puedes hacer la busqueda por tipo de Menu")
                   ]),
                   _vm._v(" "),

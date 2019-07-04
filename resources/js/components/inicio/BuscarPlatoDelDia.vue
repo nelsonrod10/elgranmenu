@@ -28,7 +28,7 @@
             <div v-if="flagPlatoSeleccionado || flagBusquedaPorMenu" class="container">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <p class="title is-size-5">Puedes hacer la busqueda por tipo de Menu</p>
+                        <p class="title is-size-6">Puedes hacer la busqueda por tipo de Menu</p>
                         <a class="button is-primary is-small" v-on:click="BuscarPorMenu('tradicional')">Tradicional</a>
                         <a class="button is-link is-small" v-on:click="BuscarPorMenu('vegetariano')">Vegetariano</a>
                         <a class="button is-success is-small" v-on:click="BuscarPorMenu('vegano')">Vegano</a>
