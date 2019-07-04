@@ -24,6 +24,7 @@
                     </div>
                 </div>
             </div>
+            <br/>
             <div v-if="flagPlatoSeleccionado || flagBusquedaPorMenu" class="container">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">

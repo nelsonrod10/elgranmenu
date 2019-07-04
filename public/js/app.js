@@ -1873,6 +1873,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -43171,6 +43172,8 @@ var render = function() {
             ])
           ])
         ]),
+        _vm._v(" "),
+        _c("br"),
         _vm._v(" "),
         _vm.flagPlatoSeleccionado || _vm.flagBusquedaPorMenu
           ? _c("div", { staticClass: "container" }, [
