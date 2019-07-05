@@ -6,7 +6,7 @@
 @foreach($restaurantes as $restaurante)
     <div class="columns">
         <div class="column">
-            <p class="title is-size-5">{{$restaurante->nombre}}</p>
+            <p class="title is-size-6">{{$restaurante->nombre}}</p>
         </div>
         <div class="column">
             <a class="button is-info is-small" href="{{route('gestion-restaurantes.show',$restaurante)}}">
