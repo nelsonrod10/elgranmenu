@@ -49,10 +49,6 @@ class PlatosDelDiaController extends Controller
         foreach ($platosDia as $plato) {
             $restaurante = Restaurante::find($plato->restaurante_id);
             
-            /*$platoRestaurante = PlatosDelDia::nombre($platoSeleccionado)->fechaActual($fechaActual)->where([
-                'restaurante_id'   =>  $restaurante->id   
-            ])->first();*/
-            
             array_push($restaurantes, [
                 "restaurante" => $restaurante,
                 "plato"       => $plato         
@@ -62,17 +58,10 @@ class PlatosDelDiaController extends Controller
         foreach ($platosCarta as $platoCarta) {
             $restaurante = Restaurante::find($platoCarta->restaurante_id);
             
-            /*$platoRestaurante = PlatosCarta::nombre($platoSeleccionado)->where([
-                'restaurante_id'   =>  $restaurante->id,
-                'disponibilidad'   =>  'Si'
-            ])->first();*/
-            
             $exitePlatoDelDia = PlatosDelDia::where([
                 'restaurante_id'    =>  $platoCarta->restaurante->id,    
                 'platosCarta_id'    =>  $platoCarta->id
             ])->first();
-
-            
             
             if(!$exitePlatoDelDia){
                 array_push($restaurantes, [

@@ -4,7 +4,7 @@
                 <div class="columns">
                     <div class="column">
                         <p class="title has-text-centered"></p>
-                        <p class="title has-text-centered">Restaurantes que hoy ofrecen "{{ platoSeleccionado }}"</p>
+                        <p class="title has-text-centered is-size-5">Restaurantes que hoy ofrecen "{{ platoSeleccionado }}"</p>
                     </div>
                 </div>    
                 <div class="columns is-centered">

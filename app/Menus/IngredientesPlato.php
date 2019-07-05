@@ -13,6 +13,6 @@ class IngredientesPlato extends Model
     }
     
     public function scopeNombre($query, $q){
-        return $query->where('nombre',$q);
+        return $query->where('nombre','LIKE',"%$q%");
     }
 }

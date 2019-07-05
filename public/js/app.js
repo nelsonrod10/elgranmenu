@@ -43407,7 +43407,7 @@ var render = function() {
               _c("div", { staticClass: "column" }, [
                 _c("p", { staticClass: "title has-text-centered" }),
                 _vm._v(" "),
-                _c("p", { staticClass: "title has-text-centered" }, [
+                _c("p", { staticClass: "title has-text-centered is-size-5" }, [
                   _vm._v(
                     'Restaurantes que hoy ofrecen "' +
                       _vm._s(_vm.platoSeleccionado) +
