@@ -43,8 +43,8 @@ class PlatosDelDiaController extends Controller
         
         $restaurantes= [];
         
-        $platosDia = PlatosDelDia::nombre($platoSeleccionado)->fechaActual($fechaActual)->take(10)->get();
-        $platosCarta = PlatosCarta::nombre($platoSeleccionado)->where('disponibilidad','Si')->take(10)->get();
+        $platosDia = PlatosDelDia::nombre($platoSeleccionado)->descripcion($q)->fechaActual($fechaActual)->take(10)->get();
+        $platosCarta = PlatosCarta::nombre($platoSeleccionado)->descripcion($q)->where('disponibilidad','Si')->take(10)->get();
         
         foreach ($platosDia as $plato) {
             $restaurante = Restaurante::find($plato->restaurante_id);
