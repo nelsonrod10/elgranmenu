@@ -22,11 +22,11 @@ class PlatosDelDiaController extends Controller
         $objFechaActual = helpers::getDateNow();
         $fechaActual = $objFechaActual->format("Y-m-d");
         
-        $platosDia = PlatosDelDia::nombre($q)->descripcion($q)->fechaActual($fechaActual)->take(10)->get([
+        $platosDia = PlatosDelDia::nombre($q)->orWhere->descripcion($q)->fechaActual($fechaActual)->take(10)->get([
            'restaurante_id','platosCarta_id','nombre' 
         ]);
         
-        $platosCarta = PlatosCarta::nombre($q)->descripcion($q)->where('disponibilidad','Si')->take(10)->get([
+        $platosCarta = PlatosCarta::nombre($q)->orWhere->descripcion($q)->where('disponibilidad','Si')->take(10)->get([
            'restaurante_id','id','nombre' 
         ]); 
         
@@ -43,8 +43,8 @@ class PlatosDelDiaController extends Controller
         
         $restaurantes= [];
         
-        $platosDia = PlatosDelDia::nombre($platoSeleccionado)->descripcion($platoSeleccionado)->fechaActual($fechaActual)->take(10)->get();
-        $platosCarta = PlatosCarta::nombre($platoSeleccionado)->descripcion($platoSeleccionado)->where('disponibilidad','Si')->take(10)->get();
+        $platosDia = PlatosDelDia::nombre($platoSeleccionado)->orWhere->descripcion($platoSeleccionado)->fechaActual($fechaActual)->take(10)->get();
+        $platosCarta = PlatosCarta::nombre($platoSeleccionado)->orWhere->descripcion($platoSeleccionado)->where('disponibilidad','Si')->take(10)->get();
         
         foreach ($platosDia as $plato) {
             $restaurante = Restaurante::find($plato->restaurante_id);
