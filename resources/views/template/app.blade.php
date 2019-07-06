@@ -12,7 +12,10 @@
         <div id="app">
             @include('template.navbar')
             <br/>
-            @yield('content')
+            <div style="min-height: 400px; height: auto">
+                @yield('content')
+            </div>    
+            
             @include('template.footer')
         </div>
         <script src="{{ asset('js/jquery.min.js')}}"></script>
