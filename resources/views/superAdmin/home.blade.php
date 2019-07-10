@@ -17,7 +17,8 @@
                     <p class="title">Bienvenido Administrador!!</p>
                     <p class="title is-size-4">Actualizar Listado XML de ingredites</p>
                     <a class="button is-success is-small" href="{{ route('crear-listado-ingredientes')}}">Actualizar</a>
-                    <a class="button is-success is-small" href="{{ url('/administrador/listado-carta/buscar-ingrediente/carlos')}}">Ingredientes</a>
+                    <p class="title is-size-4">Listado de sectores</p>
+                    <a class="button is-success is-small" href="{{ route('sectores.index')}}">Ver Sectores</a>
                 </div>
             </div>
         </div>

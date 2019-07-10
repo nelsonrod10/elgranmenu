@@ -20,6 +20,8 @@ class CreateRestaurantesTable extends Migration
             $table->bigInteger('nit')->unique()->unsigned();
             $table->string('direccion')->unique();
             $table->string('ciudad');
+            $table->string("sector_id")->nullable();
+            $table->string("local")->nullable();
             $table->bigInteger('telefono')->unique()->unsigned();
             $table->bigInteger('celular')->unique()->unsigned();
             $table->enum('tradicional', ['si', 'no']);
