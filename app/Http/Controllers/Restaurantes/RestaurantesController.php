@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Restaurantes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Restaurantes\Restaurante;
+use App\SuperAdmin\SectoresSugerido;
 
 class RestaurantesController extends Controller
 {
@@ -29,8 +30,9 @@ class RestaurantesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('restaurantes.administrador.create');
+    {   
+        $sectores = SectoresSugerido::all();
+        return view('restaurantes.administrador.create')->with(['sectores'=>$sectores]);
     }
 
     /**
@@ -115,9 +117,17 @@ class RestaurantesController extends Controller
             'vegano'        => 'string|required',
         ]);
         
+        $direccionEditada = str_replace(["No", " N ","#"], " ", $data["direccion"]);
+        
+        if($direccionEditada != $restaurante->direccion){
+            $restaurante->update([
+                'direccion'   =>  str_replace(["No", " N ","#"], " ", $data["direccion"]),
+            ]);
+        }
+        
         $restaurante->update([
             'nombre'            =>  $data['nombre'],
-            'direccion'         =>  str_replace(["No", " N ","#"], " ", $data["direccion"]),
+            
             //'ciudad'            =>  $data['ciudad'],
             'telefono'          =>  $data['telefono'],
             'celular'           =>  $data['celular'],

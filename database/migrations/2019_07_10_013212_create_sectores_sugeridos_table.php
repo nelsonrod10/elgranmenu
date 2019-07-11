@@ -17,6 +17,7 @@ class CreateSectoresSugeridosTable extends Migration
             $table->bigIncrements('id');
             $table->string("nombre")->unique();
             $table->string("direccion")->unique();
+            $table->string("ciudad");
             $table->timestamps();
         });
     }

@@ -27,6 +27,7 @@ Vue.component('listado-restaurantes', require('./components/inicio/ListadoRestau
 Vue.component('platos-menu', require('./components/restaurantes/PlatosMenu.vue').default);
 Vue.component('eliminar-plato', require('./components/restaurantes/EliminarPlato.vue').default);
 Vue.component('editar-plato', require('./components/restaurantes/EditarPlato.vue').default);
+Vue.component('crear-restaurante', require('./components/restaurantes/CrearRestaurante.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
