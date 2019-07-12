@@ -16,7 +16,12 @@ class CreateSectoresSugeridosTable extends Migration
         Schema::create('sectores_sugeridos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string("nombre")->unique();
-            $table->string("direccion")->unique();
+            $table->enum("tipo",["Zona o Sector","Plaza de Mercado", "Centro Comercial", "Plazoleta de Comidas"]);
+            $table->string("direccion")->nullable()->unique();
+            $table->string("limite_1")->nullable();
+            $table->string("limite_2")->nullable();
+            $table->string("limite_3")->nullable();
+            $table->string("limite_4")->nullable();
             $table->string("ciudad");
             $table->timestamps();
         });

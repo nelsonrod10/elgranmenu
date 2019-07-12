@@ -68,6 +68,7 @@ Route::prefix('administrador')->middleware('auth')->group(function () {
 Route::prefix('super-admin')->middleware('auth')->group(function () {
     Route::get('crear-listado-ingredientes', 'SuperAdmin\IngredientesController@crearListadoXML')->name("crear-listado-ingredientes");
     Route::resource('sectores', 'SuperAdmin\SectoresController');
+    Route::get('listado-sectores', 'SuperAdmin\SectoresController@listadoSectores');
 });
 
 

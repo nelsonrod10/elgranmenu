@@ -15,10 +15,13 @@ class SectoresController extends Controller
      */
     public function index()
     {
-        $sectores = SectoresSugerido::all();
-        return view("superAdmin.sectores")->with(compact("sectores"));
+        return view("superAdmin.sectores");
     }
-
+    
+    public function listadoSectores(){
+        $sectores = SectoresSugerido::all();
+        return response()->json($sectores);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -38,16 +41,37 @@ class SectoresController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            "nombre" =>  "required|string|unique:sectores_sugeridos,nombre",
-            "direccion" =>  "required|string|unique:sectores_sugeridos,direccion",
-            "ciudad" =>  "required|string"   
+            "nombre"    =>  "required|string|unique:sectores_sugeridos,nombre",
+            "ciudad"    =>  "required|string",
+            "tipo"      =>  "required|string",
+            "limite1"   =>  "string|nullable",       
+            "limite2"   =>  "string|nullable",
+            "limite3"   =>  "string|nullable",
+            "limite4"   =>  "string|nullable",
+            "direccion" =>  "string|nullable|unique:sectores_sugeridos,direccion",//
+            
         ]);
         
-        SectoresSugerido::create([
+        $sector = SectoresSugerido::create([
             "nombre"    =>  $data["nombre"],
-            "direccion" =>  str_replace(["No", " N ","#"], " ", $data["direccion"]),
+            "tipo"      =>  $data["tipo"],
             "ciudad"    =>  $data["ciudad"],
         ]);
+        
+        if((string)$sector->tipo === "Zona o Sector"){
+            $sector->update([
+                "limite_1"   =>  $data["limite1"], 
+                "limite_2"   =>  $data["limite2"], 
+                "limite_3"   =>  $data["limite3"], 
+                "limite_4"   =>  $data["limite4"], 
+            ]);
+        }
+        
+        if((string)$sector->tipo !== "Zona o Sector"){
+            $sector->update([
+                "direccion" =>  str_replace(["No", " N ","#"], " ", $data["direccion"]),
+            ]);
+        }
         
         return redirect()->back();
     }
@@ -86,25 +110,46 @@ class SectoresController extends Controller
         $sector = SectoresSugerido::find($id);
         
         $data = $request->validate([
-            "nombre" =>  "required|string|unique:sectores_sugeridos,nombre,".$sector->id,
-            "direccion" =>  "required|string|unique:sectores_sugeridos,direccion,".$sector->id,
-            "ciudad" =>  "required|string"  
+            "nombre"    =>  "required|string|unique:sectores_sugeridos,nombre,".$sector->id,
+            "ciudad"    =>  "required|string",
+            "tipo"      =>  "required|string",
+            "limite1"   =>  "string|nullable",       
+            "limite2"   =>  "string|nullable",
+            "limite3"   =>  "string|nullable",
+            "limite4"   =>  "string|nullable",
+            "direccion" =>  "string|nullable|unique:sectores_sugeridos,direccion,".$sector->id,
         ]);
-        
-        $direccionEditada = str_replace(["No", " N ","#"], " ", $data["direccion"]);
-        
-        if($direccionEditada != $sector->direccion){
-            $sector->update([
-                'direccion'   =>  str_replace(["No", " N ","#"], " ", $data["direccion"]),
-            ]);
-        }
         
         $sector->update([
             "nombre"    =>  $data["nombre"],
+            "tipo"      =>  $data["tipo"],    
             "ciudad"    =>  $data["ciudad"],
+            "limite_1"  =>  "", 
+            "limite_2"  =>  "", 
+            "limite_3"  =>  "", 
+            "limite_4"  =>  "", 
+            "direccion" => ""
         ]);
         
-        return redirect()->back();
+        if((string)$sector->tipo === "Zona o Sector"){
+            $sector->update([
+                "limite_1"   =>  $data["limite1"], 
+                "limite_2"   =>  $data["limite2"], 
+                "limite_3"   =>  $data["limite3"], 
+                "limite_4"   =>  $data["limite4"], 
+            ]);
+        }
+        
+        if((string)$sector->tipo !== "Zona o Sector"){
+            $direccionEditada = str_replace(["No", " N ","#"], " ", $data["direccion"]);
+            if($direccionEditada != $sector->direccion){
+                $sector->update([
+                    'direccion'   =>  str_replace(["No", " N ","#"], " ", $data["direccion"]),
+                ]);
+            }
+        }
+        
+        return;
     }
 
     /**
@@ -116,6 +161,6 @@ class SectoresController extends Controller
     public function destroy($id)
     {
         SectoresSugerido::find($id)->delete();
-        return redirect()->back();
+        return;
     }
 }
