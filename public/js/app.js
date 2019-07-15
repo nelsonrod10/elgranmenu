@@ -3270,9 +3270,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    sectores: {
-      required: true
-    },
     routecancelar: {
       type: String,
       required: true
@@ -3280,17 +3277,70 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      sectorSeleccionado: ''
+      sectores: {},
+      sectorSeleccionado: '',
+      flagSectorSeleccionado: false,
+      flagDisableDireccion: false,
+      datosFrm: {
+        nombre: '',
+        nit: '',
+        telefono: '',
+        celular: '',
+        ciudad: '',
+        sector: {},
+        local: '',
+        direccion: '',
+        tradicional: '',
+        vegetariano: '',
+        vegano: ''
+      }
     };
   },
   mounted: function mounted() {
     console.log('Component mounted.');
   },
   components: {},
-  created: function created() {},
+  created: function created() {
+    this.CargarSectores();
+  },
   methods: {
     SectorSeleccionado: function SectorSeleccionado() {
-      alert(this.sectorSeleccionado);
+      this.datosFrm.direccion = "";
+      this.flagSectorSeleccionado = false;
+      this.flagDisableDireccion = false;
+
+      if (this.datosFrm.sector.tipo && this.datosFrm.sector.tipo !== "Zona o Sector") {
+        this.datosFrm.direccion = this.datosFrm.sector.direccion;
+        this.flagDisableDireccion = true;
+      }
+
+      this.flagSectorSeleccionado = true;
+    },
+    CargarSectores: function CargarSectores() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("sectores-por-ciudad/".concat(this.datosFrm.ciudad)).then(function (response) {
+        _this.sectores = response.data;
+      });
+    },
+    CrearRestaurante: function CrearRestaurante() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('gestion-restaurantes', {
+        nombre: this.datosFrm.nombre,
+        nit: this.datosFrm.nit,
+        telefono: this.datosFrm.telefono,
+        celular: this.datosFrm.celular,
+        ciudad: this.datosFrm.ciudad,
+        sector: this.datosFrm.sector.id ? this.datosFrm.sector.id : 0,
+        local: this.datosFrm.local,
+        direccion: this.datosFrm.direccion,
+        tradicional: this.datosFrm.tradicional,
+        vegetariano: this.datosFrm.tradicional,
+        vegano: this.datosFrm.tradicional
+      }).then(function (response) {
+        window.location.href = '/restauriando/public/administrador/gestion-restaurantes/' + response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });
@@ -46516,16 +46566,225 @@ var render = function() {
   return _c("div", [
     _c(
       "form",
-      { attrs: { name: "frm-crear-restaurante", method: "post", action: "" } },
+      {
+        attrs: { name: "frm-crear-restaurante", method: "post" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.CrearRestaurante($event)
+          }
+        }
+      },
       [
         _vm._m(0),
         _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _vm._m(2),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "nombre" } }, [
+                _vm._v("Nombre Restaurante")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.nombre,
+                      expression: "datosFrm.nombre"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "nombre",
+                    name: "nombre",
+                    required: "",
+                    type: "text",
+                    placeholder: "Nombre del establecimiento"
+                  },
+                  domProps: { value: _vm.datosFrm.nombre },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "nombre", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "nit" } }, [
+                _vm._v("Nit")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.nit,
+                      expression: "datosFrm.nit"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "nit",
+                    name: "nit",
+                    required: "",
+                    type: "number",
+                    placeholder: "NIT"
+                  },
+                  domProps: { value: _vm.datosFrm.nit },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "nit", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "columns" }, [
-          _vm._m(3),
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "telefono" } },
+                [_vm._v("Teléfono (Domicilios)")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.telefono,
+                      expression: "datosFrm.telefono"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "telefono",
+                    name: "telefono",
+                    type: "number",
+                    placeholder: "Número Telefónico"
+                  },
+                  domProps: { value: _vm.datosFrm.telefono },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "telefono", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "celular" } }, [
+                _vm._v("Celular")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.celular,
+                      expression: "datosFrm.celular"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "celular",
+                    name: "celular",
+                    type: "number",
+                    placeholder: "Número Celular"
+                  },
+                  domProps: { value: _vm.datosFrm.celular },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "celular", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(4)
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "ciudad" } }, [
+                _vm._v("Ciudad")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.ciudad,
+                      expression: "datosFrm.ciudad"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "ciudad",
+                    name: "ciudad",
+                    required: "",
+                    type: "text",
+                    placeholder: "Ciudad"
+                  },
+                  domProps: { value: _vm.datosFrm.ciudad },
+                  on: {
+                    change: function($event) {
+                      return _vm.CargarSectores()
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "ciudad", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(5)
+              ])
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "column" }, [
             _c("div", { staticClass: "field" }, [
@@ -46542,8 +46801,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.sectorSeleccionado,
-                          expression: "sectorSeleccionado"
+                          value: _vm.datosFrm.sector,
+                          expression: "datosFrm.sector"
                         }
                       ],
                       attrs: { id: "sector", name: "sector", required: "" },
@@ -46558,9 +46817,13 @@ var render = function() {
                                 var val = "_value" in o ? o._value : o.value
                                 return val
                               })
-                            _vm.sectorSeleccionado = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
+                            _vm.$set(
+                              _vm.datosFrm,
+                              "sector",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
                           },
                           function($event) {
                             return _vm.SectorSeleccionado()
@@ -46578,11 +46841,11 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _vm._l(_vm.sectores, function(sector) {
-                        return _c(
-                          "option",
-                          { domProps: { value: sector.id } },
-                          [_vm._v(_vm._s(sector.nombre))]
-                        )
+                        return _c("option", { domProps: { value: sector } }, [
+                          _vm._v(
+                            _vm._s(sector.tipo) + " " + _vm._s(sector.nombre)
+                          )
+                        ])
                       })
                     ],
                     2
@@ -46593,14 +46856,320 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(4),
+        _vm.flagSectorSeleccionado
+          ? _c("div", { staticClass: "columns" }, [
+              _c("div", { staticClass: "column is-6" }, [
+                _c("div", { staticClass: "field" }, [
+                  _c(
+                    "label",
+                    { staticClass: "label", attrs: { for: "direccion" } },
+                    [_vm._v("Dirección")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "control has-icons-left" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.datosFrm.direccion,
+                          expression: "datosFrm.direccion"
+                        }
+                      ],
+                      staticClass: "input",
+                      attrs: {
+                        id: "direccion",
+                        name: "direccion",
+                        disabled: _vm.flagDisableDireccion,
+                        required: "",
+                        type: "text",
+                        placeholder: "Dirección del restaurante"
+                      },
+                      domProps: { value: _vm.datosFrm.direccion },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.datosFrm,
+                            "direccion",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(6)
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "column" }, [
+                _c("div", { staticClass: "field" }, [
+                  _c(
+                    "label",
+                    { staticClass: "label", attrs: { for: "local" } },
+                    [
+                      _vm._v(
+                        "¿" +
+                          _vm._s(_vm.datosFrm.nombre) +
+                          " se encuentra en un local?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "control has-icons-left" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.datosFrm.local,
+                          expression: "datosFrm.local"
+                        }
+                      ],
+                      staticClass: "input",
+                      attrs: {
+                        id: "local",
+                        name: "local",
+                        type: "text",
+                        placeholder: "No Local (si aplica)"
+                      },
+                      domProps: { value: _vm.datosFrm.local },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.datosFrm, "local", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(7)
+                  ])
+                ])
+              ])
+            ])
+          : _vm._e(),
         _vm._v(" "),
-        _vm._m(5),
+        _vm._m(8),
         _vm._v(" "),
-        _vm._m(6),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-4" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "tradicional" } },
+                [_vm._v("Tradicional")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.tradicional,
+                        expression: "datosFrm.tradicional"
+                      }
+                    ],
+                    attrs: {
+                      id: "tradicional",
+                      name: "tradicional",
+                      type: "radio",
+                      value: "si"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.tradicional, "si")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "tradicional", "si")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          Si\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.tradicional,
+                        expression: "datosFrm.tradicional"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "tradicional",
+                      checked: "",
+                      value: "no"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.tradicional, "no")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "tradicional", "no")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          No\n                        "
+                  )
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "vegetariano" } },
+                [_vm._v("Vegetariano")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.vegetariano,
+                        expression: "datosFrm.vegetariano"
+                      }
+                    ],
+                    attrs: {
+                      id: "vegetariano",
+                      name: "vegetariano",
+                      type: "radio",
+                      value: "si"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.vegetariano, "si")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "vegetariano", "si")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          Si\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.vegetariano,
+                        expression: "datosFrm.vegetariano"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "vegetariano",
+                      checked: "",
+                      value: "no"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.vegetariano, "no")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "vegetariano", "no")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          No\n                        "
+                  )
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "vegano" } }, [
+                _vm._v("Vegano")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.vegano,
+                        expression: "datosFrm.vegano"
+                      }
+                    ],
+                    attrs: {
+                      id: "vegano",
+                      name: "vegano",
+                      type: "radio",
+                      value: "si"
+                    },
+                    domProps: { checked: _vm._q(_vm.datosFrm.vegano, "si") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "vegano", "si")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          Si\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.vegano,
+                        expression: "datosFrm.vegano"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "vegano",
+                      checked: "",
+                      value: "no"
+                    },
+                    domProps: { checked: _vm._q(_vm.datosFrm.vegano, "no") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "vegano", "no")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          No\n                        "
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "field is-grouped" }, [
-          _vm._m(7),
+          _vm._m(9),
           _vm._v(" "),
           _c("div", { staticClass: "control" }, [
             _c(
@@ -46636,194 +47205,56 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column is-6" }, [
-        _c("div", { staticClass: "field" }, [
-          _c("label", { staticClass: "label", attrs: { for: "nombre" } }, [
-            _vm._v("Nombre Restaurante")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "control has-icons-left" }, [
-            _c("input", {
-              staticClass: "input",
-              attrs: {
-                id: "nombre",
-                name: "nombre",
-                required: "",
-                type: "text",
-                placeholder: "Nombre del establecimiento"
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "icon is-small is-left" }, [
-              _c("i", { staticClass: "fas fa-check" })
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("div", { staticClass: "field" }, [
-          _c("label", { staticClass: "label", attrs: { for: "nit" } }, [
-            _vm._v("Nit")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "control has-icons-left" }, [
-            _c("input", {
-              staticClass: "input",
-              attrs: {
-                id: "nit",
-                name: "nit",
-                required: "",
-                type: "number",
-                placeholder: "NIT"
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "icon is-small is-left" }, [
-              _c("i", { staticClass: "fas fa-sort-numeric-up" })
-            ])
-          ])
-        ])
-      ])
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-check" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column is-6" }, [
-        _c("div", { staticClass: "field" }, [
-          _c("label", { staticClass: "label", attrs: { for: "telefono" } }, [
-            _vm._v("Teléfono (Domicilios)")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "control has-icons-left" }, [
-            _c("input", {
-              staticClass: "input",
-              attrs: {
-                id: "telefono",
-                name: "telefono",
-                type: "number",
-                placeholder: "Número Telefónico"
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "icon is-small is-left" }, [
-              _c("i", { staticClass: "fas fa-phone" })
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("div", { staticClass: "field" }, [
-          _c("label", { staticClass: "label", attrs: { for: "celular" } }, [
-            _vm._v("Celular")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "control has-icons-left" }, [
-            _c("input", {
-              staticClass: "input",
-              attrs: {
-                id: "celular",
-                name: "celular",
-                type: "number",
-                placeholder: "Número Celular"
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "icon is-small is-left" }, [
-              _c("i", { staticClass: "fas fa-mobile-alt" })
-            ])
-          ])
-        ])
-      ])
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-sort-numeric-up" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-6" }, [
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label", attrs: { for: "ciudad" } }, [
-          _vm._v("Ciudad")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "control has-icons-left" }, [
-          _c("input", {
-            staticClass: "input",
-            attrs: {
-              id: "ciudad",
-              name: "ciudad",
-              required: "",
-              type: "text",
-              placeholder: "Ciudad"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "icon is-small is-left" }, [
-            _c("i", { staticClass: "fas fa-map-marker-alt" })
-          ])
-        ])
-      ])
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-phone" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns is-hidden" }, [
-      _c("div", { staticClass: "column is-6" }, [
-        _c("div", { staticClass: "field" }, [
-          _c("label", { staticClass: "label", attrs: { for: "direccion" } }, [
-            _vm._v("Dirección")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "control has-icons-left" }, [
-            _c("input", {
-              staticClass: "input",
-              attrs: {
-                id: "direccion",
-                name: "direccion",
-                required: "",
-                type: "text",
-                placeholder: "Dirección del restaurante"
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "icon is-small is-left" }, [
-              _c("i", { staticClass: "fas fa-map-marker-alt" })
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("div", { staticClass: "field" }, [
-          _c("label", { staticClass: "label", attrs: { for: "local" } }, [
-            _vm._v("¿Corresponde a un local en (Nombre del sector)?")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "control has-icons-left" }, [
-            _c("input", {
-              staticClass: "input",
-              attrs: {
-                id: "local",
-                name: "local",
-                type: "text",
-                placeholder: "No Local (si aplica)"
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "icon is-small is-left" }, [
-              _c("i", { staticClass: "fas fa-map-marker-alt" })
-            ])
-          ])
-        ])
-      ])
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-mobile-alt" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-map-marker-alt" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-map-marker-alt" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-map-marker-alt" })
     ])
   },
   function() {
@@ -46835,114 +47266,6 @@ var staticRenderFns = [
         _c("div", { staticClass: "field has-text-centered" }, [
           _c("label", { staticClass: "title is-size-4" }, [
             _vm._v("Tipos de Menu")
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column is-4" }, [
-        _c("div", { staticClass: "field" }, [
-          _c("label", { staticClass: "label", attrs: { for: "tradicional" } }, [
-            _vm._v("Tradicional")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "control" }, [
-            _c("label", { staticClass: "radio" }, [
-              _c("input", {
-                attrs: {
-                  id: "tradicional",
-                  name: "tradicional",
-                  type: "radio",
-                  value: "si"
-                }
-              }),
-              _vm._v("\n                          Si\n                        ")
-            ]),
-            _vm._v(" "),
-            _c("label", { staticClass: "radio" }, [
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  name: "tradicional",
-                  checked: "",
-                  value: "no"
-                }
-              }),
-              _vm._v("\n                          No\n                        ")
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("div", { staticClass: "field" }, [
-          _c("label", { staticClass: "label", attrs: { for: "vegetariano" } }, [
-            _vm._v("Vegetariano")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "control" }, [
-            _c("label", { staticClass: "radio" }, [
-              _c("input", {
-                attrs: {
-                  id: "vegetariano",
-                  name: "vegetariano",
-                  type: "radio",
-                  value: "si"
-                }
-              }),
-              _vm._v("\n                          Si\n                        ")
-            ]),
-            _vm._v(" "),
-            _c("label", { staticClass: "radio" }, [
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  name: "vegetariano",
-                  checked: "",
-                  value: "no"
-                }
-              }),
-              _vm._v("\n                          No\n                        ")
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("div", { staticClass: "field" }, [
-          _c("label", { staticClass: "label", attrs: { for: "vegano" } }, [
-            _vm._v("Vegano")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "control" }, [
-            _c("label", { staticClass: "radio" }, [
-              _c("input", {
-                attrs: {
-                  id: "vegano",
-                  name: "vegano",
-                  type: "radio",
-                  value: "si"
-                }
-              }),
-              _vm._v("\n                          Si\n                        ")
-            ]),
-            _vm._v(" "),
-            _c("label", { staticClass: "radio" }, [
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  name: "vegano",
-                  checked: "",
-                  value: "no"
-                }
-              }),
-              _vm._v("\n                          No\n                        ")
-            ])
           ])
         ])
       ])
@@ -65619,14 +65942,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _js_components_restaurantes_CrearRestaurante_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/restaurantes/CrearRestaurante.vue */ "./resources/js/components/restaurantes/CrearRestaurante.vue");
 
- //import Foo from '@/js/components/restaurantes/EjemploMenu.vue'
+
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
-  routes: [//{path:'foo',component : Foo }
-  ]
+  routes: [{
+    path: '/restauriando/public/administrador/gestion-restaurantes/:id',
+    name: 'gestion-restaurantes.show',
+    component: _js_components_restaurantes_CrearRestaurante_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 

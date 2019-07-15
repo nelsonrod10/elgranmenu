@@ -42,7 +42,15 @@ Route::get('/menus', function () {
 });
 
 Route::prefix('administrador')->middleware('auth')->group(function () {
-    Route::resource('gestion-restaurantes','Restaurantes\RestaurantesController');
+    Route::get('/crear-restaurante', function () {
+        return view('restaurantes.administrador.create');
+    })->name('crear-restaurante');
+    
+    Route::resource('/gestion-restaurantes','Restaurantes\RestaurantesController')->except([
+        'create'
+    ]);
+    Route::get('/sectores-por-ciudad/{ciudad}', 'SuperAdmin\SectoresController@sectoresPorCiudad');
+    
     Route::resource('gestion-carta','Menus\PlatosCartasController')->except([
         'index','create','store'
     ]);

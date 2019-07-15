@@ -12,7 +12,7 @@
                     <div class="tabs">
                         <ul>
                             <li class="is-active"><a href="{{route('gestion-restaurantes.index')}}">Listado</a></li>
-                            <li><a href="{{route('gestion-restaurantes.create')}}">Crear Nuevo</a></li>
+                            <li><a href="{{route('crear-restaurante')}}">Crear Nuevo</a></li>
                         </ul>
                     </div>
                         

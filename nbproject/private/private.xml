@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/restauriando/resources/js/components/SuperAdmin/Sectores/Editar.vue</file>
-            <file>file:/C:/xampp/htdocs/restauriando/resources/js/components/SuperAdmin/Sectores/Index.vue</file>
-            <file>file:/C:/xampp/htdocs/restauriando/resources/js/components/SuperAdmin/Sectores/Crear.vue</file>
-            <file>file:/C:/xampp/htdocs/restauriando/app/Http/Controllers/SuperAdmin/SectoresController.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/resources/js/components/restaurantes/CrearRestaurante.vue</file>
+            <file>file:/C:/xampp/htdocs/restauriando/resources/js/routes.js</file>
+            <file>file:/C:/xampp/htdocs/restauriando/app/Http/Controllers/Restaurantes/RestaurantesController.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/resources/js/components/restaurantes/NuevoPlato.vue</file>
+            <file>file:/C:/xampp/htdocs/restauriando/resources/views/restaurantes/administrador/show.blade.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/restauriando/resources/views/restaurantes/administrador/restaurantes.blade.php</file>
         </group>
     </open-files>
 </project-private>

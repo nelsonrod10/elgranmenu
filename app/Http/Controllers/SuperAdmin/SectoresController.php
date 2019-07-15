@@ -22,6 +22,11 @@ class SectoresController extends Controller
         $sectores = SectoresSugerido::all();
         return response()->json($sectores);
     }
+    
+    public function sectoresPorCiudad($ciudad){
+        $sectores = SectoresSugerido::where("ciudad",$ciudad)->get();
+        return response()->json($sectores);
+    }    
     /**
      * Show the form for creating a new resource.
      *
@@ -107,6 +112,7 @@ class SectoresController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $sector = SectoresSugerido::find($id);
         
         $data = $request->validate([
@@ -124,11 +130,6 @@ class SectoresController extends Controller
             "nombre"    =>  $data["nombre"],
             "tipo"      =>  $data["tipo"],    
             "ciudad"    =>  $data["ciudad"],
-            "limite_1"  =>  "", 
-            "limite_2"  =>  "", 
-            "limite_3"  =>  "", 
-            "limite_4"  =>  "", 
-            "direccion" => ""
         ]);
         
         if((string)$sector->tipo === "Zona o Sector"){
@@ -137,15 +138,21 @@ class SectoresController extends Controller
                 "limite_2"   =>  $data["limite2"], 
                 "limite_3"   =>  $data["limite3"], 
                 "limite_4"   =>  $data["limite4"], 
+                "direccion"  =>  null
             ]);
         }
         
         if((string)$sector->tipo !== "Zona o Sector"){
             $direccionEditada = str_replace(["No", " N ","#"], " ", $data["direccion"]);
-            if($direccionEditada != $sector->direccion){
+            
+            if($direccionEditada !== $sector->direccion){
                 $sector->update([
-                    'direccion'   =>  str_replace(["No", " N ","#"], " ", $data["direccion"]),
-                ]);
+                    "limite_1"  =>  null, 
+                    "limite_2"  =>  null, 
+                    "limite_3"  =>  null, 
+                    "limite_4"  =>  null,    
+                    'direccion' =>  str_replace(["No", " N ","#"], " ", $data["direccion"]),
+                ]);    
             }
         }
         

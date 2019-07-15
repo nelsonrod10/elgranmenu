@@ -17,7 +17,7 @@
                     </div>
                 
                     <div class="box">
-                        <crear-restaurante :sectores="{{$sectores}}" :routecancelar="'{{route('gestion-restaurantes.index')}}'"></crear-restaurante>
+                        <crear-restaurante :routecancelar="'{{route('gestion-restaurantes.index')}}'"></crear-restaurante>
                     </div>
                 </div>    
             </div>

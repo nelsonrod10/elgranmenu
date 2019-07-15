@@ -31,8 +31,7 @@ class RestaurantesController extends Controller
      */
     public function create()
     {   
-        $sectores = SectoresSugerido::all();
-        return view('restaurantes.administrador.create')->with(['sectores'=>$sectores]);
+        return view('restaurantes.administrador.create');
     }
 
     /**
@@ -48,6 +47,8 @@ class RestaurantesController extends Controller
             'nit'           => 'string|required|unique:restaurantes,nit',
             'direccion'     => 'string|required|unique:restaurantes,direccion',
             'ciudad'        => 'string|required',
+            'sector'        => 'integer|required|nullable',    
+            'local'         => 'string|nullable',
             'telefono'      => 'string|unique:restaurantes,telefono',
             'celular'       => 'string|unique:restaurantes,celular',
             'tradicional'   => 'string|required',
@@ -61,6 +62,8 @@ class RestaurantesController extends Controller
             'nit'               =>  $data['nit'],
             'direccion'         =>  str_replace(["No", " N ","#"], " ", $data["direccion"]),
             'ciudad'            =>  $data['ciudad'],
+            'sector_id'         =>  (string)$data['sector'],
+            'local'             =>  ($data['local'])?$data['local']:null,
             'telefono'          =>  $data['telefono'],
             'celular'           =>  $data['celular'],
             'tradicional'       =>  $data['tradicional'],
@@ -68,7 +71,8 @@ class RestaurantesController extends Controller
             'vegano'            =>  $data['vegano'],
         ]);
         
-        return redirect()->route('gestion-restaurantes.show', $restaurante);
+        
+        return $restaurante->id;
     }
 
     /**
