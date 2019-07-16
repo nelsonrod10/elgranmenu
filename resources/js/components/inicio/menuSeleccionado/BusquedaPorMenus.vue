@@ -35,7 +35,10 @@
         <visitar-restaurante 
             v-if="flagVisitarRestaurante" 
             v-on:ver-otro-plato="VerPlato"
-            :restaurante="visitarRestaurante"> 
+            :restaurante="visitarRestaurante"
+            v-on:visitar-restaurante="VisitarRestaurante"
+            :key="keyVerOtroRestaurante"
+        > 
         </visitar-restaurante>
     </div>
 </template>
@@ -60,6 +63,8 @@
                 listado:{},
                 flagPlatoSeleccionado:false,
                 flagVisitarRestaurante:false,
+                keyVerOtroPlato:0,
+                keyVerOtroRestaurante:0,
                 dataPlato:{},
                 dataRestaurante:{}    
             }
@@ -84,6 +89,7 @@
             },
             
             VisitarRestaurante(restaurante){
+                this.keyVerOtroRestaurante += 1;
                 this.flagPlatoSeleccionado = false;
                 this.flagVisitarRestaurante = true;
                 this.visitarRestaurante = restaurante;

@@ -2626,6 +2626,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2641,6 +2643,7 @@ __webpack_require__.r(__webpack_exports__);
       flagVerPlatoSeleccionado: false,
       flagVisitarRestaurante: false,
       keyVerOtroPlato: 0,
+      keyVerOtroRestaurante: 0,
       listaResultados: {},
       detallesRestaurante: {},
       detallesPlato: {},
@@ -2673,6 +2676,8 @@ __webpack_require__.r(__webpack_exports__);
       this.detallesPlato = plato;
     },
     VisitarRestaurante: function VisitarRestaurante(restaurante) {
+      alert("hola jeje");
+      this.keyVerOtroRestaurante += 1;
       this.flagVerPlatoSeleccionado = false;
       this.flagVisitarRestaurante = true;
       this.visitarRestaurante = restaurante;
@@ -3120,6 +3125,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -3137,6 +3145,8 @@ __webpack_require__.r(__webpack_exports__);
       listado: {},
       flagPlatoSeleccionado: false,
       flagVisitarRestaurante: false,
+      keyVerOtroPlato: 0,
+      keyVerOtroRestaurante: 0,
       dataPlato: {},
       dataRestaurante: {}
     };
@@ -3159,6 +3169,7 @@ __webpack_require__.r(__webpack_exports__);
       this.dataPlato = plato;
     },
     VisitarRestaurante: function VisitarRestaurante(restaurante) {
+      this.keyVerOtroRestaurante += 1;
       this.flagPlatoSeleccionado = false;
       this.flagVisitarRestaurante = true;
       this.visitarRestaurante = restaurante;
@@ -46466,8 +46477,12 @@ var render = function() {
       _vm._v(" "),
       _vm.flagVisitarRestaurante
         ? _c("visitar-restaurante", {
+            key: _vm.keyVerOtroRestaurante,
             attrs: { restaurante: _vm.visitarRestaurante },
-            on: { "ver-otro-plato": _vm.PlatoSeleccionado }
+            on: {
+              "ver-otro-plato": _vm.PlatoSeleccionado,
+              "visitar-restaurante": _vm.VisitarRestaurante
+            }
           })
         : _vm._e()
     ],
@@ -47305,8 +47320,12 @@ var render = function() {
       _vm._v(" "),
       _vm.flagVisitarRestaurante
         ? _c("visitar-restaurante", {
+            key: _vm.keyVerOtroRestaurante,
             attrs: { restaurante: _vm.visitarRestaurante },
-            on: { "ver-otro-plato": _vm.VerPlato }
+            on: {
+              "ver-otro-plato": _vm.VerPlato,
+              "visitar-restaurante": _vm.VisitarRestaurante
+            }
           })
         : _vm._e()
     ],
