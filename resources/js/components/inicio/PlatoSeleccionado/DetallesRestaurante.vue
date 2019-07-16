@@ -5,13 +5,14 @@
                 <div class="column is-four-fifths">
                     <div class="columns">
                         <div class="column">
-                            <p class="title has-text-centered is-capitalized has-text-link">{{ restaurante.nombre }}</p>
-                            <p class="title has-text-centered is-capitalized is-size-5 has-text-link">
-                                <span v-if="datosSector.tipo !== 'Zona o Sector'">
-                                    {{datosSector.tipo}}
-                                </span> 
-                                    {{datosSector.nombre}}
-                            </p>
+                            <p class="title has-text-centered is-capitalized">{{ restaurante.nombre }}</p>
+                            <div class="columns is-centered" v-if="datosSector.tipo">
+                                <p class="title has-text-centered is-size-5">
+                                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                                    <span v-if="datosSector.tipo !== 'Zona o Sector'">{{datosSector.tipo}}</span> {{datosSector.nombre}}
+                                    <span v-if="restaurante.local !== 'null' || restaurante.local !== ''">Local {{restaurante.local}}</span>
+                                </p>
+                            </div>
                             <p class="has-text-centered is-size-6 has-text-grey">
                                 <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
                                 <a v-bind:href="direccionMaps" target="_alt"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.direccion }}</a>
@@ -34,7 +35,7 @@
                     </div>
                     <div class="columns is-centered">
                         <div class="column">
-                            <p class="title has-text-centered is-size-4 has-text-info">
+                            <p class="title has-text-centered is-size-4  has-text-grey-dark">
                                 <span class="icon is-small">
                                     <i class="fas fa-utensils"></i>
                                 </span>

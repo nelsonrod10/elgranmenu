@@ -2800,6 +2800,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
@@ -46409,42 +46410,42 @@ var render = function() {
             _c("div", { staticClass: "column" }, [
               _c(
                 "p",
-                {
-                  staticClass:
-                    "title has-text-centered is-capitalized has-text-link"
-                },
+                { staticClass: "title has-text-centered is-capitalized" },
                 [_vm._v(_vm._s(_vm.restaurante.nombre))]
               ),
               _vm._v(" "),
-              _c(
-                "p",
-                {
-                  staticClass:
-                    "title has-text-centered is-capitalized is-size-5 has-text-link"
-                },
-                [
-                  _vm.datosSector.tipo !== "Zona o Sector"
-                    ? _c("span", [
+              _vm.datosSector.tipo
+                ? _c("div", { staticClass: "columns is-centered" }, [
+                    _c(
+                      "p",
+                      { staticClass: "title has-text-centered is-size-5" },
+                      [
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _vm.datosSector.tipo !== "Zona o Sector"
+                          ? _c("span", [_vm._v(_vm._s(_vm.datosSector.tipo))])
+                          : _vm._e(),
                         _vm._v(
-                          "\n                                " +
-                            _vm._s(_vm.datosSector.tipo) +
-                            "\n                            "
-                        )
-                      ])
-                    : _vm._e(),
-                  _vm._v(
-                    " \n                                " +
-                      _vm._s(_vm.datosSector.nombre) +
-                      "\n                        "
-                  )
-                ]
-              ),
+                          " " +
+                            _vm._s(_vm.datosSector.nombre) +
+                            "\n                                "
+                        ),
+                        _vm.restaurante.local !== "null" ||
+                        _vm.restaurante.local !== ""
+                          ? _c("span", [
+                              _vm._v("Local " + _vm._s(_vm.restaurante.local))
+                            ])
+                          : _vm._e()
+                      ]
+                    )
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "p",
                 { staticClass: "has-text-centered is-size-6 has-text-grey" },
                 [
-                  _vm._m(0),
+                  _vm._m(1),
                   _vm._v(
                     _vm._s(_vm.restaurante.telefono) +
                       "  \n                            "
@@ -46452,10 +46453,10 @@ var render = function() {
                   _c(
                     "a",
                     { attrs: { href: _vm.direccionMaps, target: "_alt" } },
-                    [_vm._m(1), _vm._v(_vm._s(_vm.restaurante.direccion))]
+                    [_vm._m(2), _vm._v(_vm._s(_vm.restaurante.direccion))]
                   ),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _vm._m(3),
                   _vm._v(_vm._s(_vm.restaurante.ciudad))
                 ]
               )
@@ -46496,10 +46497,11 @@ var render = function() {
               _c(
                 "p",
                 {
-                  staticClass: "title has-text-centered is-size-4 has-text-info"
+                  staticClass:
+                    "title has-text-centered is-size-4  has-text-grey-dark"
                 },
                 [
-                  _vm._m(3),
+                  _vm._m(4),
                   _vm._v("\n                            Platos del día en "),
                   _c("span", { staticClass: "is-capitalized" }, [
                     _vm._v(_vm._s(_vm.restaurante.nombre))
@@ -46560,7 +46562,7 @@ var render = function() {
                   staticClass: "button is-danger",
                   attrs: { href: _vm.direccionMaps, target: "_alt" }
                 },
-                [_vm._m(4), _vm._v(" "), _c("span", [_vm._v("Como Llegar")])]
+                [_vm._m(5), _vm._v(" "), _c("span", [_vm._v("Como Llegar")])]
               ),
               _vm._v(" "),
               _c(
@@ -46573,7 +46575,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._m(5), _vm._v(" "), _c("span", [_vm._v("Menu Completo")])]
+                [_vm._m(6), _vm._v(" "), _c("span", [_vm._v("Menu Completo")])]
               )
             ])
           ]),
@@ -46588,7 +46590,7 @@ var render = function() {
                         "title has-text-centered is-size-5 has-text-success"
                     },
                     [
-                      _vm._m(6),
+                      _vm._m(7),
                       _vm._v(
                         "\n                            Lugares que te pueden interesar en "
                       ),
@@ -46620,17 +46622,17 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "is-size-7" }, [
-                              _vm._m(7, true),
+                              _vm._m(8, true),
                               _vm._v(
                                 _vm._s(otroRestaurante.telefono) +
                                   "  \n                                            "
                               ),
-                              _vm._m(8, true),
+                              _vm._m(9, true),
                               _vm._v(
                                 _vm._s(otroRestaurante.direccion) +
                                   "\n                                            "
                               ),
-                              _vm._m(9, true),
+                              _vm._m(10, true),
                               _vm._v(
                                 _vm._s(otroRestaurante.ciudad) +
                                   "\n                                        "
@@ -46669,6 +46671,14 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-map-marker-alt" })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -46799,7 +46809,8 @@ var render = function() {
                             _vm._s(_vm.datosSector.nombre) +
                             "\n                                "
                         ),
-                        _vm.restaurante.local !== "null"
+                        _vm.restaurante.local !== "null" ||
+                        _vm.restaurante.local !== ""
                           ? _c("span", [
                               _vm._v("Local " + _vm._s(_vm.restaurante.local))
                             ])
