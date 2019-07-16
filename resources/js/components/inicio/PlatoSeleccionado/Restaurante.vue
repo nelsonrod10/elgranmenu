@@ -30,14 +30,12 @@
                             <ul>
                                 <li v-for="platoDia in menu.delDia">
                                     <div class="columns is-vcentered">
-                                        <div class="column is-8">
+                                        <div class="column is-9">
                                             <div><b>{{platoDia.nombre}}</b></div>
                                             <div class="is-size-7">{{platoDia.descripcion}}. <b>$ {{platoDia.precio}}</b></div>    
                                             <div class="has-text-danger is-capitalized is-italic help">Plato {{platoDia.tipo_plato}}</div>
-                                        </div>
-                                        <div class="column">
                                             <a class="button is-success is-small" v-on:click="$emit('ver-otro-plato',restaurante,platoDia)">Ver más</a>
-                                        </div>    
+                                        </div>
                                     </div>
                                 </li>
                             </ul>
@@ -75,7 +73,13 @@
                             </a>
                         </div>
                     </div>
-                    
+                    <otros-restaurantes
+                        :restaurante = "restaurante"
+                        :datosSector = "datosSector"
+                        :otrosRestaurantesSector="otrosRestaurantesSector"
+                        v-on:visitar-otro-restaurante="VisitarOtroRestaurante"   
+                    >
+                    </otros-restaurantes>    
                 </div>
             </div>
             
@@ -85,18 +89,22 @@
 
 <script>
     import axios from "axios"
+    import OtrosRestaurantes from './OtrosRestaurantes.vue';
 
     export default {
         mounted() {
         },
         components: {
+            otrosRestaurantes : OtrosRestaurantes
         },
         created(){
-            this.VerMenu()
+            this.VerMenu(),
+            this.OtrosRestaurantesDelSector()
         },
         data(){
             return{
                 menu:{},
+                otrosRestaurantesSector:{},
                 datosSector:{},
                 direccionMaps:'https://www.google.com.co/maps/place/'+this.restaurante.direccion+','+this.restaurante.ciudad+'?hl=es',
             }
@@ -112,6 +120,21 @@
                     console.log(error)
                 })
             },
+
+            OtrosRestaurantesDelSector(){
+                axios.get('otros-restaurantes-del-sector/'+this.restaurante.sector_id)
+                .then(response => {
+                    this.otrosRestaurantesSector = response.data.restaurantes;
+                    this.datosSector = response.data.sector;
+                })    
+                .catch(error => {
+                    console.log(error)
+                })
+            },
+
+            VisitarOtroRestaurante(restaurante){
+                this.$emit('visitar-restaurante',restaurante);
+            }    
         },
         props:{
             restaurante:{ 

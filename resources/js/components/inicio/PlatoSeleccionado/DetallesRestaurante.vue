@@ -61,11 +61,13 @@
                         </div>
                     </div>
                     <div class="columns is-centered is-mobile">
-                        <div class="column is-6 has-text-centered">
+                        <div class="column has-text-centered">
                             <a class="button is-danger" v-bind:href="direccionMaps" target="_alt">
                                 <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
                                 <span>Como Llegar</span>
                             </a>
+                        </div>
+                        <div class="column has-text-centered">
                             <a class="button is-link" v-on:click="$emit('visitar-restaurante',restaurante)">
                                 <span class="icon"><i class="fas fa-list"></i></span>
                                 <span>Menu Completo</span>
@@ -73,33 +75,13 @@
                         </div>
                     </div>
 
-                    <div class="columns is-centered" v-if="datosSector.tipo">
-                        <div class="column">
-                            <p class="title has-text-centered is-size-5 has-text-success">
-                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                                Lugares que te pueden interesar en <span v-if="datosSector.tipo !== 'Zona o Sector'">{{datosSector.tipo}}</span> {{datosSector.nombre}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="columns is-centered">
-                        <div class="column is-6">
-                            <ul>
-                                <li v-for="otroRestaurante in otrosRestaurantesSector">
-                                    <div v-if="otroRestaurante.id !== restaurante.id" class="columns is-vcentered" >
-                                        <div class="column is-8">
-                                            <div><b>{{otroRestaurante.nombre}}</b></div>
-                                            <div class="is-size-7">
-                                                <span class="icon"><i class="fas fa-phone"></i></span>{{ otroRestaurante.telefono }}  
-                                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ otroRestaurante.direccion }}
-                                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ otroRestaurante.ciudad }}
-                                            </div>    
-                                            <a class="button is-info is-small" v-on:click="$emit('visitar-restaurante',otroRestaurante)">Visitar</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <otros-restaurantes
+                        :restaurante = "restaurante"
+                        :datosSector = "datosSector"
+                        :otrosRestaurantesSector="otrosRestaurantesSector"
+                        v-on:visitar-otro-restaurante="VisitarOtroRestaurante"   
+                    >
+                    </otros-restaurantes>    
                     
                 </div>
             </div>
@@ -110,11 +92,13 @@
 
 <script>
     import axios from "axios"
+    import OtrosRestaurantes from './OtrosRestaurantes.vue';
 
     export default {
         mounted() {
         },
         components: {
+            otrosRestaurantes : OtrosRestaurantes
         },
         created(){
             this.OtrosPlatosDelDia(),
@@ -148,6 +132,10 @@
                 .catch(error => {
                     console.log(error)
                 })
+            },
+            
+            VisitarOtroRestaurante(restaurante){
+                this.$emit('visitar-restaurante',restaurante);
             }
 
         },
