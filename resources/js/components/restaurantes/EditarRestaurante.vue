@@ -1,10 +1,10 @@
 <template>
     <div>
-        <form name="frm-crear-restaurante" method="post" v-on:submit.prevent="CrearRestaurante">
+        <form name="frm-editar-restaurante" method="post" v-on:submit.prevent="EditarRestaurante">
             <div class="columns">
                 <div class="column ">
                     <div class="field  has-text-centered">
-                        <label class="title is-size-4">Datos Generales</label>
+                        <label class="title is-size-4">Editar Datos {{restaurante.nombre}}</label>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     <div class="field">
                         <label class="label" for="telefono">Teléfono (Domicilios)</label>
                         <div class="control has-icons-left">
-                            <input id="telefono" name="telefono" required v-model="datosFrm.telefono" class="input" type="number" placeholder="Número Telefónico">
+                            <input id="telefono" name="telefono" v-model="datosFrm.telefono" class="input" type="number" placeholder="Número Telefónico">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-phone"></i>
                             </span>
@@ -48,7 +48,7 @@
                     <div class="field">
                         <label class="label" for="celular">Celular</label>
                         <div class="control has-icons-left">
-                            <input id="celular" name="celular" required v-model="datosFrm.celular" class="input" type="number" placeholder="Número Celular">
+                            <input id="celular" name="celular" v-model="datosFrm.celular" class="input" type="number" placeholder="Número Celular">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-mobile-alt"></i>
                             </span>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 
-                <div v-if="flagSectorSeleccionado" class="column" >
+                <div class="column" >
                     <div class="field">
                         <label class="label" for="sector">Zona, Sector o Lugar</label>
                         <div class="control has-icons-left">
@@ -83,16 +83,16 @@
                         </div>
                     </div>    
                 </div>
-                <div v-else class="column">
+                <!--<div class="column">
                     <div class="field">
                         <label class="label" for="ciudad">Buscar Sectores en {{datosFrm.ciudad}}</label>
                         <a class="button is-link " v-on:click="CargarSectores()">Buscar Sectores</a>
                     </div>
                     
-                </div>
+                </div>-->
             </div>    
 
-            <div v-if="flagSectorSeleccionado" class="columns">
+            <div class="columns">
                 <div class="column is-6">
                     <div class="field">
                         <label class="label" for="direccion">Dirección</label>
@@ -165,20 +165,18 @@
                               Si
                             </label>
                             <label class="radio">
-                                <input id="vegano_no" type="radio" v-model="datosFrm.vegano" value="no" >
+                                <input id="vegano_no" type="radio" v-model="datosFrm.vegano" value="no">
                               No
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
-            <div v-if="faltanDatos" class="notification is-danger">
-                Existen algunos datos sin diligenciar.
-            </div>
+
 
             <div class="field is-grouped">
               <div class="control ">
-                  <button type="submit" class="button is-primary">Crear</button>
+                  <button type="submit" class="button is-primary">Guardar Cambios</button>
               </div>
               <div class="control">
                   <a v-bind:href="this.routecancelar" class="button is-text">Cancelar</a>
@@ -241,6 +239,10 @@
     
     export default {
         props: {
+            restaurante:{
+                type:Object,
+                required:true
+            },
             routecancelar:{
                 type:String,
                 required:true
@@ -254,19 +256,18 @@
                 nombreSector:'',
                 flagSectorSeleccionado:false,
                 flagDisableDireccion:false,
-                faltanDatos:false,
                 datosFrm:{
-                    nombre      :'',
-                    nit         :'',
-                    telefono    :'',
-                    celular     :'',
-                    ciudad      :'',
-                    sector      :{},
-                    local       :'',
-                    direccion   :'',
-                    tradicional :'',
-                    vegetariano :'',
-                    vegano      :'',     
+                    nombre      :this.restaurante.nombre,
+                    nit         :this.restaurante.nit,
+                    telefono    :this.restaurante.telefono,
+                    celular     :this.restaurante.celular,
+                    ciudad      :this.restaurante.ciudad,
+                    sector      :this.restaurante.sector_id,
+                    local       :this.restaurante.local,
+                    direccion   :this.restaurante.direccion,
+                    tradicional :this.restaurante.tradicional,
+                    vegetariano :this.restaurante.vegetariano,
+                    vegano      :this.restaurante.vegano,     
                 }
             }
         },
@@ -279,12 +280,25 @@
         },
 
         created(){
-            
+            this.DatosSectorActual();
         },
 
         methods:{
+            DatosSectorActual(){
+                axios.get(`../../data-sector-actual/${this.datosFrm.sector}`)
+                .then(response => {
+                    if(this.datosFrm.sector === '0'){
+                        this.SectorSeleccionado(0,'Ninguno',null,null);
+                    }else{
+                        this.SectorSeleccionado(response.data.id, response.data.nombre,response.data.direccion,response.data.tipo);
+                    }
+                    
+                }).catch(error => {
+                    
+                })
+            },
+            
             SectorSeleccionado(id, nombre,direccion,tipo){
-                this.datosFrm.direccion ="";
                 this.flagSectorSeleccionado=false;
                 this.flagDisableDireccion=false;
 
@@ -299,7 +313,7 @@
             },
             
             CargarSectores(){
-                axios.get(`sectores-por-ciudad/${this.datosFrm.ciudad}`)
+                axios.get(`../../sectores-por-ciudad/${this.datosFrm.ciudad}`)
                 .then(response => {
                     this.sectores = response.data;
                     this.modalSectores = 'modal is-active';
@@ -311,13 +325,8 @@
             },
             
 
-            CrearRestaurante(){
-                if(this.datosFrm.tradicional === '' || this.datosFrm.vegetariano === '' || this.datosFrm.vegano === ''){
-                    this.faltanDatos=true;
-                    return;
-                }
-                
-                axios.post('gestion-restaurantes',{
+            EditarRestaurante(){
+                axios.put(`../../gestion-restaurantes/${this.restaurante.id}`,{
                     nombre      :this.datosFrm.nombre,
                     nit         :this.datosFrm.nit,
                     telefono    :this.datosFrm.telefono,

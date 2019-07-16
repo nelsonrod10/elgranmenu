@@ -28,6 +28,7 @@ Vue.component('platos-menu', require('./components/restaurantes/PlatosMenu.vue')
 Vue.component('eliminar-plato', require('./components/restaurantes/EliminarPlato.vue').default);
 Vue.component('editar-plato', require('./components/restaurantes/EditarPlato.vue').default);
 Vue.component('crear-restaurante', require('./components/restaurantes/CrearRestaurante.vue').default);
+Vue.component('editar-restaurante', require('./components/restaurantes/EditarRestaurante.vue').default);
 Vue.component('sectores', require('./components/SuperAdmin/Sectores/Index.vue').default);
 
 /**

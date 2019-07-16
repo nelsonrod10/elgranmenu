@@ -27,4 +27,8 @@ class Restaurante extends Model
     public function platosDelDia(){
         return $this->hasMany(\App\Menus\PlatosDelDia::class);
     }
+    
+    public function sector(){
+        return $this->hasOne(\App\SuperAdmin\SectoresSugerido::class,'id','sector_id');
+    }
 }

@@ -22,7 +22,21 @@
                             </div>
                             <div class="column">
                                 <label class="label">Dirección: </label>
-                                <span>{{ $restaurante->direccion }}</span>
+                                @if($sector)
+                                    <div>
+                                        @if($sector->tipo !== 'Zona o Sector')
+                                            <span>{{$sector->tipo}}</span>
+                                        @endif
+                                    {{$sector->nombre}}
+                                    </div>    
+                                @endif
+                                <div>
+                                    {{ $restaurante->direccion }}
+                                    @if($restaurante->local)
+                                        <span>, Local {{$restaurante->local}}</span>    
+                                    @endif
+                                </div>
+                                
                             </div>
                             <div class="column">
                                 <label class="label">Ciudad: </label>

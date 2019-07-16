@@ -29,8 +29,8 @@ Route::get('/buscar-plato-del-dia/{q}', 'Menus\PlatosDelDiaController@index');
 
 Route::get('/restaurantes-plato-del-dia/{platoSeleccionado}','Menus\PlatosDelDiaController@buscarRestaurantes');
 Route::get('/otros-platos-del-dia/{restaurante}/{platoActual}','Menus\PlatosDelDiaController@otrosPlatos');
-Route::get('/otros-restaurantes-del-dia/{platoActual}','Menus\PlatosDelDiaController@buscarRestaurantes');
-Route::get('/ver-menu-restaurante/{restaurante}','Menus\PlatosDelDiaController@menuRestaurantes');
+Route::get('/otros-restaurantes-del-sector/{idSector}','Menus\PlatosDelDiaController@buscarOtrosRestaurantes');
+Route::get('/ver-menu-restaurante/{idRestaurante}','Menus\PlatosDelDiaController@menuRestaurantes');
 Route::get('/ver-menu-general/{tipo}','Menus\MenusController@index');    
 
 Route::get('/restaurantes', function () {
@@ -50,6 +50,7 @@ Route::prefix('administrador')->middleware('auth')->group(function () {
         'create'
     ]);
     Route::get('/sectores-por-ciudad/{ciudad}', 'SuperAdmin\SectoresController@sectoresPorCiudad');
+    Route::get('/data-sector-actual/{id}', 'SuperAdmin\SectoresController@show');
     
     Route::resource('gestion-carta','Menus\PlatosCartasController')->except([
         'index','create','store'

@@ -10,7 +10,8 @@
                 
                 <div class="column">
                     <div class="box">
-                        <form name="frm-update-restaurante" method="post" action="{{route('gestion-restaurantes.update',$restaurante)}}">
+                        <editar-restaurante :restaurante="{{$restaurante}}"  :routecancelar="'{{route('gestion-restaurantes.index')}}'"></editar-restaurante>    
+                        <!--<form name="frm-update-restaurante" method="post" action="{{route('gestion-restaurantes.update',$restaurante)}}">
                             @method('PUT')
                             @csrf
                         <div class="columns">
@@ -105,11 +106,11 @@
                                     <label class="label" for="tradicional">Tradicional</label>
                                     <div class="control">
                                         <label class="radio">
-                                            <input id="tradicional" name="tradicional" type="radio" value="si" <?php echo ($restaurante->tradicional == 'si')?'checked':''?>>
+                                            <input id="tradicional" name="tradicional" type="radio" value="si" <?php ($restaurante->tradicional == 'si')?'checked':''?>>
                                           Si
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" name="tradicional" value="no" <?php echo ($restaurante->tradicional == 'no')?'checked':''?>>
+                                            <input type="radio" name="tradicional" value="no" <?php ($restaurante->tradicional == 'no')?'checked':''?>>
                                           No
                                         </label>
                                     </div>
@@ -124,7 +125,7 @@
                                           Si
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" name="vegetariano" value="no" <?php echo ($restaurante->vegetariano == 'no')?'checked':''?>>
+                                            <input type="radio" name="vegetariano" value="no" <?php ($restaurante->vegetariano == 'no')?'checked':''?>>
                                           No
                                         </label>
                                     </div>
@@ -135,11 +136,11 @@
                                     <label class="label" for="vegano">Vegano</label>
                                     <div class="control">
                                         <label class="radio">
-                                            <input id="vegano" name="vegano" type="radio" value="si" <?php echo ($restaurante->vegano == 'si')?'checked':''?>>
+                                            <input id="vegano" name="vegano" type="radio" value="si" <?php ($restaurante->vegano == 'si')?'checked':''?>>
                                           Si
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" name="vegano" value="no" <?php echo ($restaurante->vegano == 'no')?'checked':''?>>
+                                            <input type="radio" name="vegano" value="no" <?php ($restaurante->vegano == 'no')?'checked':''?>>
                                           No
                                         </label>
                                     </div>
@@ -156,7 +157,7 @@
                               <a class="button is-text" href="{{route('gestion-restaurantes.show',$restaurante)}}">Cancelar</a>
                           </div>
                         </div>
-                        </form>    
+                        </form>-->    
                     </div>
                 </div>    
             </div>

@@ -45,12 +45,12 @@ class RestaurantesController extends Controller
         $data = $request->validate([
             'nombre'        => 'string|required|unique:restaurantes,nombre',
             'nit'           => 'string|required|unique:restaurantes,nit',
-            'direccion'     => 'string|required|unique:restaurantes,direccion',
+            'direccion'     => 'string|required',
             'ciudad'        => 'string|required',
             'sector'        => 'integer|required|nullable',    
             'local'         => 'string|nullable',
-            'telefono'      => 'string|unique:restaurantes,telefono',
-            'celular'       => 'string|unique:restaurantes,celular',
+            'telefono'      => 'integer|unique:restaurantes,telefono',
+            'celular'       => 'integer|unique:restaurantes,celular',
             'tradicional'   => 'string|required',
             'vegetariano'   => 'string|required',
             'vegano'        => 'string|required',
@@ -84,7 +84,8 @@ class RestaurantesController extends Controller
     public function show($id)
     {
         $restaurante = Restaurante::find($id);
-        return view('restaurantes.administrador.show')->with(compact('restaurante'));
+        $sector = $restaurante->sector;
+        return view('restaurantes.administrador.show')->with(compact('restaurante','sector'));
     }
 
     /**
@@ -112,10 +113,12 @@ class RestaurantesController extends Controller
         
         $data = $request->validate([
             'nombre'        => 'string|required|unique:restaurantes,nombre,'.$restaurante->id,
-            'direccion'     => 'string|required|unique:restaurantes,direccion,'.$restaurante->id,
-            //'ciudad'        => 'string|required',
-            'telefono'      => 'string|unique:restaurantes,telefono,'.$restaurante->id,
-            'celular'       => 'string|unique:restaurantes,celular,'.$restaurante->id,
+            'direccion'     => 'string|required',
+            'ciudad'        => 'string|required',
+            'sector'        => 'integer|required|nullable',    
+            'local'         => 'string|nullable',
+            'telefono'      => 'integer|unique:restaurantes,telefono,'.$restaurante->id,
+            'celular'       => 'integer|unique:restaurantes,celular,'.$restaurante->id,
             'tradicional'   => 'string|required',
             'vegetariano'   => 'string|required',
             'vegano'        => 'string|required',
@@ -131,8 +134,9 @@ class RestaurantesController extends Controller
         
         $restaurante->update([
             'nombre'            =>  $data['nombre'],
-            
-            //'ciudad'            =>  $data['ciudad'],
+            'ciudad'            =>  $data['ciudad'],
+            'sector_id'         =>  (string)$data['sector'],
+            'local'             =>  ($data['local'])?$data['local']:null,
             'telefono'          =>  $data['telefono'],
             'celular'           =>  $data['celular'],
             'tradicional'       =>  $data['tradicional'],
@@ -140,7 +144,7 @@ class RestaurantesController extends Controller
             'vegano'            =>  $data['vegano'],
         ]);
         
-        return redirect()->route('gestion-restaurantes.show',$restaurante);
+        return response()->json($restaurante->id);
     }
 
     /**

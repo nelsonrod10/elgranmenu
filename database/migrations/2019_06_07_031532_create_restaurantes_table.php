@@ -18,7 +18,7 @@ class CreateRestaurantesTable extends Migration
             $table->bigInteger('administrador_id')->unsigned();
             $table->string('nombre')->unique();
             $table->bigInteger('nit')->unique()->unsigned();
-            $table->string('direccion')->unique();
+            $table->string('direccion');
             $table->string('ciudad');
             $table->string("sector_id")->nullable();
             $table->string("local")->nullable();

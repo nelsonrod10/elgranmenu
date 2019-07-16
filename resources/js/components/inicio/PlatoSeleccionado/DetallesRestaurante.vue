@@ -66,29 +66,29 @@
                         </div>
                     </div>
 
-                    <div class="columns is-centered">
+                    <div class="columns is-centered" v-if="datosSector.tipo">
                         <div class="column">
-                            <p class="title has-text-centered is-size-4 has-text-success">
+                            <p class="title has-text-centered is-size-5 has-text-success">
                                 <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                                Lugares que te pueden interesar
+                                Lugares que te pueden interesar en <span v-if="datosSector.tipo !== 'Zona o Sector'">{{datosSector.tipo}}</span> {{datosSector.nombre}}
                             </p>
                         </div>
                     </div>
                     <div class="columns is-centered">
                         <div class="column is-6">
                             <ul>
-                                <li v-for="otroRestaurante in otrosRestaurantesDia">
-                                    <div class="columns is-vcentered" v-if="otroRestaurante.restaurante.id !== restaurante.id">
+                                <li v-for="otroRestaurante in otrosRestaurantesSector">
+                                    <div v-if="otroRestaurante.id !== restaurante.id" class="columns is-vcentered" >
                                         <div class="column is-8">
-                                            <div><b>{{otroRestaurante.restaurante.nombre}}</b></div>
+                                            <div><b>{{otroRestaurante.nombre}}</b></div>
                                             <div class="is-size-7">
-                                                <span class="icon"><i class="fas fa-phone"></i></span>{{ otroRestaurante.restaurante.telefono }}  
-                                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ otroRestaurante.restaurante.direccion }}
-                                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ otroRestaurante.restaurante.ciudad }}
+                                                <span class="icon"><i class="fas fa-phone"></i></span>{{ otroRestaurante.telefono }}  
+                                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ otroRestaurante.direccion }}
+                                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ otroRestaurante.ciudad }}
                                             </div>    
                                         </div>
                                         <div class="column">
-                                            <a class="button is-info is-small" v-on:click="$emit('visitar-restaurante',otroRestaurante.restaurante)">Visitar</a>
+                                            <a class="button is-info is-small" v-on:click="$emit('visitar-restaurante',otroRestaurante)">Visitar</a>
                                         </div>    
                                     </div>
                                 </li>
@@ -113,12 +113,13 @@
         },
         created(){
             this.OtrosPlatosDelDia(),
-            this.OtrosRestaurantesDelDia()
+            this.OtrosRestaurantesDelSector()
         },
         data(){
             return{
                 otrosPlatosDia:{},
-                otrosRestaurantesDia:{},
+                otrosRestaurantesSector:{},
+                datosSector:{},
                 direccionMaps:'https://www.google.com.co/maps/place/'+this.restaurante.direccion+','+this.restaurante.ciudad+'?hl=es'
             }
         },
@@ -133,15 +134,17 @@
                 })
             },
 
-            OtrosRestaurantesDelDia(){
-                axios.get('otros-restaurantes-del-dia/'+this.platoSeleccionado.nombre)
+            OtrosRestaurantesDelSector(){
+                axios.get('otros-restaurantes-del-sector/'+this.restaurante.sector_id)
                 .then(response => {
-                    this.otrosRestaurantesDia = response.data;
+                    this.otrosRestaurantesSector = response.data.restaurantes;
+                    this.datosSector = response.data.sector;
                 })    
                 .catch(error => {
                     console.log(error)
                 })
             }
+
         },
         props:{
             platoSeleccionado:{ 

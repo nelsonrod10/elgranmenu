@@ -89,7 +89,9 @@ class SectoresController extends Controller
      */
     public function show($id)
     {
-        //
+        $sector = SectoresSugerido::find($id);
+        
+        return response()->json($sector);
     }
 
     /**

@@ -6,6 +6,13 @@
                     <div class="columns">
                         <div class="column">
                             <p class="title has-text-centered is-capitalized">{{ restaurante.nombre }}</p>
+                            <div class="columns is-centered" v-if="datosSector.tipo">
+                                <p class="title has-text-centered is-size-5">
+                                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                                    <span v-if="datosSector.tipo !== 'Zona o Sector'">{{datosSector.tipo}}</span> {{datosSector.nombre}}
+                                    <span v-if="restaurante.local !== 'null'">Local {{restaurante.local}}</span>
+                                </p>
+                            </div>
                             <p class="has-text-centered is-size-6 has-text-grey">
                                 <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
                                 <a v-bind:href="direccionMaps" target="_alt"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.direccion }}</a>
@@ -90,6 +97,7 @@
         data(){
             return{
                 menu:{},
+                datosSector:{},
                 direccionMaps:'https://www.google.com.co/maps/place/'+this.restaurante.direccion+','+this.restaurante.ciudad+'?hl=es',
             }
         },
@@ -98,6 +106,7 @@
                 axios.get('ver-menu-restaurante/'+this.restaurante.id)
                 .then(response => {
                     this.menu = response.data;
+                    this.datosSector = response.data.sector;
                 })    
                 .catch(error => {
                     console.log(error)

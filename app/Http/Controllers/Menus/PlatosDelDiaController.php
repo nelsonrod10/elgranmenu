@@ -8,6 +8,7 @@ use App\Menus\PlatosDelDia;
 use App\Menus\PlatosCarta;
 use App\Restaurantes\Restaurante;
 use App\Http\Controllers\helpers;
+use App\SuperAdmin\SectoresSugerido;
 
 class PlatosDelDiaController extends Controller
 {
@@ -72,9 +73,17 @@ class PlatosDelDiaController extends Controller
             
         }
         
-        
         return response()->json($restaurantes);
-    }   
+    }
+    
+    public function buscarOtrosRestaurantes($idSector){
+        $restaurantes= Restaurante::where('sector_id',(string)$idSector)->get();
+        $sector = SectoresSugerido::find($idSector);
+        return response()->json([
+            "restaurantes"  =>  $restaurantes,
+            "sector"        =>  $sector
+        ]);
+    }
     
     public function otrosPlatos($restaurante, $platoActual){
         date_default_timezone_set('America/Bogota');
@@ -86,20 +95,24 @@ class PlatosDelDiaController extends Controller
         return response()->json($platos);
     }
     
-    public function menuRestaurantes($restaurante){
+    public function menuRestaurantes($idRestaurante){
         date_default_timezone_set('America/Bogota');
         $objFechaActual = helpers::getDateNow();
         $fechaActual = $objFechaActual->format("Y-m-d");
         
-        $delDia = PlatosDelDia::where('restaurante_id',$restaurante)->fechaActual($fechaActual)->get();
+        $restaurante= Restaurante::find($idRestaurante);
+        $sector = SectoresSugerido::find($restaurante->sector_id);
+        
+        $delDia = PlatosDelDia::where('restaurante_id',$idRestaurante)->fechaActual($fechaActual)->get();
         $carta = PlatosCarta::where([
-            'restaurante_id'=> $restaurante,
+            'restaurante_id'=> $idRestaurante,
             'disponibilidad'=> 'Si',
             ])->get();
         
         return response()->json([
             "delDia"    =>  $delDia,
-            "carta"     =>  $carta     
+            "carta"     =>  $carta,
+            "sector"    =>  $sector
         ]);
     }
     
