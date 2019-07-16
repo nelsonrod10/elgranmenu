@@ -52,6 +52,7 @@ class PlatosDelDiaController extends Controller
             
             array_push($restaurantes, [
                 "restaurante" => $restaurante,
+                "sector"      => $restaurante->sector,
                 "plato"       => $plato         
             ]);
         }
@@ -67,6 +68,7 @@ class PlatosDelDiaController extends Controller
             if(!$exitePlatoDelDia){
                 array_push($restaurantes, [
                     "restaurante" => $restaurante,
+                    "sector"      => $restaurante->sector,
                     "plato"       => $platoCarta         
                 ]);
             }

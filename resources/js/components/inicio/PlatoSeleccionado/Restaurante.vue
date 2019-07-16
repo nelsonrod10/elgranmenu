@@ -10,7 +10,7 @@
                                 <p class="title has-text-centered is-size-5">
                                     <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
                                     <span v-if="datosSector.tipo !== 'Zona o Sector'">{{datosSector.tipo}}</span> {{datosSector.nombre}}
-                                    <span v-if="restaurante.local !== 'null' || restaurante.local !== ''">Local {{restaurante.local}}</span>
+                                    <span v-if="restaurante.local !== null || restaurante.local !== ''">Local {{restaurante.local}}</span>
                                 </p>
                             </div>
                             <p class="has-text-centered is-size-6 has-text-grey">

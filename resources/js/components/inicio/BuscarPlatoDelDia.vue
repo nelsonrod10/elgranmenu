@@ -78,18 +78,17 @@
                     </div>
                 </div>
             </div>
-        
-        <listado-restaurantes 
-            v-if="flagPlatoSeleccionado" 
-            :platoSeleccionado="buscarPlato"
-        >
-        </listado-restaurantes>
-        <busqueda-por-menu 
-            v-if="flagBusquedaPorMenu"
-            :tipoMenu="tipoBusquedaPorMenu"
-            :key="keyBuscarPorMenus"
-        >
-        </busqueda-por-menu>   
+            <listado-restaurantes 
+                v-if="flagPlatoSeleccionado" 
+                :platoSeleccionado="buscarPlato"
+            >
+            </listado-restaurantes>
+            <busqueda-por-menu 
+                v-if="flagBusquedaPorMenu"
+                :tipoMenu="tipoBusquedaPorMenu"
+                :key="keyBuscarPorMenus"
+            >
+            </busqueda-por-menu>   
         </section>
     </div>
 

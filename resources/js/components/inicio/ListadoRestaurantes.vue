@@ -1,52 +1,57 @@
 <template>
     <div>
-            <div v-if="!flagVerPlatoSeleccionado && !flagVisitarRestaurante" class="container">
-                <div class="columns">
-                    <div class="column">
-                        <p class="title has-text-centered"></p>
-                        <p class="title has-text-centered is-size-5">Restaurantes que hoy ofrecen "{{ platoSeleccionado }}"</p>
-                    </div>
-                </div>    
-                <div class="columns is-centered">
-                    <div class="column is-four-fifths">
-                        <div class="box" v-for="data in listaResultados">
-                            <div class="columns is-vcentered">
-                                <div class="column is-three-fifths">
-                                    <h1 class="title is-4 is-capitalized">{{ data.restaurante.nombre }}</h1>
-                                    <p class="title is-5 is-capitalized">{{ data.plato.nombre }}</p>
-                                    <p class="subtitle is-6">{{ data.plato.descripcion }} <span class="has-text-danger is-italic help"> ( Plato {{data.plato.tipo_plato}} ) </span></p>
-                                    <div><a>{{ data.restaurante.direccion }} - {{ data.restaurante.ciudad }}</a> | <a>{{ data.restaurante.telefono }} </a></div>
+        <div v-if="!flagVerPlatoSeleccionado && !flagVisitarRestaurante" class="container">
+            <div class="columns">
+                <div class="column">
+                    <p class="title has-text-centered"></p>
+                    <p class="title has-text-centered is-size-5">Restaurantes que hoy ofrecen "{{ platoSeleccionado }}"</p>
+                </div>
+            </div>    
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div class="box" v-for="data in listaResultados">
+                        <div class="columns is-vcentered">
+                            <div class="column is-three-fifths">
+                                <h1 class="title is-4 is-capitalized">{{ data.restaurante.nombre }}</h1>
+                                <p class="title is-5 is-capitalized">{{ data.plato.nombre }}</p>
+                                <p class="subtitle is-6">{{ data.plato.descripcion }} <span class="has-text-danger is-italic help"> ( Plato {{data.plato.tipo_plato}} ) </span></p>
+                                <div><a>{{ data.restaurante.direccion }} - {{ data.restaurante.ciudad }}</a> | <a>{{ data.restaurante.telefono }} </a></div>
+                                <div v-if="data.sector && data.sector.tipo">
+                                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                                    <span v-if="data.sector.tipo !== 'Zona o Sector'">{{data.sector.tipo}}</span> {{data.sector.nombre}}
+                                    <span v-if="data.restaurante.local !== null || data.restaurante.local !== ''">Local {{data.restaurante.local}}</span>
                                 </div>
-                                <div class="column">
-                                    <div>
-                                        <span class="icon has-text-danger is-size-6">
-                                            <i class="fas fa-dollar-sign"></i>
-                                        </span>
-                                        <span class="has-text-danger is-size-5">
-                                            <b>{{ data.plato.precio }} COP</b>
-                                        </span>
-                                    </div>
-
-                                    <!--<div>
-                                        <span class="icon has-text-success  is-size-6">
-                                            <i class="fas fa-star"></i>
-                                        </span>
-                                        <span class=" has-text-success  is-size-5">
-                                            <b>4.8</b>
-                                        </span>    
-                                    </div>-->
-                                </div>            
-
-                                <div class="column">
-                                    <div class="has-text-centered">
-                                        <a class="button is-info" v-on:click="PlatoSeleccionado(data.restaurante, data.plato)">Ver más</a>
-                                    </div>
+                            </div>
+                            <div class="column">
+                                <div>
+                                    <span class="icon has-text-danger is-size-6">
+                                        <i class="fas fa-dollar-sign"></i>
+                                    </span>
+                                    <span class="has-text-danger is-size-5">
+                                        <b>{{ data.plato.precio }} COP</b>
+                                    </span>
                                 </div>
-                            </div>    
-                        </div>
+
+                                <!--<div>
+                                    <span class="icon has-text-success  is-size-6">
+                                        <i class="fas fa-star"></i>
+                                    </span>
+                                    <span class=" has-text-success  is-size-5">
+                                        <b>4.8</b>
+                                    </span>    
+                                </div>-->
+                            </div>            
+
+                            <div class="column">
+                                <div class="has-text-centered">
+                                    <a class="button is-info" v-on:click="PlatoSeleccionado(data.restaurante, data.plato)">Ver más</a>
+                                </div>
+                            </div>
+                        </div>    
                     </div>
                 </div>
             </div>
+        </div>
         <ver-plato-seleccionado 
             v-else-if="flagVerPlatoSeleccionado" 
             :restaurante="detallesRestaurante" 

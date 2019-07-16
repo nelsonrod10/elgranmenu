@@ -2485,7 +2485,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2556,6 +2555,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _PlatoSeleccionado_DetallesRestaurante_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlatoSeleccionado/DetallesRestaurante.vue */ "./resources/js/components/inicio/PlatoSeleccionado/DetallesRestaurante.vue");
 /* harmony import */ var _PlatoSeleccionado_Restaurante_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PlatoSeleccionado/Restaurante.vue */ "./resources/js/components/inicio/PlatoSeleccionado/Restaurante.vue");
+//
+//
+//
+//
+//
 //
 //
 //
@@ -46302,12 +46306,35 @@ var render = function() {
                           _c("a", [
                             _vm._v(_vm._s(data.restaurante.telefono) + " ")
                           ])
-                        ])
+                        ]),
+                        _vm._v(" "),
+                        data.sector && data.sector.tipo
+                          ? _c("div", [
+                              _vm._m(0, true),
+                              _vm._v(" "),
+                              data.sector.tipo !== "Zona o Sector"
+                                ? _c("span", [_vm._v(_vm._s(data.sector.tipo))])
+                                : _vm._e(),
+                              _vm._v(
+                                " " +
+                                  _vm._s(data.sector.nombre) +
+                                  "\n                                "
+                              ),
+                              data.restaurante.local !== null ||
+                              data.restaurante.local !== ""
+                                ? _c("span", [
+                                    _vm._v(
+                                      "Local " + _vm._s(data.restaurante.local)
+                                    )
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e()
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "column" }, [
                         _c("div", [
-                          _vm._m(0, true),
+                          _vm._m(1, true),
                           _vm._v(" "),
                           _c(
                             "span",
@@ -46376,6 +46403,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-map-marker-alt" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon has-text-danger is-size-6" }, [
       _c("i", { staticClass: "fas fa-dollar-sign" })
     ])
@@ -46430,7 +46465,7 @@ var render = function() {
                             _vm._s(_vm.datosSector.nombre) +
                             "\n                                "
                         ),
-                        _vm.restaurante.local !== "null" ||
+                        _vm.restaurante.local !== null ||
                         _vm.restaurante.local !== ""
                           ? _c("span", [
                               _vm._v("Local " + _vm._s(_vm.restaurante.local))
@@ -46809,7 +46844,7 @@ var render = function() {
                             _vm._s(_vm.datosSector.nombre) +
                             "\n                                "
                         ),
-                        _vm.restaurante.local !== "null" ||
+                        _vm.restaurante.local !== null ||
                         _vm.restaurante.local !== ""
                           ? _c("span", [
                               _vm._v("Local " + _vm._s(_vm.restaurante.local))
