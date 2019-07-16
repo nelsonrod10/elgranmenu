@@ -2803,8 +2803,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
@@ -3000,8 +2998,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _js_components_inicio_PlatoSeleccionado_DetallesRestaurante_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/components/inicio/PlatoSeleccionado/DetallesRestaurante.vue */ "./resources/js/components/inicio/PlatoSeleccionado/DetallesRestaurante.vue");
 /* harmony import */ var _js_components_inicio_PlatoSeleccionado_Restaurante_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/inicio/PlatoSeleccionado/Restaurante.vue */ "./resources/js/components/inicio/PlatoSeleccionado/Restaurante.vue");
-//
-//
 //
 //
 //
@@ -46533,7 +46529,7 @@ var render = function() {
                 "p",
                 {
                   staticClass:
-                    "title has-text-centered is-size-4  has-text-grey-dark"
+                    "title has-text-centered is-size-5  has-text-grey-dark"
                 },
                 [
                   _vm._m(4),
@@ -46589,7 +46585,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "columns is-centered" }, [
+          _c("div", { staticClass: "columns is-centered is-mobile" }, [
             _c("div", { staticClass: "column is-6 has-text-centered" }, [
               _c(
                 "a",
@@ -46672,10 +46668,8 @@ var render = function() {
                                 _vm._s(otroRestaurante.ciudad) +
                                   "\n                                        "
                               )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "column" }, [
+                            ]),
+                            _vm._v(" "),
                             _c(
                               "a",
                               {
@@ -47111,7 +47105,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "columns is-centered" }, [
-              _c("div", { staticClass: "column is-8" }, [
+              _c("div", { staticClass: "column is-9" }, [
                 _c(
                   "ul",
                   _vm._l(_vm.listado, function(item) {
@@ -47134,10 +47128,8 @@ var render = function() {
                                 "has-text-danger is-capitalized is-italic help"
                             },
                             [_vm._v("Plato " + _vm._s(item.plato.tipo_plato))]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "column" }, [
+                          ),
+                          _vm._v(" "),
                           _c(
                             "a",
                             {

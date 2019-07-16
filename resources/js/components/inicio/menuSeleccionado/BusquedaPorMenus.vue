@@ -7,7 +7,7 @@
                     </div>
                 </div>
                 <div class="columns is-centered">
-                    <div class="column is-8">
+                    <div class="column is-9">
                         <ul>
                             <li v-for="item in listado">
                                 <div class="columns is-vcentered">
@@ -15,10 +15,8 @@
                                         <div><b>{{item.plato.nombre}}</b></div>
                                         <div class="is-size-7">{{item.plato.descripcion}}. <b>$ {{item.plato.precio}}</b></div>    
                                         <div class="has-text-danger is-capitalized is-italic help">Plato {{item.plato.tipo_plato}}</div>
-                                    </div>
-                                    <div class="column">
                                         <a class="button is-success is-small" v-on:click="VerPlato(item.restaurante,item.plato)">Ver más</a>
-                                    </div>    
+                                    </div>
                                 </div>
                             </li>
                         </ul>

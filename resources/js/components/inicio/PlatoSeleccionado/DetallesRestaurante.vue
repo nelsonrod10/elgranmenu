@@ -35,7 +35,7 @@
                     </div>
                     <div class="columns is-centered">
                         <div class="column">
-                            <p class="title has-text-centered is-size-4  has-text-grey-dark">
+                            <p class="title has-text-centered is-size-5  has-text-grey-dark">
                                 <span class="icon is-small">
                                     <i class="fas fa-utensils"></i>
                                 </span>
@@ -60,7 +60,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="columns is-centered">
+                    <div class="columns is-centered is-mobile">
                         <div class="column is-6 has-text-centered">
                             <a class="button is-danger" v-bind:href="direccionMaps" target="_alt">
                                 <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
@@ -93,10 +93,8 @@
                                                 <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ otroRestaurante.direccion }}
                                                 <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ otroRestaurante.ciudad }}
                                             </div>    
-                                        </div>
-                                        <div class="column">
                                             <a class="button is-info is-small" v-on:click="$emit('visitar-restaurante',otroRestaurante)">Visitar</a>
-                                        </div>    
+                                        </div>
                                     </div>
                                 </li>
                             </ul>
