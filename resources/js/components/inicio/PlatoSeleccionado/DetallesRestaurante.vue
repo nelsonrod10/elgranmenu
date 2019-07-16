@@ -6,6 +6,12 @@
                     <div class="columns">
                         <div class="column">
                             <p class="title has-text-centered is-capitalized has-text-link">{{ restaurante.nombre }}</p>
+                            <p class="title has-text-centered is-capitalized is-size-5 has-text-link">
+                                <span v-if="datosSector.tipo !== 'Zona o Sector'">
+                                    {{datosSector.tipo}}
+                                </span> 
+                                    {{datosSector.nombre}}
+                            </p>
                             <p class="has-text-centered is-size-6 has-text-grey">
                                 <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
                                 <a v-bind:href="direccionMaps" target="_alt"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.direccion }}</a>

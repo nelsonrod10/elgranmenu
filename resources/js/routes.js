@@ -8,7 +8,7 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path:'/restauriando/public/administrador/gestion-restaurantes/:id',
+            path:'/elgranmenu/public/administrador/gestion-restaurantes/:id',
             name:'gestion-restaurantes.show',
             component : CrearRestaurante 
         }

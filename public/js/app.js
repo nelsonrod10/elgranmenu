@@ -2794,6 +2794,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
@@ -3418,7 +3424,7 @@ __webpack_require__.r(__webpack_exports__);
         vegetariano: this.datosFrm.vegetariano,
         vegano: this.datosFrm.vegano
       }).then(function (response) {
-        window.location.href = '/restauriando/public/administrador/gestion-restaurantes/' + response.data;
+        window.location.href = '/elgranmenu/public/administrador/gestion-restaurantes/' + response.data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -4050,7 +4056,7 @@ __webpack_require__.r(__webpack_exports__);
         vegetariano: this.datosFrm.vegetariano,
         vegano: this.datosFrm.vegano
       }).then(function (response) {
-        window.location.href = '/restauriando/public/administrador/gestion-restaurantes/' + response.data;
+        window.location.href = '/elgranmenu/public/administrador/gestion-restaurantes/' + response.data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -9564,7 +9570,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#modal-sectores {\n  overflow: visible;\n.modal-card-body {\n    overflow: visible;\n}\n}\n", ""]);
+exports.push([module.i, "\n#modal-sectores {\r\n  overflow: visible;\n.modal-card-body {\r\n    overflow: visible;\n}\n}\r\n", ""]);
 
 // exports
 
@@ -9583,7 +9589,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#modal-sectores {\n  overflow: visible;\n.modal-card-body {\n    overflow: visible;\n}\n}\n", ""]);
+exports.push([module.i, "\n#modal-sectores {\r\n  overflow: visible;\n.modal-card-body {\r\n    overflow: visible;\n}\n}\r\n", ""]);
 
 // exports
 
@@ -46412,6 +46418,30 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "p",
+                {
+                  staticClass:
+                    "title has-text-centered is-capitalized is-size-5 has-text-link"
+                },
+                [
+                  _vm.datosSector.tipo !== "Zona o Sector"
+                    ? _c("span", [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.datosSector.tipo) +
+                            "\n                            "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(
+                    " \n                                " +
+                      _vm._s(_vm.datosSector.nombre) +
+                      "\n                        "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
                 { staticClass: "has-text-centered is-size-6 has-text-grey" },
                 [
                   _vm._m(0),
@@ -67592,7 +67622,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: [{
-    path: '/restauriando/public/administrador/gestion-restaurantes/:id',
+    path: '/elgranmenu/public/administrador/gestion-restaurantes/:id',
     name: 'gestion-restaurantes.show',
     component: _js_components_restaurantes_CrearRestaurante_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }]
@@ -67619,8 +67649,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\restauriando\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\restauriando\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\elgranmenu\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\elgranmenu\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
