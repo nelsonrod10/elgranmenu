@@ -58,7 +58,7 @@ class MenusController extends Controller
         $perPage = 5;
         $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
         //$entries = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
-        $entries = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage, $currentPage,[‘path’ => LengthAwarePaginator::resolveCurrentPath()] );
+        $entries = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage, $currentPage,['path' => LengthAwarePaginator::resolveCurrentPath()] );
         return response()->json($entries);
     }
 }
