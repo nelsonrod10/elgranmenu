@@ -3131,7 +3131,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -47344,12 +47343,6 @@ var render = function() {
                       "infinite-loading",
                       { on: { infinite: _vm.InfiniteHandler } },
                       [
-                        _c(
-                          "div",
-                          { attrs: { slot: "spinner" }, slot: "spinner" },
-                          [_vm._v("Estamos buscando las mejores opciones")]
-                        ),
-                        _vm._v(" "),
                         _c(
                           "div",
                           { attrs: { slot: "no-more" }, slot: "no-more" },

@@ -53,20 +53,12 @@ class MenusController extends Controller
             
         }
         
-            /*$paginate = 3;
-            $page = LengthAwarePaginator::resolveCurrentPage();
-            
-            $offSet = ($page * $paginate) - $paginate;  
-            $itemsForCurrentPage = array_slice($listadoMenus, $offSet, $paginate, true);  
-            $listadoMenus = new LengthAwarePaginator($itemsForCurrentPage, count($listadoMenus), $paginate, $page);
-            $listadoMenus = $listadoMenus->toArray();*/
-            
-            $currentPage = LengthAwarePaginator::resolveCurrentPage();
-            $col = new Collection($listadoMenus);
-            $perPage = 5;
-            $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
-            $entries = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
-            
-            return response()->json($entries);
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $col = new Collection($listadoMenus);
+        $perPage = 5;
+        $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        //$entries = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
+        $entries = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage, $currentPage,[‘path’ => LengthAwarePaginator::resolveCurrentPath()] );
+        return response()->json($entries);
     }
 }
