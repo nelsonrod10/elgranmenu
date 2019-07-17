@@ -21,7 +21,7 @@ import DatePicker from '@/js/datePicker.js'
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
+Vue.component('InfiniteLoading', require('vue-infinite-loading').default);
 Vue.component('buscar-platos-del-dia', require('./components/inicio/BuscarPlatoDelDia.vue').default);
 Vue.component('listado-restaurantes', require('./components/inicio/ListadoRestaurantes.vue').default);
 Vue.component('platos-menu', require('./components/restaurantes/PlatosMenu.vue').default);

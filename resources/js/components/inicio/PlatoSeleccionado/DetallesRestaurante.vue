@@ -61,13 +61,13 @@
                         </div>
                     </div>
                     <div class="columns is-centered is-mobile">
-                        <div class="column has-text-centered">
+                        <div class="column has-text-right">
                             <a class="button is-danger" v-bind:href="direccionMaps" target="_alt">
                                 <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
                                 <span>Como Llegar</span>
                             </a>
                         </div>
-                        <div class="column has-text-centered">
+                        <div class="column has-text-left">
                             <a class="button is-link" v-on:click="$emit('visitar-restaurante',restaurante)">
                                 <span class="icon"><i class="fas fa-list"></i></span>
                                 <span>Menu Completo</span>
