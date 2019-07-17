@@ -61,11 +61,11 @@
             visitarRestaurante : VisitarRestaurante,
         },
         created(){
-            
+
         },
         data(){
             return{
-                page: 1,
+                page: 0,
                 //list: [],
                 listado:[],
                 flagPlatoSeleccionado:false,
@@ -88,13 +88,14 @@
             },
 
             InfiniteHandler($state) {
+                this.page += 1;
                 axios.get('ver-menu-general/'+this.tipoMenu, {
                   params: {
                     page: this.page,
                   },
                 }).then(response => {
                     if (response.data.data.length) {
-                        this.page += 1;
+                        
                         this.listado=this.listado.concat(response.data.data);
                         $state.loaded();
                     } else {

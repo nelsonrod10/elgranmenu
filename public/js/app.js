@@ -3143,7 +3143,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {},
   data: function data() {
     return {
-      page: 1,
+      page: 0,
       //list: [],
       listado: [],
       flagPlatoSeleccionado: false,
@@ -3167,13 +3167,13 @@ __webpack_require__.r(__webpack_exports__);
     InfiniteHandler: function InfiniteHandler($state) {
       var _this2 = this;
 
+      this.page += 1;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('ver-menu-general/' + this.tipoMenu, {
         params: {
           page: this.page
         }
       }).then(function (response) {
         if (response.data.data.length) {
-          _this2.page += 1;
           _this2.listado = _this2.listado.concat(response.data.data);
           $state.loaded();
         } else {
