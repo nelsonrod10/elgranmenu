@@ -2791,6 +2791,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2799,7 +2800,7 @@ __webpack_require__.r(__webpack_exports__);
     otrosRestaurantes: _OtrosRestaurantes_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   created: function created() {
-    this.OtrosPlatosDelDia(), this.OtrosRestaurantesDelSector();
+    this.OtrosPlatosDelDia(), this.OtrosRestaurantesDelSector(), this.scrollToTop();
   },
   data: function data() {
     return {
@@ -2810,6 +2811,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    scrollToTop: function scrollToTop() {
+      window.scrollTo(0, 0);
+    },
     OtrosPlatosDelDia: function OtrosPlatosDelDia() {
       var _this = this;
 
@@ -2858,6 +2862,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
 //
 //
 //
@@ -3015,6 +3020,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3023,7 +3030,7 @@ __webpack_require__.r(__webpack_exports__);
     otrosRestaurantes: _OtrosRestaurantes_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   created: function created() {
-    this.VerMenu(), this.OtrosRestaurantesDelSector();
+    this.VerMenu(), this.OtrosRestaurantesDelSector(), this.scrollToTop();
   },
   data: function data() {
     return {
@@ -3034,6 +3041,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    scrollToTop: function scrollToTop() {
+      window.scrollTo(0, 0);
+    },
     VerMenu: function VerMenu() {
       var _this = this;
 
@@ -46680,44 +46690,48 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "columns is-centered" }, [
               _c("div", { staticClass: "column is-6" }, [
-                _c(
-                  "ul",
-                  _vm._l(_vm.otrosPlatosDia, function(otroPlato) {
-                    return _c("li", [
-                      _c("div", { staticClass: "columns is-vcentered" }, [
-                        _c("div", { staticClass: "column is-8" }, [
-                          _c("div", [
-                            _c("b", [_vm._v(_vm._s(otroPlato.nombre))])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "is-size-7" }, [
-                            _vm._v(_vm._s(otroPlato.descripcion))
+                _vm.otrosPlatosDia.length > 0
+                  ? _c(
+                      "ul",
+                      _vm._l(_vm.otrosPlatosDia, function(otroPlato) {
+                        return _c("li", [
+                          _c("div", { staticClass: "columns is-vcentered" }, [
+                            _c("div", { staticClass: "column is-8" }, [
+                              _c("div", [
+                                _c("b", [_vm._v(_vm._s(otroPlato.nombre))])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "is-size-7" }, [
+                                _vm._v(_vm._s(otroPlato.descripcion))
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "column" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "button is-success is-small",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.$emit(
+                                        "ver-otro-plato",
+                                        _vm.restaurante,
+                                        otroPlato
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Ver más")]
+                              )
+                            ])
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "column" }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "button is-success is-small",
-                              on: {
-                                click: function($event) {
-                                  return _vm.$emit(
-                                    "ver-otro-plato",
-                                    _vm.restaurante,
-                                    otroPlato
-                                  )
-                                }
-                              }
-                            },
-                            [_vm._v("Ver más")]
-                          )
                         ])
-                      ])
+                      }),
+                      0
+                    )
+                  : _c("p", { staticClass: "has-text-centered" }, [
+                      _vm._v("No existen más platos del día para mostrar")
                     ])
-                  }),
-                  0
-                )
               ])
             ]),
             _vm._v(" "),
@@ -46872,57 +46886,61 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "columns is-centered" }, [
       _c("div", { staticClass: "column is-6" }, [
-        _c(
-          "ul",
-          _vm._l(_vm.otrosRestaurantesSector, function(otroRestaurante) {
-            return _c("li", [
-              otroRestaurante.id !== _vm.restaurante.id
-                ? _c("div", { staticClass: "columns is-vcentered" }, [
-                    _c("div", { staticClass: "column is-8" }, [
-                      _c("div", [
-                        _c("b", [_vm._v(_vm._s(otroRestaurante.nombre))])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "is-size-7" }, [
-                        _vm._m(1, true),
-                        _vm._v(
-                          _vm._s(otroRestaurante.telefono) +
-                            "  \n                                "
-                        ),
-                        _vm._m(2, true),
-                        _vm._v(
-                          _vm._s(otroRestaurante.direccion) +
-                            "\n                                "
-                        ),
-                        _vm._m(3, true),
-                        _vm._v(
-                          _vm._s(otroRestaurante.ciudad) +
-                            "\n                            "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "button is-info is-small",
-                          on: {
-                            click: function($event) {
-                              return _vm.$emit(
-                                "visitar-otro-restaurante",
-                                otroRestaurante
-                              )
-                            }
-                          }
-                        },
-                        [_vm._v("Visitar")]
-                      )
-                    ])
-                  ])
-                : _vm._e()
+        _vm.otrosRestaurantesSector.length > 0
+          ? _c(
+              "ul",
+              _vm._l(_vm.otrosRestaurantesSector, function(otroRestaurante) {
+                return _c("li", [
+                  otroRestaurante.id !== _vm.restaurante.id
+                    ? _c("div", { staticClass: "columns is-vcentered" }, [
+                        _c("div", { staticClass: "column is-8" }, [
+                          _c("div", [
+                            _c("b", [_vm._v(_vm._s(otroRestaurante.nombre))])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "is-size-7" }, [
+                            _vm._m(1, true),
+                            _vm._v(
+                              _vm._s(otroRestaurante.telefono) +
+                                "  \n                                "
+                            ),
+                            _vm._m(2, true),
+                            _vm._v(
+                              _vm._s(otroRestaurante.direccion) +
+                                "\n                                "
+                            ),
+                            _vm._m(3, true),
+                            _vm._v(
+                              _vm._s(otroRestaurante.ciudad) +
+                                "\n                            "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "button is-info is-small",
+                              on: {
+                                click: function($event) {
+                                  return _vm.$emit(
+                                    "visitar-otro-restaurante",
+                                    otroRestaurante
+                                  )
+                                }
+                              }
+                            },
+                            [_vm._v("Visitar")]
+                          )
+                        ])
+                      ])
+                    : _vm._e()
+                ])
+              }),
+              0
+            )
+          : _c("p", { staticClass: "has-text-centered" }, [
+              _vm._v("No existen más lugares en este sector")
             ])
-          }),
-          0
-        )
       ])
     ])
   ])
@@ -47053,52 +47071,58 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "columns is-centered" }, [
               _c("div", { staticClass: "column is-8" }, [
-                _c(
-                  "ul",
-                  _vm._l(_vm.menu.delDia, function(platoDia) {
-                    return _c("li", [
-                      _c("div", { staticClass: "columns is-vcentered" }, [
-                        _c("div", { staticClass: "column is-9" }, [
-                          _c("div", [
-                            _c("b", [_vm._v(_vm._s(platoDia.nombre))])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "is-size-7" }, [
-                            _vm._v(_vm._s(platoDia.descripcion) + ". "),
-                            _c("b", [_vm._v("$ " + _vm._s(platoDia.precio))])
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "has-text-danger is-capitalized is-italic help"
-                            },
-                            [_vm._v("Plato " + _vm._s(platoDia.tipo_plato))]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "button is-success is-small",
-                              on: {
-                                click: function($event) {
-                                  return _vm.$emit(
-                                    "ver-otro-plato",
-                                    _vm.restaurante,
-                                    platoDia
-                                  )
-                                }
-                              }
-                            },
-                            [_vm._v("Ver más")]
-                          )
+                _vm.menu.delDia.length > 0
+                  ? _c(
+                      "ul",
+                      _vm._l(_vm.menu.delDia, function(platoDia) {
+                        return _c("li", [
+                          _c("div", { staticClass: "columns is-vcentered" }, [
+                            _c("div", { staticClass: "column is-9" }, [
+                              _c("div", [
+                                _c("b", [_vm._v(_vm._s(platoDia.nombre))])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "is-size-7" }, [
+                                _vm._v(_vm._s(platoDia.descripcion) + ". "),
+                                _c("b", [
+                                  _vm._v("$ " + _vm._s(platoDia.precio))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "has-text-danger is-capitalized is-italic help"
+                                },
+                                [_vm._v("Plato " + _vm._s(platoDia.tipo_plato))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "button is-success is-small",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.$emit(
+                                        "ver-otro-plato",
+                                        _vm.restaurante,
+                                        platoDia
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Ver más")]
+                              )
+                            ])
+                          ])
                         ])
-                      ])
+                      }),
+                      0
+                    )
+                  : _c("p", { staticClass: "has-text-centered" }, [
+                      _vm._v("No existen platos del día para mostrar")
                     ])
-                  }),
-                  0
-                )
               ])
             ]),
             _vm._v(" "),
@@ -47106,52 +47130,62 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "columns is-centered" }, [
               _c("div", { staticClass: "column is-8" }, [
-                _c(
-                  "ul",
-                  _vm._l(_vm.menu.carta, function(platoCarta) {
-                    return _c("li", [
-                      _c("div", { staticClass: "columns is-vcentered" }, [
-                        _c("div", { staticClass: "column is-8" }, [
-                          _c("div", [
-                            _c("b", [_vm._v(_vm._s(platoCarta.nombre))])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "is-size-7" }, [
-                            _vm._v(_vm._s(platoCarta.descripcion) + ". "),
-                            _c("b", [_vm._v("$ " + _vm._s(platoCarta.precio))])
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "has-text-danger is-capitalized is-italic help"
-                            },
-                            [_vm._v("Plato " + _vm._s(platoCarta.tipo_plato))]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "button is-success is-small",
-                              on: {
-                                click: function($event) {
-                                  return _vm.$emit(
-                                    "ver-otro-plato",
-                                    _vm.restaurante,
-                                    platoCarta
+                _vm.menu.carta.length > 0
+                  ? _c(
+                      "ul",
+                      _vm._l(_vm.menu.carta, function(platoCarta) {
+                        return _c("li", [
+                          _c("div", { staticClass: "columns is-vcentered" }, [
+                            _c("div", { staticClass: "column is-8" }, [
+                              _c("div", [
+                                _c("b", [_vm._v(_vm._s(platoCarta.nombre))])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "is-size-7" }, [
+                                _vm._v(_vm._s(platoCarta.descripcion) + ". "),
+                                _c("b", [
+                                  _vm._v("$ " + _vm._s(platoCarta.precio))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "has-text-danger is-capitalized is-italic help"
+                                },
+                                [
+                                  _vm._v(
+                                    "Plato " + _vm._s(platoCarta.tipo_plato)
                                   )
-                                }
-                              }
-                            },
-                            [_vm._v("Ver más")]
-                          )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "button is-success is-small",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.$emit(
+                                        "ver-otro-plato",
+                                        _vm.restaurante,
+                                        platoCarta
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Ver más")]
+                              )
+                            ])
+                          ])
                         ])
-                      ])
+                      }),
+                      0
+                    )
+                  : _c("p", { staticClass: "has-text-centered" }, [
+                      _vm._v("No existe una carta para mostrar")
                     ])
-                  }),
-                  0
-                )
               ])
             ]),
             _vm._v(" "),

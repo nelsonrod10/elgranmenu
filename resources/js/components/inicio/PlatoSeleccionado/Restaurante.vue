@@ -27,7 +27,7 @@
                     </div>
                     <div class="columns is-centered">
                         <div class="column is-8">
-                            <ul>
+                            <ul v-if="menu.delDia.length > 0">
                                 <li v-for="platoDia in menu.delDia">
                                     <div class="columns is-vcentered">
                                         <div class="column is-9">
@@ -39,6 +39,7 @@
                                     </div>
                                 </li>
                             </ul>
+                            <p v-else class="has-text-centered">No existen platos del día para mostrar</p>
                         </div>
                     </div>
 
@@ -49,7 +50,7 @@
                     </div>
                     <div class="columns is-centered">
                         <div class="column is-8">
-                            <ul>
+                            <ul v-if="menu.carta.length > 0">
                                 <li v-for="platoCarta in menu.carta">
                                     <div class="columns is-vcentered">
                                         <div class="column is-8">
@@ -61,6 +62,7 @@
                                     </div>
                                 </li>
                             </ul>
+                            <p v-else class="has-text-centered">No existe una carta para mostrar</p>
                         </div>
                     </div>
                     <div class="columns is-centered">
@@ -97,7 +99,8 @@
         },
         created(){
             this.VerMenu(),
-            this.OtrosRestaurantesDelSector()
+            this.OtrosRestaurantesDelSector(),
+            this.scrollToTop()
         },
         data(){
             return{
@@ -108,6 +111,9 @@
             }
         },
         methods:{
+            scrollToTop() {
+                window.scrollTo(0,0);
+            },
             VerMenu(){
                 axios.get('ver-menu-restaurante/'+this.restaurante.id)
                 .then(response => {

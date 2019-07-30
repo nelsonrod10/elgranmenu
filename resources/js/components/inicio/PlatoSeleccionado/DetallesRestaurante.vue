@@ -45,7 +45,7 @@
                     </div>
                     <div class="columns is-centered">
                         <div class="column is-6">
-                            <ul>
+                            <ul v-if="otrosPlatosDia.length > 0">
                                 <li v-for="otroPlato in otrosPlatosDia">
                                     <div class="columns is-vcentered">
                                         <div class="column is-8">
@@ -58,6 +58,7 @@
                                     </div>
                                 </li>
                             </ul>
+                            <p v-else class="has-text-centered">No existen más platos del día para mostrar</p>
                         </div>
                     </div>
                     <div class="columns is-centered is-mobile">
@@ -102,7 +103,8 @@
         },
         created(){
             this.OtrosPlatosDelDia(),
-            this.OtrosRestaurantesDelSector()
+            this.OtrosRestaurantesDelSector(),
+            this.scrollToTop()
         },
         data(){
             return{
@@ -113,6 +115,9 @@
             }
         },
         methods:{
+            scrollToTop() {
+                window.scrollTo(0,0);
+            },
             OtrosPlatosDelDia(){
                 axios.get('otros-platos-del-dia/'+this.restaurante.id+'/'+this.platoSeleccionado.id)
                 .then(response => {

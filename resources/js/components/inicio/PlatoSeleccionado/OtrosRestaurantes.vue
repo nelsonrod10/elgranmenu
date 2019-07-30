@@ -10,7 +10,7 @@
         </div>
         <div class="columns is-centered">
             <div class="column is-6">
-                <ul>
+                <ul v-if="otrosRestaurantesSector.length > 0">
                     <li v-for="otroRestaurante in otrosRestaurantesSector">
                         <div v-if="otroRestaurante.id !== restaurante.id" class="columns is-vcentered" >
                             <div class="column is-8">
@@ -25,6 +25,7 @@
                         </div>
                     </li>
                 </ul>
+                <p v-else class="has-text-centered">No existen más lugares en este sector</p>
             </div>
         </div>
     </div>
