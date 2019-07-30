@@ -18,7 +18,6 @@ class MenusController extends Controller
         date_default_timezone_set('America/Bogota');
         $objFechaActual = helpers::getDateNow();
         $fechaActual = $objFechaActual->format("Y-m-d");
-        
         $listadoMenus= [];
         
         $platosDia = PlatosDelDia::where("tipo_plato",$tipo)->fechaActual($fechaActual)->take(10)->get();
