@@ -10,6 +10,10 @@ use App\Restaurantes\Restaurante;
 use App\Http\Controllers\helpers;
 use App\SuperAdmin\SectoresSugerido;
 
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+
 class PlatosDelDiaController extends Controller
 {
     /**
@@ -75,7 +79,16 @@ class PlatosDelDiaController extends Controller
             
         }
         
-        return response()->json($restaurantes);
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $col = new Collection($restaurantes);
+        $perPage = 5;
+        $currentPageSearchResults = $col->all();
+        $test = array_slice($currentPageSearchResults, ($currentPage * $perPage) - $perPage, $perPage);
+        $paginatedItems= new LengthAwarePaginator($test , count($col), $perPage,$currentPage);
+        
+        return response()->json($paginatedItems);
+        
+        //return response()->json($restaurantes);
     }
     
     public function buscarOtrosRestaurantes($idSector){

@@ -49,6 +49,10 @@
                             </div>
                         </div>    
                     </div>
+                    <infinite-loading @infinite="InfiniteHandler">
+                        <div slot="no-more">No hay mas resulados</div>
+                        <div slot="no-results">Lo sentimos, no tenemos resultados.</div>
+                    </infinite-loading>    
                 </div>
             </div>
         </div>
@@ -85,11 +89,12 @@
         },
         data(){
             return{
+                page: 0,
                 flagVerPlatoSeleccionado:false,
                 flagVisitarRestaurante:false,
                 keyVerOtroPlato:0,
                 keyVerOtroRestaurante:0,
-                listaResultados:{},
+                listaResultados:[],
                 detallesRestaurante:{},
                 detallesPlato:{},   
                 visitarRestaurante:{}    
@@ -99,22 +104,42 @@
             
         },
         created(){
-            this.ListaRestaurantes();
+            
         },
         components: {
             verPlatoSeleccionado: PlatoSeleccionado,
             visitarRestaurante  : VisitarRestaurante,
         },
         methods:{
+
             ListaRestaurantes(){
                 axios.get('restaurantes-plato-del-dia/'+this.platoSeleccionado)
                 .then(response => {
-                    this.listaResultados = response.data;
+                    this.listaResultados = response.data.data;
                 })    
                 .catch(error => {
                     console.log(error)
                 })
                 
+            },
+
+            InfiniteHandler($state) {
+                this.page += 1;
+                axios.get('restaurantes-plato-del-dia/'+this.platoSeleccionado, {
+                  params: {
+                    page: this.page,
+                  },
+                }).then(response => {
+                    if (response.data.data.length) {
+                        this.listaResultados=this.listaResultados.concat(response.data.data);
+                        $state.loaded();
+                    } else {
+                        $state.complete();
+                    }
+                })    
+                .catch(error => {
+                    console.log(error)
+                })
             },
 
             PlatoSeleccionado(restaurante,plato){
@@ -126,7 +151,6 @@
             },
 
             VisitarRestaurante(restaurante){
-                alert("hola jeje");
                 this.keyVerOtroRestaurante +=1;
                 this.flagVerPlatoSeleccionado = false;
                 this.flagVisitarRestaurante = true;

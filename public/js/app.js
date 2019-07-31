@@ -2628,6 +2628,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2640,20 +2644,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      page: 0,
       flagVerPlatoSeleccionado: false,
       flagVisitarRestaurante: false,
       keyVerOtroPlato: 0,
       keyVerOtroRestaurante: 0,
-      listaResultados: {},
+      listaResultados: [],
       detallesRestaurante: {},
       detallesPlato: {},
       visitarRestaurante: {}
     };
   },
   mounted: function mounted() {},
-  created: function created() {
-    this.ListaRestaurantes();
-  },
+  created: function created() {},
   components: {
     verPlatoSeleccionado: _PlatoSeleccionado_DetallesRestaurante_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     visitarRestaurante: _PlatoSeleccionado_Restaurante_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -2663,7 +2666,26 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('restaurantes-plato-del-dia/' + this.platoSeleccionado).then(function (response) {
-        _this.listaResultados = response.data;
+        _this.listaResultados = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    InfiniteHandler: function InfiniteHandler($state) {
+      var _this2 = this;
+
+      this.page += 1;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('restaurantes-plato-del-dia/' + this.platoSeleccionado, {
+        params: {
+          page: this.page
+        }
+      }).then(function (response) {
+        if (response.data.data.length) {
+          _this2.listaResultados = _this2.listaResultados.concat(response.data.data);
+          $state.loaded();
+        } else {
+          $state.complete();
+        }
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2676,7 +2698,6 @@ __webpack_require__.r(__webpack_exports__);
       this.detallesPlato = plato;
     },
     VisitarRestaurante: function VisitarRestaurante(restaurante) {
-      alert("hola jeje");
       this.keyVerOtroRestaurante += 1;
       this.flagVerPlatoSeleccionado = false;
       this.flagVisitarRestaurante = true;
@@ -46402,110 +46423,137 @@ var render = function() {
               _c(
                 "div",
                 { staticClass: "column is-four-fifths" },
-                _vm._l(_vm.listaResultados, function(data) {
-                  return _c("div", { staticClass: "box" }, [
-                    _c("div", { staticClass: "columns is-vcentered" }, [
-                      _c("div", { staticClass: "column is-three-fifths" }, [
-                        _c("h1", { staticClass: "title is-4 is-capitalized" }, [
-                          _vm._v(_vm._s(data.restaurante.nombre))
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "title is-5 is-capitalized" }, [
-                          _vm._v(_vm._s(data.plato.nombre))
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "subtitle is-6" }, [
-                          _vm._v(_vm._s(data.plato.descripcion) + " "),
+                [
+                  _vm._l(_vm.listaResultados, function(data) {
+                    return _c("div", { staticClass: "box" }, [
+                      _c("div", { staticClass: "columns is-vcentered" }, [
+                        _c("div", { staticClass: "column is-three-fifths" }, [
                           _c(
-                            "span",
-                            { staticClass: "has-text-danger is-italic help" },
-                            [
-                              _vm._v(
-                                " ( Plato " +
-                                  _vm._s(data.plato.tipo_plato) +
-                                  " ) "
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", [
-                          _c("a", [
-                            _vm._v(
-                              _vm._s(data.restaurante.direccion) +
-                                " - " +
-                                _vm._s(data.restaurante.ciudad)
+                            "h1",
+                            { staticClass: "title is-4 is-capitalized" },
+                            [_vm._v(_vm._s(data.restaurante.nombre))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            { staticClass: "title is-5 is-capitalized" },
+                            [_vm._v(_vm._s(data.plato.nombre))]
+                          ),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "subtitle is-6" }, [
+                            _vm._v(_vm._s(data.plato.descripcion) + " "),
+                            _c(
+                              "span",
+                              { staticClass: "has-text-danger is-italic help" },
+                              [
+                                _vm._v(
+                                  " ( Plato " +
+                                    _vm._s(data.plato.tipo_plato) +
+                                    " ) "
+                                )
+                              ]
                             )
                           ]),
-                          _vm._v(" | "),
-                          _c("a", [
-                            _vm._v(_vm._s(data.restaurante.telefono) + " ")
+                          _vm._v(" "),
+                          _c("div", [
+                            _c("a", [
+                              _vm._v(
+                                _vm._s(data.restaurante.direccion) +
+                                  " - " +
+                                  _vm._s(data.restaurante.ciudad)
+                              )
+                            ]),
+                            _vm._v(" | "),
+                            _c("a", [
+                              _vm._v(_vm._s(data.restaurante.telefono) + " ")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          data.sector && data.sector.tipo
+                            ? _c("div", [
+                                _vm._m(0, true),
+                                _vm._v(" "),
+                                data.sector.tipo !== "Zona o Sector"
+                                  ? _c("span", [
+                                      _vm._v(_vm._s(data.sector.tipo))
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(
+                                  " " +
+                                    _vm._s(data.sector.nombre) +
+                                    "\n                                "
+                                ),
+                                data.restaurante.local !== null ||
+                                data.restaurante.local !== ""
+                                  ? _c("span", [
+                                      _vm._v(
+                                        "Local " +
+                                          _vm._s(data.restaurante.local)
+                                      )
+                                    ])
+                                  : _vm._e()
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "column" }, [
+                          _c("div", [
+                            _vm._m(1, true),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              { staticClass: "has-text-danger is-size-5" },
+                              [
+                                _c("b", [
+                                  _vm._v(_vm._s(data.plato.precio) + " COP")
+                                ])
+                              ]
+                            )
                           ])
                         ]),
                         _vm._v(" "),
-                        data.sector && data.sector.tipo
-                          ? _c("div", [
-                              _vm._m(0, true),
-                              _vm._v(" "),
-                              data.sector.tipo !== "Zona o Sector"
-                                ? _c("span", [_vm._v(_vm._s(data.sector.tipo))])
-                                : _vm._e(),
-                              _vm._v(
-                                " " +
-                                  _vm._s(data.sector.nombre) +
-                                  "\n                                "
-                              ),
-                              data.restaurante.local !== null ||
-                              data.restaurante.local !== ""
-                                ? _c("span", [
-                                    _vm._v(
-                                      "Local " + _vm._s(data.restaurante.local)
+                        _c("div", { staticClass: "column" }, [
+                          _c("div", { staticClass: "has-text-centered" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "button is-info",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.PlatoSeleccionado(
+                                      data.restaurante,
+                                      data.plato
                                     )
-                                  ])
-                                : _vm._e()
-                            ])
-                          : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "column" }, [
-                        _c("div", [
-                          _vm._m(1, true),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            { staticClass: "has-text-danger is-size-5" },
-                            [
-                              _c("b", [
-                                _vm._v(_vm._s(data.plato.precio) + " COP")
-                              ])
-                            ]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "column" }, [
-                        _c("div", { staticClass: "has-text-centered" }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "button is-info",
-                              on: {
-                                click: function($event) {
-                                  return _vm.PlatoSeleccionado(
-                                    data.restaurante,
-                                    data.plato
-                                  )
+                                  }
                                 }
-                              }
-                            },
-                            [_vm._v("Ver más")]
-                          )
+                              },
+                              [_vm._v("Ver más")]
+                            )
+                          ])
                         ])
                       ])
                     ])
-                  ])
-                }),
-                0
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "infinite-loading",
+                    { on: { infinite: _vm.InfiniteHandler } },
+                    [
+                      _c(
+                        "div",
+                        { attrs: { slot: "no-more" }, slot: "no-more" },
+                        [_vm._v("No hay mas resulados")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { attrs: { slot: "no-results" }, slot: "no-results" },
+                        [_vm._v("Lo sentimos, no tenemos resultados.")]
+                      )
+                    ]
+                  )
+                ],
+                2
               )
             ])
           ])

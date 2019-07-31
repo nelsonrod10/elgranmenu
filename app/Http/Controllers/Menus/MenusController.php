@@ -54,7 +54,7 @@ class MenusController extends Controller
         
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $col = new Collection($listadoMenus);
-        $perPage = 1;
+        $perPage = 4;
         $currentPageSearchResults = $col->all();
         //$currentPageSearchResults = $col->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
         $test = array_slice($currentPageSearchResults, ($currentPage * $perPage) - $perPage, $perPage);
