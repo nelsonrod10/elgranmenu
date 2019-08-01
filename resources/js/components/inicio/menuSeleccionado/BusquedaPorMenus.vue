@@ -1,33 +1,33 @@
 <template>
     <div>
-            <div v-if="!flagPlatoSeleccionado && !flagVisitarRestaurante" class="container">
-                <div class="columns is-centered">
-                    <div class="column is-title is-size-4  has-text-centered is-capitalized">
-                        Menus {{ tipoMenu }}.
-                    </div>
+        <div v-if="!flagPlatoSeleccionado && !flagVisitarRestaurante" class="container">
+            <div class="columns is-centered">
+                <div class="column is-title is-size-4  has-text-centered is-capitalized">
+                    Menus {{ tipoMenu }}.
                 </div>
-                <div class="columns is-centered">
-                    <div class="column is-9">
-                        <ul>
-                            <li v-for="item in listado">
-                                <div class="columns is-vcentered">
-                                    <div class="column is-8">
-                                        <div v-if="item.plato"><b>{{item.plato.nombre}}</b></div>
-                                        <div class="is-size-7">{{item.plato.descripcion}}. <b>$ {{item.plato.precio}}</b></div>    
-                                        <div class="has-text-danger is-capitalized is-italic help">Plato {{item.plato.tipo_plato}}</div>
-                                        <a class="button is-success is-small" v-on:click="VerPlato(item.restaurante,item.plato)">Ver más</a>
-                                    </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-9">
+                    <ul>
+                        <li v-for="item in listado">
+                            <div class="columns is-vcentered">
+                                <div class="column is-8">
+                                    <div v-if="item.plato"><b>{{item.plato.nombre}}</b></div>
+                                    <div class="is-size-7">{{item.plato.descripcion}}. <b>$ {{item.plato.precio}}</b></div>    
+                                    <div class="has-text-danger is-capitalized is-italic help">Plato {{item.plato.tipo_plato}}</div>
+                                    <a class="button is-success is-small" v-on:click="VerPlato(item.restaurante,item.plato)">Ver más</a>
                                 </div>
-                                
-                            </li>
-                            <infinite-loading @infinite="InfiniteHandler">
-                                <div slot="no-more">No hay mas resulados</div>
-                                <div slot="no-results">Lo sentimos, no tenemos resultados.</div>
-                            </infinite-loading>
-                        </ul>
-                    </div>
+                            </div>
+
+                        </li>
+                        <infinite-loading @infinite="InfiniteHandler">
+                            <div slot="no-more">No hay mas resulados</div>
+                            <div slot="no-results">Lo sentimos, no tenemos resultados.</div>
+                        </infinite-loading>
+                    </ul>
                 </div>
-            </div>    
+            </div>
+        </div>    
         <ver-plato
             v-if="flagPlatoSeleccionado"
             :platoSeleccionado = "dataPlato"

@@ -7,15 +7,15 @@
                         <div class="column">
                             <p class="title has-text-centered is-capitalized">{{ restaurante.nombre }}</p>
                             <div class="columns is-centered" v-if="datosSector.tipo">
-                                <p class="title has-text-centered is-size-5">
-                                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                                    <span v-if="datosSector.tipo !== 'Zona o Sector'">{{datosSector.tipo}}</span> {{datosSector.nombre}}
-                                    <span v-if="restaurante.local !== null || restaurante.local !== ''">Local {{restaurante.local}}</span>
-                                </p>
+                                <info-general-sector
+                                    :restaurante="restaurante" 
+                                    :sector="datosSector"
+                                >
+                                </info-general-sector>
                             </div>
                             <p class="has-text-centered is-size-6 has-text-grey">
                                 <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
-                                <a v-bind:href="direccionMaps" target="_alt"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.direccion }}</a>
+                                <a class="has-text-grey" v-bind:href="direccionMaps" target="_alt"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.direccion }}</a>
                                 <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.ciudad }}
                             </p>
                         </div>
@@ -82,7 +82,6 @@
                     </otros-restaurantes>    
                 </div>
             </div>
-            
         </div>    
     </section>
 </template>
@@ -90,12 +89,14 @@
 <script>
     import axios from "axios"
     import OtrosRestaurantes from './OtrosRestaurantes.vue';
-
+    import InfoGeneralSector from '@/js/components/inicio/Sectores/InfoGeneral.vue';
+    
     export default {
         mounted() {
         },
         components: {
-            otrosRestaurantes : OtrosRestaurantes
+            otrosRestaurantes : OtrosRestaurantes,
+            infoGeneralSector   : InfoGeneralSector
         },
         created(){
             this.VerMenu(),

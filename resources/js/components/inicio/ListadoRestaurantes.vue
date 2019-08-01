@@ -15,11 +15,13 @@
                                 <h1 class="title is-4 is-capitalized">{{ data.restaurante.nombre }}</h1>
                                 <p class="title is-5 is-capitalized">{{ data.plato.nombre }}</p>
                                 <p class="subtitle is-6">{{ data.plato.descripcion }} <span class="has-text-danger is-italic help"> ( Plato {{data.plato.tipo_plato}} ) </span></p>
-                                <div><a>{{ data.restaurante.direccion }} - {{ data.restaurante.ciudad }}</a> | <a>{{ data.restaurante.telefono }} </a></div>
+                                <div><a class="has-text-dark">{{ data.restaurante.direccion }} - {{ data.restaurante.ciudad }}</a> | <a class="has-text-dark">{{ data.restaurante.telefono }} </a></div>
                                 <div v-if="data.sector && data.sector.tipo">
-                                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                                    <span v-if="data.sector.tipo !== 'Zona o Sector'">{{data.sector.tipo}}</span> {{data.sector.nombre}}
-                                    <span v-if="data.restaurante.local !== null || data.restaurante.local !== ''">Local {{data.restaurante.local}}</span>
+                                    <info-general-sector
+                                        :restaurante="data.restaurante" 
+                                        :sector="data.sector"
+                                    >
+                                    </info-general-sector>
                                 </div>
                             </div>
                             <div class="column">
@@ -79,6 +81,7 @@
     import axios from "axios";
     import PlatoSeleccionado from './PlatoSeleccionado/DetallesRestaurante.vue';
     import VisitarRestaurante from './PlatoSeleccionado/Restaurante.vue';
+    import InfoGeneralSector from '@/js/components/inicio/Sectores/InfoGeneral.vue';
 
     export default {
         props: {
@@ -109,6 +112,7 @@
         components: {
             verPlatoSeleccionado: PlatoSeleccionado,
             visitarRestaurante  : VisitarRestaurante,
+            infoGeneralSector   : InfoGeneralSector   
         },
         methods:{
 

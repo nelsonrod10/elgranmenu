@@ -11,6 +11,10 @@ const router = new VueRouter({
             path:'/elgranmenu/public/administrador/gestion-restaurantes/:id',
             name:'gestion-restaurantes.show',
             component : CrearRestaurante 
+        },
+        {
+            path:'/ver-sectores/',
+            name:'ver-sectores'
         }
     ]
 });
