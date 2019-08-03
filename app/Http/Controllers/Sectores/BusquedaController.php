@@ -16,7 +16,6 @@ class BusquedaController extends Controller
     public function index()
     {
         $sectores = SectoresSugerido::all()->groupBy('ciudad');
-        return view('resultados_busqueda.sectores.index')->with(["sectores"=>$sectores]);
     }
 
     /**
