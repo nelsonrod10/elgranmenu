@@ -51,7 +51,7 @@ const router = new VueRouter({
                 {
                     path:'ver-plato',
                     name:'ver-plato',
-                    props : true,
+                    props : {default:true},
                     components : {
                         busquedaMenus : BusquedaMenusSecundaria,
                         default       : VerPlato
