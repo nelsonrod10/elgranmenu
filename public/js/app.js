@@ -2310,6 +2310,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
@@ -43482,93 +43486,97 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("div", { staticClass: "columns is-centered" }, [
-        _c("div", { staticClass: "column is-three-fifths" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "field has-addons" }, [
-            _c("div", { staticClass: "control is-expanded" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.buscarPlato,
-                    expression: "buscarPlato"
-                  }
-                ],
-                staticClass: "input",
-                attrs: {
-                  list: "nombres-platos",
-                  type: "text",
-                  placeholder: "Que quieres comer, que restaurante buscas"
-                },
-                domProps: { value: _vm.buscarPlato },
-                on: {
-                  keyup: _vm.BuscarPlato,
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.buscarPlato = $event.target.value
-                  }
-                }
-              }),
+  return _c("div", { staticClass: "container" }, [
+    _c("section", { staticClass: "section" }, [
+      _c(
+        "div",
+        { staticClass: "container" },
+        [
+          _c("div", { staticClass: "columns is-centered" }, [
+            _c("div", { staticClass: "column is-three-fifths" }, [
+              _vm._m(0),
               _vm._v(" "),
-              _c(
-                "datalist",
-                { attrs: { id: "nombres-platos" } },
-                [
-                  _vm._l(_vm.nombresPlatosCarta, function(platoCarta) {
-                    return _c("option", {
-                      domProps: { value: platoCarta.nombre }
-                    })
-                  }),
-                  _vm._v(" "),
-                  _vm._l(_vm.nombresPlatosDia, function(platoDia) {
-                    return _c("option", {
-                      domProps: { value: platoDia.nombre }
-                    })
-                  })
-                ],
-                2
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "control" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "button is-info",
+              _c("div", { staticClass: "field has-addons" }, [
+                _c("div", { staticClass: "control is-expanded" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.buscarPlato,
+                        expression: "buscarPlato"
+                      }
+                    ],
+                    staticClass: "input",
                     attrs: {
-                      to: {
-                        name: "listado-restaurantes",
-                        params: { platoBuscado: _vm.buscarPlato }
+                      list: "nombres-platos",
+                      type: "text",
+                      placeholder: "Que quieres comer, que restaurante buscas"
+                    },
+                    domProps: { value: _vm.buscarPlato },
+                    on: {
+                      keyup: _vm.BuscarPlato,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.buscarPlato = $event.target.value
                       }
                     }
-                  },
-                  [_vm._v("Buscar")]
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "datalist",
+                    { attrs: { id: "nombres-platos" } },
+                    [
+                      _vm._l(_vm.nombresPlatosCarta, function(platoCarta) {
+                        return _c("option", {
+                          domProps: { value: platoCarta.nombre }
+                        })
+                      }),
+                      _vm._v(" "),
+                      _vm._l(_vm.nombresPlatosDia, function(platoDia) {
+                        return _c("option", {
+                          domProps: { value: platoDia.nombre }
+                        })
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "control" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "button is-info",
+                        attrs: {
+                          to: {
+                            name: "listado-restaurantes",
+                            params: { platoBuscado: _vm.buscarPlato }
+                          }
+                        }
+                      },
+                      [_vm._v("Buscar")]
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("router-view", { attrs: { name: "busquedaMenus" } }),
-      _vm._v(" "),
-      _c("router-view")
-    ],
-    1
-  )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("router-view", { attrs: { name: "busquedaMenus" } }),
+          _vm._v(" "),
+          _c("router-view")
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {

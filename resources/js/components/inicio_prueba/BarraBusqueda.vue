@@ -1,29 +1,33 @@
 <template>
     <div class="container">
-        <div class="columns is-centered">
-            <div class="column is-three-fifths">
-                <div class="field">
-                    <div class="control">
-                        <label class="label has-text-centered">Hoy quiero comer...</label>
+        <section class="section">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-three-fifths">
+                        <div class="field">
+                            <div class="control">
+                                <label class="label has-text-centered">Hoy quiero comer...</label>
+                            </div>
+                        </div>
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input list="nombres-platos" class="input" type="text" placeholder="Que quieres comer, que restaurante buscas" v-on:keyup="BuscarPlato" v-model="buscarPlato">
+                                <datalist id="nombres-platos">
+                                    <option v-for="platoCarta in nombresPlatosCarta" :value="platoCarta.nombre"></option>
+                                    <option v-for="platoDia in nombresPlatosDia" :value="platoDia.nombre"></option>    
+                                </datalist>                     
+                            </div>
+                            <div class="control">
+                                <router-link class="button is-info" :to="{name:'listado-restaurantes',params:{platoBuscado:buscarPlato}}">Buscar</router-link>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="field has-addons">
-                    <div class="control is-expanded">
-                        <input list="nombres-platos" class="input" type="text" placeholder="Que quieres comer, que restaurante buscas" v-on:keyup="BuscarPlato" v-model="buscarPlato">
-                        <datalist id="nombres-platos">
-                            <option v-for="platoCarta in nombresPlatosCarta" :value="platoCarta.nombre"></option>
-                            <option v-for="platoDia in nombresPlatosDia" :value="platoDia.nombre"></option>    
-                        </datalist>                     
-                    </div>
-                    <div class="control">
-                        <router-link class="button is-info" :to="{name:'listado-restaurantes',params:{platoBuscado:buscarPlato}}">Buscar</router-link>
-                    </div>
-                </div>
+                <router-view  name="busquedaMenus"></router-view>
+                <router-view></router-view>
             </div>
-        </div>
-        <router-view  name="busquedaMenus"></router-view>
-        <router-view></router-view>
-    </div>
+        </section>
+    </div>    
 </template>
 
 <script>
