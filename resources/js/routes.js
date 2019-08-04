@@ -10,7 +10,7 @@ import ListadoRestaurantes from '@/js/components/inicio_prueba/ListadoRestaurant
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-    mode: 'history',
+    //mode: 'history',
     routes: [
         {
             path:'/elgranmenu/public/administrador/gestion-restaurantes/:id',
@@ -18,7 +18,7 @@ const router = new VueRouter({
             component : CrearRestaurante 
         },
         {
-            path:'/elgranmenu/public/',
+                path:'',
             components : {
                 default : BarraBusqueda
             },

@@ -60916,13 +60916,13 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  mode: 'history',
+  //mode: 'history',
   routes: [{
     path: '/elgranmenu/public/administrador/gestion-restaurantes/:id',
     name: 'gestion-restaurantes.show',
     component: _js_components_restaurantes_CrearRestaurante_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: '/elgranmenu/public/',
+    path: '',
     components: {
       "default": _js_components_inicio_prueba_BarraBusqueda_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
     },
