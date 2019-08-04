@@ -52,7 +52,10 @@ const router = new VueRouter({
                     path:'ver-plato',
                     name:'ver-plato',
                     props : true,
-                    component : VerPlato
+                    components : {
+                        busquedaMenus : BusquedaMenusSecundaria,
+                        default       : VerPlato
+                    }
                 }
             ]
                 

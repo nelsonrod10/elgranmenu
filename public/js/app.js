@@ -61247,7 +61247,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: 'ver-plato',
       name: 'ver-plato',
       props: true,
-      component: _js_components_inicio_prueba_PlatoSeleccionado_VerPlato_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+      components: {
+        busquedaMenus: _js_components_inicio_prueba_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+        "default": _js_components_inicio_prueba_PlatoSeleccionado_VerPlato_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+      }
     }]
     /*{
         path:'/elgranmenu/public/',
