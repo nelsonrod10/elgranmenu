@@ -1,5 +1,5 @@
 <template>
-    <section class="section">
+    <div>
         <div class="container">
             <div class="columns is-centered">
                 <div v-if="!flagRestaurantesSector" class="column is-four-fifths">
@@ -96,7 +96,7 @@
             </div>
             
         </div>    
-    </section>
+    </div>
 </template>
 
 <script>

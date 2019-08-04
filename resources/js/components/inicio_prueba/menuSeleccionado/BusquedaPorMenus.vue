@@ -38,8 +38,8 @@
 <script>
     import axios from "axios"
     import ListadoMenu from '@/js/components/inicio_prueba/menuSeleccionado/Listado.vue';
-    import PlatoSeleccionado from '@/js/components/inicio/PlatoSeleccionado/DetallesRestaurante.vue';
-    import VisitarRestaurante from '@/js/components/inicio/PlatoSeleccionado/Restaurante.vue';
+    //import PlatoSeleccionado from '@/js/components/inicio/PlatoSeleccionado/DetallesRestaurante.vue';
+    //import VisitarRestaurante from '@/js/components/inicio/PlatoSeleccionado/Restaurante.vue';
     
     export default {
         mounted() {
@@ -55,8 +55,8 @@
         },
         components: {
             listadoMenu        : ListadoMenu, 
-            verPlato           : PlatoSeleccionado,
-            visitarRestaurante : VisitarRestaurante,
+            //verPlato           : PlatoSeleccionado,
+            //visitarRestaurante : VisitarRestaurante,
         },
         created(){
             this.TipoMenu()

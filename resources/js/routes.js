@@ -6,6 +6,7 @@ import BusquedaMenusPrincipal from '@/js/components/inicio_prueba/BusquedaMenusP
 import BusquedaMenusSecundaria from '@/js/components/inicio_prueba/BusquedaMenusSecundaria.vue'
 import MenuSeleccionado from '@/js/components/inicio_prueba/menuSeleccionado/BusquedaPorMenus.vue'
 import ListadoRestaurantes from '@/js/components/inicio_prueba/ListadoRestaurantes/Show.vue'
+import VerPlato from '@/js/components/inicio_prueba/PlatoSeleccionado/VerPlato.vue'
 
 Vue.use(VueRouter);
 
@@ -32,6 +33,7 @@ const router = new VueRouter({
                 {
                     path: 'listado-restaurantes/:platoBuscado',
                     name: 'listado-restaurantes',
+                    props : true,
                     components : {
                         busquedaMenus : BusquedaMenusSecundaria,
                         default       : ListadoRestaurantes
@@ -45,10 +47,17 @@ const router = new VueRouter({
                         busquedaMenus : BusquedaMenusSecundaria,
                         default       : MenuSeleccionado
                     }
+                },
+                {
+                    path:'ver-plato',
+                    name:'ver-plato',
+                    props : true,
+                    component : VerPlato
                 }
             ]
                 
         }
+        
         /*{
             path:'/elgranmenu/public/',
             components : {
