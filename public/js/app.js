@@ -2531,7 +2531,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.page += 1;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('../restaurantes-plato-del-dia/' + this.platoSeleccionado, {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('restaurantes-plato-del-dia/' + this.platoSeleccionado, {
         params: {
           page: this.page
         }
@@ -2794,7 +2794,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.page += 1;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('../ver-menu-general/' + this.tipoMenu, {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('ver-menu-general/' + this.tipoMenu, {
         params: {
           page: this.page
         }

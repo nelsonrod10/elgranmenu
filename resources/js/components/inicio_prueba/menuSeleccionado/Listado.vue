@@ -39,7 +39,7 @@
             
             InfiniteHandler($state) {
                 this.page += 1;
-                axios.get('../ver-menu-general/'+this.tipoMenu, {
+                axios.get('ver-menu-general/'+this.tipoMenu, {
                   params: {
                     page: this.page,
                   },

@@ -79,7 +79,7 @@
             
             InfiniteHandler($state) {
                 this.page += 1;
-                axios.get('../restaurantes-plato-del-dia/'+this.platoSeleccionado, {
+                axios.get('restaurantes-plato-del-dia/'+this.platoSeleccionado, {
                   params: {
                     page: this.page,
                   },
