@@ -9,12 +9,10 @@
 </template>
 
 <script>
-    import ExampleHome from '@/js/components/ejemplo/home.vue';
     export default {
         mounted() {
         },
         components: {
-            exampleHome : ExampleHome
         },
         created(){
         },
