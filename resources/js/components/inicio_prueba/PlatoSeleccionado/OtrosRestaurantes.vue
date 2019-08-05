@@ -20,7 +20,8 @@
                                     <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ otroRestaurante.direccion }}
                                     <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ otroRestaurante.ciudad }}
                                 </div>    
-                                <a class="button is-info is-small" v-on:click="$emit('visitar-otro-restaurante',otroRestaurante)">Visitar</a>
+                                <a v-if="flagOrigen == 'Restaurante'" class="button is-info is-small" v-on:click="$emit('visitar-otro-restaurante',otroRestaurante)">Visitar</a>
+                                <router-link v-if="flagOrigen == 'VerPlato'" class="button is-info is-small" :to="{name:'restaurante',params:{restaurante:otroRestaurante}}">Visitar</router-link>
                             </div>
                         </div>
                     </li>
@@ -58,7 +59,12 @@
             },
             otrosRestaurantesSector:{
                 required:true
+            },
+            flagOrigen:{
+                /*Origen = VerPlato.vue || Origen == Restaurante.vue*/
+                required:true
             }
+            
         }
     }
 </script>

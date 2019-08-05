@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div v-if="!flagVisitarRestaurante">
+    <div class="columns is-centered">
+        <div class="column is-8 ">
             <div class="columns is-centered has-text-centered title is-size-3">
                 <div class="column">
                     <span>Restaurantes  </span>
@@ -25,10 +25,10 @@
                                 </p>
                             </div>
                             <div class="column has-text-centered">
-                                <a class="button is-link is-small" v-on:click="VisitarRestaurante(item)">
+                                <router-link class="button is-link is-small" :to="{name:'restaurante',params:{restaurante:item}}">
                                     <span class="icon"><i class="fas fa-list"></i></span>
                                     <span>Menu Completo</span>
-                                </a>
+                                </router-link>
                             </div>    
                             <div class="column has-text-centered">
                                 <a class="button is-danger is-small" v-on:click="ComoLlegar(item)" v-bind:href="direccionMaps" target="_alt">
@@ -42,24 +42,16 @@
                 </div>
             </div>
         </div>    
-        <visitar-restaurante 
-            v-if="flagVisitarRestaurante" 
-            v-on:visitar-restaurante="VisitarRestaurante"
-            :restaurante="visitarRestaurante"
-            :key="keyVerOtroRestaurante"> 
-        </visitar-restaurante>
     </div>
 </template>
 
 <script>
     import axios from "axios";
-    import VisitarRestaurante from '@/js/components/inicio/PlatoSeleccionado/Restaurante.vue';
 
     export default {
         mounted() {
         },
         components: {
-            visitarRestaurante  : VisitarRestaurante
         },
         created(){
             this.GetListado()
@@ -69,7 +61,6 @@
                 listado:{},
                 direccionMaps:'',
                 visitarRestaurante:{},
-                flagVisitarRestaurante:0
             }
         },
         methods:{
@@ -88,9 +79,6 @@
             },
             
             VisitarRestaurante(restaurante){
-                this.keyVerOtroRestaurante +=1;
-                this.flagVisitarRestaurante = true;
-                this.visitarRestaurante = restaurante;
             }
         },
         props:{

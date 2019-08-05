@@ -14,6 +14,9 @@
                                 >
                                 </info-general-sector>
                             </div>
+                            <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
+                                <router-link class="" :to="{name:'sector', params:{sectorId:datosSector.id}}">Ver Sector</router-link>
+                            </div>
                             <p class="has-text-centered is-size-6 has-text-grey">
                                 <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
                                 <a class="has-text-grey" v-bind:href="direccionMaps" target="_alt"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.direccion }}</a>
@@ -35,7 +38,7 @@
                                             <div><b>{{platoDia.nombre}}</b></div>
                                             <div class="is-size-7">{{platoDia.descripcion}}. <b>$ {{platoDia.precio}}</b></div>    
                                             <div class="has-text-danger is-capitalized is-italic help">Plato {{platoDia.tipo_plato}}</div>
-                                            <a class="button is-success is-small" v-on:click="$emit('ver-otro-plato',restaurante,platoDia)">Ver más</a>
+                                            <router-link class="button is-success is-small" :to="{name:'plato-restaurante',params:{platoSeleccionado:platoDia, restaurante:restaurante}}">Ver más</router-link>
                                         </div>
                                     </div>
                                 </li>
@@ -58,7 +61,7 @@
                                             <div><b>{{platoCarta.nombre}}</b></div>
                                             <div class="is-size-7">{{platoCarta.descripcion}}. <b>$ {{platoCarta.precio}}</b></div>    
                                             <div class="has-text-danger is-capitalized is-italic help">Plato {{platoCarta.tipo_plato}}</div>
-                                            <a class="button is-success is-small" v-on:click="$emit('ver-otro-plato',restaurante,platoCarta)">Ver más</a>    
+                                            <router-link class="button is-success is-small" :to="{name:'plato-restaurante',params:{platoSeleccionado:platoCarta, restaurante:restaurante}}">Ver más</router-link>
                                         </div>
                                     </div>
                                 </li>
@@ -78,16 +81,15 @@
                         :restaurante = "restaurante"
                         :datosSector = "datosSector"
                         :otrosRestaurantesSector="otrosRestaurantesSector"
+                        :flagOrigen = "'Restaurante'"
                         v-on:visitar-otro-restaurante="VisitarOtroRestaurante"   
                     >
                     </otros-restaurantes>    
+                    <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
+                        <router-link class="" :to="{name:'sector', params:{sectorId:datosSector.id}}">Ver Sector</router-link>
+                    </div>
                 </div>
-                <div v-if="flagRestaurantesSector" class="column is-four-fifths">
-                    <restaurantes-sector
-                        :sectorId = "idMostrarSector"
-                    >
-                    </restaurantes-sector>
-                </div>
+                
             </div>
         </div>    
     </section>
@@ -149,7 +151,10 @@
             },
 
             VisitarOtroRestaurante(restaurante){
-                this.$emit('visitar-restaurante',restaurante);
+                this.restaurante = restaurante;
+                this.VerMenu();
+                this.OtrosRestaurantesDelSector();
+                this.scrollToTop();
             },
 
             MostrarSector(id){

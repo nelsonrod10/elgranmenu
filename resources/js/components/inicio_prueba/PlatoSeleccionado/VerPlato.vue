@@ -2,17 +2,20 @@
     <div>
         <div class="container">
             <div class="columns is-centered">
-                <div v-if="!flagRestaurantesSector" class="column is-four-fifths">
+                <div class="column is-four-fifths">
                     <div class="columns">
                         <div class="column">
                             <p class="title has-text-centered is-capitalized">{{ restaurante.nombre }}</p>
-                            <div class="columns is-centered" v-if="datosSector.tipo">
+                            <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
                                 <info-general-sector
                                     :restaurante="restaurante" 
                                     :sector="datosSector"
                                     v-on:mostrar-sector="MostrarSector"
                                 >
                                 </info-general-sector>
+                            </div>
+                            <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
+                                <router-link class="" :to="{name:'sector', params:{sectorId:datosSector.id}}">Ver Sector</router-link>
                             </div>
                             <p class="has-text-centered is-size-6 has-text-grey">
                                 <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
@@ -70,10 +73,10 @@
                             </a>
                         </div>
                         <div class="column has-text-left">
-                            <a class="button is-link" v-on:click="$emit('visitar-restaurante',restaurante)">
+                            <router-link class="button is-link" :to="{name:'restaurante',params:{restaurante:restaurante}}">
                                 <span class="icon"><i class="fas fa-list"></i></span>
                                 <span>Menu Completo</span>
-                            </a>
+                            </router-link>
                         </div>
                     </div>
 
@@ -81,17 +84,15 @@
                         :restaurante = "restaurante"
                         :datosSector = "datosSector"
                         :otrosRestaurantesSector="otrosRestaurantesSector"
+                        :flagOrigen = "'VerPlato'"
                         v-on:visitar-otro-restaurante="VisitarOtroRestaurante"   
                     >
                     </otros-restaurantes>    
+                    <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
+                        <router-link class="" :to="{name:'sector', params:{sectorId:datosSector.id}}">Ver Sector</router-link>
+                    </div>
+                        
                     
-                </div>
-
-                <div v-if="flagRestaurantesSector" class="column is-four-fifths">
-                    <restaurantes-sector
-                        :sectorId = "idMostrarSector"
-                    >
-                    </restaurantes-sector>
                 </div>
             </div>
             
@@ -103,7 +104,7 @@
     import axios from "axios"
     import OtrosRestaurantes from './OtrosRestaurantes.vue';
     import InfoGeneralSector from '@/js/components/inicio/Sectores/InfoGeneral.vue';
-    import RestaurantesSector from '@/js/components/inicio/Sectores/MostrarSector.vue';
+    //import RestaurantesSector from '@/js/components/inicio/Sectores/MostrarSector.vue';
 
     export default {
         mounted() {
@@ -111,7 +112,7 @@
         components: {
             otrosRestaurantes   : OtrosRestaurantes,
             infoGeneralSector   : InfoGeneralSector,
-            restaurantesSector  : RestaurantesSector  
+            //restaurantesSector  : RestaurantesSector  
         },
         created(){
             this.OtrosPlatosDelDia(),

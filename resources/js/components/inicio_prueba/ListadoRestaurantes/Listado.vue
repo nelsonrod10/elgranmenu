@@ -36,8 +36,8 @@
             </div>            
 
             <div class="column">
-                <div class="has-text-centered">
-                    <a class="button is-info" v-on:click="PlatoSeleccionado(data.restaurante, data.plato)">Ver más</a>
+                <div class="has-text-centered"> 
+                    <router-link class="button is-info" :to="{name:'plato-restaurante',params:{platoSeleccionado:data.plato, restaurante:data.restaurante}}">Ver más</router-link>
                 </div>
             </div>
         </div>    
@@ -55,7 +55,7 @@
 
     export default {
         props:{
-            platoSeleccionado:{
+            platoBuscado:{
                 type : String
             }
         },
@@ -79,7 +79,7 @@
             
             InfiniteHandler($state) {
                 this.page += 1;
-                axios.get('restaurantes-plato-del-dia/'+this.platoSeleccionado, {
+                axios.get('restaurantes-plato-del-dia/'+this.platoBuscado, {
                   params: {
                     page: this.page,
                   },

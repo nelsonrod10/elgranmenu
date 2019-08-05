@@ -6,8 +6,7 @@
                     <div v-if="item.plato"><b>{{item.plato.nombre}}</b></div>
                     <div class="is-size-7">{{item.plato.descripcion}}. <b>$ {{item.plato.precio}}</b></div>    
                     <div class="has-text-danger is-capitalized is-italic help">Plato {{item.plato.tipo_plato}}</div>
-                    <!--<a class="button is-success is-small" v-on:click="VerPlato(item.restaurante,item.plato)">Ver más</a>-->
-                    <router-link class="button is-success is-small" :to="{name:'ver-plato',params:{platoSeleccionado:item.plato, restaurante:item.restaurante}}">Ver más</router-link>
+                    <router-link class="button is-success is-small" :to="{name:'plato-restaurante',params:{platoSeleccionado:item.plato, restaurante:item.restaurante}}">Ver más</router-link>
                 </div>
             </div>
         </li>

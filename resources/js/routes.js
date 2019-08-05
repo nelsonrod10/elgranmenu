@@ -7,6 +7,8 @@ import BusquedaMenusSecundaria from '@/js/components/inicio_prueba/BusquedaMenus
 import MenuSeleccionado from '@/js/components/inicio_prueba/menuSeleccionado/BusquedaPorMenus.vue'
 import ListadoRestaurantes from '@/js/components/inicio_prueba/ListadoRestaurantes/Show.vue'
 import VerPlato from '@/js/components/inicio_prueba/PlatoSeleccionado/VerPlato.vue'
+import Restaurante from '@/js/components/inicio_prueba/PlatoSeleccionado/Restaurante.vue'
+import Sector from '@/js/components/inicio_prueba/Sectores/MostrarSector.vue'
 
 Vue.use(VueRouter);
 
@@ -31,9 +33,9 @@ const router = new VueRouter({
                     }
                 },
                 {
-                    path: 'listado-restaurantes/:platoBuscado',
+                    path: 'listado-restaurantes',
                     name: 'listado-restaurantes',
-                    props : true,
+                    props : {default:true},
                     components : {
                         busquedaMenus : BusquedaMenusSecundaria,
                         default       : ListadoRestaurantes
@@ -49,12 +51,30 @@ const router = new VueRouter({
                     }
                 },
                 {
-                    path:'ver-plato',
-                    name:'ver-plato',
+                    path:'plato-restaurante',
+                    name:'plato-restaurante',
                     props : {default:true},
                     components : {
                         busquedaMenus : BusquedaMenusSecundaria,
                         default       : VerPlato
+                    }
+                },
+                {
+                    path:'restaurante',
+                    name:'restaurante',
+                    props : {default:true},
+                    components : {
+                        busquedaMenus : BusquedaMenusSecundaria,
+                        default       : Restaurante
+                    }
+                },
+                {
+                    path:'sector',
+                    name:'sector',
+                    props : {default:true},
+                    components : {
+                        busquedaMenus : BusquedaMenusSecundaria,
+                        default       : Sector
                     }
                 }
             ]
