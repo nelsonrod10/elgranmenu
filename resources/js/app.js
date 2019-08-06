@@ -29,7 +29,7 @@ Vue.component('eliminar-plato', require('./components/restaurantes/EliminarPlato
 Vue.component('editar-plato', require('./components/restaurantes/EditarPlato.vue').default);
 Vue.component('crear-restaurante', require('./components/restaurantes/CrearRestaurante.vue').default);
 Vue.component('editar-restaurante', require('./components/restaurantes/EditarRestaurante.vue').default);
-//Vue.component('sectores', require('./components/SuperAdmin/Sectores/Index.vue').default);
+Vue.component('sectores', require('./components/SuperAdmin/Sectores/Index.vue').default);
 
 /*Vue.component('buscar-platos-del-dia', require('./components/inicio_prueba/BuscarPlatoDelDia.vue').default);*/
 
