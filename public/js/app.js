@@ -3227,6 +3227,10 @@ __webpack_require__.r(__webpack_exports__);
     routecancelar: {
       type: String,
       required: true
+    },
+    routeshow: {
+      type: String,
+      required: true
     }
   },
   data: function data() {
@@ -3285,6 +3289,8 @@ __webpack_require__.r(__webpack_exports__);
       this.modalSectores = 'modal';
     },
     CrearRestaurante: function CrearRestaurante() {
+      var _this2 = this;
+
       if (this.datosFrm.tradicional === '' || this.datosFrm.vegetariano === '' || this.datosFrm.vegano === '') {
         this.faltanDatos = true;
         return;
@@ -3303,7 +3309,9 @@ __webpack_require__.r(__webpack_exports__);
         vegetariano: this.datosFrm.vegetariano,
         vegano: this.datosFrm.vegano
       }).then(function (response) {
-        window.location.href = '/gestion-restaurantes/' + response.data;
+        //window.location.href = '//gestion-restaurantes/'+response.data;
+        window.location.href = _this2.routeshow.replace('*', response.data);
+        ;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3853,6 +3861,10 @@ __webpack_require__.r(__webpack_exports__);
     routecancelar: {
       type: String,
       required: true
+    },
+    routeshow: {
+      type: String,
+      required: true
     }
   },
   data: function data() {
@@ -3922,6 +3934,8 @@ __webpack_require__.r(__webpack_exports__);
       this.modalSectores = 'modal';
     },
     EditarRestaurante: function EditarRestaurante() {
+      var _this3 = this;
+
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("../../gestion-restaurantes/".concat(this.restaurante.id), {
         nombre: this.datosFrm.nombre,
         nit: this.datosFrm.nit,
@@ -3935,7 +3949,9 @@ __webpack_require__.r(__webpack_exports__);
         vegetariano: this.datosFrm.vegetariano,
         vegano: this.datosFrm.vegano
       }).then(function (response) {
-        window.location.href = '/elgranmenu/public/administrador/gestion-restaurantes/' + response.data;
+        //window.location = '//gestion-restaurantes/'+response.data;
+        window.location.href = _this3.routeshow.replace('*', response.data);
+        ;
       })["catch"](function (error) {
         console.log(error);
       });

@@ -71,7 +71,6 @@ class RestaurantesController extends Controller
             'vegano'            =>  $data['vegano'],
         ]);
         
-        
         return $restaurante->id;
     }
 

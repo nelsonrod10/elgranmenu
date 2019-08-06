@@ -244,6 +244,10 @@
             routecancelar:{
                 type:String,
                 required:true
+            },
+            routeshow:{
+                type:String,
+                required:true
             }
         },
 
@@ -331,7 +335,8 @@
                     vegano      :this.datosFrm.vegano,     
                 })
                 .then(response => {
-                    window.location.href = '/gestion-restaurantes/'+response.data;
+                    //window.location.href = '//gestion-restaurantes/'+response.data;
+                    window.location.href = this.routeshow.replace('*', response.data);;
                 })    
                 .catch(error => {
                     console.log(error)
