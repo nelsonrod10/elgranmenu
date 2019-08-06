@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <a class="has-text-dark has-text-centered" v-on:click="MostrarSector">
+    <div class="column">
+        <a class="has-text-dark has-text-centered">
             <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
             <span class="has-text-centered" v-if="sector.tipo !== 'Zona o Sector'">{{sector.tipo}}</span> {{sector.nombre}}
             <span class="has-text-centered" v-if="restaurante.local !== null || restaurante.local !== ''">Local {{restaurante.local}}</span>
@@ -21,9 +21,6 @@
             }
         },
         methods:{
-            MostrarSector(){
-                this.$emit("mostrar-sector",this.sector.id);
-            }
         },
         props:{
             sector:{

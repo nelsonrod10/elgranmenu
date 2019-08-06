@@ -32,7 +32,11 @@ Route::get('/otros-platos-del-dia/{restaurante}/{platoActual}','Menus\PlatosDelD
 Route::get('/otros-restaurantes-del-sector/{idSector}','Menus\PlatosDelDiaController@buscarOtrosRestaurantes');
 Route::get('/ver-menu-restaurante/{idRestaurante}','Menus\PlatosDelDiaController@menuRestaurantes');
 Route::get('/ver-menu-general/{tipo}','Menus\MenusController@index');    
-Route::resource('ver-sectores', 'Sectores\BusquedaController');
+Route::resource('ver-sectores', 'Sectores\BusquedaController')->except([
+    'index'
+]);
+Route::get('/ciudades-sectores','Sectores\BusquedaController@index');    
+Route::get('/index-sectores/{ciudad}','Sectores\BusquedaController@indexPorCiudad');    
 
 Route::get('/restaurantes', function () {
     return view('resultados_busqueda.restaurantes');

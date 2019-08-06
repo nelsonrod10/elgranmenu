@@ -6,13 +6,16 @@
                     <div class="columns">
                         <div class="column">
                             <p class="title has-text-centered is-capitalized">{{ restaurante.nombre }}</p>
-                            <div class="columns is-centered" v-if="datosSector.tipo">
+                            <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
                                 <info-general-sector
                                     :restaurante="restaurante" 
                                     :sector="datosSector"
                                     v-on:mostrar-sector="MostrarSector"
                                 >
                                 </info-general-sector>
+                            </div>
+                            <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
+                                <router-link class="is-size-6" :to="{name:'sector', params:{sectorId:datosSector.id}}">Más lugares en este sector</router-link>
                             </div>
                             <p class="has-text-centered is-size-6 has-text-grey">
                                 <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
@@ -35,7 +38,7 @@
                                             <div><b>{{platoDia.nombre}}</b></div>
                                             <div class="is-size-7">{{platoDia.descripcion}}. <b>$ {{platoDia.precio}}</b></div>    
                                             <div class="has-text-danger is-capitalized is-italic help">Plato {{platoDia.tipo_plato}}</div>
-                                            <a class="button is-success is-small" v-on:click="$emit('ver-otro-plato',restaurante,platoDia)">Ver más</a>
+                                            <router-link class="button is-success is-small" :to="{name:'plato-restaurante',params:{platoSeleccionado:platoDia, restaurante:restaurante}}">Ver más</router-link>
                                         </div>
                                     </div>
                                 </li>
@@ -58,7 +61,7 @@
                                             <div><b>{{platoCarta.nombre}}</b></div>
                                             <div class="is-size-7">{{platoCarta.descripcion}}. <b>$ {{platoCarta.precio}}</b></div>    
                                             <div class="has-text-danger is-capitalized is-italic help">Plato {{platoCarta.tipo_plato}}</div>
-                                            <a class="button is-success is-small" v-on:click="$emit('ver-otro-plato',restaurante,platoCarta)">Ver más</a>    
+                                            <router-link class="button is-success is-small" :to="{name:'plato-restaurante',params:{platoSeleccionado:platoCarta, restaurante:restaurante}}">Ver más</router-link>
                                         </div>
                                     </div>
                                 </li>
@@ -78,16 +81,15 @@
                         :restaurante = "restaurante"
                         :datosSector = "datosSector"
                         :otrosRestaurantesSector="otrosRestaurantesSector"
+                        :flagOrigen = "'Restaurante'"
                         v-on:visitar-otro-restaurante="VisitarOtroRestaurante"   
                     >
                     </otros-restaurantes>    
+                    <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
+                        <router-link class="is-size-6" :to="{name:'sector', params:{sectorId:datosSector.id}}">Más lugares en este sector</router-link>
+                    </div>
                 </div>
-                <div v-if="flagRestaurantesSector" class="column is-four-fifths">
-                    <restaurantes-sector
-                        :sectorId = "idMostrarSector"
-                    >
-                    </restaurantes-sector>
-                </div>
+                
             </div>
         </div>    
     </section>
@@ -149,7 +151,10 @@
             },
 
             VisitarOtroRestaurante(restaurante){
-                this.$emit('visitar-restaurante',restaurante);
+                this.restaurante = restaurante;
+                this.VerMenu();
+                this.OtrosRestaurantesDelSector();
+                this.scrollToTop();
             },
 
             MostrarSector(id){

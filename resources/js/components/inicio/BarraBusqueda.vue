@@ -21,7 +21,12 @@
                                 <router-link class="button is-info" :to="{name:'listado-restaurantes',params:{platoBuscado:buscarPlato}}">Buscar</router-link>
                             </div>
                         </div>
+                        <div class="">
+                            <span><b>Buscar en </b></span>
+                            <a v-for="(item, index) in listadoCiudades" v-on:click="SectoresPorCiudad(index)">{{index}} | </a> 
+                        </div>
                     </div>
+                    
                 </div>
                 <router-view  name="busquedaMenus"></router-view>
                 <router-view></router-view>
@@ -39,6 +44,7 @@
         components: {
         },
         created(){
+            this.ListadoCiudades()
         },
         data(){
             return{
@@ -46,6 +52,7 @@
                 nombresPlatosCarta    : [],
                 nombresPlatosDia      : [],
                 buscarPlato           : '',
+                listadoCiudades       : {}  
             }
         },
         methods:{
@@ -60,6 +67,20 @@
                     console.log(error)
                 })
             },
+
+            ListadoCiudades(){
+                axios.get('ciudades-sectores')
+                .then(response => {
+                    this.listadoCiudades = response.data;
+                })    
+                .catch(error => {
+                    console.log(error)
+                })
+            },
+
+            SectoresPorCiudad(ciudad){
+                this.$router.push({name:'sectores-ciudad',params:{ciudad:ciudad}});
+            }
         },
     }
 </script>

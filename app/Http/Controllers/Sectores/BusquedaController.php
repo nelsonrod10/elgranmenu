@@ -16,8 +16,15 @@ class BusquedaController extends Controller
     public function index()
     {
         $sectores = SectoresSugerido::all()->groupBy('ciudad');
+        
+        return response()->json($sectores);
     }
-
+    
+    public function indexPorCiudad($ciudad){
+        $index = SectoresSugerido::where('ciudad',$ciudad)->get();
+        
+        return response()->json($index);
+    }
     /**
      * Show the form for creating a new resource.
      *

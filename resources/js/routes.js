@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import CrearRestaurante from '@/js/components/restaurantes/CrearRestaurante.vue'
-import BarraBusqueda from '@/js/components/inicio_prueba/BarraBusqueda.vue'
-import BusquedaMenusPrincipal from '@/js/components/inicio_prueba/BusquedaMenusPrincipal.vue'
-import BusquedaMenusSecundaria from '@/js/components/inicio_prueba/BusquedaMenusSecundaria.vue'
-import MenuSeleccionado from '@/js/components/inicio_prueba/menuSeleccionado/BusquedaPorMenus.vue'
-import ListadoRestaurantes from '@/js/components/inicio_prueba/ListadoRestaurantes/Show.vue'
-import VerPlato from '@/js/components/inicio_prueba/PlatoSeleccionado/VerPlato.vue'
-import Restaurante from '@/js/components/inicio_prueba/PlatoSeleccionado/Restaurante.vue'
-import Sector from '@/js/components/inicio_prueba/Sectores/MostrarSector.vue'
+import BarraBusqueda from '@/js/components/inicio/BarraBusqueda.vue'
+import BusquedaMenusPrincipal from '@/js/components/inicio/BusquedaMenusPrincipal.vue'
+import BusquedaMenusSecundaria from '@/js/components/inicio/BusquedaMenusSecundaria.vue'
+import MenuSeleccionado from '@/js/components/inicio/menuSeleccionado/BusquedaPorMenus.vue'
+import ListadoRestaurantes from '@/js/components/inicio/ListadoRestaurantes/Show.vue'
+import VerPlato from '@/js/components/inicio/PlatoSeleccionado/VerPlato.vue'
+import Restaurante from '@/js/components/inicio/PlatoSeleccionado/Restaurante.vue'
+import Sector from '@/js/components/inicio/Sectores/MostrarSector.vue'
+import SectoresCiudad from '@/js/components/inicio/Sectores/SectoresCiudad.vue'
 
 Vue.use(VueRouter);
 
@@ -75,6 +76,14 @@ const router = new VueRouter({
                     components : {
                         busquedaMenus : BusquedaMenusSecundaria,
                         default       : Sector
+                    }
+                },
+                {
+                    path:'sectores-ciudad/:ciudad',
+                    name:'sectores-ciudad',
+                    components : {
+                        busquedaMenus : BusquedaMenusSecundaria,
+                        default       : SectoresCiudad
                     }
                 }
             ]

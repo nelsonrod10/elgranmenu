@@ -19,7 +19,7 @@
 
 <script>
     import axios from "axios";
-    import ListadoRestaurantes from '@/js/components/inicio_prueba/ListadoRestaurantes/Listado.vue';
+    import ListadoRestaurantes from '@/js/components/inicio/ListadoRestaurantes/Listado.vue';
 
     export default {
         props: {
