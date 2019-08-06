@@ -53,11 +53,11 @@
                                 <li v-for="otroPlato in otrosPlatosDia">
                                     <div class="columns is-vcentered">
                                         <div class="column is-8">
-                                            <div><b>{{otroPlato.nombre}}</b></div>
+                                            <div>{{otroPlato.nombre}}</div>
                                             <div class="is-size-7">{{otroPlato.descripcion}}</div>    
                                         </div>
                                         <div class="column">
-                                            <a class="button is-success is-small" v-on:click="$emit('ver-otro-plato',restaurante,otroPlato)">Ver más</a>
+                                            <a class="button is-success is-small" v-on:click="VerOtroPlato(otroPlato,restaurante)">Ver más</a>
                                         </div>    
                                     </div>
                                 </li>
@@ -85,7 +85,6 @@
                         :datosSector = "datosSector"
                         :otrosRestaurantesSector="otrosRestaurantesSector"
                         :flagOrigen = "'VerPlato'"
-                        v-on:visitar-otro-restaurante="VisitarOtroRestaurante"   
                     >
                     </otros-restaurantes>    
                     <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
@@ -155,13 +154,23 @@
                 })
             },
             
-            VisitarOtroRestaurante(restaurante){
+            /*VisitarOtroRestaurante(restaurante){
                 this.$emit('visitar-restaurante',restaurante);
-            },
+            },*/
             
+
             MostrarSector(id){
                 this.idMostrarSector = id;
                 this.flagRestaurantesSector = 1;
+            },
+            
+            VerOtroPlato(platoSeleccionado, restaurante){
+                alert("hola");
+                this.platoSeleccionado = platoSeleccionado;
+                this.restaurante = restaurante;
+                this.OtrosPlatosDelDia(),
+                this.OtrosRestaurantesDelSector(),
+                this.scrollToTop()
             }
 
         },

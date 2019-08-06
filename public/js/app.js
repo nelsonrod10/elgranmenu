@@ -1688,6 +1688,83 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DatePicker.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DatePicker.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var date_fns_format__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns/format */ "./node_modules/date-fns/format/index.js");
+/* harmony import */ var date_fns_format__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(date_fns_format__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      dateFormat: 'D MMM YYYY',
+      dateOne: '',
+      dateTwo: ''
+    };
+  },
+  methods: {
+    formatDates: function formatDates(dateOne, dateTwo) {
+      var formattedDates = '';
+
+      if (dateOne) {
+        formattedDates = date_fns_format__WEBPACK_IMPORTED_MODULE_0___default()(dateOne, this.dateFormat);
+      }
+
+      if (dateTwo) {
+        formattedDates += ' - ' + date_fns_format__WEBPACK_IMPORTED_MODULE_0___default()(dateTwo, this.dateFormat);
+      }
+
+      return formattedDates;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/BarraBusqueda.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inicio/BarraBusqueda.vue?vue&type=script&lang=js& ***!
@@ -2434,7 +2511,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
  //import RestaurantesSector from '@/js/components/inicio/Sectores/MostrarSector.vue';
@@ -2482,12 +2558,19 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    VisitarOtroRestaurante: function VisitarOtroRestaurante(restaurante) {
-      this.$emit('visitar-restaurante', restaurante);
-    },
+
+    /*VisitarOtroRestaurante(restaurante){
+        this.$emit('visitar-restaurante',restaurante);
+    },*/
     MostrarSector: function MostrarSector(id) {
       this.idMostrarSector = id;
       this.flagRestaurantesSector = 1;
+    },
+    VerOtroPlato: function VerOtroPlato(platoSeleccionado, restaurante) {
+      alert("hola");
+      this.platoSeleccionado = platoSeleccionado;
+      this.restaurante = restaurante;
+      this.OtrosPlatosDelDia(), this.OtrosRestaurantesDelSector(), this.scrollToTop();
     }
   },
   props: {
@@ -3221,6 +3304,1666 @@ __webpack_require__.r(__webpack_exports__);
         vegano: this.datosFrm.vegano
       }).then(function (response) {
         window.location.href = '/elgranmenu/public/administrador/gestion-restaurantes/' + response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    ingrediente: {
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      ingredientes: {}
+    };
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  components: {},
+  created: function created() {},
+  methods: {
+    BuscarIngrediente: function BuscarIngrediente() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('buscar-ingrediente/' + this.ingrediente['nombre']).then(function (response) {
+        _this.ingredientes = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    ActualizarIngrediente: function ActualizarIngrediente() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("ingrediente/".concat(this.ingrediente["id"]), {
+        nombre: this.ingrediente.nombre
+      }).then(function (response) {
+        _this2.$emit('cancelar-edicion-ingrediente');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    EliminarIngrediente: function EliminarIngrediente() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("ingrediente/".concat(this.ingrediente["id"])).then(function (response) {
+        _this3.$emit('cancelar-edicion-ingrediente');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    CancelarEdicion: function CancelarEdicion() {
+      this.$emit('cancelar-edicion-ingrediente');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarPlato.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EditarPlato.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    plato: {
+      required: true // default: 'Lucas'
+
+    }
+  },
+  data: function data() {
+    return {
+      datosFrm: {
+        idPlato: this.plato['id'],
+        nombre: this.plato['nombre'],
+        tipoMenu: this.plato['tipo_menu'],
+        precio: this.plato['precio'],
+        tipoPlato: this.plato['tipo_plato'],
+        disponibilidad: this.plato['disponibilidad'],
+        descripcion: this.plato['descripcion']
+      }
+    };
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  components: {},
+  created: function created() {},
+  methods: {
+    ActualizarPlato: function ActualizarPlato() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("plato/".concat(this.plato["id"]), {
+        nombre: this.datosFrm.nombre,
+        tipoMenu: this.datosFrm.tipoMenu,
+        precio: this.datosFrm.precio,
+        tipoPlato: this.datosFrm.tipoPlato,
+        descripcion: this.datosFrm.descripcion,
+        disponibilidad: this.datosFrm.disponibilidad
+      }).then(function (response) {
+        _this.$emit('cancelar-crud-plato');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    CancelarActualizar: function CancelarActualizar() {
+      this.$emit('cancelar-crud-plato');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    restaurante: {
+      type: Object,
+      required: true
+    },
+    routecancelar: {
+      type: String,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      modalSectores: 'modal',
+      sectores: {},
+      nombreSector: '',
+      flagSectorSeleccionado: false,
+      flagDisableDireccion: false,
+      datosFrm: {
+        nombre: this.restaurante.nombre,
+        nit: this.restaurante.nit,
+        telefono: this.restaurante.telefono,
+        celular: this.restaurante.celular,
+        ciudad: this.restaurante.ciudad,
+        sector: this.restaurante.sector_id,
+        local: this.restaurante.local,
+        direccion: this.restaurante.direccion,
+        tradicional: this.restaurante.tradicional,
+        vegetariano: this.restaurante.vegetariano,
+        vegano: this.restaurante.vegano
+      }
+    };
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  components: {},
+  created: function created() {
+    this.DatosSectorActual();
+  },
+  methods: {
+    DatosSectorActual: function DatosSectorActual() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("../../data-sector-actual/".concat(this.datosFrm.sector)).then(function (response) {
+        if (_this.datosFrm.sector === '0') {
+          _this.SectorSeleccionado(0, 'Ninguno', null, null);
+        } else {
+          _this.SectorSeleccionado(response.data.id, response.data.nombre, response.data.direccion, response.data.tipo);
+        }
+      })["catch"](function (error) {});
+    },
+    SectorSeleccionado: function SectorSeleccionado(id, nombre, direccion, tipo) {
+      this.flagSectorSeleccionado = false;
+      this.flagDisableDireccion = false;
+
+      if (tipo !== null && tipo !== "Zona o Sector") {
+        this.datosFrm.direccion = direccion;
+        this.flagDisableDireccion = true;
+      }
+
+      this.datosFrm.sector = id;
+      this.nombreSector = tipo !== null && tipo !== 'Zona o Sector' ? tipo + " " + nombre : nombre;
+      this.flagSectorSeleccionado = true;
+      this.CerrarModalSectores();
+    },
+    CargarSectores: function CargarSectores() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("../../sectores-por-ciudad/".concat(this.datosFrm.ciudad)).then(function (response) {
+        _this2.sectores = response.data;
+        _this2.modalSectores = 'modal is-active';
+      });
+    },
+    CerrarModalSectores: function CerrarModalSectores() {
+      this.modalSectores = 'modal';
+    },
+    EditarRestaurante: function EditarRestaurante() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("../../gestion-restaurantes/".concat(this.restaurante.id), {
+        nombre: this.datosFrm.nombre,
+        nit: this.datosFrm.nit,
+        telefono: this.datosFrm.telefono,
+        celular: this.datosFrm.celular,
+        ciudad: this.datosFrm.ciudad,
+        sector: this.datosFrm.sector,
+        local: this.datosFrm.local,
+        direccion: this.datosFrm.direccion,
+        tradicional: this.datosFrm.tradicional,
+        vegetariano: this.datosFrm.vegetariano,
+        vegano: this.datosFrm.vegano
+      }).then(function (response) {
+        window.location.href = '/elgranmenu/public/administrador/gestion-restaurantes/' + response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    plato: {
+      required: true // default: 'Lucas'
+
+    }
+  },
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  components: {},
+  created: function created() {},
+  methods: {
+    Eliminar: function Eliminar() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("plato/".concat(this.plato["id"])).then(function (response) {
+        _this.$emit('cancelar-crud-plato');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    CancelarEliminar: function CancelarEliminar() {
+      this.$emit('cancelar-crud-plato');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    platoDelDia: {
+      required: true
+    }
+  },
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  components: {},
+  created: function created() {},
+  methods: {
+    EliminarDelDia: function EliminarDelDia() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("plato-del-dia/".concat(this.platoDelDia["id"])).then(function (response) {
+        _this.$emit('cancelar-crud-plato');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    CancelarEliminarPlatoDelDia: function CancelarEliminarPlatoDelDia() {
+      this.$emit('cancelar-crud-plato');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _EditarIngrediente_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarIngrediente.vue */ "./resources/js/components/restaurantes/EditarIngrediente.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    platoIngredientes: {
+      required: true // default: 'Lucas'
+
+    }
+  },
+  data: function data() {
+    return {
+      flagEditarIngrediente: false,
+      plato: {},
+      datosIngrediente: {}
+    };
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  components: {
+    editarIngrediente: _EditarIngrediente_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  created: function created() {
+    this.GetListadoIngredientes();
+  },
+  methods: {
+    GetListadoIngredientes: function GetListadoIngredientes() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("listado-ingredientes/".concat(this.platoIngredientes["id"])).then(function (response) {
+        _this.plato = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    EditarIngrediente: function EditarIngrediente(ingrediente) {
+      this.datosIngrediente = ingrediente;
+      this.flagEditarIngrediente = true;
+    },
+    CancelarEdicion: function CancelarEdicion() {
+      this.flagEditarIngrediente = false;
+      this.$emit('cancelar-crud-plato');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _EliminarPlato_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EliminarPlato.vue */ "./resources/js/components/restaurantes/EliminarPlato.vue");
+/* harmony import */ var _NuevoIngrediente_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NuevoIngrediente.vue */ "./resources/js/components/restaurantes/NuevoIngrediente.vue");
+/* harmony import */ var _ListadoIngredientes_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ListadoIngredientes.vue */ "./resources/js/components/restaurantes/ListadoIngredientes.vue");
+/* harmony import */ var _EditarPlato_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EditarPlato.vue */ "./resources/js/components/restaurantes/EditarPlato.vue");
+/* harmony import */ var _PlatoDelDia_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PlatoDelDia.vue */ "./resources/js/components/restaurantes/PlatoDelDia.vue");
+/* harmony import */ var _VerificarPlatoDelDia_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./VerificarPlatoDelDia.vue */ "./resources/js/components/restaurantes/VerificarPlatoDelDia.vue");
+/* harmony import */ var _EliminarPlatoDelDia_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./EliminarPlatoDelDia.vue */ "./resources/js/components/restaurantes/EliminarPlatoDelDia.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    cartaPorFecha: {
+      required: true // default: 'Lucas'
+
+    },
+    cartaDisponible: {
+      required: true // default: 'Lucas'
+
+    }
+  },
+  data: function data() {
+    return {
+      flagAgregarIngrediente: false,
+      flagEliminarPlato: false,
+      flagEliminarPlatoDelDia: false,
+      flagEditarPlato: false,
+      flagPlatoDelDia: false,
+      keyVerificarPlatoDelDia: 0,
+      keyIngredientes: 0,
+      datosPlato: {}
+    };
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  components: {
+    eliminarPlato: _EliminarPlato_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    editarPlato: _EditarPlato_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    platoDelDia: _PlatoDelDia_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    verificarPlatoDelDia: _VerificarPlatoDelDia_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    eliminarPlatoDelDia: _EliminarPlatoDelDia_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+    agregarIngrediente: _NuevoIngrediente_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    listadoIngredientes: _ListadoIngredientes_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  created: function created() {},
+  methods: {
+    AgregarIngrediente: function AgregarIngrediente(plato) {
+      this.flagAgregarIngrediente = true;
+      this.datosPlato = plato;
+    },
+    EliminarPlato: function EliminarPlato(plato) {
+      this.flagEliminarPlato = true;
+      this.datosPlato = plato;
+    },
+    ActualizarPlato: function ActualizarPlato(plato) {
+      this.flagEditarPlato = true;
+      this.datosPlato = plato;
+    },
+    PlatoDelDia: function PlatoDelDia(plato) {
+      this.flagPlatoDelDia = true;
+      this.datosPlato = plato;
+    },
+    EliminarPlatoDelDia: function EliminarPlatoDelDia(plato) {
+      this.flagEliminarPlatoDelDia = true;
+      this.datosPlato = plato;
+    },
+    CargarListadoPlatos: function CargarListadoPlatos() {
+      this.$emit('cargar-listado-plato');
+      this.flagAgregarIngrediente = false, this.flagEliminarPlato = false;
+      this.flagEditarPlato = false;
+      this.flagPlatoDelDia = false;
+      this.flagEliminarPlatoDelDia = false;
+      this.keyVerificarPlatoDelDia += 1;
+      this.keyIngredientes += 1;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  components: {},
+  created: function created() {},
+  data: function data() {
+    return {
+      datosFrm: {
+        idPlato: this.platoCarta['id'],
+        nombre: ''
+      },
+      buscarIngrediente: '',
+      ingredientes: {}
+    };
+  },
+  methods: {
+    BuscarIngrediente: function BuscarIngrediente() {
+      var _this = this;
+
+      this.buscarIngrediente = this.datosFrm.nombre;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('buscar-ingrediente/' + this.buscarIngrediente).then(function (response) {
+        _this.ingredientes = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    CrearIngrediente: function CrearIngrediente() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('ingrediente', {
+        idPlato: this.datosFrm.idPlato,
+        nombre: this.datosFrm.nombre
+      }).then(function (response) {
+        _this2.$emit('cancelar-crud-plato');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  props: {
+    platoCarta: {
+      type: Object,
+      required: true
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  components: {},
+  created: function created() {},
+  data: function data() {
+    return {
+      datosFrm: {
+        idRestaurante: this.restaurante['id'],
+        nombre: '',
+        tipoMenu: '',
+        precio: '',
+        tipoPlato: '',
+        disponibilidad: '',
+        descripcion: ''
+      }
+    };
+  },
+  methods: {
+    CrearNuevoPlato: function CrearNuevoPlato() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('plato', {
+        restaurante: this.datosFrm.idRestaurante,
+        nombre: this.datosFrm.nombre,
+        tipoMenu: this.datosFrm.tipoMenu,
+        precio: this.datosFrm.precio,
+        tipoPlato: this.datosFrm.tipoPlato,
+        descripcion: this.datosFrm.descripcion,
+        disponibilidad: this.datosFrm.disponibilidad
+      }).then(function (response) {
+        _this.$emit('cancelar-nuevo-plato');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  props: {
+    restaurante: {
+      type: Object,
+      required: true
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _js_components_DatePicker_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/components/DatePicker.vue */ "./resources/js/components/DatePicker.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    plato: {
+      required: true // default: 'Lucas'
+
+    }
+  },
+  data: function data() {
+    return {
+      datosFrm: {
+        idPlato: this.plato['id'],
+        fechas: ''
+      }
+    };
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  components: {
+    datePicker: _js_components_DatePicker_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  created: function created() {},
+  methods: {
+    Seleccionar: function Seleccionar() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('plato-del-dia', {
+        idPlato: this.datosFrm.idPlato,
+        fechas: this.datosFrm.fechas
+      }).then(function (response) {
+        _this.$emit('cancelar-crud-plato');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    CancelarSeleccion: function CancelarSeleccion() {
+      this.$emit('cancelar-crud-plato');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ListadoPlatos_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListadoPlatos.vue */ "./resources/js/components/restaurantes/ListadoPlatos.vue");
+/* harmony import */ var _NuevoPlato_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NuevoPlato.vue */ "./resources/js/components/restaurantes/NuevoPlato.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  components: {
+    listadoPlatos: _ListadoPlatos_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    nuevoPlato: _NuevoPlato_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  created: function created() {
+    this.GetListadoPlatos();
+    this.VerificarCartaVacia();
+  },
+  data: function data() {
+    return {
+      cartaVacia: false,
+      nuevoPlato: false,
+      cartaDisponible: {},
+      cartaPorFecha: {}
+    };
+  },
+  methods: {
+    VerificarCartaVacia: function VerificarCartaVacia() {
+      this.cartaVacia = true; //(Object.keys(carta).length > 0);
+    },
+    NuevoPlato: function NuevoPlato() {
+      this.nuevoPlato = true;
+    },
+    GetListadoPlatos: function GetListadoPlatos() {
+      var _this = this;
+
+      axios.get('platos/' + this.restaurante['id']).then(function (response) {
+        _this.nuevoPlato = false;
+        _this.cartaDisponible = response.data.disponible;
+        _this.cartaPorFecha = response.data.porFecha;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  props: {
+    restaurante: {
+      type: Object,
+      required: true
+    },
+    route: {
+      type: String,
+      required: true
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    verificarPlato: {
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      flagSeleccionado: false
+    };
+  },
+  mounted: function mounted() {},
+  components: {},
+  created: function created() {
+    this.VerificarPlatoDelDia(this.verificarPlato);
+  },
+  methods: {
+    VerificarPlatoDelDia: function VerificarPlatoDelDia(plato) {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('seleccion-del-dia/' + plato['id']).then(function (response) {
+        if (response.data === 202) {
+          _this.flagSeleccionado = true;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
@@ -7698,6 +9441,25 @@ exports.push([module.i, ".asd__fade-enter-active,.asd__fade-leave-active{transit
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/CrearRestaurante.vue?vue&type=style&index=0&lang=css& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#modal-sectores {\r\n  overflow: visible;\n.modal-card-body {\r\n    overflow: visible;\n}\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40730,6 +42492,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditarRestaurante.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -42519,6 +44311,91 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DatePicker.vue?vue&type=template&id=fa816ef2&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DatePicker.vue?vue&type=template&id=fa816ef2& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "datepicker-trigger columns" },
+      [
+        _c("div", { staticClass: "column is-6 is-offset-3" }, [
+          _c(
+            "label",
+            { staticClass: "label", attrs: { for: "datepicker-trigger" } },
+            [_vm._v("Seleccione las fechas")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "control has-icons-left" }, [
+            _c("input", {
+              staticClass: "input",
+              attrs: {
+                type: "text",
+                id: "datepicker-trigger",
+                name: "fecha",
+                placeholder: "Seleccione fechas",
+                required: ""
+              },
+              domProps: { value: _vm.formatDates(_vm.dateOne, _vm.dateTwo) }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ]),
+        _vm._v(" "),
+        _c("AirbnbStyleDatepicker", {
+          attrs: {
+            "trigger-element-id": "datepicker-trigger",
+            mode: "single",
+            "min-date": "2019-01-01",
+            "end-date": "2019-12-31",
+            "fullscreen-mobile": true,
+            "date-one": _vm.dateOne,
+            "date-two": _vm.dateTwo,
+            "show-shortcuts-menu-trigger": false
+          },
+          on: {
+            "date-one-selected": function(val) {
+              _vm.dateOne = val
+            },
+            "date-two-selected": function(val) {
+              _vm.dateTwo = val
+            }
+          }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-font" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inicio/BarraBusqueda.vue?vue&type=template&id=04707ba1&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inicio/BarraBusqueda.vue?vue&type=template&id=04707ba1& ***!
@@ -43360,10 +45237,8 @@ var render = function() {
                                     "div",
                                     { staticClass: "column is-9" },
                                     [
-                                      _c("div", [
-                                        _c("b", [
-                                          _vm._v(_vm._s(platoDia.nombre))
-                                        ])
+                                      _c("div", { staticClass: "is-size-6" }, [
+                                        _vm._v(_vm._s(platoDia.nombre))
                                       ]),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "is-size-7" }, [
@@ -43439,9 +45314,7 @@ var render = function() {
                                     { staticClass: "column is-8" },
                                     [
                                       _c("div", [
-                                        _c("b", [
-                                          _vm._v(_vm._s(platoCarta.nombre))
-                                        ])
+                                        _vm._v(_vm._s(platoCarta.nombre))
                                       ]),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "is-size-7" }, [
@@ -43589,7 +45462,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "columns is-centered" }, [
       _c("div", { staticClass: "column is-8" }, [
-        _c("p", { staticClass: "title is-size-4" }, [_vm._v("Platos del día")])
+        _c("p", { staticClass: "title is-size-5" }, [_vm._v("Platos del día")])
       ])
     ])
   },
@@ -43599,7 +45472,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "columns is-centered" }, [
       _c("div", { staticClass: "column is-8" }, [
-        _c("p", { staticClass: "title is-size-4" }, [_vm._v("Menu Completo")])
+        _c("p", { staticClass: "title is-size-5" }, [
+          _vm._v("Platos siempre disponibles")
+        ])
       ])
     ])
   },
@@ -43770,9 +45645,7 @@ var render = function() {
                         return _c("li", [
                           _c("div", { staticClass: "columns is-vcentered" }, [
                             _c("div", { staticClass: "column is-8" }, [
-                              _c("div", [
-                                _c("b", [_vm._v(_vm._s(otroPlato.nombre))])
-                              ]),
+                              _c("div", [_vm._v(_vm._s(otroPlato.nombre))]),
                               _vm._v(" "),
                               _c("div", { staticClass: "is-size-7" }, [
                                 _vm._v(_vm._s(otroPlato.descripcion))
@@ -43786,10 +45659,9 @@ var render = function() {
                                   staticClass: "button is-success is-small",
                                   on: {
                                     click: function($event) {
-                                      return _vm.$emit(
-                                        "ver-otro-plato",
-                                        _vm.restaurante,
-                                        otroPlato
+                                      return _vm.VerOtroPlato(
+                                        otroPlato,
+                                        _vm.restaurante
                                       )
                                     }
                                   }
@@ -43854,8 +45726,7 @@ var render = function() {
                 datosSector: _vm.datosSector,
                 otrosRestaurantesSector: _vm.otrosRestaurantesSector,
                 flagOrigen: "VerPlato"
-              },
-              on: { "visitar-otro-restaurante": _vm.VisitarOtroRestaurante }
+              }
             }),
             _vm._v(" "),
             _vm.datosSector.tipo
@@ -45322,6 +47193,2987 @@ var staticRenderFns = [
           ])
         ])
       ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=template&id=526cf000&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=template&id=526cf000& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "modal is-active", attrs: { id: "actualizar-ingrediente" } },
+    [
+      _c("div", { staticClass: "modal-background" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal-card" }, [
+        _c("header", { staticClass: "modal-card-head" }, [
+          _c("p", { staticClass: "modal-card-title" }, [
+            _vm._v("Editar Ingrediente " + _vm._s(_vm.ingrediente.nombre))
+          ]),
+          _vm._v(" "),
+          _c("button", {
+            staticClass: "delete",
+            attrs: { "aria-label": "close" },
+            on: { click: _vm.CancelarEdicion }
+          })
+        ]),
+        _vm._v(" "),
+        _c("section", { staticClass: "modal-card-body" }, [
+          _c(
+            "form",
+            {
+              attrs: { method: "post" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.ActualizarIngrediente($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "columns is-centered" }, [
+                _c("div", { staticClass: "column is-10" }, [
+                  _c("div", { staticClass: "field" }, [
+                    _c(
+                      "label",
+                      { staticClass: "label", attrs: { for: "ingrediente" } },
+                      [_vm._v("Escriba el nombre del ingrediente:")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "control has-icons-left" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.ingrediente.nombre,
+                            expression: "ingrediente.nombre"
+                          }
+                        ],
+                        staticClass: "input",
+                        attrs: {
+                          id: "ingredientes",
+                          list: "lista-ingredientes",
+                          required: "",
+                          type: "text",
+                          placeholder: "Nombre del ingrediente"
+                        },
+                        domProps: { value: _vm.ingrediente.nombre },
+                        on: {
+                          keyup: _vm.BuscarIngrediente,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.ingrediente,
+                              "nombre",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "datalist",
+                        { attrs: { id: "lista-ingredientes" } },
+                        _vm._l(_vm.ingredientes, function(ingrediente) {
+                          return _c("option", {
+                            domProps: { value: ingrediente.nombre }
+                          })
+                        }),
+                        0
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns is-centered" }, [
+                _c("div", { staticClass: "column is-10" }, [
+                  _c("div", { staticClass: "field" }, [
+                    _c("button", { staticClass: "button is-info" }, [
+                      _vm._v("Actualizar")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button",
+                        on: { click: _vm.CancelarEdicion }
+                      },
+                      [_vm._v("Cancelar")]
+                    )
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns is-centered" }, [
+            _c("div", { staticClass: "column is-10" }, [
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [
+                  _vm._v("Si desea eliminar este ingrediente: ")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "button is-danger",
+                    on: { click: _vm.EliminarIngrediente }
+                  },
+                  [_vm._v("Eliminar")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "button", on: { click: _vm.CancelarEdicion } },
+                  [_vm._v("Cancelar")]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _c("br")
+        ]),
+        _vm._v(" "),
+        _c("footer", { staticClass: "modal-card-foot" })
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarPlato.vue?vue&type=template&id=7d85f928&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EditarPlato.vue?vue&type=template&id=7d85f928& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "column" }, [
+    _c(
+      "form",
+      {
+        attrs: { name: "frm-crear-plato", method: "post" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.ActualizarPlato($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
+              _vm._v("Editar Plato " + _vm._s(_vm.plato["nombre"]))
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "nombre" } }, [
+                _vm._v("Nombre del Plato")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.nombre,
+                      expression: "datosFrm.nombre"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "nombre",
+                    name: "nombre",
+                    required: "",
+                    type: "text",
+                    placeholder: "Nombre del plato"
+                  },
+                  domProps: { value: _vm.datosFrm.nombre },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "nombre", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "tipMenu" } }, [
+                _vm._v("Tipo Menu")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control is-expanded" }, [
+                _c("div", { staticClass: "select is-fullwidth" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.datosFrm.tipoMenu,
+                          expression: "datosFrm.tipoMenu"
+                        }
+                      ],
+                      attrs: { id: "tipoMenu", name: "tipoMenu", required: "" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.datosFrm,
+                            "tipoMenu",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "corriente" } }, [
+                        _vm._v("Corriente")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "especial" } }, [
+                        _vm._v("Especial")
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "precio" } }, [
+                _vm._v("Precio")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.precio,
+                      expression: "datosFrm.precio"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "precio",
+                    name: "precio",
+                    type: "number",
+                    placeholder: "Precio del plato"
+                  },
+                  domProps: { value: _vm.datosFrm.precio },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "precio", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "tipoPlato" } },
+                [_vm._v("Tipo Plato")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control is-expanded" }, [
+                _c("div", { staticClass: "select is-fullwidth" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.datosFrm.tipoPlato,
+                          expression: "datosFrm.tipoPlato"
+                        }
+                      ],
+                      attrs: {
+                        id: "tipoPlato",
+                        name: "tipoPlato",
+                        required: ""
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.datosFrm,
+                            "tipoPlato",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "tradicional" } }, [
+                        _vm._v("Tradicional")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "vegetariano" } }, [
+                        _vm._v("Vegetariano")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "vegano" } }, [
+                        _vm._v("Vegano")
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "disponibilidad" } },
+                [
+                  _vm._v(
+                    "¿Este plato estará disponible siempre para los clientes?"
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.disponibilidad,
+                        expression: "datosFrm.disponibilidad"
+                      }
+                    ],
+                    attrs: {
+                      id: "disponibilidad",
+                      value: "Si",
+                      type: "radio",
+                      name: "disponibilidad"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.disponibilidad, "Si")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "disponibilidad", "Si")
+                      }
+                    }
+                  }),
+                  _vm._v("\n                      Si\n                    ")
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.disponibilidad,
+                        expression: "datosFrm.disponibilidad"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      value: "No",
+                      name: "disponibilidad"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.disponibilidad, "No")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "disponibilidad", "No")
+                      }
+                    }
+                  }),
+                  _vm._v("\n                      No\n                    ")
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "descripcion" } },
+                [_vm._v("Descripción")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.descripcion,
+                      expression: "datosFrm.descripcion"
+                    }
+                  ],
+                  staticClass: "textarea",
+                  attrs: {
+                    id: "descripcion",
+                    name: "descripcion",
+                    required: "",
+                    placeholder: "Haga una descripción atractiva de este plato"
+                  },
+                  domProps: { value: _vm.datosFrm.descripcion },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "descripcion", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field is-grouped" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c(
+              "button",
+              {
+                staticClass: "button is-text",
+                attrs: { type: "button" },
+                on: { click: _vm.CancelarActualizar }
+              },
+              [_vm._v("Cancelar")]
+            )
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-font" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-left" }, [
+      _c("i", { staticClass: "fas fa-dollar-sign" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "control " }, [
+      _c(
+        "button",
+        { staticClass: "button is-primary", attrs: { type: "submit" } },
+        [_vm._v("Actualizar")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=template&id=44101a14&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=template&id=44101a14& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "form",
+      {
+        attrs: { name: "frm-editar-restaurante", method: "post" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.EditarRestaurante($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column " }, [
+            _c("div", { staticClass: "field  has-text-centered" }, [
+              _c("label", { staticClass: "title is-size-4" }, [
+                _vm._v("Editar Datos " + _vm._s(_vm.restaurante.nombre))
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "nombre" } }, [
+                _vm._v("Nombre Restaurante")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.nombre,
+                      expression: "datosFrm.nombre"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "nombre",
+                    name: "nombre",
+                    required: "",
+                    type: "text",
+                    placeholder: "Nombre del establecimiento"
+                  },
+                  domProps: { value: _vm.datosFrm.nombre },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "nombre", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "nit" } }, [
+                _vm._v("Nit")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.nit,
+                      expression: "datosFrm.nit"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "nit",
+                    name: "nit",
+                    required: "",
+                    type: "number",
+                    placeholder: "NIT"
+                  },
+                  domProps: { value: _vm.datosFrm.nit },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "nit", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "telefono" } },
+                [_vm._v("Teléfono (Domicilios)")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.telefono,
+                      expression: "datosFrm.telefono"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "telefono",
+                    name: "telefono",
+                    type: "number",
+                    placeholder: "Número Telefónico"
+                  },
+                  domProps: { value: _vm.datosFrm.telefono },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "telefono", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "celular" } }, [
+                _vm._v("Celular")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.celular,
+                      expression: "datosFrm.celular"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "celular",
+                    name: "celular",
+                    type: "number",
+                    placeholder: "Número Celular"
+                  },
+                  domProps: { value: _vm.datosFrm.celular },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "celular", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "ciudad" } }, [
+                _vm._v("Ciudad")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.ciudad,
+                      expression: "datosFrm.ciudad"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "ciudad",
+                    name: "ciudad",
+                    required: "",
+                    type: "text",
+                    placeholder: "Ciudad"
+                  },
+                  domProps: { value: _vm.datosFrm.ciudad },
+                  on: {
+                    change: function($event) {
+                      return _vm.CargarSectores()
+                    },
+                    blur: function($event) {
+                      return _vm.CargarSectores()
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "ciudad", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(4)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "sector" } }, [
+                _vm._v("Zona, Sector o Lugar")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.nombreSector,
+                      expression: "nombreSector"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "nombresector",
+                    name: "nombresector",
+                    disabled: "true",
+                    type: "text",
+                    placeholder: "Zona o Sector"
+                  },
+                  domProps: { value: _vm.nombreSector },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.nombreSector = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(5)
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: " has-text-left" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "button is-link is-small",
+                    on: {
+                      click: function($event) {
+                        return _vm.CargarSectores()
+                      }
+                    }
+                  },
+                  [_vm._v("Cambiar")]
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "direccion" } },
+                [_vm._v("Dirección")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.direccion,
+                      expression: "datosFrm.direccion"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "direccion",
+                    name: "direccion",
+                    disabled: _vm.flagDisableDireccion,
+                    required: "",
+                    type: "text",
+                    placeholder: "Dirección del restaurante"
+                  },
+                  domProps: { value: _vm.datosFrm.direccion },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "direccion", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(6)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "local" } }, [
+                _vm._v(
+                  "¿" +
+                    _vm._s(_vm.datosFrm.nombre) +
+                    " se encuentra en un local?"
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.datosFrm.local,
+                      expression: "datosFrm.local"
+                    }
+                  ],
+                  staticClass: "input",
+                  attrs: {
+                    id: "local",
+                    name: "local",
+                    type: "text",
+                    placeholder: "No Local (si aplica)"
+                  },
+                  domProps: { value: _vm.datosFrm.local },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.datosFrm, "local", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(7)
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(8),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-4" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "tradicional" } },
+                [_vm._v("Tradicional")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.tradicional,
+                        expression: "datosFrm.tradicional"
+                      }
+                    ],
+                    attrs: { id: "tradicional_si", type: "radio", value: "si" },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.tradicional, "si")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "tradicional", "si")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          Si\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.tradicional,
+                        expression: "datosFrm.tradicional"
+                      }
+                    ],
+                    attrs: { id: "tradicional_no", type: "radio", value: "no" },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.tradicional, "no")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "tradicional", "no")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          No\n                        "
+                  )
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "vegetariano" } },
+                [_vm._v("Vegetariano")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.vegetariano,
+                        expression: "datosFrm.vegetariano"
+                      }
+                    ],
+                    attrs: { id: "vegetariano_si", type: "radio", value: "si" },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.vegetariano, "si")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "vegetariano", "si")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          Si\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.vegetariano,
+                        expression: "datosFrm.vegetariano"
+                      }
+                    ],
+                    attrs: { id: "vegetariano_no", type: "radio", value: "no" },
+                    domProps: {
+                      checked: _vm._q(_vm.datosFrm.vegetariano, "no")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "vegetariano", "no")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          No\n                        "
+                  )
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label", attrs: { for: "vegano" } }, [
+                _vm._v("Vegano")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control" }, [
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.vegano,
+                        expression: "datosFrm.vegano"
+                      }
+                    ],
+                    attrs: { id: "vegano_si", type: "radio", value: "si" },
+                    domProps: { checked: _vm._q(_vm.datosFrm.vegano, "si") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "vegano", "si")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          Si\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "radio" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.vegano,
+                        expression: "datosFrm.vegano"
+                      }
+                    ],
+                    attrs: { id: "vegano_no", type: "radio", value: "no" },
+                    domProps: { checked: _vm._q(_vm.datosFrm.vegano, "no") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.datosFrm, "vegano", "no")
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                          No\n                        "
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field is-grouped" }, [
+          _vm._m(9),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-text",
+                attrs: { href: this.routecancelar }
+              },
+              [_vm._v("Cancelar")]
+            )
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { class: _vm.modalSectores, attrs: { id: "modal-sectores" } }, [
+      _c("div", { staticClass: "modal-background" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal-content" }, [
+        _c(
+          "div",
+          { staticClass: "box" },
+          [
+            _c("div", { staticClass: "columns" }, [
+              _c("div", { staticClass: "column is-centered" }, [
+                _c(
+                  "div",
+                  { staticClass: "title is-size-5 has-text-centered" },
+                  [
+                    _vm._v(
+                      "Lugares o Sectores en " + _vm._s(_vm.datosFrm.ciudad)
+                    )
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "columns" }, [
+              _vm._m(10),
+              _vm._v(" "),
+              _c("div", { staticClass: "column" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "button is-small is-danger",
+                    on: {
+                      click: function($event) {
+                        return _vm.SectorSeleccionado(0, "Ninguno", null, null)
+                      }
+                    }
+                  },
+                  [_vm._v("Seleccionar")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.sectores, function(sector) {
+              return _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column" }, [
+                  _c("div", [
+                    _c("b", [
+                      sector.tipo !== "Zona o Sector"
+                        ? _c("span", [_vm._v(_vm._s(sector.tipo) + " ")])
+                        : _vm._e(),
+                      _vm._v(_vm._s(sector.nombre))
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "help" }, [
+                      sector.tipo === "Zona o Sector"
+                        ? _c("span", [
+                            _vm._v(
+                              "\n                                    Esta sector va desde " +
+                                _vm._s(sector.limite_1) +
+                                " hasta " +
+                                _vm._s(sector.limite_2) +
+                                ". Entre " +
+                                _vm._s(sector.limite_3) +
+                                " y " +
+                                _vm._s(sector.limite_4) +
+                                "\n                                "
+                            )
+                          ])
+                        : _c("span", [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(sector.direccion) +
+                                "\n                                "
+                            )
+                          ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "column" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "button is-small is-success",
+                      on: {
+                        click: function($event) {
+                          return _vm.SectorSeleccionado(
+                            sector.id,
+                            sector.nombre,
+                            sector.direccion,
+                            sector.tipo
+                          )
+                        }
+                      }
+                    },
+                    [_vm._v("Seleccionar")]
+                  )
+                ])
+              ])
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "modal-close is-large",
+        attrs: { "aria-label": "close" },
+        on: {
+          click: function($event) {
+            return _vm.CerrarModalSectores()
+          }
+        }
+      })
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-check" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-sort-numeric-up" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-phone" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-mobile-alt" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-map-marker-alt" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-map-marker-alt" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-map-marker-alt" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-map-marker-alt" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "columns" }, [
+      _c("div", { staticClass: "column " }, [
+        _c("div", { staticClass: "field has-text-centered" }, [
+          _c("label", { staticClass: "title is-size-4" }, [
+            _vm._v("Tipos de Menu")
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "control " }, [
+      _c(
+        "button",
+        { staticClass: "button is-primary", attrs: { type: "submit" } },
+        [_vm._v("Guardar Cambios")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column" }, [
+      _c("div", [
+        _c("b", [_vm._v("Ningún sector")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "help" }, [
+          _c("span", [
+            _vm._v(
+              "\n                                    El restaurante no se encuentra en ninguno de estos sitios\n                                "
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=template&id=9af1f8f4&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=template&id=9af1f8f4& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "modal is-active", attrs: { id: "eliminar-plato" } },
+    [
+      _c("div", { staticClass: "modal-background" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal-card" }, [
+        _c("header", { staticClass: "modal-card-head" }, [
+          _c("p", { staticClass: "modal-card-title" }, [
+            _vm._v("Eliminar Plato del Menu")
+          ]),
+          _vm._v(" "),
+          _c("button", {
+            staticClass: "delete",
+            attrs: { "aria-label": "close" },
+            on: { click: _vm.CancelarEliminar }
+          })
+        ]),
+        _vm._v(" "),
+        _c("section", { staticClass: "modal-card-body" }, [
+          _vm._v(
+            "\n        ¿Está seguro de eliminar el plato " +
+              _vm._s(_vm.plato.nombre) +
+              "?\n      "
+          )
+        ]),
+        _vm._v(" "),
+        _c("footer", { staticClass: "modal-card-foot" }, [
+          _c(
+            "form",
+            {
+              attrs: { method: "post" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.Eliminar($event)
+                }
+              }
+            },
+            [
+              _c("button", { staticClass: "button is-danger" }, [
+                _vm._v("Eliminar")
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                { staticClass: "button", on: { click: _vm.CancelarEliminar } },
+                [_vm._v("Cancel")]
+              )
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=template&id=3a425d17&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=template&id=3a425d17& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "modal is-active", attrs: { id: "eliminar-plato-del-dia" } },
+    [
+      _c("div", { staticClass: "modal-background" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal-card" }, [
+        _c("header", { staticClass: "modal-card-head" }, [
+          _c("p", { staticClass: "modal-card-title" }, [
+            _vm._v("Eliminar Plato del Día")
+          ]),
+          _vm._v(" "),
+          _c("button", {
+            staticClass: "delete",
+            attrs: { "aria-label": "close" },
+            on: { click: _vm.CancelarEliminarPlatoDelDia }
+          })
+        ]),
+        _vm._v(" "),
+        _c("section", { staticClass: "modal-card-body" }, [
+          _vm._v(
+            "\n        ¿Está seguro de eliminar el plato " +
+              _vm._s(_vm.platoDelDia.nombre) +
+              ", como plato del día?\n      "
+          )
+        ]),
+        _vm._v(" "),
+        _c("footer", { staticClass: "modal-card-foot" }, [
+          _c(
+            "form",
+            {
+              attrs: { method: "post" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.EliminarDelDia($event)
+                }
+              }
+            },
+            [
+              _c("button", { staticClass: "button is-danger" }, [
+                _vm._v("Eliminar")
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "button",
+                  on: { click: _vm.CancelarEliminarPlatoDelDia }
+                },
+                [_vm._v("Cancel")]
+              )
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=template&id=622f9e18&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=template&id=622f9e18& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm._l(_vm.plato, function(ingrediente) {
+        return _c(
+          "a",
+          {
+            on: {
+              click: function($event) {
+                return _vm.EditarIngrediente(ingrediente)
+              }
+            }
+          },
+          [_vm._v(_vm._s(ingrediente.nombre) + " | ")]
+        )
+      }),
+      _vm._v(" "),
+      _vm.flagEditarIngrediente
+        ? _c("editar-ingrediente", {
+            attrs: { ingrediente: _vm.datosIngrediente },
+            on: { "cancelar-edicion-ingrediente": _vm.CancelarEdicion }
+          })
+        : _vm._e()
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=template&id=ed320870&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=template&id=ed320870& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "span",
+    [
+      !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
+        ? _c("div", { staticClass: "has-text-centered" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._l(_vm.cartaPorFecha, function(platoPorFecha) {
+        return !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
+          ? _c("div", [
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column is-6" }, [
+                  _c("ul", [
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-5" }, [
+                        _vm._v(_vm._s(platoPorFecha.nombre))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Menu: ")
+                      ]),
+                      _vm._v(_vm._s(platoPorFecha.tipo_menu))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c(
+                        "span",
+                        { staticClass: "title is-size-6 is-capitalized" },
+                        [_vm._v("Comida: ")]
+                      ),
+                      _vm._v(_vm._s(platoPorFecha.tipo_plato))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Precio: ")
+                      ]),
+                      _vm._v("$ " + _vm._s(platoPorFecha.precio))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Descripción: ")
+                      ]),
+                      _vm._v(_vm._s(platoPorFecha.descripcion))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1, true),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c(
+                        "span",
+                        { staticClass: "is-size-7" },
+                        [
+                          _c("listado-ingredientes", {
+                            key: _vm.keyIngredientes,
+                            attrs: { platoIngredientes: platoPorFecha },
+                            on: {
+                              "cancelar-crud-plato": _vm.CargarListadoPlatos
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "column" }, [
+                  _c("div", { staticClass: "columns" }, [
+                    _c(
+                      "div",
+                      { staticClass: "column" },
+                      [
+                        _c("verificar-plato-del-dia", {
+                          key: _vm.keyVerificarPlatoDelDia,
+                          attrs: { verificarPlato: platoPorFecha },
+                          on: {
+                            "seleccionar-plato-del-dia": function($event) {
+                              return _vm.PlatoDelDia(platoPorFecha)
+                            },
+                            "eliminar-plato-del-dia": function($event) {
+                              return _vm.EliminarPlatoDelDia(platoPorFecha)
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column" }, [
+                  _c("div", { staticClass: "buttons" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-warning is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.AgregarIngrediente(platoPorFecha)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Ingredientes")])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-success is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.ActualizarPlato(platoPorFecha)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(3, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Ver y Editar")])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-danger is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.EliminarPlato(platoPorFecha)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(4, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Eliminar")])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          : _vm._e()
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
+        ? _c("div", { staticClass: "has-text-centered" }, [_vm._m(5)])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._l(_vm.cartaDisponible, function(platoDisponible) {
+        return !_vm.flagEditarPlato && !_vm.flagPlatoDelDia
+          ? _c("div", [
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column is-6" }, [
+                  _c("ul", [
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-5" }, [
+                        _vm._v(_vm._s(platoDisponible.nombre))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Menu: ")
+                      ]),
+                      _vm._v(_vm._s(platoDisponible.tipo_menu))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Comida: ")
+                      ]),
+                      _vm._v(_vm._s(platoDisponible.tipo_plato))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Precio: ")
+                      ]),
+                      _vm._v("$ " + _vm._s(platoDisponible.precio))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", { staticClass: "title is-size-6" }, [
+                        _vm._v("Descripción: ")
+                      ]),
+                      _vm._v(_vm._s(platoDisponible.descripcion))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(6, true),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c(
+                        "span",
+                        { staticClass: "is-size-7" },
+                        [
+                          _c("listado-ingredientes", {
+                            key: _vm.keyIngredientes,
+                            attrs: { platoIngredientes: platoDisponible },
+                            on: {
+                              "cancelar-crud-plato": _vm.CargarListadoPlatos
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "column" }, [
+                  _c("div", { staticClass: "columns" }, [
+                    _c(
+                      "div",
+                      { staticClass: "column" },
+                      [
+                        _c("verificar-plato-del-dia", {
+                          key: _vm.keyVerificarPlatoDelDia,
+                          attrs: { verificarPlato: platoDisponible },
+                          on: {
+                            "seleccionar-plato-del-dia": function($event) {
+                              return _vm.PlatoDelDia(platoDisponible)
+                            },
+                            "eliminar-plato-del-dia": function($event) {
+                              return _vm.EliminarPlatoDelDia(platoDisponible)
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column" }, [
+                  _c("div", { staticClass: "buttons" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-warning is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.AgregarIngrediente(platoDisponible)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(7, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Ingredientes")])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-success is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.ActualizarPlato(platoDisponible)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(8, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Ver y Editar")])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-danger is-small",
+                        on: {
+                          click: function($event) {
+                            return _vm.EliminarPlato(platoDisponible)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(9, true),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Eliminar")])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          : _vm._e()
+      }),
+      _vm._v(" "),
+      _vm.flagAgregarIngrediente
+        ? _c("agregar-ingrediente", {
+            attrs: { platoCarta: _vm.datosPlato },
+            on: { "cancelar-crud-plato": _vm.CargarListadoPlatos }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.flagEliminarPlato
+        ? _c("eliminar-plato", {
+            attrs: { plato: _vm.datosPlato },
+            on: { "cancelar-crud-plato": _vm.CargarListadoPlatos }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.flagEditarPlato
+        ? _c("editar-plato", {
+            attrs: { plato: _vm.datosPlato },
+            on: { "cancelar-crud-plato": _vm.CargarListadoPlatos }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.flagPlatoDelDia
+        ? _c("plato-del-dia", {
+            attrs: { plato: _vm.datosPlato },
+            on: { "cancelar-crud-plato": _vm.CargarListadoPlatos }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.flagEliminarPlatoDelDia
+        ? _c("eliminar-plato-del-dia", {
+            attrs: { platoDelDia: _vm.datosPlato },
+            on: { "cancelar-crud-plato": _vm.CargarListadoPlatos }
+          })
+        : _vm._e()
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "title is-size-4 has-text-centered" }, [
+      _vm._v(
+        "\n            Platos que se ofrecen ocasionalmente\n            "
+      ),
+      _c("div", { staticClass: "help" }, [
+        _vm._v(
+          "(Para que los clientes los puedan ver, debe escogerlos como plato del día)"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("span", { staticClass: "title is-size-6" }, [_vm._v("Ingredientes: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-plus" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-pen" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-trash" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "title is-size-4" }, [
+      _vm._v("\n            Platos diponibles siempre   \n            "),
+      _c("div", { staticClass: "help" }, [
+        _vm._v(
+          "(Los clientes siempre los podrán ver y el restaurante siempre debe tenerlo)"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("span", { staticClass: "title is-size-6" }, [_vm._v("Ingredientes: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-plus" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-pen" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-trash" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=template&id=a3e73874&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=template&id=a3e73874& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "modal is-active", attrs: { id: "agregar-ingrediente" } },
+    [
+      _c("div", { staticClass: "modal-background" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal-card" }, [
+        _c("header", { staticClass: "modal-card-head" }, [
+          _c("p", { staticClass: "modal-card-title" }, [
+            _vm._v("Agregar Ingrediente")
+          ]),
+          _vm._v(" "),
+          _c("button", {
+            staticClass: "delete",
+            attrs: { "aria-label": "close" },
+            on: {
+              click: function($event) {
+                return _vm.$emit("cancelar-crud-plato")
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            attrs: { name: "frm-crear-ingrediente", method: "post" },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.CrearIngrediente($event)
+              }
+            }
+          },
+          [
+            _c("section", { staticClass: "modal-card-body" }, [
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column" }, [
+                  _c(
+                    "p",
+                    { staticClass: "title is-size-4 has-text-centered" },
+                    [_vm._v(_vm._s(_vm.platoCarta["nombre"]))]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns is-centered" }, [
+                _c("div", { staticClass: "column is-10" }, [
+                  _c("div", { staticClass: "field" }, [
+                    _c(
+                      "label",
+                      { staticClass: "label", attrs: { for: "ingrediente" } },
+                      [_vm._v("Escriba el nombre del ingrediente")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "control has-icons-left" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.datosFrm.nombre,
+                            expression: "datosFrm.nombre"
+                          }
+                        ],
+                        staticClass: "input",
+                        attrs: {
+                          id: "ingredientes",
+                          list: "lista-ingredientes",
+                          required: "",
+                          type: "text",
+                          placeholder: "Nombre del ingrediente"
+                        },
+                        domProps: { value: _vm.datosFrm.nombre },
+                        on: {
+                          keyup: _vm.BuscarIngrediente,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.datosFrm,
+                              "nombre",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "datalist",
+                        { attrs: { id: "lista-ingredientes" } },
+                        _vm._l(_vm.ingredientes, function(ingrediente) {
+                          return _c("option", {
+                            domProps: { value: ingrediente.nombre }
+                          })
+                        }),
+                        0
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _c("br")
+            ]),
+            _vm._v(" "),
+            _c("footer", { staticClass: "modal-card-foot" }, [
+              _c("div", { staticClass: "field is-grouped" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "control" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "button is-text",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.$emit("cancelar-crud-plato")
+                        }
+                      }
+                    },
+                    [_vm._v("Cancelar")]
+                  )
+                ])
+              ])
+            ])
+          ]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "control " }, [
+      _c(
+        "button",
+        { staticClass: "button is-primary", attrs: { type: "submit" } },
+        [_vm._v("Crear")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=template&id=575843b2&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=template&id=575843b2& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "column" }, [
+    _c("div", { staticClass: "box" }, [
+      _c(
+        "form",
+        {
+          attrs: { name: "frm-crear-plato", method: "post" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.CrearNuevoPlato($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column" }, [
+              _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
+                _vm._v(_vm._s(_vm.restaurante["nombre"]))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
+                _vm._v("Agregar Nuevo Plato")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column is-6" }, [
+              _c("div", { staticClass: "field" }, [
+                _c(
+                  "label",
+                  { staticClass: "label", attrs: { for: "nombre" } },
+                  [_vm._v("Nombre del Plato")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "control has-icons-left" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.nombre,
+                        expression: "datosFrm.nombre"
+                      }
+                    ],
+                    staticClass: "input",
+                    attrs: {
+                      id: "nombre",
+                      name: "nombre",
+                      required: "",
+                      type: "text",
+                      placeholder: "Nombre del plato"
+                    },
+                    domProps: { value: _vm.datosFrm.nombre },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.datosFrm, "nombre", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "column" }, [
+              _c("div", { staticClass: "field" }, [
+                _c(
+                  "label",
+                  { staticClass: "label", attrs: { for: "tipMenu" } },
+                  [_vm._v("Tipo Menu")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "control is-expanded" }, [
+                  _c("div", { staticClass: "select is-fullwidth" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.datosFrm.tipoMenu,
+                            expression: "datosFrm.tipoMenu"
+                          }
+                        ],
+                        attrs: {
+                          id: "tipoMenu",
+                          name: "tipoMenu",
+                          required: ""
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.datosFrm,
+                              "tipoMenu",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "corriente" } }, [
+                          _vm._v("Corriente")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "especial" } }, [
+                          _vm._v("Especial")
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column is-6" }, [
+              _c("div", { staticClass: "field" }, [
+                _c(
+                  "label",
+                  { staticClass: "label", attrs: { for: "precio" } },
+                  [_vm._v("Precio")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "control has-icons-left" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.precio,
+                        expression: "datosFrm.precio"
+                      }
+                    ],
+                    staticClass: "input",
+                    attrs: {
+                      id: "precio",
+                      name: "precio",
+                      type: "number",
+                      placeholder: "Precio del plato"
+                    },
+                    domProps: { value: _vm.datosFrm.precio },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.datosFrm, "precio", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "column" }, [
+              _c("div", { staticClass: "field" }, [
+                _c(
+                  "label",
+                  { staticClass: "label", attrs: { for: "tipoPlato" } },
+                  [_vm._v("Tipo Plato")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "control is-expanded" }, [
+                  _c("div", { staticClass: "select is-fullwidth" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.datosFrm.tipoPlato,
+                            expression: "datosFrm.tipoPlato"
+                          }
+                        ],
+                        attrs: {
+                          id: "tipoPlato",
+                          name: "tipoPlato",
+                          required: ""
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.datosFrm,
+                              "tipoPlato",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _vm.restaurante["tradicional"] === "si"
+                          ? _c("option", { attrs: { value: "tradicional" } }, [
+                              _vm._v("Tradicional")
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.restaurante["vegetariano"] === "si"
+                          ? _c("option", { attrs: { value: "vegetariano" } }, [
+                              _vm._v("Vegetariano")
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.restaurante["vegano"] === "si"
+                          ? _c("option", { attrs: { value: "vegano" } }, [
+                              _vm._v("Vegano")
+                            ])
+                          : _vm._e()
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column" }, [
+              _c("div", { staticClass: "field" }, [
+                _c(
+                  "label",
+                  { staticClass: "label", attrs: { for: "disponibilidad" } },
+                  [
+                    _vm._v(
+                      "¿Este plato estará disponible siempre para los clientes?"
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "control" }, [
+                  _c("label", { staticClass: "radio" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.datosFrm.disponibilidad,
+                          expression: "datosFrm.disponibilidad"
+                        }
+                      ],
+                      attrs: {
+                        id: "disponibilidad",
+                        value: "Si",
+                        type: "radio",
+                        name: "disponibilidad"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.datosFrm.disponibilidad, "Si")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.datosFrm, "disponibilidad", "Si")
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                          Si\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "radio" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.datosFrm.disponibilidad,
+                          expression: "datosFrm.disponibilidad"
+                        }
+                      ],
+                      attrs: {
+                        type: "radio",
+                        value: "No",
+                        name: "disponibilidad"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.datosFrm.disponibilidad, "No")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.datosFrm, "disponibilidad", "No")
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                          No\n                        "
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column" }, [
+              _c("div", { staticClass: "field" }, [
+                _c(
+                  "label",
+                  { staticClass: "label", attrs: { for: "descripcion" } },
+                  [_vm._v("Descripción")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "control" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datosFrm.descripcion,
+                        expression: "datosFrm.descripcion"
+                      }
+                    ],
+                    staticClass: "textarea",
+                    attrs: {
+                      id: "descripcion",
+                      name: "descripcion",
+                      required: "",
+                      placeholder:
+                        "Haga una descripción atractiva de este plato"
+                    },
+                    domProps: { value: _vm.datosFrm.descripcion },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.datosFrm,
+                          "descripcion",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "field is-grouped" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "control" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "button is-text",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("cancelar-nuevo-plato")
+                    }
+                  }
+                },
+                [_vm._v("Cancelar")]
+              )
+            ])
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", { staticClass: "fas fa-font" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-left" }, [
+      _c("i", { staticClass: "fas fa-dollar-sign" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "control " }, [
+      _c(
+        "button",
+        { staticClass: "button is-primary", attrs: { type: "submit" } },
+        [_vm._v("Crear")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=template&id=e0642610&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=template&id=e0642610& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "column" }, [
+    _c("div", { staticClass: "box" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          attrs: { method: "post" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.Seleccionar($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column has-text-centered" }, [
+              _c("div", { staticClass: "field" }, [
+                _c("label", { staticClass: "label" }, [
+                  _vm._v(
+                    "\n                            ¿En qué fecha deseas agregar " +
+                      _vm._s(_vm.plato.nombre) +
+                      " como plato del día?\n                        "
+                  )
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("date-picker"),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "column" }, [
+              _c("div", { staticClass: "field" }, [
+                _c("button", { staticClass: "button is-success" }, [
+                  _vm._v("Seleccionar")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "button",
+                    on: { click: _vm.CancelarSeleccion }
+                  },
+                  [_vm._v("Cancel")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "column" })
+          ])
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("button", {
+      staticClass: "modal-close",
+      attrs: { "aria-label": "close" },
+      on: { click: _vm.CancelarSeleccion }
+    })
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "columns" }, [
+      _c("div", { staticClass: "column" }, [
+        _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
+          _vm._v("Plato del Día")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=template&id=2aa0744a&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=template&id=2aa0744a& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "column" },
+    [
+      !_vm.nuevoPlato
+        ? _c("div", { staticClass: "box" }, [
+            _c("div", { staticClass: "columns" }, [
+              _c("div", { staticClass: "column" }, [
+                _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
+                  _c("a", { attrs: { href: this.route } }, [
+                    _vm._v(_vm._s(_vm.restaurante["nombre"]))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "title is-size-4 has-text-centered" }, [
+                  _vm._v("Menu")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "columns has-text-centered" }, [
+              _c("div", { staticClass: "column " }, [
+                _c(
+                  "a",
+                  { staticClass: "button", on: { click: _vm.NuevoPlato } },
+                  [_vm._v("Agrear Nuevo Plato")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm.cartaVacia
+              ? _c(
+                  "span",
+                  [
+                    _c("listado-platos", {
+                      attrs: {
+                        cartaDisponible: _vm.cartaDisponible,
+                        cartaPorFecha: _vm.cartaPorFecha
+                      },
+                      on: { "cargar-listado-plato": _vm.GetListadoPlatos }
+                    })
+                  ],
+                  1
+                )
+              : _c("div", { staticClass: "columns is-centered" }, [_vm._m(0)])
+          ])
+        : _vm.nuevoPlato
+        ? _c("nuevo-plato", {
+            attrs: { restaurante: _vm.restaurante },
+            on: { "cancelar-nuevo-plato": _vm.GetListadoPlatos }
+          })
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column" }, [
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column is-4" }, [
+          _c("div", { staticClass: "notification is-info" }, [
+            _c("p", { staticClass: "has-text-centered" }, [
+              _vm._v("No se ha creado ningún plato")
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=template&id=23b1c12f&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=template&id=23b1c12f& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.flagSeleccionado
+      ? _c(
+          "div",
+          { staticClass: "notification is-primary has-text-centered" },
+          [
+            _c("div", [
+              _vm._v(
+                "\n            Felicitaciones!!, Este plato hace parte del menu del día\n        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "a",
+                {
+                  staticClass: "button is-default is-small",
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("eliminar-plato-del-dia")
+                    }
+                  }
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Eliminar plato del día")])
+                ]
+              )
+            ])
+          ]
+        )
+      : _c("div", { staticClass: "notification is-link has-text-centered" }, [
+          _c("div", [
+            _vm._v(
+              "\n            ¿Desea que este plato haga parte del menu del día?\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "a",
+              {
+                staticClass: "button is-default is-small",
+                on: {
+                  click: function($event) {
+                    return _vm.$emit("seleccionar-plato-del-dia")
+                  }
+                }
+              },
+              [_vm._m(1), _vm._v(" "), _c("span", [_vm._v("Seleccionar")])]
+            )
+          ])
+        ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-trash" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fas fa-check" })
     ])
   }
 ]
@@ -60185,15 +65037,14 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('InfiniteLoading', __webpack_require__(/*! vue-infinite-loading */ "./node_modules/vue-infinite-loading/dist/vue-infinite-loading.js")["default"]);
-/*Vue.component('buscar-platos-del-dia', require('./components/inicio/BuscarPlatoDelDia.vue').default);
-Vue.component('listado-restaurantes', require('./components/inicio/ListadoRestaurantes.vue').default);
-Vue.component('platos-menu', require('./components/restaurantes/PlatosMenu.vue').default);
-Vue.component('eliminar-plato', require('./components/restaurantes/EliminarPlato.vue').default);
-Vue.component('editar-plato', require('./components/restaurantes/EditarPlato.vue').default);
-Vue.component('crear-restaurante', require('./components/restaurantes/CrearRestaurante.vue').default);
-Vue.component('editar-restaurante', require('./components/restaurantes/EditarRestaurante.vue').default);
-Vue.component('sectores', require('./components/SuperAdmin/Sectores/Index.vue').default);*/
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('InfiniteLoading', __webpack_require__(/*! vue-infinite-loading */ "./node_modules/vue-infinite-loading/dist/vue-infinite-loading.js")["default"]); //Vue.component('buscar-platos-del-dia', require('./components/inicio/BuscarPlatoDelDia.vue').default);
+//Vue.component('listado-restaurantes', require('./components/inicio/ListadoRestaurantes.vue').default);
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('platos-menu', __webpack_require__(/*! ./components/restaurantes/PlatosMenu.vue */ "./resources/js/components/restaurantes/PlatosMenu.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('eliminar-plato', __webpack_require__(/*! ./components/restaurantes/EliminarPlato.vue */ "./resources/js/components/restaurantes/EliminarPlato.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('editar-plato', __webpack_require__(/*! ./components/restaurantes/EditarPlato.vue */ "./resources/js/components/restaurantes/EditarPlato.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('crear-restaurante', __webpack_require__(/*! ./components/restaurantes/CrearRestaurante.vue */ "./resources/js/components/restaurantes/CrearRestaurante.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('editar-restaurante', __webpack_require__(/*! ./components/restaurantes/EditarRestaurante.vue */ "./resources/js/components/restaurantes/EditarRestaurante.vue")["default"]); //Vue.component('sectores', require('./components/SuperAdmin/Sectores/Index.vue').default);
 
 /*Vue.component('buscar-platos-del-dia', require('./components/inicio_prueba/BuscarPlatoDelDia.vue').default);*/
 
@@ -60266,6 +65117,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/DatePicker.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/DatePicker.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DatePicker_vue_vue_type_template_id_fa816ef2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DatePicker.vue?vue&type=template&id=fa816ef2& */ "./resources/js/components/DatePicker.vue?vue&type=template&id=fa816ef2&");
+/* harmony import */ var _DatePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DatePicker.vue?vue&type=script&lang=js& */ "./resources/js/components/DatePicker.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DatePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DatePicker_vue_vue_type_template_id_fa816ef2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DatePicker_vue_vue_type_template_id_fa816ef2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/DatePicker.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/DatePicker.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/DatePicker.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DatePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./DatePicker.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DatePicker.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DatePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/DatePicker.vue?vue&type=template&id=fa816ef2&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/DatePicker.vue?vue&type=template&id=fa816ef2& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DatePicker_vue_vue_type_template_id_fa816ef2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./DatePicker.vue?vue&type=template&id=fa816ef2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DatePicker.vue?vue&type=template&id=fa816ef2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DatePicker_vue_vue_type_template_id_fa816ef2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DatePicker_vue_vue_type_template_id_fa816ef2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -61253,6 +66173,852 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/restaurantes/EditarIngrediente.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EditarIngrediente.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditarIngrediente_vue_vue_type_template_id_526cf000___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditarIngrediente.vue?vue&type=template&id=526cf000& */ "./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=template&id=526cf000&");
+/* harmony import */ var _EditarIngrediente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarIngrediente.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditarIngrediente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditarIngrediente_vue_vue_type_template_id_526cf000___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditarIngrediente_vue_vue_type_template_id_526cf000___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/EditarIngrediente.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarIngrediente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditarIngrediente.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarIngrediente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=template&id=526cf000&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=template&id=526cf000& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarIngrediente_vue_vue_type_template_id_526cf000___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditarIngrediente.vue?vue&type=template&id=526cf000& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarIngrediente.vue?vue&type=template&id=526cf000&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarIngrediente_vue_vue_type_template_id_526cf000___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarIngrediente_vue_vue_type_template_id_526cf000___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EditarPlato.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EditarPlato.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditarPlato_vue_vue_type_template_id_7d85f928___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditarPlato.vue?vue&type=template&id=7d85f928& */ "./resources/js/components/restaurantes/EditarPlato.vue?vue&type=template&id=7d85f928&");
+/* harmony import */ var _EditarPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarPlato.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/EditarPlato.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditarPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditarPlato_vue_vue_type_template_id_7d85f928___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditarPlato_vue_vue_type_template_id_7d85f928___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/EditarPlato.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EditarPlato.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EditarPlato.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditarPlato.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarPlato.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EditarPlato.vue?vue&type=template&id=7d85f928&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EditarPlato.vue?vue&type=template&id=7d85f928& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarPlato_vue_vue_type_template_id_7d85f928___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditarPlato.vue?vue&type=template&id=7d85f928& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarPlato.vue?vue&type=template&id=7d85f928&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarPlato_vue_vue_type_template_id_7d85f928___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarPlato_vue_vue_type_template_id_7d85f928___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EditarRestaurante.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EditarRestaurante.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditarRestaurante_vue_vue_type_template_id_44101a14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditarRestaurante.vue?vue&type=template&id=44101a14& */ "./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=template&id=44101a14&");
+/* harmony import */ var _EditarRestaurante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarRestaurante.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _EditarRestaurante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditarRestaurante.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _EditarRestaurante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditarRestaurante_vue_vue_type_template_id_44101a14___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditarRestaurante_vue_vue_type_template_id_44101a14___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/EditarRestaurante.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarRestaurante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditarRestaurante.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarRestaurante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarRestaurante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditarRestaurante.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarRestaurante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarRestaurante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarRestaurante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarRestaurante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarRestaurante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=template&id=44101a14&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=template&id=44101a14& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarRestaurante_vue_vue_type_template_id_44101a14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditarRestaurante.vue?vue&type=template&id=44101a14& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EditarRestaurante.vue?vue&type=template&id=44101a14&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarRestaurante_vue_vue_type_template_id_44101a14___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarRestaurante_vue_vue_type_template_id_44101a14___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EliminarPlato.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EliminarPlato.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EliminarPlato_vue_vue_type_template_id_9af1f8f4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EliminarPlato.vue?vue&type=template&id=9af1f8f4& */ "./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=template&id=9af1f8f4&");
+/* harmony import */ var _EliminarPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EliminarPlato.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EliminarPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EliminarPlato_vue_vue_type_template_id_9af1f8f4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EliminarPlato_vue_vue_type_template_id_9af1f8f4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/EliminarPlato.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EliminarPlato.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=template&id=9af1f8f4&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=template&id=9af1f8f4& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPlato_vue_vue_type_template_id_9af1f8f4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EliminarPlato.vue?vue&type=template&id=9af1f8f4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EliminarPlato.vue?vue&type=template&id=9af1f8f4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPlato_vue_vue_type_template_id_9af1f8f4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPlato_vue_vue_type_template_id_9af1f8f4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EliminarPlatoDelDia.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EliminarPlatoDelDia.vue ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EliminarPlatoDelDia_vue_vue_type_template_id_3a425d17___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EliminarPlatoDelDia.vue?vue&type=template&id=3a425d17& */ "./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=template&id=3a425d17&");
+/* harmony import */ var _EliminarPlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EliminarPlatoDelDia.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EliminarPlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EliminarPlatoDelDia_vue_vue_type_template_id_3a425d17___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EliminarPlatoDelDia_vue_vue_type_template_id_3a425d17___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/EliminarPlatoDelDia.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EliminarPlatoDelDia.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=template&id=3a425d17&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=template&id=3a425d17& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPlatoDelDia_vue_vue_type_template_id_3a425d17___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EliminarPlatoDelDia.vue?vue&type=template&id=3a425d17& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/EliminarPlatoDelDia.vue?vue&type=template&id=3a425d17&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPlatoDelDia_vue_vue_type_template_id_3a425d17___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarPlatoDelDia_vue_vue_type_template_id_3a425d17___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/ListadoIngredientes.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/restaurantes/ListadoIngredientes.vue ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ListadoIngredientes_vue_vue_type_template_id_622f9e18___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListadoIngredientes.vue?vue&type=template&id=622f9e18& */ "./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=template&id=622f9e18&");
+/* harmony import */ var _ListadoIngredientes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListadoIngredientes.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ListadoIngredientes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListadoIngredientes_vue_vue_type_template_id_622f9e18___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListadoIngredientes_vue_vue_type_template_id_622f9e18___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/ListadoIngredientes.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoIngredientes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ListadoIngredientes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoIngredientes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=template&id=622f9e18&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=template&id=622f9e18& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoIngredientes_vue_vue_type_template_id_622f9e18___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ListadoIngredientes.vue?vue&type=template&id=622f9e18& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/ListadoIngredientes.vue?vue&type=template&id=622f9e18&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoIngredientes_vue_vue_type_template_id_622f9e18___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoIngredientes_vue_vue_type_template_id_622f9e18___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/ListadoPlatos.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/restaurantes/ListadoPlatos.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ListadoPlatos_vue_vue_type_template_id_ed320870___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListadoPlatos.vue?vue&type=template&id=ed320870& */ "./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=template&id=ed320870&");
+/* harmony import */ var _ListadoPlatos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListadoPlatos.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ListadoPlatos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListadoPlatos_vue_vue_type_template_id_ed320870___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListadoPlatos_vue_vue_type_template_id_ed320870___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/ListadoPlatos.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoPlatos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ListadoPlatos.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoPlatos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=template&id=ed320870&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=template&id=ed320870& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoPlatos_vue_vue_type_template_id_ed320870___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ListadoPlatos.vue?vue&type=template&id=ed320870& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/ListadoPlatos.vue?vue&type=template&id=ed320870&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoPlatos_vue_vue_type_template_id_ed320870___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoPlatos_vue_vue_type_template_id_ed320870___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/NuevoIngrediente.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/restaurantes/NuevoIngrediente.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NuevoIngrediente_vue_vue_type_template_id_a3e73874___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NuevoIngrediente.vue?vue&type=template&id=a3e73874& */ "./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=template&id=a3e73874&");
+/* harmony import */ var _NuevoIngrediente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NuevoIngrediente.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _NuevoIngrediente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NuevoIngrediente_vue_vue_type_template_id_a3e73874___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _NuevoIngrediente_vue_vue_type_template_id_a3e73874___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/NuevoIngrediente.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NuevoIngrediente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./NuevoIngrediente.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NuevoIngrediente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=template&id=a3e73874&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=template&id=a3e73874& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NuevoIngrediente_vue_vue_type_template_id_a3e73874___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./NuevoIngrediente.vue?vue&type=template&id=a3e73874& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/NuevoIngrediente.vue?vue&type=template&id=a3e73874&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NuevoIngrediente_vue_vue_type_template_id_a3e73874___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NuevoIngrediente_vue_vue_type_template_id_a3e73874___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/NuevoPlato.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/restaurantes/NuevoPlato.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NuevoPlato_vue_vue_type_template_id_575843b2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NuevoPlato.vue?vue&type=template&id=575843b2& */ "./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=template&id=575843b2&");
+/* harmony import */ var _NuevoPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NuevoPlato.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _NuevoPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NuevoPlato_vue_vue_type_template_id_575843b2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _NuevoPlato_vue_vue_type_template_id_575843b2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/NuevoPlato.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NuevoPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./NuevoPlato.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NuevoPlato_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=template&id=575843b2&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=template&id=575843b2& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NuevoPlato_vue_vue_type_template_id_575843b2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./NuevoPlato.vue?vue&type=template&id=575843b2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/NuevoPlato.vue?vue&type=template&id=575843b2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NuevoPlato_vue_vue_type_template_id_575843b2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NuevoPlato_vue_vue_type_template_id_575843b2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/PlatoDelDia.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/restaurantes/PlatoDelDia.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PlatoDelDia_vue_vue_type_template_id_e0642610___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlatoDelDia.vue?vue&type=template&id=e0642610& */ "./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=template&id=e0642610&");
+/* harmony import */ var _PlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlatoDelDia.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PlatoDelDia_vue_vue_type_template_id_e0642610___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PlatoDelDia_vue_vue_type_template_id_e0642610___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/PlatoDelDia.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PlatoDelDia.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=template&id=e0642610&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=template&id=e0642610& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlatoDelDia_vue_vue_type_template_id_e0642610___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PlatoDelDia.vue?vue&type=template&id=e0642610& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/PlatoDelDia.vue?vue&type=template&id=e0642610&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlatoDelDia_vue_vue_type_template_id_e0642610___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlatoDelDia_vue_vue_type_template_id_e0642610___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/PlatosMenu.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/restaurantes/PlatosMenu.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PlatosMenu_vue_vue_type_template_id_2aa0744a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlatosMenu.vue?vue&type=template&id=2aa0744a& */ "./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=template&id=2aa0744a&");
+/* harmony import */ var _PlatosMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlatosMenu.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PlatosMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PlatosMenu_vue_vue_type_template_id_2aa0744a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PlatosMenu_vue_vue_type_template_id_2aa0744a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/PlatosMenu.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlatosMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PlatosMenu.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlatosMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=template&id=2aa0744a&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=template&id=2aa0744a& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlatosMenu_vue_vue_type_template_id_2aa0744a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PlatosMenu.vue?vue&type=template&id=2aa0744a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/PlatosMenu.vue?vue&type=template&id=2aa0744a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlatosMenu_vue_vue_type_template_id_2aa0744a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlatosMenu_vue_vue_type_template_id_2aa0744a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/VerificarPlatoDelDia.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/restaurantes/VerificarPlatoDelDia.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _VerificarPlatoDelDia_vue_vue_type_template_id_23b1c12f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VerificarPlatoDelDia.vue?vue&type=template&id=23b1c12f& */ "./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=template&id=23b1c12f&");
+/* harmony import */ var _VerificarPlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VerificarPlatoDelDia.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _VerificarPlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _VerificarPlatoDelDia_vue_vue_type_template_id_23b1c12f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _VerificarPlatoDelDia_vue_vue_type_template_id_23b1c12f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurantes/VerificarPlatoDelDia.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerificarPlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./VerificarPlatoDelDia.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerificarPlatoDelDia_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=template&id=23b1c12f&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=template&id=23b1c12f& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerificarPlatoDelDia_vue_vue_type_template_id_23b1c12f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./VerificarPlatoDelDia.vue?vue&type=template&id=23b1c12f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurantes/VerificarPlatoDelDia.vue?vue&type=template&id=23b1c12f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerificarPlatoDelDia_vue_vue_type_template_id_23b1c12f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerificarPlatoDelDia_vue_vue_type_template_id_23b1c12f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/datePicker.js":
 /*!************************************!*\
   !*** ./resources/js/datePicker.js ***!
@@ -61299,17 +67065,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _js_components_restaurantes_CrearRestaurante_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/restaurantes/CrearRestaurante.vue */ "./resources/js/components/restaurantes/CrearRestaurante.vue");
-/* harmony import */ var _js_components_inicio_BarraBusqueda_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/components/inicio/BarraBusqueda.vue */ "./resources/js/components/inicio/BarraBusqueda.vue");
-/* harmony import */ var _js_components_inicio_BusquedaMenusPrincipal_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/components/inicio/BusquedaMenusPrincipal.vue */ "./resources/js/components/inicio/BusquedaMenusPrincipal.vue");
-/* harmony import */ var _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/js/components/inicio/BusquedaMenusSecundaria.vue */ "./resources/js/components/inicio/BusquedaMenusSecundaria.vue");
-/* harmony import */ var _js_components_inicio_menuSeleccionado_BusquedaPorMenus_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/js/components/inicio/menuSeleccionado/BusquedaPorMenus.vue */ "./resources/js/components/inicio/menuSeleccionado/BusquedaPorMenus.vue");
-/* harmony import */ var _js_components_inicio_ListadoRestaurantes_Show_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/js/components/inicio/ListadoRestaurantes/Show.vue */ "./resources/js/components/inicio/ListadoRestaurantes/Show.vue");
-/* harmony import */ var _js_components_inicio_PlatoSeleccionado_VerPlato_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/js/components/inicio/PlatoSeleccionado/VerPlato.vue */ "./resources/js/components/inicio/PlatoSeleccionado/VerPlato.vue");
-/* harmony import */ var _js_components_inicio_PlatoSeleccionado_Restaurante_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/js/components/inicio/PlatoSeleccionado/Restaurante.vue */ "./resources/js/components/inicio/PlatoSeleccionado/Restaurante.vue");
-/* harmony import */ var _js_components_inicio_Sectores_MostrarSector_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/js/components/inicio/Sectores/MostrarSector.vue */ "./resources/js/components/inicio/Sectores/MostrarSector.vue");
-/* harmony import */ var _js_components_inicio_Sectores_SectoresCiudad_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/js/components/inicio/Sectores/SectoresCiudad.vue */ "./resources/js/components/inicio/Sectores/SectoresCiudad.vue");
-
+/* harmony import */ var _js_components_inicio_BarraBusqueda_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/inicio/BarraBusqueda.vue */ "./resources/js/components/inicio/BarraBusqueda.vue");
+/* harmony import */ var _js_components_inicio_BusquedaMenusPrincipal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/components/inicio/BusquedaMenusPrincipal.vue */ "./resources/js/components/inicio/BusquedaMenusPrincipal.vue");
+/* harmony import */ var _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/components/inicio/BusquedaMenusSecundaria.vue */ "./resources/js/components/inicio/BusquedaMenusSecundaria.vue");
+/* harmony import */ var _js_components_inicio_menuSeleccionado_BusquedaPorMenus_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/js/components/inicio/menuSeleccionado/BusquedaPorMenus.vue */ "./resources/js/components/inicio/menuSeleccionado/BusquedaPorMenus.vue");
+/* harmony import */ var _js_components_inicio_ListadoRestaurantes_Show_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/js/components/inicio/ListadoRestaurantes/Show.vue */ "./resources/js/components/inicio/ListadoRestaurantes/Show.vue");
+/* harmony import */ var _js_components_inicio_PlatoSeleccionado_VerPlato_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/js/components/inicio/PlatoSeleccionado/VerPlato.vue */ "./resources/js/components/inicio/PlatoSeleccionado/VerPlato.vue");
+/* harmony import */ var _js_components_inicio_PlatoSeleccionado_Restaurante_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/js/components/inicio/PlatoSeleccionado/Restaurante.vue */ "./resources/js/components/inicio/PlatoSeleccionado/Restaurante.vue");
+/* harmony import */ var _js_components_inicio_Sectores_MostrarSector_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/js/components/inicio/Sectores/MostrarSector.vue */ "./resources/js/components/inicio/Sectores/MostrarSector.vue");
+/* harmony import */ var _js_components_inicio_Sectores_SectoresCiudad_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/js/components/inicio/Sectores/SectoresCiudad.vue */ "./resources/js/components/inicio/Sectores/SectoresCiudad.vue");
 
 
 
@@ -61325,18 +67089,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   //mode: 'history',
   routes: [{
-    path: '/elgranmenu/public/administrador/gestion-restaurantes/:id',
-    name: 'gestion-restaurantes.show',
-    component: _js_components_restaurantes_CrearRestaurante_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }, {
     path: '',
     components: {
-      "default": _js_components_inicio_BarraBusqueda_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+      "default": _js_components_inicio_BarraBusqueda_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
     },
     children: [{
       path: '',
       components: {
-        busquedaMenus: _js_components_inicio_BusquedaMenusPrincipal_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+        busquedaMenus: _js_components_inicio_BusquedaMenusPrincipal_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
       }
     }, {
       path: 'listado-restaurantes',
@@ -61345,16 +67105,16 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         "default": true
       },
       components: {
-        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-        "default": _js_components_inicio_ListadoRestaurantes_Show_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+        "default": _js_components_inicio_ListadoRestaurantes_Show_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
       }
     }, {
       path: 'menu/:tipoMenu',
       name: 'menu',
       props: true,
       components: {
-        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-        "default": _js_components_inicio_menuSeleccionado_BusquedaPorMenus_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+        "default": _js_components_inicio_menuSeleccionado_BusquedaPorMenus_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
       }
     }, {
       path: 'plato-restaurante',
@@ -61363,8 +67123,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         "default": true
       },
       components: {
-        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-        "default": _js_components_inicio_PlatoSeleccionado_VerPlato_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+        "default": _js_components_inicio_PlatoSeleccionado_VerPlato_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
       }
     }, {
       path: 'restaurante',
@@ -61373,8 +67133,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         "default": true
       },
       components: {
-        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-        "default": _js_components_inicio_PlatoSeleccionado_Restaurante_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+        "default": _js_components_inicio_PlatoSeleccionado_Restaurante_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
       }
     }, {
       path: 'sector',
@@ -61383,15 +67143,15 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         "default": true
       },
       components: {
-        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-        "default": _js_components_inicio_Sectores_MostrarSector_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
+        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+        "default": _js_components_inicio_Sectores_MostrarSector_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
       }
     }, {
       path: 'sectores-ciudad/:ciudad',
       name: 'sectores-ciudad',
       components: {
-        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-        "default": _js_components_inicio_Sectores_SectoresCiudad_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
+        busquedaMenus: _js_components_inicio_BusquedaMenusSecundaria_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+        "default": _js_components_inicio_Sectores_SectoresCiudad_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
       }
     }]
     /*{

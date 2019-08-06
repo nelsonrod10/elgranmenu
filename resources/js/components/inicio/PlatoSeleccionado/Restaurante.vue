@@ -26,7 +26,7 @@
                     </div>
                     <div class="columns is-centered">
                         <div class="column is-8">
-                            <p class="title is-size-4">Platos del día</p>
+                            <p class="title is-size-5">Platos del día</p>
                         </div>
                     </div>
                     <div class="columns is-centered">
@@ -35,7 +35,7 @@
                                 <li v-for="platoDia in menu.delDia">
                                     <div class="columns is-vcentered">
                                         <div class="column is-9">
-                                            <div><b>{{platoDia.nombre}}</b></div>
+                                            <div class="is-size-6">{{platoDia.nombre}}</div>
                                             <div class="is-size-7">{{platoDia.descripcion}}. <b>$ {{platoDia.precio}}</b></div>    
                                             <div class="has-text-danger is-capitalized is-italic help">Plato {{platoDia.tipo_plato}}</div>
                                             <router-link class="button is-success is-small" :to="{name:'plato-restaurante',params:{platoSeleccionado:platoDia, restaurante:restaurante}}">Ver más</router-link>
@@ -49,7 +49,7 @@
 
                     <div class="columns is-centered">
                         <div class="column is-8">
-                            <p class="title is-size-4">Menu Completo</span></p>
+                            <p class="title is-size-5">Platos siempre disponibles</span></p>
                         </div>
                     </div>
                     <div class="columns is-centered">
@@ -58,7 +58,7 @@
                                 <li v-for="platoCarta in menu.carta">
                                     <div class="columns is-vcentered">
                                         <div class="column is-8">
-                                            <div><b>{{platoCarta.nombre}}</b></div>
+                                            <div>{{platoCarta.nombre}}</div>
                                             <div class="is-size-7">{{platoCarta.descripcion}}. <b>$ {{platoCarta.precio}}</b></div>    
                                             <div class="has-text-danger is-capitalized is-italic help">Plato {{platoCarta.tipo_plato}}</div>
                                             <router-link class="button is-success is-small" :to="{name:'plato-restaurante',params:{platoSeleccionado:platoCarta, restaurante:restaurante}}">Ver más</router-link>
