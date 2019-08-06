@@ -340,7 +340,7 @@
                     vegano      :this.datosFrm.vegano,     
                 })
                 .then(response => {
-                    window.location.href = '/elgranmenu/public/administrador/gestion-restaurantes/'+response.data;
+                    window.location.href = '/gestion-restaurantes/'+response.data;
                 })    
                 .catch(error => {
                     console.log(error)

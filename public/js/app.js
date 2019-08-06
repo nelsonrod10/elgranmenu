@@ -3303,7 +3303,7 @@ __webpack_require__.r(__webpack_exports__);
         vegetariano: this.datosFrm.vegetariano,
         vegano: this.datosFrm.vegano
       }).then(function (response) {
-        window.location.href = '/elgranmenu/public/administrador/gestion-restaurantes/' + response.data;
+        window.location.href = '/gestion-restaurantes/' + response.data;
       })["catch"](function (error) {
         console.log(error);
       });
