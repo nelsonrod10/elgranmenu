@@ -47276,7 +47276,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "columns is-centered" }, [
                   _c("div", { staticClass: "column is-8" }, [
-                    _vm.menu.delDia.length > 0
+                    _vm.menu.delDia && _vm.menu.delDia.length > 0
                       ? _c(
                           "ul",
                           _vm._l(_vm.menu.delDia, function(platoDia) {
@@ -47352,7 +47352,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "columns is-centered" }, [
                   _c("div", { staticClass: "column is-8" }, [
-                    _vm.menu.carta.length > 0
+                    _vm.menu.carta && _vm.menu.carta.length > 0
                       ? _c(
                           "ul",
                           _vm._l(_vm.menu.carta, function(platoCarta) {

@@ -31,7 +31,7 @@
                     </div>
                     <div class="columns is-centered">
                         <div class="column is-8">
-                            <ul v-if="menu.delDia.length > 0">
+                            <ul v-if="menu.delDia && menu.delDia.length > 0">
                                 <li v-for="platoDia in menu.delDia">
                                     <div class="columns is-vcentered">
                                         <div class="column is-9">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="columns is-centered">
                         <div class="column is-8">
-                            <ul v-if="menu.carta.length > 0">
+                            <ul v-if="menu.carta && menu.carta.length > 0">
                                 <li v-for="platoCarta in menu.carta">
                                     <div class="columns is-vcentered">
                                         <div class="column is-8">
