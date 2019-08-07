@@ -6,7 +6,6 @@ use DateInterval;
 
 class helpers extends Controller
 {
-       
     public static function getDateNow(){
         date_default_timezone_set('America/Bogota');
         $objFechaActual = new DateTime("NOW");

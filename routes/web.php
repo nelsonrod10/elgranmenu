@@ -35,6 +35,7 @@ Route::get('/ver-menu-general/{tipo}','Menus\MenusController@index');
 Route::resource('ver-sectores', 'Sectores\BusquedaController')->except([
     'index'
 ]);
+   
 Route::get('/ciudades-sectores','Sectores\BusquedaController@index');    
 Route::get('/index-sectores/{ciudad}','Sectores\BusquedaController@indexPorCiudad');    
 
@@ -56,6 +57,7 @@ Route::prefix('administrador')->middleware('auth')->group(function () {
     ]);
     Route::get('/sectores-por-ciudad/{ciudad}', 'SuperAdmin\SectoresController@sectoresPorCiudad');
     Route::get('/data-sector-actual/{id}', 'SuperAdmin\SectoresController@show');
+    Route::get('/listado-ciudades','Sectores\BusquedaController@listadoCiudades'); 
     
     Route::resource('gestion-carta','Menus\PlatosCartasController')->except([
         'index','create','store'

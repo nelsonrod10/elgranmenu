@@ -20,6 +20,13 @@ class BusquedaController extends Controller
         return response()->json($sectores);
     }
     
+    public function listadoCiudades(){
+        $archivo = simplexml_load_file(base_path("archivosXML/listado_ciudades.xml"));    
+        $listadociudades = $archivo->xpath("/ciudades/item");
+        
+        return $listadociudades;
+    }
+    
     public function indexPorCiudad($ciudad){
         $index = SectoresSugerido::where('ciudad',$ciudad)->get();
         

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Restaurantes\Restaurante;
 use App\SuperAdmin\SectoresSugerido;
+use App\Http\Controllers\helpers;
 
 class RestaurantesController extends Controller
 {

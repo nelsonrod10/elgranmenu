@@ -61,7 +61,10 @@
                     <div class="field">
                         <label class="label" for="ciudad">Ciudad</label>
                         <div class="control has-icons-left">
-                            <input id="ciudad" name="ciudad" v-model="datosFrm.ciudad" v-on:change="CargarSectores()" v-on:blur="CargarSectores()" required class="input" type="text" placeholder="Ciudad">
+                            <input id="ciudad" list="nombres-ciudades" name="ciudad" v-model="datosFrm.ciudad" v-on:change="CargarSectores()" v-on:blur="CargarSectores()" required class="input" type="text" placeholder="Ciudad">
+                            <datalist id="nombres-ciudades">
+                                <option v-for="ciudad in listadoCiudades" :value="ciudad.nombre"></option>
+                            </datalist>                     
                             <span class="icon is-small is-left">
                                 <i class="fas fa-map-marker-alt"></i>
                             </span>
@@ -252,7 +255,9 @@
                 required:true
             }
         },
-
+        components: {
+            
+        },
         data(){
             return{
                 modalSectores: 'modal',
@@ -260,6 +265,7 @@
                 nombreSector:'',
                 flagSectorSeleccionado:false,
                 flagDisableDireccion:false,
+                listadoCiudades:{},
                 datosFrm:{
                     nombre      :this.restaurante.nombre,
                     nit         :this.restaurante.nit,
@@ -280,11 +286,9 @@
             console.log('Component mounted.')
         },
 
-        components: {
-        },
-
         created(){
-            this.DatosSectorActual();
+            this.DatosSectorActual(),
+            this.GetListadoCiudades()
         },
 
         methods:{
@@ -299,6 +303,16 @@
                     
                 }).catch(error => {
                     
+                })
+            },
+
+            GetListadoCiudades(){
+                axios.get('../../listado-ciudades')
+                .then(response => {
+                    this.listadoCiudades = response.data;
+                })    
+                .catch(error => {
+                    console.log(error)
                 })
             },
             

@@ -41,7 +41,10 @@
                             <div class="field">
                                 <label class="label" for="ciudad">Ciudad</label>
                                 <div class="control has-icons-left">
-                                    <input id="ciudad" name="ciudad" class="input" v-model="datosFrm.ciudad" required type="text" placeholder="Ciudad del sector">
+                                    <input id="ciudad" list="nombres-ciudades" name="ciudad" class="input" v-model="datosFrm.ciudad" required type="text" placeholder="Ciudad del sector">
+                                    <datalist id="nombres-ciudades">
+                                        <option v-for="ciudad in listadoCiudades" :value="ciudad.nombre"></option>
+                                    </datalist>
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-font"></i>
                                     </span>
@@ -148,11 +151,12 @@
 
         },
         created() {
-            
+            this.GetListadoCiudades()
         },
 
         data(){
             return{
+                listadoCiudades:{},    
                 datosFrm:{
                     nombre   :'',
                     ciudad   :'',
@@ -172,6 +176,15 @@
                 this.$emit('cerrar-modal');
             },
             
+            GetListadoCiudades(){
+                axios.get('../administrador/listado-ciudades')
+                .then(response => {
+                    this.listadoCiudades = response.data;
+                })    
+                .catch(error => {
+                    console.log(error)
+                })
+            },
             TipoSector(){
                 this.flagPerimetro = false;
                 this.flagDireccion = false;

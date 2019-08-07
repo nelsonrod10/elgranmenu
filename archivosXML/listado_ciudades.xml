@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ciudades>
+    <item><nombre>Leticia</nombre></item>
+    <item><nombre>Medellín</nombre></item>
+    <item><nombre>Arauca</nombre></item>
+    <item><nombre>Barranquilla</nombre></item>
+    <item><nombre>Cartagena</nombre></item>
+    <item><nombre>Tunja</nombre></item>
+    <item><nombre>Manizales</nombre></item>
+    <item><nombre>Florencia</nombre></item>
+    <item><nombre>Yopal</nombre></item>
+    <item><nombre>Popayán</nombre></item>
+    <item><nombre>Cajica</nombre></item>
+    <item><nombre>Chía</nombre></item>
+    <item><nombre>Puerto Carreño</nombre></item>
+    <item><nombre>Mitú</nombre></item>
+    <item><nombre>Cali</nombre></item>
+    <item><nombre>Ibagué</nombre></item>
+    <item><nombre>Sincelejo</nombre></item>
+    <item><nombre>Bucaramanga</nombre></item>
+    <item><nombre>San Andrés</nombre></item>
+    <item><nombre>Pereira</nombre></item>
+    <item><nombre>Armenia</nombre></item>
+    <item><nombre>Mocoa</nombre></item>
+    <item><nombre>Cúcuta</nombre></item>
+    <item><nombre>Pasto</nombre></item>
+    <item><nombre>Villavicencio</nombre></item>
+    <item><nombre>Santa Marta</nombre></item>
+    <item><nombre>Riohacha</nombre></item>
+    <item><nombre>Neiva</nombre></item>
+    <item><nombre>San José del Guaviare</nombre></item>
+    <item><nombre>Inírida</nombre></item>
+    <item><nombre>Bogotá</nombre></item>
+    <item><nombre>Montería</nombre></item>
+    <item><nombre>Quibdó</nombre></item>
+    <item><nombre>Valledupar</nombre></item>
+</ciudades>
+

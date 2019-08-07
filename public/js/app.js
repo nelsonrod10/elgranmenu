@@ -1912,6 +1912,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -1919,9 +1922,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {},
   components: {},
-  created: function created() {},
+  created: function created() {
+    this.GetListadoCiudades();
+  },
   data: function data() {
     return {
+      listadoCiudades: {},
       datosFrm: {
         nombre: '',
         ciudad: '',
@@ -1940,6 +1946,15 @@ __webpack_require__.r(__webpack_exports__);
     CerrarModal: function CerrarModal() {
       this.$emit('cerrar-modal');
     },
+    GetListadoCiudades: function GetListadoCiudades() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('../administrador/listado-ciudades').then(function (response) {
+        _this.listadoCiudades = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     TipoSector: function TipoSector() {
       this.flagPerimetro = false;
       this.flagDireccion = false;
@@ -1953,7 +1968,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     CrearSector: function CrearSector() {
-      var _this = this;
+      var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('sectores', {
         nombre: this.datosFrm.nombre,
@@ -1965,7 +1980,7 @@ __webpack_require__.r(__webpack_exports__);
         limite4: this.datosFrm.limite4,
         direccion: this.datosFrm.direccion
       }).then(function (response) {
-        _this.CerrarModal();
+        _this2.CerrarModal();
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2122,6 +2137,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -2134,10 +2152,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {},
   created: function created() {
-    this.TipoSector();
+    this.TipoSector(), this.GetListadoCiudades();
   },
   data: function data() {
     return {
+      listadoCiudades: {},
       datosFrm: {
         nombre: this.sector.nombre,
         ciudad: this.sector.ciudad,
@@ -2156,6 +2175,15 @@ __webpack_require__.r(__webpack_exports__);
     CerrarModal: function CerrarModal() {
       this.$emit('cerrar-modal');
     },
+    GetListadoCiudades: function GetListadoCiudades() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('../administrador/listado-ciudades').then(function (response) {
+        _this.listadoCiudades = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     TipoSector: function TipoSector() {
       this.flagPerimetro = false;
       this.flagDireccion = false;
@@ -2169,7 +2197,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     EditarSector: function EditarSector() {
-      var _this = this;
+      var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("sectores/".concat(this.sector.id), {
         nombre: this.datosFrm.nombre,
@@ -2181,7 +2209,7 @@ __webpack_require__.r(__webpack_exports__);
         limite4: this.datosFrm.limite4,
         direccion: this.datosFrm.direccion
       }).then(function (response) {
-        _this.CerrarModal();
+        _this2.CerrarModal();
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2842,6 +2870,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _OtrosRestaurantes_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OtrosRestaurantes.vue */ "./resources/js/components/inicio/PlatoSeleccionado/OtrosRestaurantes.vue");
 /* harmony import */ var _js_components_inicio_Sectores_InfoGeneral_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/inicio/Sectores/InfoGeneral.vue */ "./resources/js/components/inicio/Sectores/InfoGeneral.vue");
 /* harmony import */ var _js_components_inicio_Sectores_MostrarSector_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/components/inicio/Sectores/MostrarSector.vue */ "./resources/js/components/inicio/Sectores/MostrarSector.vue");
+//
 //
 //
 //
@@ -3832,8 +3861,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {},
   props: {
     routecancelar: {
       type: String,
@@ -3849,6 +3882,7 @@ __webpack_require__.r(__webpack_exports__);
       modalSectores: 'modal',
       sectores: {},
       nombreSector: '',
+      listadoCiudades: {},
       flagSectorSeleccionado: false,
       flagDisableDireccion: false,
       faltanDatos: false,
@@ -3870,8 +3904,9 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Component mounted.');
   },
-  components: {},
-  created: function created() {},
+  created: function created() {
+    this.GetListadoCiudades();
+  },
   methods: {
     SectorSeleccionado: function SectorSeleccionado(id, nombre, direccion, tipo) {
       this.datosFrm.direccion = "";
@@ -3888,19 +3923,28 @@ __webpack_require__.r(__webpack_exports__);
       this.flagSectorSeleccionado = true;
       this.CerrarModalSectores();
     },
-    CargarSectores: function CargarSectores() {
+    GetListadoCiudades: function GetListadoCiudades() {
       var _this = this;
 
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('listado-ciudades').then(function (response) {
+        _this.listadoCiudades = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    CargarSectores: function CargarSectores() {
+      var _this2 = this;
+
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("sectores-por-ciudad/".concat(this.datosFrm.ciudad)).then(function (response) {
-        _this.sectores = response.data;
-        _this.modalSectores = 'modal is-active';
+        _this2.sectores = response.data;
+        _this2.modalSectores = 'modal is-active';
       });
     },
     CerrarModalSectores: function CerrarModalSectores() {
       this.modalSectores = 'modal';
     },
     CrearRestaurante: function CrearRestaurante() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.datosFrm.tradicional === '' || this.datosFrm.vegetariano === '' || this.datosFrm.vegano === '') {
         this.faltanDatos = true;
@@ -3921,7 +3965,7 @@ __webpack_require__.r(__webpack_exports__);
         vegano: this.datosFrm.vegano
       }).then(function (response) {
         //window.location.href = '//gestion-restaurantes/'+response.data;
-        window.location.href = _this2.routeshow.replace('*', response.data);
+        window.location.href = _this3.routeshow.replace('*', response.data);
         ;
       })["catch"](function (error) {
         console.log(error);
@@ -4462,6 +4506,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -4478,6 +4525,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
+  components: {},
   data: function data() {
     return {
       modalSectores: 'modal',
@@ -4485,6 +4533,7 @@ __webpack_require__.r(__webpack_exports__);
       nombreSector: '',
       flagSectorSeleccionado: false,
       flagDisableDireccion: false,
+      listadoCiudades: {},
       datosFrm: {
         nombre: this.restaurante.nombre,
         nit: this.restaurante.nit,
@@ -4503,9 +4552,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Component mounted.');
   },
-  components: {},
   created: function created() {
-    this.DatosSectorActual();
+    this.DatosSectorActual(), this.GetListadoCiudades();
   },
   methods: {
     DatosSectorActual: function DatosSectorActual() {
@@ -4518,6 +4566,15 @@ __webpack_require__.r(__webpack_exports__);
           _this.SectorSeleccionado(response.data.id, response.data.nombre, response.data.direccion, response.data.tipo);
         }
       })["catch"](function (error) {});
+    },
+    GetListadoCiudades: function GetListadoCiudades() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('../../listado-ciudades').then(function (response) {
+        _this2.listadoCiudades = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     SectorSeleccionado: function SectorSeleccionado(id, nombre, direccion, tipo) {
       this.flagSectorSeleccionado = false;
@@ -4534,18 +4591,18 @@ __webpack_require__.r(__webpack_exports__);
       this.CerrarModalSectores();
     },
     CargarSectores: function CargarSectores() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("../../sectores-por-ciudad/".concat(this.datosFrm.ciudad)).then(function (response) {
-        _this2.sectores = response.data;
-        _this2.modalSectores = 'modal is-active';
+        _this3.sectores = response.data;
+        _this3.modalSectores = 'modal is-active';
       });
     },
     CerrarModalSectores: function CerrarModalSectores() {
       this.modalSectores = 'modal';
     },
     EditarRestaurante: function EditarRestaurante() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("../../gestion-restaurantes/".concat(this.restaurante.id), {
         nombre: this.datosFrm.nombre,
@@ -4561,7 +4618,7 @@ __webpack_require__.r(__webpack_exports__);
         vegano: this.datosFrm.vegano
       }).then(function (response) {
         //window.location = '//gestion-restaurantes/'+response.data;
-        window.location.href = _this3.routeshow.replace('*', response.data);
+        window.location.href = _this4.routeshow.replace('*', response.data);
         ;
       })["catch"](function (error) {
         console.log(error);
@@ -45210,6 +45267,7 @@ var render = function() {
                       staticClass: "input",
                       attrs: {
                         id: "ciudad",
+                        list: "nombres-ciudades",
                         name: "ciudad",
                         required: "",
                         type: "text",
@@ -45225,6 +45283,17 @@ var render = function() {
                         }
                       }
                     }),
+                    _vm._v(" "),
+                    _c(
+                      "datalist",
+                      { attrs: { id: "nombres-ciudades" } },
+                      _vm._l(_vm.listadoCiudades, function(ciudad) {
+                        return _c("option", {
+                          domProps: { value: ciudad.nombre }
+                        })
+                      }),
+                      0
+                    ),
                     _vm._v(" "),
                     _vm._m(1)
                   ])
@@ -45797,6 +45866,7 @@ var render = function() {
                       staticClass: "input",
                       attrs: {
                         id: "ciudad",
+                        list: "nombres-ciudades",
                         name: "ciudad",
                         required: "",
                         type: "text",
@@ -45812,6 +45882,17 @@ var render = function() {
                         }
                       }
                     }),
+                    _vm._v(" "),
+                    _c(
+                      "datalist",
+                      { attrs: { id: "nombres-ciudades" } },
+                      _vm._l(_vm.listadoCiudades, function(ciudad) {
+                        return _c("option", {
+                          domProps: { value: ciudad.nombre }
+                        })
+                      }),
+                      0
+                    ),
                     _vm._v(" "),
                     _vm._m(1)
                   ])
@@ -47183,6 +47264,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "section" }, [
+    _c("br"),
+    _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "columns is-centered" }, [
         !_vm.flagRestaurantesSector
@@ -48589,6 +48672,7 @@ var render = function() {
                   staticClass: "input",
                   attrs: {
                     id: "ciudad",
+                    list: "nombres-ciudades",
                     name: "ciudad",
                     required: "",
                     type: "text",
@@ -48599,9 +48683,6 @@ var render = function() {
                     change: function($event) {
                       return _vm.CargarSectores()
                     },
-                    blur: function($event) {
-                      return _vm.CargarSectores()
-                    },
                     input: function($event) {
                       if ($event.target.composing) {
                         return
@@ -48610,6 +48691,15 @@ var render = function() {
                     }
                   }
                 }),
+                _vm._v(" "),
+                _c(
+                  "datalist",
+                  { attrs: { id: "nombres-ciudades" } },
+                  _vm._l(_vm.listadoCiudades, function(ciudad) {
+                    return _c("option", { domProps: { value: ciudad.nombre } })
+                  }),
+                  0
+                ),
                 _vm._v(" "),
                 _vm._m(5)
               ])
@@ -50051,6 +50141,7 @@ var render = function() {
                   staticClass: "input",
                   attrs: {
                     id: "ciudad",
+                    list: "nombres-ciudades",
                     name: "ciudad",
                     required: "",
                     type: "text",
@@ -50072,6 +50163,15 @@ var render = function() {
                     }
                   }
                 }),
+                _vm._v(" "),
+                _c(
+                  "datalist",
+                  { attrs: { id: "nombres-ciudades" } },
+                  _vm._l(_vm.listadoCiudades, function(ciudad) {
+                    return _c("option", { domProps: { value: ciudad.nombre } })
+                  }),
+                  0
+                ),
                 _vm._v(" "),
                 _vm._m(4)
               ])
