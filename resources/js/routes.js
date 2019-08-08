@@ -29,7 +29,7 @@ const router = new VueRouter({
                     }
                 },
                 {
-                    path: 'listado-restaurantes',
+                    path: 'listado-restaurantes/:platoBuscado',
                     name: 'listado-restaurantes',
                     props : {default:true},
                     components : {

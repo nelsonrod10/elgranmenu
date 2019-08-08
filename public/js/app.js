@@ -2668,27 +2668,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    platoBuscado: {
-      type: String
-    }
-  },
-  watch: {
-    '$route': function $route(to, from) {
-      this.TipoMenu();
-    }
-  },
   components: {
     infoGeneralSector: _js_components_inicio_Sectores_InfoGeneral_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  created: function created() {},
+  created: function created() {
+    this.GetPlatoBuscado();
+  },
+  updated: function updated() {},
   data: function data() {
     return {
       page: 0,
+      platoBuscado: {},
       listaResultados: []
     };
   },
   methods: {
+    GetPlatoBuscado: function GetPlatoBuscado() {
+      this.platoBuscado = this.$route.params.platoBuscado;
+    },
     InfiniteHandler: function InfiniteHandler($state) {
       var _this = this;
 
@@ -69527,7 +69524,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         busquedaMenus: _js_components_inicio_BusquedaMenusPrincipal_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
       }
     }, {
-      path: 'listado-restaurantes',
+      path: 'listado-restaurantes/:platoBuscado',
       name: 'listado-restaurantes',
       props: {
         "default": true
