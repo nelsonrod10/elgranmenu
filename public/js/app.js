@@ -69514,7 +69514,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   //mode: 'history',
   routes: [{
-    path: '',
+    path: 'demo',
     components: {
       "default": _js_components_inicio_BarraBusqueda_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
     },
@@ -69579,33 +69579,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         "default": _js_components_inicio_Sectores_SectoresCiudad_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
       }
     }]
-    /*{
-        path:'/elgranmenu/public/',
-        components : {
-            default         : BarraBusqueda
-           // busquedaMenus   : BusquedaMenusPrincipal    
-        },
-        children:[
-            {
-                path: '/listado-restaurantes',
-                components : {
-                    default         : ListadoRestaurantes
-                   // busquedaMenus   : BusquedaMenusPrincipal    
-                }   
-            }
-        ]
-            
-    },
-    {
-        path:'/listado-restaurantes',
-        name:'listado-restaurantes',
-        components :  {
-            default           : BarraBusqueda,      
-            
-            resultadoBusqueda : ListadoRestaurantes
-        }
-    }*/
-
+  }, {
+    path: '',
+    components: {
+      "default": _js_components_inicio_BarraBusqueda_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    }
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);

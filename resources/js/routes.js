@@ -17,7 +17,7 @@ const router = new VueRouter({
     //mode: 'history',
     routes: [
         {
-                path:'',
+            path:'demo',
             components : {
                 default : BarraBusqueda
             },
@@ -83,35 +83,13 @@ const router = new VueRouter({
                 }
             ]
                 
-        }
-        
-        /*{
-            path:'/elgranmenu/public/',
-            components : {
-                default         : BarraBusqueda
-               // busquedaMenus   : BusquedaMenusPrincipal    
-            },
-            children:[
-                {
-                    path: '/listado-restaurantes',
-                    components : {
-                        default         : ListadoRestaurantes
-                       // busquedaMenus   : BusquedaMenusPrincipal    
-                    }   
-                }
-            ]
-                
         },
         {
-            path:'/listado-restaurantes',
-            name:'listado-restaurantes',
-            components :  {
-                default           : BarraBusqueda,      
-                
-                resultadoBusqueda : ListadoRestaurantes
-            }
-        }*/
-        
+            path:'',
+            components : {
+                default : BarraBusqueda
+            }        
+        }
     ]
 });
 
