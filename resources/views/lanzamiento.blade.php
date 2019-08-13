@@ -2,82 +2,100 @@
 @section('content')
     <section class="hero is-warning is-medium">
         <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title is-size-1">
+              Muchos conocen tu negocio, pero... 
+            </h1>
+            <h1 class="title is-size-1">
+              ¿Cuantos conocen el menú que ofrecerás hoy?
+            </h1>  
+          </div>
+        </div>
+    </section>
+    <section class="hero is-light is-medium">
+        <div class="hero-body">
           <div class="container">
             <h1 class="title is-size-2">
               ¿Quieres fidelizar y ganar más clientes? 
             </h1>
-            <h1 class="title is-size-4">
-              Difunde y administra el menú de tu negocio 
+            <h1 class="title is-size-4 has-text-grey-dark">
+              Difundir y administrar el menú de tu negocio 
             </h1>  
-            <h1 class="title is-size-4">
-              Aumenta tus ventas y fideliza clientes 
+            <h1 class="title is-size-4 has-text-grey-dark">
+              Aumentar tus ventas y fidelizar clientes 
             </h1>
           </div>
-        </div>
-    </section>
-    <section class="hero is-light">
-        <div class="hero-body">
-          <div class="container has-text-centered">
-            <h2 class="subtitle">
-              No somos una app de domicilios…
-            </h2>  
+          <hr/>  
+          <div class="container has-text-right">
             <h1 class="title">
-              Nuestro único objetivo es que 
+              Nuestro objetivo es que 
             </h1>
             <h1 class="title">
               + clientes lleguen a tu negocio. 
             </h1>  
-            
-          </div>
+          </div>      
         </div>
     </section>
-    
+    <section class="hero is-dark">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title is-size-3">
+                ElGranMenu es una  plataforma que permite de forma fácil y efectiva la difusión de la información de tu negocio.
+            </h1>
+            <br/>
+            <h1 class="subtitle is-size-4">
+                De acuerdo a lo que tus clientes y usuarios de la plataforma busquen, podrán saber el menú que tienes para ellos.
+            </h1>  
+          </div>      
+        </div>
+    </section>
     <section class="hero is-medium">
         <div class="hero-body">
             <div class="container">
                 <div class="tile is-ancestor">
-                    <div class="tile is-6 is-vertical is-parent">
+                    <div class="tile is-6 is-vertical is-parent has-text-centered">
                       <div class="tile is-child">
-                        <p class="title">Característica One</p>
-                        <p class="subtitle">texto One</p>
+                          <p class="title">Personalizable</p>
+                        <p class="subtitle">Puedes crear, modificar y eliminar tus menús cuantas veces quieras; además de poder clasificarlos como Vegetarianos, veganos o tradicionales</p>
                       </div>
                       <div class="tile is-child">
-                        <p class="title">Característica Two</p>
-                        <p class="subtitle">texto Two</p>
+                        <p class="title">Aumenta tus ventas</p>
+                        <p class="subtitle">Con nuestro sistema, aumentan las posibilidades de que nuevos clientes lleguen a tu negocio; lo único que debes hacer es seguir ofreciendo la mejor experiencia y los mejores platos a tus clientes.</p>
                       </div>
                     </div>
-                    <div class="tile is-vertical is-parent">
+                    <div class="tile is-vertical is-parent has-text-centered">
                       <div class="tile is-child">
-                        <p class="title">Caracteristica Three</p>
-                        <p class="subtitle">texto Three</p>    
+                        <p class="title">Economiza</p>
+                        <p class="subtitle">No más dinero en volantes o papelitos impresos que apenas ven unos pocos. Lo que necesitas es llegar a miles de personas con solo un click!!</p>    
                       </div>
                       <div class="tile is-child">
-                        <p class="title">Caracteristica Four</p>
-                        <p class="subtitle">texto Four</p>    
+                        <p class="title">Administra</p>
+                        <p class="subtitle">Al tener tus menus creados en ElGranMenu, podrás administrar y controlar tus inventarios. Y este control de tu negocio genera beneficios invaluables</p>    
                       </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="hero is-dark is-bold">
+    <section class="hero is-warning is-bold">
         <div class="hero-body">
           <div class="container has-text-centered">
             <h1 class="title">
                 Conoce nuestro demo y registrate ahora mismo  
             </h1>
-              <a class="button">Ver Demo</a>
+              <a class="button" href="{{url('demo')}}">Ver Demo</a>
           </div>
         </div>
     </section>
-    <section class="hero">
+    <section id="formulario" class="hero">
         <div class="hero-body">
             <div class="container">
                 <div class="tile is-ancestor">
                     <div class="tile is-5 is-vertical is-parent">
                         <div class="tile is-child">
-                          <p class="title">Llamado a la acción</p>
-                          <p class="subtitle">estamos de lanzamiento y queremos que tu negocio haga partte del inicio de esta gran experiencia</p>
+                            <p class="title">Estamos de lanzamiento</p>
+                          <p class="subtitle">Queremos que tu negocio haga parte de nuestra plataforma, así que te invitamos a inscribirte.</p>
+                          <p class="subtitle">Luego de la inscripción uno de nuestros asesores te contactará para darte toda la información y aclarar tus dudas.</p>
                         </div>
                     </div>
                     <div class="tile is-vertical is-parent">

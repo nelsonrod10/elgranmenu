@@ -46,7 +46,7 @@
 
     <div class="navbar-end">
         @guest
-            <div class="navbar-item">
+            <!--<div class="navbar-item">
                 <div class="buttons">
                     <a class="button is-primary" href="{{ route('login') }}">
                         <strong>Usuarios</strong>
@@ -54,6 +54,18 @@
                     @if (Route::has('register'))
                         <a class="button is-primary" href="{{ route('register') }}">
                             <strong>Registrarse</strong>
+                        </a>
+                    @endif
+                </div>
+            </div>-->
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary" href="{{ url('') }}/#formulario">
+                        <strong>Inscribirme</strong>
+                    </a>
+                    @if (Route::has('register'))
+                        <a class="button is-primary" href="{{ url('demo') }}">
+                            <strong>Ver Demo</strong>
                         </a>
                     @endif
                 </div>
