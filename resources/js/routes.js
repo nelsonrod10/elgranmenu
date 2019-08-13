@@ -17,10 +17,9 @@ const router = new VueRouter({
     //mode: 'history',
     routes: [
         {
-            path:'/demo',
+            path:'',
             components : {
-                default : BarraBusqueda,
-                busquedaMenus : BusquedaMenusPrincipal    
+                default : BarraBusqueda
             },
             children:[
                 {
@@ -85,12 +84,12 @@ const router = new VueRouter({
             ]
                 
         },
-        {
+        /*{
             path:'',
             components : {
                 default : BarraBusqueda
             }        
-        }
+        }*/
     ]
 });
 

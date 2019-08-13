@@ -69514,10 +69514,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   //mode: 'history',
   routes: [{
-    path: '/demo',
+    path: '',
     components: {
-      "default": _js_components_inicio_BarraBusqueda_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-      busquedaMenus: _js_components_inicio_BusquedaMenusPrincipal_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+      "default": _js_components_inicio_BarraBusqueda_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
     },
     children: [{
       path: '',
@@ -69580,11 +69579,6 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         "default": _js_components_inicio_Sectores_SectoresCiudad_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
       }
     }]
-  }, {
-    path: '',
-    components: {
-      "default": _js_components_inicio_BarraBusqueda_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-    }
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);

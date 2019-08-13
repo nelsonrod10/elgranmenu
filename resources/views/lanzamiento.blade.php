@@ -3,10 +3,10 @@
     <section class="hero is-warning is-medium">
         <div class="hero-body">
           <div class="container has-text-centered">
-            <h1 class="title is-size-1">
+            <h1 class="title is-size-2">
               Muchos conocen tu negocio, pero... 
             </h1>
-            <h1 class="title is-size-1">
+            <h1 class="title is-size-2">
               ¿Cuantos conocen el menú que ofrecerás hoy?
             </h1>  
           </div>
@@ -15,7 +15,7 @@
     <section class="hero is-light is-medium">
         <div class="hero-body">
           <div class="container">
-            <h1 class="title is-size-2">
+            <h1 class="title is-size-3">
               ¿Quieres fidelizar y ganar más clientes? 
             </h1>
             <h1 class="title is-size-4 has-text-grey-dark">
@@ -39,7 +39,7 @@
     <section class="hero is-dark">
         <div class="hero-body">
           <div class="container has-text-centered">
-            <h1 class="title is-size-3">
+            <h1 class="title">
                 ElGranMenu es una  plataforma que permite de forma fácil y efectiva la difusión de la información de tu negocio.
             </h1>
             <br/>
