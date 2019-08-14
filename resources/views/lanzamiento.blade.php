@@ -28,7 +28,7 @@
                         Fideliza y gana más clientes 
                     </h1>
                     <h1 class="title is-size-4 has-text-weight-light">
-                        Difunde y administra el menú de tu negocio 
+                        Administra tus inventarios
                     </h1>  
                     <h1 class="title is-size-4 has-text-weight-light">
                         Aumenta tus ventas 
@@ -63,7 +63,7 @@
                                         <img src="{{ asset('img/customize.png')}}">
                                     </figure>
                                     <p class="title has-text-centered ">Personalizable</p>
-                                    <p class="subtitle has-text-justified has-text-grey is-size-6">Puedes crear, modificar y eliminar tus menús cuantas veces quieras; además de poder clasificarlos como Vegetarianos, veganos o tradicionales</p>
+                                    <p class="subtitle has-text-justified has-text-grey is-size-6">Puedes crear, modificar y eliminar tus menús cuantas veces quieras; además de poder clasificarlos como vegetarianos, veganos o tradicionales</p>
                                 </div>
                             </div>
                         </div>
