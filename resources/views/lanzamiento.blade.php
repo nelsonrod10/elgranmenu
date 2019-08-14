@@ -14,36 +14,38 @@
     </section>
     <section class="hero is-light is-medium">
         <div class="hero-body">
-          <div class="container">
-            <h1 class="title is-size-3">
-              ¿Quieres fidelizar y ganar más clientes? 
-            </h1>
-            <h1 class="title is-size-4 has-text-grey-dark">
-              Difundir y administrar el menú de tu negocio 
-            </h1>  
-            <h1 class="title is-size-4 has-text-grey-dark">
-              Aumentar tus ventas y fidelizar clientes 
-            </h1>
-          </div>
-          <hr/>  
-          <div class="container has-text-right">
-            <h1 class="title">
-              Nuestro objetivo es que 
-            </h1>
-            <h1 class="title">
-              + clientes lleguen a tu negocio. 
-            </h1>  
-          </div>      
+            <div class="container">
+                <div class="container has-text-centered">
+                    <h1 class="title is-size-2">
+                      Nuestro objetivo es que <span class="is-size-1">+</span> Clientes lleguen a tu negocio. 
+                    </h1>
+                    <h1 class="title">
+                        
+                    </h1>  
+                </div>      
+                <div class="container has-text-centered">
+                    <h1 class="title is-size-4  has-text-weight-light">
+                        Fideliza y gana más clientes 
+                    </h1>
+                    <h1 class="title is-size-4 has-text-weight-light">
+                        Difunde y administra el menú de tu negocio 
+                    </h1>  
+                    <h1 class="title is-size-4 has-text-weight-light">
+                        Aumentar tus ventas 
+                    </h1>
+                </div>
+                
+            </div>
         </div>
     </section>
     <section class="hero is-dark">
         <div class="hero-body">
           <div class="container has-text-centered">
-            <h1 class="title">
+            <h1 class="title has-text-weight-normal">
                 ElGranMenu es una  plataforma que permite de forma fácil y efectiva la difusión de la información de tu negocio.
             </h1>
             <br/>
-            <h1 class="subtitle is-size-4">
+            <h1 class="subtitle is-size-4 has-text-weight-light">
                 De acuerdo a lo que tus clientes y usuarios de la plataforma busquen, podrán saber el menú que tienes para ellos.
             </h1>  
           </div>      
@@ -128,7 +130,7 @@
     <section class="hero is-warning is-bold">
         <div class="hero-body">
           <div class="container has-text-centered">
-            <h1 class="title">
+            <h1 class="title is-size-2">
                 Conoce nuestro demo y registrate ahora mismo  
             </h1>
               <a class="button" href="{{url('demo')}}">Ver Demo</a>
@@ -142,8 +144,8 @@
                     <div class="tile is-5 is-vertical is-parent">
                         <div class="tile is-child">
                             <p class="title">Estamos de lanzamiento</p>
-                          <p class="subtitle">Queremos que tu negocio haga parte de nuestra plataforma, así que te invitamos a inscribirte.</p>
-                          <p class="subtitle">Luego de la inscripción uno de nuestros asesores te contactará para darte toda la información y aclarar tus dudas.</p>
+                          <p class="subtitle has-text-weight-light">Queremos que tu negocio haga parte de nuestra plataforma, así que te invitamos a inscribirte.</p>
+                          <p class="subtitle has-text-weight-light">Luego de la inscripción uno de nuestros asesores te contactará para darte toda la información y aclarar tus dudas.</p>
                         </div>
                     </div>
                     <div class="tile is-vertical is-parent">
