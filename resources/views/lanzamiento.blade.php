@@ -41,13 +41,9 @@
     <section class="hero is-dark">
         <div class="hero-body">
           <div class="container has-text-centered">
-            <h1 class="title has-text-weight-normal">
-                ElGranMenu es una  plataforma que permite de forma fácil y efectiva la difusión de la información de tu negocio.
+            <h1 class="title has-text-weight-light">
+                Somos la única  plataforma donde encontrarán a tu negocio de acuerdo al menú que ofreces.
             </h1>
-            <br/>
-            <h1 class="subtitle is-size-4 has-text-weight-light">
-                De acuerdo a lo que tus clientes y usuarios de la plataforma busquen, podrán saber el menú que tienes para ellos.
-            </h1>  
           </div>      
         </div>
     </section>
