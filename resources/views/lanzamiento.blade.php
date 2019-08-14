@@ -31,7 +31,7 @@
                         Difunde y administra el menú de tu negocio 
                     </h1>  
                     <h1 class="title is-size-4 has-text-weight-light">
-                        Aumentar tus ventas 
+                        Aumenta tus ventas 
                     </h1>
                 </div>
                 
