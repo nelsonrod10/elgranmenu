@@ -1,6 +1,6 @@
 @extends('template.app')
 @section('content')
-    <section class="hero is-warning is-medium">
+    <section class="hero is-primary is-bold is-fullheight">
         <div class="hero-body">
           <div class="container has-text-centered">
             <h1 class="title is-size-2">
@@ -53,25 +53,73 @@
         <div class="hero-body">
             <div class="container">
                 <div class="tile is-ancestor">
-                    <div class="tile is-6 is-vertical is-parent has-text-centered">
-                      <div class="tile is-child">
-                          <p class="title">Personalizable</p>
-                        <p class="subtitle">Puedes crear, modificar y eliminar tus menús cuantas veces quieras; además de poder clasificarlos como Vegetarianos, veganos o tradicionales</p>
-                      </div>
-                      <div class="tile is-child">
-                        <p class="title">Aumenta tus ventas</p>
-                        <p class="subtitle">Con nuestro sistema, aumentan las posibilidades de que nuevos clientes lleguen a tu negocio; lo único que debes hacer es seguir ofreciendo la mejor experiencia y los mejores platos a tus clientes.</p>
-                      </div>
+                    <div class="tile is-vertical is-5">
+                        <div class="tile">
+                            <div class="tile is-parent">
+                                <div class="tile is-child box">
+                                    <figure class="image is-4by3">
+                                        <img src="{{ asset('img/customize.png')}}">
+                                    </figure>
+                                    <p class="title has-text-centered ">Personalizable</p>
+                                    <p class="subtitle has-text-justified has-text-grey is-size-6">Puedes crear, modificar y eliminar tus menús cuantas veces quieras; además de poder clasificarlos como Vegetarianos, veganos o tradicionales</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tile is-vertical is-parent has-text-centered">
-                      <div class="tile is-child">
-                        <p class="title">Economiza</p>
-                        <p class="subtitle">No más dinero en volantes o papelitos impresos que apenas ven unos pocos. Lo que necesitas es llegar a miles de personas con solo un click!!</p>    
-                      </div>
-                      <div class="tile is-child">
-                        <p class="title">Administra</p>
-                        <p class="subtitle">Al tener tus menus creados en ElGranMenu, podrás administrar y controlar tus inventarios. Y este control de tu negocio genera beneficios invaluables</p>    
-                      </div>
+                    <div class="tile is-vertical is-2">
+                        <div class="tile">
+                            <div class="tile is-parent">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tile is-vertical is-5">
+                        <div class="tile">
+                            <div class="tile is-parent">
+                                <div class="tile is-child box">
+                                    <figure class="image is-4by3">
+                                        <img src="{{ asset('img/sells.jpg')}}">
+                                    </figure>
+                                    <p class="title has-text-centered">Aumenta tus ventas</p>
+                                    <p class="subtitle has-text-justified has-text-grey is-size-6">Con nuestro sistema, aumentan las posibilidades de que nuevos clientes lleguen a tu negocio; lo único que debes hacer es seguir ofreciendo la mejor experiencia y los mejores platos a tus clientes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-ancestor">
+                    <div class="tile is-vertical is-5">
+                        <div class="tile">
+                            <div class="tile is-parent">
+                                <div class="tile is-child box">
+                                    <figure class="image is-4by3">
+                                        <img src="{{ asset('img/savemoney.jpg')}}">
+                                    </figure>
+                                    <p class="title has-text-centered">Economiza</p>
+                                    <p class="subtitle has-text-justified has-text-grey is-size-6">No más dinero en volantes o papelitos impresos que apenas ven unos pocos. Lo que necesitas es llegar a miles de personas con solo un click!!</p>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tile is-vertical is-2">
+                        <div class="tile">
+                            <div class="tile is-parent">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tile is-vertical is-5">
+                        <div class="tile">
+                            <div class="tile is-parent">
+                                <div class="tile is-child box">
+                                    <figure class="image is-4by3">
+                                        <img src="{{ asset('img/managment.jpg')}}">
+                                    </figure>
+                                    <p class="title has-text-centered">Administra</p>
+                                    <p class="subtitle has-text-justified has-text-grey is-size-6">Al tener tus menus creados en ElGranMenu, podrás administrar y controlar tus inventarios. Y este control de tu negocio genera beneficios invaluables</p>    
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
