@@ -144,8 +144,8 @@
                     <div class="tile is-5 is-vertical is-parent">
                         <div class="tile is-child">
                             <p class="title">Estamos de lanzamiento</p>
-                          <p class="subtitle has-text-weight-light">Queremos que tu negocio haga parte de nuestra plataforma, así que te invitamos a inscribirte.</p>
-                          <p class="subtitle has-text-weight-light">Luego de la inscripción uno de nuestros asesores te contactará para darte toda la información y aclarar tus dudas.</p>
+                          <p class="subtitle is-size-6 has-text-weight-light">Queremos que tu negocio haga parte de nuestra plataforma, así que te invitamos a inscribirte.</p>
+                          <p class="subtitle is-size-6 has-text-weight-light">Luego de la inscripción uno de nuestros asesores te contactará para darte toda la información y aclarar tus dudas.</p>
                         </div>
                     </div>
                     <div class="tile is-vertical is-parent">
