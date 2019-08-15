@@ -10,6 +10,7 @@ import VerPlato from '@/js/components/inicio/PlatoSeleccionado/VerPlato.vue'
 import Restaurante from '@/js/components/inicio/PlatoSeleccionado/Restaurante.vue'
 import Sector from '@/js/components/inicio/Sectores/MostrarSector.vue'
 import SectoresCiudad from '@/js/components/inicio/Sectores/SectoresCiudad.vue'
+import FormularioLanzamiento from '@/js/components/lanzamiento/formulario.vue'
 
 Vue.use(VueRouter);
 
@@ -17,7 +18,7 @@ const router = new VueRouter({
     //mode: 'history',
     routes: [
         {
-            path:'',
+            path:'/',
             components : {
                 default : BarraBusqueda
             },
@@ -83,13 +84,7 @@ const router = new VueRouter({
                 }
             ]
                 
-        },
-        /*{
-            path:'',
-            components : {
-                default : BarraBusqueda
-            }        
-        }*/
+        }
     ]
 });
 

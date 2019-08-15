@@ -12,17 +12,23 @@
 */
 //Route::get('/{any}', 'SinglePageController@index')->where('any', '.*');
 Auth::routes();
+
+Route::get('/', function () {
+    return view('lanzamiento');
+});
+
 Route::get('/home', 'RoleVerifyController@index')->name('home');
 
 //Se crea esta nueva ruta para poder crear el super-admin nelsonrod10
 //Route::get('/', 'RoleVerifyController@crearUsuarioAdministrador');
 
+
 Route::get('/demo', function () {
     return view('inicio');
 });
 
-Route::get('/', function () {
-    return view('lanzamiento');
+Route::get('/inscripcion', function () {
+    return view('inscripcion');
 });
 
 Route::resource('platos-del-dia', 'Menus\PlatosDelDiaController')->except([
