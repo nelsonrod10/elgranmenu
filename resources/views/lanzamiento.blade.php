@@ -12,25 +12,30 @@
           </div>
         </div>
     </section>
-
-    <section class="hero is-medium">
+    <section class="hero">
         <div class="hero-body">
             <div class="container">
+                <div class="columns">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-size-2">Ahora tienes la solución más efectiva...</h1>
+                    </div>
+                </div>
+                <br/>
                 <div class="columns is-vcentered  is-centered">
-                    <div class="column is-2">
-                        <figure class="image is-128x128">
+                    <div class="column is-2 has-text-centered">
+                        <figure class="image is-128x128 is-inline-block">
                             <img class="is-rounded" src="{{ asset('img/step1.png')}}">
                         </figure>
 
                     </div>
                     <div class="column is-6">
-                        <p class="subtitle has-text-centered has-text-grey is-size-4">Creas tus platos del día o de la carta, y los subes para que sean visibles.</p>
+                        <p class="subtitle has-text-centered has-text-grey is-size-4">Creas tus platos del día o de la carta; luego los subes para que sean visibles.</p>
                     </div>
                 </div>
                 <br/>
                 <div class="columns is-vcentered  is-centered">
-                    <div class="column is-2">
-                        <figure class="image is-128x128">
+                    <div class="column is-2 has-text-centered">
+                        <figure class="image is-128x128 is-inline-block">
                             <img class="is-rounded" src="{{ asset('img/step2.png')}}">
                         </figure>
                     </div>
@@ -41,8 +46,8 @@
                 </div>
                 <br/>
                 <div class="columns is-vcentered  is-centered">
-                    <div class="column is-2">
-                        <figure class="image is-128x128">
+                    <div class="column is-2 has-text-centered">
+                        <figure class="image is-128x128 is-inline-block">
                             <img class="is-rounded" src="{{ asset('img/step3.png')}}">
                         </figure>
                     </div>
@@ -53,7 +58,7 @@
             </div>
         </div>
     </section>
-    <section class="hero is-light is-medium">
+    <section class="hero is-light">
         <div class="hero-body">
             <div class="container">
                 <div class="container has-text-centered">
@@ -88,7 +93,7 @@
           </div>      
         </div>
     </section>
-    <section class="hero is-medium">
+    <section class="hero">
         <div class="hero-body">
             <div class="container">
                 <div class="tile is-ancestor">
@@ -155,8 +160,7 @@
                                         <img src="{{ asset('img/managment.jpg')}}">
                                     </figure>
                                     <p class="title has-text-centered">Administra</p>
-                                    <p class="subtitle has-text-justified has-text-grey is-size-6">Al tener tus menus creados en ElGranMenu, podrás administrar y controlar tus inventarios. Y este control de tu negocio genera beneficios invaluables.    
-                                    Y lo más importante si <i><b>administras varios restaurantes</b></i>, podrás manejarlos todos desde un solo lugar.</p>    
+                                    <p class="subtitle has-text-justified has-text-grey is-size-6">Al tener tus menus creados en ElGranMenu, podrás administrar y controlar tus inventarios. Y lo más importante si <i><b>administras varios restaurantes</b></i>, podrás manejarlos todos desde un solo lugar.</p>    
                                 </div>
                             </div>
                         </div>
@@ -181,9 +185,10 @@
                 <div class="tile is-ancestor">
                     <div class="tile is-5 is-vertical is-parent">
                         <div class="tile is-child">
-                            <p class="title">Estamos de lanzamiento</p>
-                          <p class="subtitle is-size-6 has-text-weight-light">Queremos que tu negocio haga parte de nuestra plataforma, así que te invitamos a inscribirte.</p>
-                          <p class="subtitle is-size-6 has-text-weight-light">Luego de la inscripción uno de nuestros asesores te contactará para darte toda la información y aclarar tus dudas.</p>
+                            <p class="title has-text-centered">Estamos de lanzamiento</p>
+                            <p class="subtitle is-size-6 has-text-weight-light has-text-justified">En esta primera etapa estamos recibiendo la inscripción de los restaurantes que harán parte de esta nueva experiencia.</p>
+                            <p class="subtitle is-size-6 has-text-weight-light has-text-justified">Queremos que tu negocio haga parte de nuestra plataforma, así que te invitamos a inscribirte.</p>
+                            <p class="subtitle is-size-6 has-text-weight-light has-text-justified">Luego de la inscripción uno de nuestros asesores te contactará para darte toda la información y aclarar tus dudas.</p>
                         </div>
                     </div>
                     <div class="tile is-vertical is-parent">
