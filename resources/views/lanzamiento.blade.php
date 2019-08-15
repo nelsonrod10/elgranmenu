@@ -258,7 +258,7 @@
                                 <div class="field">
                                     <label class="label" for="comentarios">Comentarios</label>
                                     <div class="control">
-                                        <textarea id="comentarios" name="comentarios" class="textarea @error('comentarios') is-danger @enderror" placeholder="Comentarios adicionales">{{old('restaurante')}}</textarea>
+                                        <textarea id="comentarios" name="comentarios" class="textarea @error('comentarios') is-danger @enderror" placeholder="Comentarios adicionales">{{old('comentarios')}}</textarea>
                                     </div>
                                     @error('comentarios')<p class="help is-danger">{{$message}}</p>@enderror
                                 </div>

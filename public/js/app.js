@@ -46590,7 +46590,8 @@ var render = function() {
                     attrs: {
                       list: "nombres-platos",
                       type: "text",
-                      placeholder: "Que quieres comer, que restaurante buscas"
+                      placeholder:
+                        "Que quieres comer: nombre del plato o ingrediente que buscas"
                     },
                     domProps: { value: _vm.buscarPlato },
                     on: {

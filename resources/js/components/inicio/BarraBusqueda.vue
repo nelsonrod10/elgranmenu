@@ -11,7 +11,7 @@
                         </div>
                         <div class="field has-addons">
                             <div class="control is-expanded">
-                                <input list="nombres-platos" class="input" type="text" placeholder="Que quieres comer, que restaurante buscas" v-on:keyup="BuscarPlato" v-model="buscarPlato">
+                                <input list="nombres-platos" class="input" type="text" placeholder="Que quieres comer: nombre del plato o ingrediente que buscas" v-on:keyup="BuscarPlato" v-model="buscarPlato">
                                 <datalist id="nombres-platos">
                                     <option v-for="platoCarta in nombresPlatosCarta" :value="platoCarta.nombre"></option>
                                     <option v-for="platoDia in nombresPlatosDia" :value="platoDia.nombre"></option>    
