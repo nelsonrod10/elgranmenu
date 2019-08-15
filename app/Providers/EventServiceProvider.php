@@ -21,6 +21,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\RolesHabilidades' => [
             'App\Listeners\CrearRolesHabilidades',
         ],
+        'App\Events\RestauranteRegistrado' => [
+            'App\Listeners\NotificarAdministradorRestaurante',
+            'App\Listeners\NotificarCEO',
+        ],
     ];
 
     /**

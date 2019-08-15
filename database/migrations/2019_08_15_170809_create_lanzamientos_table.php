@@ -15,7 +15,7 @@ class CreateLanzamientosTable extends Migration
     {
         Schema::create('lanzamientos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("restaruante")->unique();
+            $table->string("restaurante")->unique();
             $table->string("direccion")->unique();
             $table->string("ciudad");
             $table->string("contacto");

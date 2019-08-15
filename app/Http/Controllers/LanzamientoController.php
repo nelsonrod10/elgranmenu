@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Lanzamiento;
+use App\Events\RestauranteRegistrado;
 
-class LazamientoController extends Controller
+class LanzamientoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +36,35 @@ class LazamientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'restaurante'   =>  'required|string|unique:lanzamientos,restaurante',
+            'direccion'     =>  'required|string|unique:lanzamientos,direccion',
+            //'ciudad'      =>  'required|string',
+            'contacto'      =>  'required|string',
+            'email'         =>  'required|string|unique:lanzamientos,email',
+            'telefono'      =>  'nullable|string',
+            'comentarios'   =>  'nullable|string',
+        ],[
+            'required'      =>  'El campo :attribute es obligatorio',
+            'string'       =>  'El campo :attribute debe ser una cadena de texto',
+            'unique'        =>  'Lo sentimos ya exite un :attribute registrado con :input'
+            
+            
+        ]);
+        
+        
+        $datos = Lanzamiento::create([
+            'restaurante'   =>  $data['restaurante'],
+            'direccion'     =>  $data['direccion'],
+            'ciudad'        =>  'Bogotá',//$data['restaurante'],
+            'contacto'      =>  $data['contacto'],
+            'email'         =>  $data['email'],
+            'telefono'      =>  $data['telefono'],
+            'comentarios'   =>  $data['comentarios'],
+        ]);
+        
+        event(new RestauranteRegistrado($datos));
+        return back()->with(['success-action'=>'inscrito']);
     }
 
     /**

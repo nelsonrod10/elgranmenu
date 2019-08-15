@@ -31,6 +31,8 @@ Route::get('/inscripcion', function () {
     return view('inscripcion');
 });
 
+Route::resource('lanzamiento', 'LanzamientoController');
+
 Route::resource('platos-del-dia', 'Menus\PlatosDelDiaController')->except([
     'index'
 ]);

@@ -1,5 +1,6 @@
 @extends('template.app')
 @section('content')
+    
     <section class="hero is-primary is-bold is-fullheight">
         <div class="hero-body">
           <div class="container has-text-centered">
@@ -189,73 +190,125 @@
                             <p class="subtitle is-size-6 has-text-weight-light has-text-justified">En esta primera etapa estamos recibiendo la inscripción de los restaurantes que harán parte de esta nueva experiencia.</p>
                             <p class="subtitle is-size-6 has-text-weight-light has-text-justified">Queremos que tu negocio haga parte de nuestra plataforma, así que te invitamos a inscribirte.</p>
                             <p class="subtitle is-size-6 has-text-weight-light has-text-justified">Luego de la inscripción uno de nuestros asesores te contactará para darte toda la información y aclarar tus dudas.</p>
+                            @if ($errors->any())
+                                <div class="notification is-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="tile is-vertical is-parent">
-                        <div class="tile is-child">
-                            <div class="field">
-                                <label class="label" for="restaurante">Nombre del Restaurante</label>
-                                <div class="control">
-                                    <input id="restaurante" name="restaurante" required="" class="input" type="text" placeholder="Nombre del restaurante">
+                        <form name="lanzamiento" method="POST" action="{{route('lanzamiento.store')}}">
+                            @csrf
+                            <div class="tile is-child">
+                                <div class="field">
+                                    <label class="label" for="restaurante">Nombre del Restaurante</label>
+                                    <div class="control">
+                                        <input id="restaurante" name="restaurante" required="" class="input @error('restaurante') is-danger @enderror" type="text" placeholder="Nombre del restaurante" value="{{old('restaurante')}}">
+                                    </div>
+                                    @error('restaurante')<p class="help is-danger">{{$message}}</p>@enderror
                                 </div>
-                            </div>
-                            <div class="field">
-                              <label class="label" for="direccion">Direccion</label>
-                              <div class="control has-icons-left">
-                                    <input id="direccion" name="direccion" required="" class="input" type="text" placeholder="Dirección del Restaurante">
-                                    <span class="icon is-small is-left">
-                                      <i class="fas fa-map-marker-alt"></i>
-                                    </span>
-                              </div>
-                              <!--<p class="help is-success">This username is available</p>-->
-                            </div>
+                                <div class="field">
+                                  <label class="label" for="direccion">Direccion</label>
+                                  <div class="control has-icons-left">
+                                        <input id="direccion" name="direccion" required="" class="input @error('direccion') is-danger @enderror" type="text" placeholder="Dirección del Restaurante" value="{{old('direccion')}}">
+                                        <span class="icon is-small is-left">
+                                          <i class="fas fa-map-marker-alt"></i>
+                                        </span>
+                                  </div>
+                                  @error('direccion')<p class="help is-danger">{{$message}}</p>@enderror
+                                </div>
 
-                            <div class="field">
-                              <label class="label" for="contacto">Administrador / Contacto</label>
-                              <div class="control has-icons-left">
-                                  <input id="contacto" name="contacto" required="" class="input" type="text" placeholder="Nombre del contacto o administrador">
-                                    <span class="icon is-small is-left">
-                                      <i class="fas fa-user"></i>
-                                    </span>
-                              </div>
-                            </div>
+                                <div class="field">
+                                  <label class="label" for="contacto">Administrador / Contacto</label>
+                                  <div class="control has-icons-left">
+                                      <input id="contacto" name="contacto" required="" class="input @error('contacto') is-danger @enderror" type="text" placeholder="Nombre del contacto o administrador" value="{{old('contacto')}}">
+                                        <span class="icon is-small is-left">
+                                          <i class="fas fa-user"></i>
+                                        </span>
+                                  </div>
+                                  @error('contacto')<p class="help is-danger">{{$message}}</p>@enderror
+                                </div>
 
-                            <div class="field">
-                              <label class="label" for="email">Email</label>
-                              <div class="control has-icons-left">
-                                  <input id="email" name="email" required="" class="input" type="email" placeholder="email contacto o administrador">
-                                    <span class="icon is-small is-left">
-                                      <i class="fas fa-envelope"></i>
-                                    </span>
-                              </div>
-                            </div>
+                                <div class="field">
+                                  <label class="label" for="email">Email</label>
+                                  <div class="control has-icons-left">
+                                      <input id="email" name="email" required="" class="input @error('email') is-danger @enderror" type="email" placeholder="email contacto o administrador" value="{{old('email')}}">
+                                        <span class="icon is-small is-left">
+                                          <i class="fas fa-envelope"></i>
+                                        </span>
+                                  </div>
+                                  @error('email')<p class="help is-danger">{{$message}}</p>@enderror
+                                </div>
+                                
+                                <div class="field">
+                                  <label class="label" for="telefono">Teléfono</label>
+                                  <div class="control has-icons-left">
+                                      <input id="telefono" name="telefono" class="input @error('telefono') is-danger @enderror" type="text" placeholder="Teléfono contacto o administrador" value="{{old('telefono')}}">
+                                        <span class="icon is-small is-left">
+                                          <i class="fas fa-phone"></i>
+                                        </span>
+                                  </div>
+                                  @error('telefono')<p class="help is-danger">{{$message}}</p>@enderror
+                                </div>
+                                <div class="field">
+                                    <label class="label" for="comentarios">Comentarios</label>
+                                    <div class="control">
+                                        <textarea id="comentarios" name="comentarios" class="textarea @error('comentarios') is-danger @enderror" placeholder="Comentarios adicionales">{{old('restaurante')}}</textarea>
+                                    </div>
+                                    @error('comentarios')<p class="help is-danger">{{$message}}</p>@enderror
+                                </div>
+
+                                <div class="field is-grouped">
+                                  <div class="control">
+                                    <button class="button is-success">Enviar</button>
+                                  </div>
+                                </div>
+                            </div>  
                             
-                            <div class="field">
-                              <label class="label" for="telefono">Teléfono</label>
-                              <div class="control has-icons-left">
-                                  <input id="telefono" name="telefono" class="input" type="text" placeholder="Teléfono contacto o administrador">
-                                    <span class="icon is-small is-left">
-                                      <i class="fas fa-phone"></i>
-                                    </span>
-                              </div>
-                            </div>
-                            <div class="field">
-                                <label class="label" for="comentarios">Comentarios</label>
-                              <div class="control">
-                                  <textarea id="comentarios" name="comentarios" class="textarea" placeholder="Comentarios adicionales"></textarea>
-                              </div>
-                            </div>
-
-                            <div class="field is-grouped">
-                              <div class="control">
-                                <button class="button is-success">Enviar</button>
-                              </div>
-                            </div>
-                        </div>  
+                        </form>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </section>    
-    
+    @if ($errors->any())
+        <div id="errores" class="modal is-active">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <div class="columns">
+                        <div class="column has-text-centered">
+                            <p class="subtitle">Por favor revisa los datos diligenciados</p>
+                            <a class="button is-info" href="#formulario" onclick="$('#errores').removeClass('is-active')">Revisar</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close" onclick="$('#errores').removeClass('is-active')"></button>
+        </div>
+    @endif
+    @if (session('success-action'))
+        <div id="inscrito" class="modal is-active">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box is-primary">
+                    <div class="columns">
+                        <div class="column has-text-centered">
+                            <p class="subtitle">Gracias por inscribirte, pronto estaremos en contacto!!</p>
+                            <a class="button is-info" onclick="$('#inscrito').removeClass('is-active')">Cerrar</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close" onclick="$('#inscrito').removeClass('is-active')"></button>
+        </div>
+    @endif
 @endsection
