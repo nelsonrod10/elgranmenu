@@ -56,7 +56,7 @@ class LanzamientoController extends Controller
         $datos = Lanzamiento::create([
             'restaurante'   =>  $data['restaurante'],
             'direccion'     =>  $data['direccion'],
-            'ciudad'        =>  'Bogotá',//$data['restaurante'],
+            'ciudad'        =>  'Bogotá',//$data['ciudad'],
             'contacto'      =>  $data['contacto'],
             'email'         =>  $data['email'],
             'telefono'      =>  $data['telefono'],
@@ -64,6 +64,7 @@ class LanzamientoController extends Controller
         ]);
         
         event(new RestauranteRegistrado($datos));
+        
         return back()->with(['success-action'=>'inscrito']);
     }
 

@@ -5,6 +5,8 @@ namespace App\Listeners;
 use App\Events\RestauranteRegistrado;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RestauranteRegistradoCEO;
 
 class NotificarCEO
 {
@@ -26,6 +28,7 @@ class NotificarCEO
      */
     public function handle(RestauranteRegistrado $event)
     {
-        //
+        Mail::to('nelsonrod10@gmail.com')->send(new RestauranteRegistradoCEO($event));
+        //return new RestauranteRegistradoCEO($event);
     }
 }

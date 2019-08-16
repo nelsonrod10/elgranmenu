@@ -20,8 +20,8 @@ class CreateLanzamientosTable extends Migration
             $table->string("ciudad");
             $table->string("contacto");
             $table->string("email")->unique();
-            $table->string("telefono");
-            $table->longText('comentarios');
+            $table->string("telefono")->nullable();
+            $table->longText('comentarios')->nullable();
             $table->timestamps();
         });
     }

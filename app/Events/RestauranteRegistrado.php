@@ -23,6 +23,7 @@ class RestauranteRegistrado
      */
     public function __construct(Lanzamiento $datos)
     {
+        
         $this->datos = $datos;
     }
 
