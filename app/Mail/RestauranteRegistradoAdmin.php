@@ -31,7 +31,6 @@ class RestauranteRegistradoAdmin extends Mailable implements ShouldQueue
     public function build()
     {
         return $this->from('lanzamiento@elgranmenu.com')
-                ->name('Lanzamiento ElGranMenu')
                 ->subject("ElGranMenu, inscripción exitosa!!")
                 ->markdown('emails.registro.administrador');
     }
