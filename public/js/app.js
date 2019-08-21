@@ -2452,8 +2452,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    routedemo: {
+      type: String
+    }
+  },
   mounted: function mounted() {},
   components: {},
   created: function created() {
@@ -46571,6 +46582,25 @@ var render = function() {
         "div",
         { staticClass: "container" },
         [
+          _c("div", { staticClass: "columns is-centered" }, [
+            _c("div", { staticClass: "column has-text-centered is-size-6" }, [
+              _c("p", [
+                _vm._v(
+                  "Gracias por conocer nuestro Demo; ahora vas a vivir la experiencia que tendrán tus clientes, y que hará que tu negocio sea mucho más visible..."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v("Te invitamos a inscibirte compeltamente gratis "),
+                _c(
+                  "a",
+                  { staticClass: "is-link", attrs: { href: _vm.routedemo } },
+                  [_vm._v("Aqui")]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "columns is-centered" }, [
             _c("div", { staticClass: "column is-three-fifths" }, [
               _vm._m(0),

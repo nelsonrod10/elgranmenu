@@ -1,4 +1,4 @@
 @extends('template.app')
 @section('content')
-    <router-view></router-view>
+    <router-view :routedemo="'{{url('')}}/#formulario'"></router-view>
 @endsection

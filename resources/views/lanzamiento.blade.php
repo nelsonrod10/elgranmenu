@@ -174,7 +174,7 @@
         <div class="hero-body">
           <div class="container has-text-centered">
             <h1 class="title is-size-2">
-                Conoce nuestro demo y registrate ahora mismo  
+                Conoce nuestro demo y registrate ahora mismo, completamente gratis!!  
             </h1>
               <a class="button" href="{{url('demo')}}">Ver Demo</a>
           </div>
@@ -190,6 +190,7 @@
                             <p class="subtitle is-size-6 has-text-weight-light has-text-justified">En esta primera etapa estamos recibiendo la inscripción de los restaurantes que harán parte de esta nueva experiencia.</p>
                             <p class="subtitle is-size-6 has-text-weight-light has-text-justified">Queremos que tu negocio haga parte de nuestra plataforma, así que te invitamos a inscribirte.</p>
                             <p class="subtitle is-size-6 has-text-weight-light has-text-justified">Luego de la inscripción uno de nuestros asesores te contactará para darte toda la información y aclarar tus dudas.</p>
+                            <p class="title is-size-5 has-text-centered">La inscripción es 100% gratis!!</p>
                             @if ($errors->any())
                                 <div class="notification is-danger">
                                     <ul>

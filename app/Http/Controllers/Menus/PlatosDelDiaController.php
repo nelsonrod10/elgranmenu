@@ -92,7 +92,7 @@ class PlatosDelDiaController extends Controller
     }
     
     public function buscarOtrosRestaurantes($idSector){
-        $restaurantes= Restaurante::where('sector_id',(string)$idSector)->get();
+        $restaurantes= Restaurante::where('sector_id',(string)$idSector)->get(5);
         $sector = SectoresSugerido::find($idSector);
         return response()->json([
             "restaurantes"  =>  $restaurantes,
