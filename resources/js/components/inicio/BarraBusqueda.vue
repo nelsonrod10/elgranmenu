@@ -5,7 +5,7 @@
                 <div class="columns is-centered">
                     <div class="column has-text-centered is-size-6">
                         <p>Gracias por conocer nuestro Demo; ahora vas a vivir la experiencia que tendrán tus clientes, y que hará que tu negocio sea mucho más visible...</p>
-                        <p>Te invitamos a inscibirte compeltamente gratis <a class="is-link" :href="routedemo">Aqui</a></p>
+                        <p>Te invitamos a inscribirte completamente gratis <a class="is-link" :href="routedemo">Aqui</a></p>
                     </div>
                 </div>
                 <div class="columns is-centered">

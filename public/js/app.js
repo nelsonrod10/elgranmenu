@@ -46591,7 +46591,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("p", [
-                _vm._v("Te invitamos a inscibirte compeltamente gratis "),
+                _vm._v("Te invitamos a inscribirte completamente gratis "),
                 _c(
                   "a",
                   { staticClass: "is-link", attrs: { href: _vm.routedemo } },
