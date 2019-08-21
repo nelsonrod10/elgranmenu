@@ -5,7 +5,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-one-fifth">
-                    Dashboard
+                    @include('superAdmin.layout.menu_lateral')
                 </div>
                 <div class="column">
                     @if (session('status'))

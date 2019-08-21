@@ -1,7 +1,6 @@
 @component('mail::message')
-# Un nuevo inscrito
+# Tenemos un nuevo inscrito
 
-<p>Se acaba de inscribir</p>
 <ul>
     <li>Restaurante: {{$datos->datos->restaurante}}</li>
     <li>Contacto: {{$datos->datos->contacto}}</li>

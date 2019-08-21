@@ -15,9 +15,13 @@ class LanzamientoController extends Controller
      */
     public function index()
     {
-        //
+        return view('superAdmin.inscritos');
     }
 
+    public function listadoInscritos(){
+        $inscritos = Lanzamiento::all();
+        return response()->json($inscritos);
+    }    
     /**
      * Show the form for creating a new resource.
      *
@@ -110,6 +114,7 @@ class LanzamientoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Lanzamiento::find($id)->delete();
+        return;
     }
 }

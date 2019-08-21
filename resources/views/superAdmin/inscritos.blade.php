@@ -13,9 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <p class="title">Listado de Sectores</p>
+                    <p class="title">Listado de Inscritos</p>
                     
-                    <sectores></sectores>
+                    <inscritos></inscritos>
                 </div>
                         
             </div>    
