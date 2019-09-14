@@ -1,7 +1,7 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ url('/')}}">
-      <img src="{{ asset('img/logo.png')}}" width="200" height="40">
+        <img src="{{ asset('img/logo.png')}}" width="200" height="50">
     </a>
 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" onclick="$('#navbarBasicExample').toggle()">
@@ -58,19 +58,11 @@
                     @endif
                 </div>
             </div>-->
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-primary" href="{{ url('') }}/#formulario">
-                        <strong>Inscribirme</strong>
-                    </a>
-                    @if (Route::has('register'))
-                        <a class="button is-primary" href="{{ url('demo') }}">
-                            <strong>Ver Demo</strong>
-                        </a>
-                    @endif
-                </div>
-            </div>
-                
+            <a class="navbar-item" href="{{ url('inscripcion-restaurantes') }}/#formulario">Restaurantes</a>
+            @if (Route::has('register'))
+            <a class="navbar-item" href="{{ url('login') }}">Usuarios</a>
+            @endif
+            
         @else
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">

@@ -14,7 +14,7 @@
 Auth::routes();
 
 Route::get('/', function () {
-    return view('lanzamiento');
+    return view('inicio');
 });
 
 Route::get('/home', 'RoleVerifyController@index')->name('home');
@@ -23,8 +23,8 @@ Route::get('/home', 'RoleVerifyController@index')->name('home');
 //Route::get('/', 'RoleVerifyController@crearUsuarioAdministrador');
 
 
-Route::get('/demo', function () {
-    return view('inicio');
+Route::get('/inscripcion-restaurantes', function () {
+    return view('inscripcion_restaurantes');
 });
 
 Route::get('/inscripcion', function () {
