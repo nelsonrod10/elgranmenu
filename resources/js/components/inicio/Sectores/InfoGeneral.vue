@@ -1,5 +1,5 @@
 <template>
-    <div class="column">
+    <div >
         <a class="has-text-dark has-text-centered">
             <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
             <span class="has-text-centered" v-if="sector.tipo !== 'Zona o Sector'">{{sector.tipo}}</span> {{sector.nombre}}

@@ -3315,6 +3315,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
  //import RestaurantesSector from '@/js/components/inicio/Sectores/MostrarSector.vue';
@@ -66716,22 +66723,52 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "columns is-centered" }, [
-        _c(
-          "div",
-          { staticClass: "column is-four-fifths" },
-          [
+        _c("div", { staticClass: "column is-four-fifths" }, [
+          _c("div", { staticClass: "box" }, [
             _c("div", { staticClass: "columns" }, [
               _c("div", { staticClass: "column" }, [
                 _c(
-                  "p",
+                  "div",
                   { staticClass: "title has-text-centered is-capitalized" },
-                  [_vm._v(_vm._s(_vm.restaurante.nombre))]
+                  [
+                    _vm._v(
+                      _vm._s(_vm.restaurante.nombre) +
+                        "\n                            "
+                    ),
+                    _c(
+                      "p",
+                      {
+                        staticClass: "has-text-centered is-size-6 has-text-grey"
+                      },
+                      [
+                        _vm._m(0),
+                        _vm._v(
+                          _vm._s(_vm.restaurante.telefono) +
+                            "  \n                                "
+                        ),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "has-text-grey",
+                            attrs: { href: _vm.direccionMaps, target: "_alt" }
+                          },
+                          [_vm._m(1), _vm._v(_vm._s(_vm.restaurante.direccion))]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(2),
+                        _vm._v(
+                          _vm._s(_vm.restaurante.ciudad) +
+                            "\n                            "
+                        )
+                      ]
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _vm.datosSector.tipo
                   ? _c(
                       "div",
-                      { staticClass: "columns is-centered has-text-centered" },
+                      { staticClass: "has-text-centered" },
                       [
                         _c("info-general-sector", {
                           attrs: {
@@ -66739,17 +66776,8 @@ var render = function() {
                             sector: _vm.datosSector
                           },
                           on: { "mostrar-sector": _vm.MostrarSector }
-                        })
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.datosSector.tipo
-                  ? _c(
-                      "div",
-                      { staticClass: "columns is-centered has-text-centered" },
-                      [
+                        }),
+                        _vm._v(" "),
                         _c(
                           "router-link",
                           {
@@ -66766,30 +66794,7 @@ var render = function() {
                       ],
                       1
                     )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  { staticClass: "has-text-centered is-size-6 has-text-grey" },
-                  [
-                    _vm._m(0),
-                    _vm._v(
-                      _vm._s(_vm.restaurante.telefono) +
-                        "  \n                            "
-                    ),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "has-text-grey",
-                        attrs: { href: _vm.direccionMaps, target: "_alt" }
-                      },
-                      [_vm._m(1), _vm._v(_vm._s(_vm.restaurante.direccion))]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(2),
-                    _vm._v(_vm._s(_vm.restaurante.ciudad))
-                  ]
-                )
+                  : _vm._e()
               ])
             ]),
             _vm._v(" "),
@@ -66832,7 +66837,9 @@ var render = function() {
                   },
                   [
                     _vm._m(3),
-                    _vm._v("\n                            Platos del día en "),
+                    _vm._v(
+                      "\n                                Platos del día en "
+                    ),
                     _c("span", { staticClass: "is-capitalized" }, [
                       _vm._v(_vm._s(_vm.restaurante.nombre))
                     ])
@@ -66923,42 +66930,52 @@ var render = function() {
                 ],
                 1
               )
-            ]),
-            _vm._v(" "),
-            _c("otros-restaurantes", {
-              attrs: {
-                restaurante: _vm.restaurante,
-                datosSector: _vm.datosSector,
-                otrosRestaurantesSector: _vm.otrosRestaurantesSector,
-                flagOrigen: "VerPlato"
-              }
-            }),
-            _vm._v(" "),
-            _vm.datosSector.tipo
-              ? _c(
-                  "div",
-                  { staticClass: "columns is-centered has-text-centered" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "is-size-6",
-                        attrs: {
-                          to: {
-                            name: "sector",
-                            params: { sectorId: _vm.datosSector.id }
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column is-four-fifths" }, [
+          _c(
+            "div",
+            { staticClass: "box" },
+            [
+              _c("otros-restaurantes", {
+                attrs: {
+                  restaurante: _vm.restaurante,
+                  datosSector: _vm.datosSector,
+                  otrosRestaurantesSector: _vm.otrosRestaurantesSector,
+                  flagOrigen: "VerPlato"
+                }
+              }),
+              _vm._v(" "),
+              _vm.datosSector.tipo
+                ? _c(
+                    "div",
+                    { staticClass: "columns is-centered has-text-centered" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "is-size-6",
+                          attrs: {
+                            to: {
+                              name: "sector",
+                              params: { sectorId: _vm.datosSector.id }
+                            }
                           }
-                        }
-                      },
-                      [_vm._v("Más lugares en este sector")]
-                    )
-                  ],
-                  1
-                )
-              : _vm._e()
-          ],
-          1
-        )
+                        },
+                        [_vm._v("Más lugares en este sector")]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ],
+            1
+          )
+        ])
       ])
     ])
   ])
@@ -67026,7 +67043,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "column" }, [
+  return _c("div", [
     _c("a", { staticClass: "has-text-dark has-text-centered" }, [
       _vm._m(0),
       _vm._v(" "),
