@@ -3,6 +3,11 @@
         <section class="section">
             <div class="container">
                 <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <img :src="imglovecorrientazo"/>
+                    </div>
+                </div>   
+                <div class="columns is-centered">
                     <div class="column is-three-fifths">
                         <div class="field">
                             <div class="control">
@@ -41,6 +46,9 @@
     export default {
         props:{
             routedemo:{
+                type:String
+            },
+            imglovecorrientazo:{
                 type:String
             }
         },

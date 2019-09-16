@@ -2606,10 +2606,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     routedemo: {
+      type: String
+    },
+    imglovecorrientazo: {
       type: String
     }
   },
@@ -65605,6 +65613,12 @@ var render = function() {
         "div",
         { staticClass: "container" },
         [
+          _c("div", { staticClass: "columns is-centered" }, [
+            _c("div", { staticClass: "column has-text-centered" }, [
+              _c("img", { attrs: { src: _vm.imglovecorrientazo } })
+            ])
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "columns is-centered" }, [
             _c("div", { staticClass: "column is-three-fifths" }, [
               _vm._m(0),
