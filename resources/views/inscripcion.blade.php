@@ -1,4 +1,4 @@
-@extends('template.appGTM')
+@extends('template.appRestaurantes')
 @section('content')
     <router-view></router-view>
 @endsection

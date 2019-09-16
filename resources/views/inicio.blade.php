@@ -1,4 +1,4 @@
-@extends('template.appGTM')
+@extends('template.appInicio')
 @section('content')
     <router-view 
         :routedemo="'{{url('inscripcion-restaurantes')}}/#formulario'"

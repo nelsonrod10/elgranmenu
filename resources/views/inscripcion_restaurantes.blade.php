@@ -1,4 +1,4 @@
-@extends('template.appGTM')
+@extends('template.appRestaurantes')
 @section('content')
     
     <section class="hero is-primary is-bold is-fullheight">
