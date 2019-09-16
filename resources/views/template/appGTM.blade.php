@@ -15,7 +15,7 @@
         })(window,document,'script','dataLayer','GTM-WL78652');</script>
     <!-- End Google Tag Manager -->
     </head>
-    <body>
+    <body style="background-color: rgba(235,244,250,10)">
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WL78652"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
