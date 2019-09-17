@@ -19,7 +19,7 @@
                                 </span>
                             </div>
                             <div class="column is-3">
-                                <span class="has-text-danger is-size-6 is-size-7-mobile">
+                                <span class="has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile">
                                     Realizas la búsqueda
                                 </span>
                             </div>
@@ -29,7 +29,7 @@
                                 </span>
                             </div>
                             <div class="column is-3">
-                                <span class="has-text-danger is-size-6 is-size-7-mobile">
+                                <span class="has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile">
                                     Seleccionas tú favorito
                                 </span>
                             </div>
@@ -39,7 +39,7 @@
                                 </span>
                             </div>
                             <div class="column is-3">
-                                <span class="has-text-danger is-size-6 is-size-7-mobile">
+                                <span class="has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile">
                                     Te indicamos como llegar
                                 </span>
                             </div>

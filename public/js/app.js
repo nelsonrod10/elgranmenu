@@ -65880,7 +65880,10 @@ var staticRenderFns = [
           _c("div", { staticClass: "column is-3" }, [
             _c(
               "span",
-              { staticClass: "has-text-danger is-size-6 is-size-7-mobile" },
+              {
+                staticClass:
+                  "has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile"
+              },
               [
                 _vm._v(
                   "\n                                Realizas la búsqueda\n                            "
@@ -65903,7 +65906,10 @@ var staticRenderFns = [
           _c("div", { staticClass: "column is-3" }, [
             _c(
               "span",
-              { staticClass: "has-text-danger is-size-6 is-size-7-mobile" },
+              {
+                staticClass:
+                  "has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile"
+              },
               [
                 _vm._v(
                   "\n                                Seleccionas tú favorito\n                            "
@@ -65926,7 +65932,10 @@ var staticRenderFns = [
           _c("div", { staticClass: "column is-3" }, [
             _c(
               "span",
-              { staticClass: "has-text-danger is-size-6 is-size-7-mobile" },
+              {
+                staticClass:
+                  "has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile"
+              },
               [
                 _vm._v(
                   "\n                                Te indicamos como llegar\n                            "
