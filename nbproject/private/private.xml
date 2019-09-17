@@ -4,13 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/elgranmenu/resources/js/components/inicio/BarraBusqueda.vue</file>
-            <file>file:/C:/xampp/htdocs/elgranmenu/resources/views/inscripcion_restaurantes.blade.php</file>
-            <file>file:/C:/xampp/htdocs/elgranmenu/resources/views/template/navbar.blade.php</file>
-            <file>file:/C:/xampp/htdocs/elgranmenu/resources/views/inscripcion.blade.php</file>
-            <file>file:/C:/xampp/htdocs/elgranmenu/resources/views/template/navbarRestaurantes.blade.php</file>
-            <file>file:/C:/xampp/htdocs/elgranmenu/resources/views/template/appRestaurantes.blade.php</file>
-            <file>file:/C:/xampp/htdocs/elgranmenu/resources/js/components/inicio/PlatoSeleccionado/VerPlato.vue</file>
-            <file>file:/C:/xampp/htdocs/elgranmenu/resources/views/template/appInicio.blade.php</file>
+            <file>file:/C:/xampp/htdocs/elgranmenu/resources/views/inicio.blade.php</file>
+            <file>file:/C:/xampp/htdocs/elgranmenu/routes/web.php</file>
         </group>
     </open-files>
 </project-private>

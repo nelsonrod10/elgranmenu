@@ -4,16 +4,54 @@
             <div class="container">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <a :href="routehome">
-                            <img :src="imglovecorrientazo"/>
+                        <a :href="routehome" class="is-size-1 has-text-dark">
+                            ¿Qué almorzarmos hoy?
+                            <!--<img :src="imglovecorrientazo"/>-->
                         </a>
+                    </div>
+                </div>   
+                <div class="columns is-centered">
+                    <div class="column is-three-fifths">
+                        <div class="columns is-mobile is-vcentered">
+                            <div class="column is-1 has-text-right">
+                                <span class="icon is-large has-text-danger">
+                                    <i class="fas fa-2x fa-search"></i>
+                                </span>
+                            </div>
+                            <div class="column is-3">
+                                <span class="has-text-danger">
+                                    Realizas la búsqueda
+                                </span>
+                            </div>
+                            <div class="column is-1">
+                                <span class="icon is-large  has-text-danger">
+                                    <i class="fas fa-2x fa-mouse-pointer"></i>
+                                </span>
+                            </div>
+                            <div class="column is-3">
+                                <span class="has-text-danger">
+                                    Seleccionas tú favorito
+                                </span>
+                            </div>
+                            <div class="column is-1">
+                                <span class="icon is-large  has-text-danger">
+                                    <i class="fas fa-2x fa-map-marker-alt"></i>
+                                </span>
+                            </div>
+                            <div class="column is-3">
+                                <span class="has-text-danger">
+                                    Te indicamos como llegar
+                                </span>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>   
                 <div class="columns is-centered">
                     <div class="column is-three-fifths">
                         <div class="field">
                             <div class="control">
-                                <label class="label has-text-centered">Hoy quiero comer...</label>
+                                <label class="label has-text-centered">Busca el plato, ingrediente que deseas; y encuentra el sitio más cercano</label>
                             </div>
                         </div>
                         <div class="field has-addons">
