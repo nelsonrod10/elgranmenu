@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <section class="section">
-            <div class="container box">
+            <div class="container">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
                         <a :href="routehome" class="is-size-1 is-size-3-mobile has-text-dark">

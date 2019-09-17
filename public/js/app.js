@@ -65728,7 +65728,7 @@ var render = function() {
     _c("section", { staticClass: "section" }, [
       _c(
         "div",
-        { staticClass: "container box" },
+        { staticClass: "container" },
         [
           _c("div", { staticClass: "columns is-centered" }, [
             _c("div", { staticClass: "column has-text-centered" }, [
