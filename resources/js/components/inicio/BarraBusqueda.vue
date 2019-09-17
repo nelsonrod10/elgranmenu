@@ -13,8 +13,8 @@
                 <div class="columns is-centered">
                     <div class="column is-three-fifths">
                         <div class="columns is-mobile is-vcentered">
-                            <div class="column is-1 has-text-centered-mobile">
-                                <span class="icon is-large has-text-danger">
+                            <div class="column is-1">
+                                <span class="icon is-large has-text-danger has-text-left-mobile">
                                     <i class="fas fa-2x fa-search"></i>
                                 </span>
                             </div>
@@ -23,8 +23,8 @@
                                     Realizas la búsqueda
                                 </span>
                             </div>
-                            <div class="column is-1 has-text-centered-mobile">
-                                <span class="icon is-large has-text-danger">
+                            <div class="column is-1">
+                                <span class="icon is-large has-text-danger has-text-left-mobile">
                                     <i class="fas fa-2x fa-mouse-pointer"></i>
                                 </span>
                             </div>
@@ -33,8 +33,8 @@
                                     Seleccionas tú favorito
                                 </span>
                             </div>
-                            <div class="column is-1 has-text-centered-mobile">
-                                <span class="icon is-large  has-text-danger">
+                            <div class="column is-1">
+                                <span class="icon is-large  has-text-danger has-text-left-mobile">
                                     <i class="fas fa-2x fa-map-marker-alt"></i>
                                 </span>
                             </div>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="field has-addons">
                             <div class="control is-expanded">
-                                <input list="nombres-platos" class="input" type="text" placeholder="Que quieres comer: nombre del plato o ingrediente que buscas" v-on:keyup="BuscarPlato" v-model="buscarPlato">
+                                <input list="nombres-platos" class="input" type="text" placeholder="nombre del plato o ingrediente que buscas" v-on:keyup="BuscarPlato" v-model="buscarPlato">
                                 <datalist id="nombres-platos">
                                     <option v-for="platoCarta in nombresPlatosCarta" :value="platoCarta.nombre"></option>
                                     <option v-for="platoDia in nombresPlatosDia" :value="platoDia.nombre"></option>    

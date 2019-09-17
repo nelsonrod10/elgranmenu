@@ -65768,8 +65768,7 @@ var render = function() {
                     attrs: {
                       list: "nombres-platos",
                       type: "text",
-                      placeholder:
-                        "Que quieres comer: nombre del plato o ingrediente que buscas"
+                      placeholder: "nombre del plato o ingrediente que buscas"
                     },
                     domProps: { value: _vm.buscarPlato },
                     on: {
@@ -65867,10 +65866,15 @@ var staticRenderFns = [
     return _c("div", { staticClass: "columns is-centered" }, [
       _c("div", { staticClass: "column is-three-fifths" }, [
         _c("div", { staticClass: "columns is-mobile is-vcentered" }, [
-          _c("div", { staticClass: "column is-1 has-text-centered-mobile" }, [
-            _c("span", { staticClass: "icon is-large has-text-danger" }, [
-              _c("i", { staticClass: "fas fa-2x fa-search" })
-            ])
+          _c("div", { staticClass: "column is-1" }, [
+            _c(
+              "span",
+              {
+                staticClass:
+                  "icon is-large has-text-danger has-text-left-mobile"
+              },
+              [_c("i", { staticClass: "fas fa-2x fa-search" })]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "column is-3" }, [
@@ -65885,10 +65889,15 @@ var staticRenderFns = [
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "column is-1 has-text-centered-mobile" }, [
-            _c("span", { staticClass: "icon is-large has-text-danger" }, [
-              _c("i", { staticClass: "fas fa-2x fa-mouse-pointer" })
-            ])
+          _c("div", { staticClass: "column is-1" }, [
+            _c(
+              "span",
+              {
+                staticClass:
+                  "icon is-large has-text-danger has-text-left-mobile"
+              },
+              [_c("i", { staticClass: "fas fa-2x fa-mouse-pointer" })]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "column is-3" }, [
@@ -65903,10 +65912,15 @@ var staticRenderFns = [
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "column is-1 has-text-centered-mobile" }, [
-            _c("span", { staticClass: "icon is-large  has-text-danger" }, [
-              _c("i", { staticClass: "fas fa-2x fa-map-marker-alt" })
-            ])
+          _c("div", { staticClass: "column is-1" }, [
+            _c(
+              "span",
+              {
+                staticClass:
+                  "icon is-large  has-text-danger has-text-left-mobile"
+              },
+              [_c("i", { staticClass: "fas fa-2x fa-map-marker-alt" })]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "column is-3" }, [
