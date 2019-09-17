@@ -1,7 +1,7 @@
 @extends('template.appInicio')
 @section('content')
     <router-view 
-        :routedemo="'{{url('inscripcion-restaurantes')}}/#formulario'"
+        :routehome="'{{url('/')}}'"
         :imglovecorrientazo="'{{ asset('img/encantaCorrientazo.png')}}'"    
     >
 </router-view>

@@ -4,7 +4,9 @@
             <div class="container">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <img :src="imglovecorrientazo"/>
+                        <a :href="routehome">
+                            <img :src="imglovecorrientazo"/>
+                        </a>
                     </div>
                 </div>   
                 <div class="columns is-centered">
@@ -45,7 +47,7 @@
 
     export default {
         props:{
-            routedemo:{
+            routehome:{
                 type:String
             },
             imglovecorrientazo:{
