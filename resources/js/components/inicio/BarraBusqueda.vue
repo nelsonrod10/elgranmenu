@@ -5,7 +5,7 @@
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
                         <a :href="routehome" class="is-size-1 is-size-3-mobile has-text-dark">
-                            ¿Qué almorzarmos hoy?
+                            ¿Qué almorzamos hoy?
                             <!--<img :src="imglovecorrientazo"/>-->
                         </a>
                     </div>
@@ -13,7 +13,7 @@
                 <div class="columns is-centered">
                     <div class="column is-three-fifths">
                         <div class="columns is-mobile is-vcentered">
-                            <div class="column is-1 has-text-right">
+                            <div class="column is-1 has-text-centered-mobile">
                                 <span class="icon is-large has-text-danger">
                                     <i class="fas fa-2x fa-search"></i>
                                 </span>
@@ -23,7 +23,7 @@
                                     Realizas la búsqueda
                                 </span>
                             </div>
-                            <div class="column is-1">
+                            <div class="column is-1 has-text-centered-mobile">
                                 <span class="icon is-large has-text-danger">
                                     <i class="fas fa-2x fa-mouse-pointer"></i>
                                 </span>
@@ -33,7 +33,7 @@
                                     Seleccionas tú favorito
                                 </span>
                             </div>
-                            <div class="column is-1">
+                            <div class="column is-1 has-text-centered-mobile">
                                 <span class="icon is-large  has-text-danger">
                                     <i class="fas fa-2x fa-map-marker-alt"></i>
                                 </span>

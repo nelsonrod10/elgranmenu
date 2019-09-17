@@ -65740,7 +65740,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                        ¿Qué almorzarmos hoy?\n                        "
+                    "\n                        ¿Qué almorzamos hoy?\n                        "
                   )
                 ]
               )
@@ -65867,7 +65867,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "columns is-centered" }, [
       _c("div", { staticClass: "column is-three-fifths" }, [
         _c("div", { staticClass: "columns is-mobile is-vcentered" }, [
-          _c("div", { staticClass: "column is-1 has-text-right" }, [
+          _c("div", { staticClass: "column is-1 has-text-centered-mobile" }, [
             _c("span", { staticClass: "icon is-large has-text-danger" }, [
               _c("i", { staticClass: "fas fa-2x fa-search" })
             ])
@@ -65885,7 +65885,7 @@ var staticRenderFns = [
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "column is-1" }, [
+          _c("div", { staticClass: "column is-1 has-text-centered-mobile" }, [
             _c("span", { staticClass: "icon is-large has-text-danger" }, [
               _c("i", { staticClass: "fas fa-2x fa-mouse-pointer" })
             ])
@@ -65903,7 +65903,7 @@ var staticRenderFns = [
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "column is-1" }, [
+          _c("div", { staticClass: "column is-1 has-text-centered-mobile" }, [
             _c("span", { staticClass: "icon is-large  has-text-danger" }, [
               _c("i", { staticClass: "fas fa-2x fa-map-marker-alt" })
             ])
