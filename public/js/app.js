@@ -67134,12 +67134,13 @@ var render = function() {
   return _c("div", { staticClass: "columns is-centered" }, [
     _c(
       "div",
-      { staticClass: "column is-8 " },
+      { staticClass: "column is-four-fifths" },
       [
         _c(
           "div",
           {
-            staticClass: "columns is-centered has-text-centered title is-size-3"
+            staticClass:
+              "columns is-centered has-text-centered is-title is-size-3"
           },
           [
             _c("div", { staticClass: "column" }, [
@@ -67309,12 +67310,13 @@ var render = function() {
   return _c("div", { staticClass: "columns is-centered" }, [
     _c(
       "div",
-      { staticClass: "column is-8 " },
+      { staticClass: "column is-four-fifths" },
       [
         _c(
           "div",
           {
-            staticClass: "columns is-centered has-text-centered title is-size-3"
+            staticClass:
+              "columns is-centered has-text-centered is-title is-size-3"
           },
           [
             _c("div", { staticClass: "column" }, [

@@ -1,7 +1,7 @@
 <template>
     <div class="columns is-centered">
-        <div class="column is-8 ">
-            <div class="columns is-centered has-text-centered title is-size-3">
+        <div class="column is-four-fifths">
+            <div class="columns is-centered has-text-centered is-title is-size-3">
                 <div class="column">
                     <span>Restaurantes  </span>
                     <span v-if="listado.sector.tipo !== 'Zona o Sector'">{{listado.sector.tipo}}</span> {{listado.sector.nombre}}
