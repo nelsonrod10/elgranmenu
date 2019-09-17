@@ -65735,7 +65735,7 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass: "is-size-1 has-text-dark",
+                  staticClass: "is-size-1 is-size-3-mobile has-text-dark",
                   attrs: { href: _vm.routehome }
                 },
                 [
@@ -65874,25 +65874,33 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "column is-3" }, [
-            _c("span", { staticClass: "has-text-danger" }, [
-              _vm._v(
-                "\n                                Realizas la búsqueda\n                            "
-              )
-            ])
+            _c(
+              "span",
+              { staticClass: "has-text-danger is-size-6 is-size-7-mobile" },
+              [
+                _vm._v(
+                  "\n                                Realizas la búsqueda\n                            "
+                )
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "column is-1" }, [
-            _c("span", { staticClass: "icon is-large  has-text-danger" }, [
+            _c("span", { staticClass: "icon is-large has-text-danger" }, [
               _c("i", { staticClass: "fas fa-2x fa-mouse-pointer" })
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "column is-3" }, [
-            _c("span", { staticClass: "has-text-danger" }, [
-              _vm._v(
-                "\n                                Seleccionas tú favorito\n                            "
-              )
-            ])
+            _c(
+              "span",
+              { staticClass: "has-text-danger is-size-6 is-size-7-mobile" },
+              [
+                _vm._v(
+                  "\n                                Seleccionas tú favorito\n                            "
+                )
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "column is-1" }, [
@@ -65902,11 +65910,15 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "column is-3" }, [
-            _c("span", { staticClass: "has-text-danger" }, [
-              _vm._v(
-                "\n                                Te indicamos como llegar\n                            "
-              )
-            ])
+            _c(
+              "span",
+              { staticClass: "has-text-danger is-size-6 is-size-7-mobile" },
+              [
+                _vm._v(
+                  "\n                                Te indicamos como llegar\n                            "
+                )
+              ]
+            )
           ])
         ])
       ])

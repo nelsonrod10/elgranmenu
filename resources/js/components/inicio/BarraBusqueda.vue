@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <a :href="routehome" class="is-size-1 has-text-dark">
+                        <a :href="routehome" class="is-size-1 is-size-3-mobile has-text-dark">
                             ¿Qué almorzarmos hoy?
                             <!--<img :src="imglovecorrientazo"/>-->
                         </a>
@@ -19,17 +19,17 @@
                                 </span>
                             </div>
                             <div class="column is-3">
-                                <span class="has-text-danger">
+                                <span class="has-text-danger is-size-6 is-size-7-mobile">
                                     Realizas la búsqueda
                                 </span>
                             </div>
                             <div class="column is-1">
-                                <span class="icon is-large  has-text-danger">
+                                <span class="icon is-large has-text-danger">
                                     <i class="fas fa-2x fa-mouse-pointer"></i>
                                 </span>
                             </div>
                             <div class="column is-3">
-                                <span class="has-text-danger">
+                                <span class="has-text-danger is-size-6 is-size-7-mobile">
                                     Seleccionas tú favorito
                                 </span>
                             </div>
@@ -39,7 +39,7 @@
                                 </span>
                             </div>
                             <div class="column is-3">
-                                <span class="has-text-danger">
+                                <span class="has-text-danger is-size-6 is-size-7-mobile">
                                     Te indicamos como llegar
                                 </span>
                             </div>
