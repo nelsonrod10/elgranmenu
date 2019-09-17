@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <section class="section">
-            <div class="container">
+            <div class="container box">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
                         <a :href="routehome" class="is-size-1 is-size-3-mobile has-text-dark">
@@ -15,31 +15,31 @@
                         <div class="columns is-mobile is-vcentered">
                             <div class="column is-1">
                                 <span class="icon is-large has-text-danger has-text-left-mobile">
-                                    <i class="fas fa-2x fa-search"></i>
+                                    <i class="fas fa-lg fa-search"></i>
                                 </span>
                             </div>
                             <div class="column is-3">
-                                <span class="has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile">
+                                <span class=" is-size-6 is-size-7-mobile has-text-right-mobile">
                                     Realizas la búsqueda
                                 </span>
                             </div>
                             <div class="column is-1">
-                                <span class="icon is-large has-text-danger has-text-left-mobile">
-                                    <i class="fas fa-2x fa-mouse-pointer"></i>
+                                <span class="icon is-large has-text-success has-text-left-mobile">
+                                    <i class="fas fa-lg fa-mouse-pointer"></i>
                                 </span>
                             </div>
                             <div class="column is-3">
-                                <span class="has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile">
+                                <span class=" is-size-6 is-size-7-mobile has-text-right-mobile">
                                     Seleccionas tú favorito
                                 </span>
                             </div>
                             <div class="column is-1">
-                                <span class="icon is-large  has-text-danger has-text-left-mobile">
-                                    <i class="fas fa-2x fa-map-marker-alt"></i>
+                                <span class="icon is-large  has-text-info has-text-left-mobile">
+                                    <i class="fas fa-lg fa-map-marker-alt"></i>
                                 </span>
                             </div>
                             <div class="column is-3">
-                                <span class="has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile">
+                                <span class="is-size-6 is-size-7-mobile has-text-right-mobile">
                                     Te indicamos como llegar
                                 </span>
                             </div>

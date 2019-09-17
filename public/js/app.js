@@ -65728,7 +65728,7 @@ var render = function() {
     _c("section", { staticClass: "section" }, [
       _c(
         "div",
-        { staticClass: "container" },
+        { staticClass: "container box" },
         [
           _c("div", { staticClass: "columns is-centered" }, [
             _c("div", { staticClass: "column has-text-centered" }, [
@@ -65873,7 +65873,7 @@ var staticRenderFns = [
                 staticClass:
                   "icon is-large has-text-danger has-text-left-mobile"
               },
-              [_c("i", { staticClass: "fas fa-2x fa-search" })]
+              [_c("i", { staticClass: "fas fa-lg fa-search" })]
             )
           ]),
           _vm._v(" "),
@@ -65881,8 +65881,7 @@ var staticRenderFns = [
             _c(
               "span",
               {
-                staticClass:
-                  "has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile"
+                staticClass: " is-size-6 is-size-7-mobile has-text-right-mobile"
               },
               [
                 _vm._v(
@@ -65897,9 +65896,9 @@ var staticRenderFns = [
               "span",
               {
                 staticClass:
-                  "icon is-large has-text-danger has-text-left-mobile"
+                  "icon is-large has-text-success has-text-left-mobile"
               },
-              [_c("i", { staticClass: "fas fa-2x fa-mouse-pointer" })]
+              [_c("i", { staticClass: "fas fa-lg fa-mouse-pointer" })]
             )
           ]),
           _vm._v(" "),
@@ -65907,8 +65906,7 @@ var staticRenderFns = [
             _c(
               "span",
               {
-                staticClass:
-                  "has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile"
+                staticClass: " is-size-6 is-size-7-mobile has-text-right-mobile"
               },
               [
                 _vm._v(
@@ -65922,10 +65920,9 @@ var staticRenderFns = [
             _c(
               "span",
               {
-                staticClass:
-                  "icon is-large  has-text-danger has-text-left-mobile"
+                staticClass: "icon is-large  has-text-info has-text-left-mobile"
               },
-              [_c("i", { staticClass: "fas fa-2x fa-map-marker-alt" })]
+              [_c("i", { staticClass: "fas fa-lg fa-map-marker-alt" })]
             )
           ]),
           _vm._v(" "),
@@ -65933,8 +65930,7 @@ var staticRenderFns = [
             _c(
               "span",
               {
-                staticClass:
-                  "has-text-danger is-size-6 is-size-7-mobile has-text-right-mobile"
+                staticClass: "is-size-6 is-size-7-mobile has-text-right-mobile"
               },
               [
                 _vm._v(
