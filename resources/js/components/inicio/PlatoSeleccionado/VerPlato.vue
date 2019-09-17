@@ -6,12 +6,13 @@
                     <div class="box">
                         <div class="columns">
                             <div class="column">
-                                <div class="title has-text-centered is-capitalized">{{ restaurante.nombre }}
-                                <p class="has-text-centered is-size-6 has-text-grey">
-                                    <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
-                                    <a class="has-text-grey" v-bind:href="direccionMaps" target="_alt"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.direccion }}</a>
-                                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.ciudad }}
-                                </p>
+                                <div class="title has-text-centered is-capitalized">
+                                    {{ restaurante.nombre }}
+                                    <p class="has-text-centered is-size-6 has-text-grey">
+                                        <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
+                                        <a class="has-text-grey" v-bind:href="direccionMaps" target="_alt"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.direccion }}</a>
+                                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.ciudad }}
+                                    </p>
                                 </div>
                                 <div class="has-text-centered" v-if="datosSector.tipo">
                                     <info-general-sector

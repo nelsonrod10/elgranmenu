@@ -1,17 +1,24 @@
 <template>
     <div>
         <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <p class="title has-text-centered"></p>
-                    <p class="title has-text-centered is-size-5">Restaurantes que hoy ofrecen "{{ platoBuscado }}"</p>
-                </div>
-            </div>    
             <div class="columns is-centered">
-                <listado-restaurantes
-                    :platoBuscado = "platoBuscado"
-                    :key="keyActualizar"
-                />
+                <div class="column is-four-fifths">
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column">
+                                <p class="title has-text-centered"></p>
+                                <p class="is-title is-size-4  has-text-centered">Restaurantes que hoy ofrecen "{{ platoBuscado }}"</p>
+                            </div>
+                        </div>    
+                        <div class="columns is-centered">
+                            <listado-restaurantes
+                                :platoBuscado = "platoBuscado"
+                                :key="keyActualizar"
+                            />
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -2,18 +2,25 @@
     <div>
         <div class="container">
             <div class="columns is-centered">
-                <div class="column is-title is-size-4  has-text-centered is-capitalized">
-                    Menus {{ tipoMenu }}.
+                <div class="column is-four-fifths">
+                    <div class="box">
+                        <div class="columns is-centered">
+                            <div class="column is-title is-size-4  has-text-centered is-capitalized">
+                                Menus {{ tipoMenu }}.
+                            </div>
+                        </div>
+                        <div class="columns is-centered">
+                            <div class="column is-9">
+                                <listado-menu
+                                    :tipoMenu = "tipoMenu"
+                                    :key="keyActualizar"
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="columns is-centered">
-                <div class="column is-9">
-                    <listado-menu
-                        :tipoMenu = "tipoMenu"
-                        :key="keyActualizar"
-                    />
-                </div>
-            </div>
+            
         </div>    
         <!--<ver-plato
             v-if="flagPlatoSeleccionado"

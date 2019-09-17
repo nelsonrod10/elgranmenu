@@ -4,93 +4,100 @@
         <div class="container">
             <div class="columns is-centered">
                 <div v-if="!flagRestaurantesSector" class="column is-four-fifths">
-                    <div class="columns">
-                        <div class="column">
-                            <p class="title has-text-centered is-capitalized">{{ restaurante.nombre }}</p>
-                            <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
-                                <info-general-sector
-                                    :restaurante="restaurante" 
-                                    :sector="datosSector"
-                                    v-on:mostrar-sector="MostrarSector"
-                                >
-                                </info-general-sector>
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="title has-text-centered is-capitalized">
+                                    {{ restaurante.nombre }}
+                                    <p class="has-text-centered is-size-6 has-text-grey">
+                                        <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
+                                        <a class="has-text-grey" v-bind:href="direccionMaps" target="_alt"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.direccion }}</a>
+                                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.ciudad }}
+                                    </p>    
+                                </div>
+                                <div class="has-text-centered" v-if="datosSector.tipo">
+                                    <info-general-sector
+                                        :restaurante="restaurante" 
+                                        :sector="datosSector"
+                                        v-on:mostrar-sector="MostrarSector"
+                                    >
+                                    </info-general-sector>
+                                    <router-link class="is-size-6" :to="{name:'sector', params:{sectorId:datosSector.id}}">Más lugares en este sector</router-link>
+                                </div>
                             </div>
-                            <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
-                                <router-link class="is-size-6" :to="{name:'sector', params:{sectorId:datosSector.id}}">Más lugares en este sector</router-link>
+                        </div>
+                        <div class="columns is-centered">
+                            <div class="column is-8">
+                                <p class="title is-size-5">Platos del día</p>
                             </div>
-                            <p class="has-text-centered is-size-6 has-text-grey">
-                                <span class="icon"><i class="fas fa-phone"></i></span>{{ restaurante.telefono }}  
-                                <a class="has-text-grey" v-bind:href="direccionMaps" target="_alt"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.direccion }}</a>
-                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ restaurante.ciudad }}
-                            </p>
                         </div>
-                    </div>
-                    <div class="columns is-centered">
-                        <div class="column is-8">
-                            <p class="title is-size-5">Platos del día</p>
-                        </div>
-                    </div>
-                    <div class="columns is-centered">
-                        <div class="column is-8">
-                            <ul v-if="menu.delDia && menu.delDia.length > 0">
-                                <li v-for="platoDia in menu.delDia">
-                                    <div class="columns is-vcentered">
-                                        <div class="column is-9">
-                                            <div class="is-size-6">{{platoDia.nombre}}</div>
-                                            <div class="is-size-7">{{platoDia.descripcion}}. <b>$ {{platoDia.precio}}</b></div>    
-                                            <div class="has-text-danger is-capitalized is-italic help">Plato {{platoDia.tipo_plato}}</div>
-                                            <router-link class="button is-success is-small" :to="{name:'plato-restaurante',params:{platoSeleccionado:platoDia, restaurante:restaurante}}">Ver más</router-link>
+                        <div class="columns is-centered">
+                            <div class="column is-8">
+                                <ul v-if="menu.delDia && menu.delDia.length > 0">
+                                    <li v-for="platoDia in menu.delDia">
+                                        <div class="columns is-vcentered">
+                                            <div class="column is-9">
+                                                <div class="is-size-6">{{platoDia.nombre}}</div>
+                                                <div class="is-size-7">{{platoDia.descripcion}}. <b>$ {{platoDia.precio}}</b></div>    
+                                                <div class="has-text-danger is-capitalized is-italic help">Plato {{platoDia.tipo_plato}}</div>
+                                                <router-link class="button is-success is-small" :to="{name:'plato-restaurante',params:{platoSeleccionado:platoDia, restaurante:restaurante}}">Ver más</router-link>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <p v-else class="has-text-centered">No existen platos del día para mostrar</p>
+                                    </li>
+                                </ul>
+                                <p v-else class="has-text-centered">No existen platos del día para mostrar</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="columns is-centered">
-                        <div class="column is-8">
-                            <p class="title is-size-5">Platos siempre disponibles</span></p>
+                         
+                        <div class="columns is-centered">
+                            <div class="column is-8">
+                                <p class="title is-size-5">Platos siempre disponibles</span></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="columns is-centered">
-                        <div class="column is-8">
-                            <ul v-if="menu.carta && menu.carta.length > 0">
-                                <li v-for="platoCarta in menu.carta">
-                                    <div class="columns is-vcentered">
-                                        <div class="column is-8">
-                                            <div>{{platoCarta.nombre}}</div>
-                                            <div class="is-size-7">{{platoCarta.descripcion}}. <b>$ {{platoCarta.precio}}</b></div>    
-                                            <div class="has-text-danger is-capitalized is-italic help">Plato {{platoCarta.tipo_plato}}</div>
-                                            <router-link class="button is-success is-small" :to="{name:'plato-restaurante',params:{platoSeleccionado:platoCarta, restaurante:restaurante}}">Ver más</router-link>
+                        <div class="columns is-centered">
+                            <div class="column is-8">
+                                <ul v-if="menu.carta && menu.carta.length > 0">
+                                    <li v-for="platoCarta in menu.carta">
+                                        <div class="columns is-vcentered">
+                                            <div class="column is-8">
+                                                <div>{{platoCarta.nombre}}</div>
+                                                <div class="is-size-7">{{platoCarta.descripcion}}. <b>$ {{platoCarta.precio}}</b></div>    
+                                                <div class="has-text-danger is-capitalized is-italic help">Plato {{platoCarta.tipo_plato}}</div>
+                                                <router-link class="button is-success is-small" :to="{name:'plato-restaurante',params:{platoSeleccionado:platoCarta, restaurante:restaurante}}">Ver más</router-link>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <p v-else class="has-text-centered">No existe una carta para mostrar</p>
+                                    </li>
+                                </ul>
+                                <p v-else class="has-text-centered">No existe una carta para mostrar</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="columns is-centered">
-                        <div class="column is-6 has-text-centered">
-                            <a class="button is-danger" v-bind:href="direccionMaps" target="_alt">
-                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                                <span>Como Llegar</span>
-                            </a>
+                        <div class="columns is-centered">
+                            <div class="column is-6 has-text-centered">
+                                <a class="button is-danger" v-bind:href="direccionMaps" target="_alt">
+                                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                                    <span>Como Llegar</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <otros-restaurantes
-                        :restaurante = "restaurante"
-                        :datosSector = "datosSector"
-                        :otrosRestaurantesSector="otrosRestaurantesSector"
-                        :flagOrigen = "'Restaurante'"
-                        v-on:visitar-otro-restaurante="VisitarOtroRestaurante"   
-                    >
-                    </otros-restaurantes>    
-                    <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
-                        <router-link class="is-size-6" :to="{name:'sector', params:{sectorId:datosSector.id}}">Más lugares en este sector</router-link>
-                    </div>
+                    </div>        
                 </div>
-                
+            </div>    
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div class="box">            
+                        <otros-restaurantes
+                            :restaurante = "restaurante"
+                            :datosSector = "datosSector"
+                            :otrosRestaurantesSector="otrosRestaurantesSector"
+                            :flagOrigen = "'Restaurante'"
+                            v-on:visitar-otro-restaurante="VisitarOtroRestaurante"   
+                        >
+                        </otros-restaurantes>    
+                        <div class="columns is-centered has-text-centered" v-if="datosSector.tipo">
+                            <router-link class="is-size-6" :to="{name:'sector', params:{sectorId:datosSector.id}}">Más lugares en este sector</router-link>
+                        </div>
+                    </div>    
+                </div>
             </div>
         </div>    
     </section>
