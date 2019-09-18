@@ -12,52 +12,46 @@
                 </div>   
                 <div class="columns is-centered">
                     <div class="column is-three-fifths">
-                        <div class="columns is-mobile is-vcentered  has-text-centered">
-                            <div class="column is-4">
-                                <div class="box">
-                                <div>
-                                    <span class="icon is-large has-text-danger">
-                                        <i class="fas fa-lg fa-search"></i>
-                                    </span>
+                        <div class="box">
+                            <div class="columns is-mobile is-vcentered  has-text-centered">
+                                <div class="column is-4">
+                                    <div>
+                                        <span class="icon is-large has-text-danger">
+                                            <i class="fas fa-lg fa-search"></i>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class=" is-size-6 is-size-7-mobile">
+                                            Realizas la búsqueda
+                                        </span>    
+                                    </div>
                                 </div>
-                                <div>
-                                    <span class=" is-size-6 is-size-7-mobile">
-                                        Realizas la búsqueda
-                                    </span>    
+                                <div class="column is-4">
+                                    <div>
+                                        <span class="icon is-large has-text-success">
+                                            <i class="fas fa-lg fa-mouse-pointer"></i>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class=" is-size-6 is-size-7-mobile">
+                                            Seleccionas tú favorito
+                                        </span>
+                                    </div>
                                 </div>
+                                <div class="column is-4">
+                                    <div>
+                                        <span class="icon is-large  has-text-info">
+                                            <i class="fas fa-lg fa-map-marker-alt"></i>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="is-size-6 is-size-7-mobile">
+                                            Llegas y disfrutas
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="column is-4">
-                                <div class="box">
-                                <div>
-                                    <span class="icon is-large has-text-success">
-                                        <i class="fas fa-lg fa-mouse-pointer"></i>
-                                    </span>
-                                </div>
-                                <div>
-                                    <span class=" is-size-6 is-size-7-mobile">
-                                        Seleccionas tú favorito
-                                    </span>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="column is-4">
-                                <div class="box">
-                                <div>
-                                    <span class="icon is-large  has-text-info">
-                                        <i class="fas fa-lg fa-map-marker-alt"></i>
-                                    </span>
-                                </div>
-                                <div>
-                                    <span class="is-size-6 is-size-7-mobile">
-                                        Llegas y disfrutas
-                                    </span>
-                                </div>
-                                </div>
-                                
                             </div>
                         </div>
-                        
                     </div>
                 </div>
                 

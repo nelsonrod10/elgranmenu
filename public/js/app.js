@@ -2659,12 +2659,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -65879,12 +65873,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "columns is-centered" }, [
       _c("div", { staticClass: "column is-three-fifths" }, [
-        _c(
-          "div",
-          { staticClass: "columns is-mobile is-vcentered  has-text-centered" },
-          [
-            _c("div", { staticClass: "column is-4" }, [
-              _c("div", { staticClass: "box" }, [
+        _c("div", { staticClass: "box" }, [
+          _c(
+            "div",
+            {
+              staticClass: "columns is-mobile is-vcentered  has-text-centered"
+            },
+            [
+              _c("div", { staticClass: "column is-4" }, [
                 _c("div", [
                   _c("span", { staticClass: "icon is-large has-text-danger" }, [
                     _c("i", { staticClass: "fas fa-lg fa-search" })
@@ -65894,15 +65890,13 @@ var staticRenderFns = [
                 _c("div", [
                   _c("span", { staticClass: " is-size-6 is-size-7-mobile" }, [
                     _vm._v(
-                      "\n                                    Realizas la búsqueda\n                                "
+                      "\n                                        Realizas la búsqueda\n                                    "
                     )
                   ])
                 ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "column is-4" }, [
-              _c("div", { staticClass: "box" }, [
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "column is-4" }, [
                 _c("div", [
                   _c(
                     "span",
@@ -65914,15 +65908,13 @@ var staticRenderFns = [
                 _c("div", [
                   _c("span", { staticClass: " is-size-6 is-size-7-mobile" }, [
                     _vm._v(
-                      "\n                                    Seleccionas tú favorito\n                                "
+                      "\n                                        Seleccionas tú favorito\n                                    "
                     )
                   ])
                 ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "column is-4" }, [
-              _c("div", { staticClass: "box" }, [
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "column is-4" }, [
                 _c("div", [
                   _c("span", { staticClass: "icon is-large  has-text-info" }, [
                     _c("i", { staticClass: "fas fa-lg fa-map-marker-alt" })
@@ -65932,14 +65924,14 @@ var staticRenderFns = [
                 _c("div", [
                   _c("span", { staticClass: "is-size-6 is-size-7-mobile" }, [
                     _vm._v(
-                      "\n                                    Llegas y disfrutas\n                                "
+                      "\n                                        Llegas y disfrutas\n                                    "
                     )
                   ])
                 ])
               ])
-            ])
-          ]
-        )
+            ]
+          )
+        ])
       ])
     ])
   },
