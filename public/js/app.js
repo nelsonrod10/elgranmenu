@@ -2659,6 +2659,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -65877,50 +65883,58 @@ var staticRenderFns = [
           "div",
           { staticClass: "columns is-mobile is-vcentered  has-text-centered" },
           [
-            _c("div", { staticClass: "column is-4 box" }, [
-              _c("div", [
-                _c("span", { staticClass: "icon is-large has-text-danger" }, [
-                  _c("i", { staticClass: "fas fa-lg fa-search" })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c("span", { staticClass: " is-size-6 is-size-7-mobile" }, [
-                  _vm._v(
-                    "\n                                    Realizas la búsqueda\n                                "
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "column is-4 box" }, [
-              _c("div", [
-                _c("span", { staticClass: "icon is-large has-text-success" }, [
-                  _c("i", { staticClass: "fas fa-lg fa-mouse-pointer" })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c("span", { staticClass: " is-size-6 is-size-7-mobile" }, [
-                  _vm._v(
-                    "\n                                    Seleccionas tú favorito\n                                "
-                  )
+            _c("div", { staticClass: "column is-4" }, [
+              _c("div", { staticClass: "box" }, [
+                _c("div", [
+                  _c("span", { staticClass: "icon is-large has-text-danger" }, [
+                    _c("i", { staticClass: "fas fa-lg fa-search" })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("span", { staticClass: " is-size-6 is-size-7-mobile" }, [
+                    _vm._v(
+                      "\n                                    Realizas la búsqueda\n                                "
+                    )
+                  ])
                 ])
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "column is-4 box" }, [
-              _c("div", [
-                _c("span", { staticClass: "icon is-large  has-text-info" }, [
-                  _c("i", { staticClass: "fas fa-lg fa-map-marker-alt" })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c("span", { staticClass: "is-size-6 is-size-7-mobile" }, [
-                  _vm._v(
-                    "\n                                    Te indicamos como llegar\n                                "
+            _c("div", { staticClass: "column is-4" }, [
+              _c("div", { staticClass: "box" }, [
+                _c("div", [
+                  _c(
+                    "span",
+                    { staticClass: "icon is-large has-text-success" },
+                    [_c("i", { staticClass: "fas fa-lg fa-mouse-pointer" })]
                   )
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("span", { staticClass: " is-size-6 is-size-7-mobile" }, [
+                    _vm._v(
+                      "\n                                    Seleccionas tú favorito\n                                "
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "column is-4" }, [
+              _c("div", { staticClass: "box" }, [
+                _c("div", [
+                  _c("span", { staticClass: "icon is-large  has-text-info" }, [
+                    _c("i", { staticClass: "fas fa-lg fa-map-marker-alt" })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("span", { staticClass: "is-size-6 is-size-7-mobile" }, [
+                    _vm._v(
+                      "\n                                    Llegas y disfrutas\n                                "
+                    )
+                  ])
                 ])
               ])
             ])
