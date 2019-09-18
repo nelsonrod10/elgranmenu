@@ -12,41 +12,49 @@
                 </div>   
                 <div class="columns is-centered">
                     <div class="column is-three-fifths">
-                        <div class="columns is-mobile is-vcentered">
-                            <div class="column is-1">
-                                <span class="icon is-large has-text-danger has-text-left-mobile">
-                                    <i class="fas fa-lg fa-search"></i>
-                                </span>
+                        <div class="columns is-mobile is-vcentered  has-text-centered">
+                            <div class="column is-4">
+                                <div>
+                                    <span class="icon is-large has-text-danger">
+                                        <i class="fas fa-lg fa-search"></i>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class=" is-size-6 is-size-7-mobile">
+                                        Realizas la búsqueda
+                                    </span>    
+                                </div>
                             </div>
-                            <div class="column is-3">
-                                <span class=" is-size-6 is-size-7-mobile has-text-right-mobile">
-                                    Realizas la búsqueda
-                                </span>
+                            <div class="column is-4">
+                                <div>
+                                    <span class="icon is-large has-text-success">
+                                        <i class="fas fa-lg fa-mouse-pointer"></i>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class=" is-size-6 is-size-7-mobile">
+                                        Seleccionas tú favorito
+                                    </span>
+                                </div>
                             </div>
-                            <div class="column is-1">
-                                <span class="icon is-large has-text-success has-text-left-mobile">
-                                    <i class="fas fa-lg fa-mouse-pointer"></i>
-                                </span>
-                            </div>
-                            <div class="column is-3">
-                                <span class=" is-size-6 is-size-7-mobile has-text-right-mobile">
-                                    Seleccionas tú favorito
-                                </span>
-                            </div>
-                            <div class="column is-1">
-                                <span class="icon is-large  has-text-info has-text-left-mobile">
-                                    <i class="fas fa-lg fa-map-marker-alt"></i>
-                                </span>
-                            </div>
-                            <div class="column is-3">
-                                <span class="is-size-6 is-size-7-mobile has-text-right-mobile">
-                                    Te indicamos como llegar
-                                </span>
+                            <div class="column is-4">
+                                <div>
+                                    <span class="icon is-large  has-text-info">
+                                        <i class="fas fa-lg fa-map-marker-alt"></i>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class="is-size-6 is-size-7-mobile">
+                                        Te indicamos como llegar
+                                    </span>
+                                </div>
+                                
                             </div>
                         </div>
                         
                     </div>
-                </div>   
+                </div>
+                
                 <div class="columns is-centered">
                     <div class="column is-three-fifths">
                         <div class="field">

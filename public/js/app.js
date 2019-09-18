@@ -2651,6 +2651,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -65865,81 +65873,59 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "columns is-centered" }, [
       _c("div", { staticClass: "column is-three-fifths" }, [
-        _c("div", { staticClass: "columns is-mobile is-vcentered" }, [
-          _c("div", { staticClass: "column is-1" }, [
-            _c(
-              "span",
-              {
-                staticClass:
-                  "icon is-large has-text-danger has-text-left-mobile"
-              },
-              [_c("i", { staticClass: "fas fa-lg fa-search" })]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-3" }, [
-            _c(
-              "span",
-              {
-                staticClass: " is-size-6 is-size-7-mobile has-text-right-mobile"
-              },
-              [
-                _vm._v(
-                  "\n                                Realizas la búsqueda\n                            "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-1" }, [
-            _c(
-              "span",
-              {
-                staticClass:
-                  "icon is-large has-text-success has-text-left-mobile"
-              },
-              [_c("i", { staticClass: "fas fa-lg fa-mouse-pointer" })]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-3" }, [
-            _c(
-              "span",
-              {
-                staticClass: " is-size-6 is-size-7-mobile has-text-right-mobile"
-              },
-              [
-                _vm._v(
-                  "\n                                Seleccionas tú favorito\n                            "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-1" }, [
-            _c(
-              "span",
-              {
-                staticClass: "icon is-large  has-text-info has-text-left-mobile"
-              },
-              [_c("i", { staticClass: "fas fa-lg fa-map-marker-alt" })]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-3" }, [
-            _c(
-              "span",
-              {
-                staticClass: "is-size-6 is-size-7-mobile has-text-right-mobile"
-              },
-              [
-                _vm._v(
-                  "\n                                Te indicamos como llegar\n                            "
-                )
-              ]
-            )
-          ])
-        ])
+        _c(
+          "div",
+          { staticClass: "columns is-mobile is-vcentered  has-text-centered" },
+          [
+            _c("div", { staticClass: "column is-4" }, [
+              _c("div", [
+                _c("span", { staticClass: "icon is-large has-text-danger" }, [
+                  _c("i", { staticClass: "fas fa-lg fa-search" })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("span", { staticClass: " is-size-6 is-size-7-mobile" }, [
+                  _vm._v(
+                    "\n                                    Realizas la búsqueda\n                                "
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "column is-4" }, [
+              _c("div", [
+                _c("span", { staticClass: "icon is-large has-text-success" }, [
+                  _c("i", { staticClass: "fas fa-lg fa-mouse-pointer" })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("span", { staticClass: " is-size-6 is-size-7-mobile" }, [
+                  _vm._v(
+                    "\n                                    Seleccionas tú favorito\n                                "
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "column is-4" }, [
+              _c("div", [
+                _c("span", { staticClass: "icon is-large  has-text-info" }, [
+                  _c("i", { staticClass: "fas fa-lg fa-map-marker-alt" })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("span", { staticClass: "is-size-6 is-size-7-mobile" }, [
+                  _vm._v(
+                    "\n                                    Te indicamos como llegar\n                                "
+                  )
+                ])
+              ])
+            ])
+          ]
+        )
       ])
     ])
   },
