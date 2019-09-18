@@ -65877,7 +65877,7 @@ var staticRenderFns = [
           "div",
           { staticClass: "columns is-mobile is-vcentered  has-text-centered" },
           [
-            _c("div", { staticClass: "column is-4" }, [
+            _c("div", { staticClass: "column is-4 box" }, [
               _c("div", [
                 _c("span", { staticClass: "icon is-large has-text-danger" }, [
                   _c("i", { staticClass: "fas fa-lg fa-search" })
@@ -65893,7 +65893,7 @@ var staticRenderFns = [
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "column is-4" }, [
+            _c("div", { staticClass: "column is-4 box" }, [
               _c("div", [
                 _c("span", { staticClass: "icon is-large has-text-success" }, [
                   _c("i", { staticClass: "fas fa-lg fa-mouse-pointer" })
@@ -65909,7 +65909,7 @@ var staticRenderFns = [
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "column is-4" }, [
+            _c("div", { staticClass: "column is-4 box" }, [
               _c("div", [
                 _c("span", { staticClass: "icon is-large  has-text-info" }, [
                   _c("i", { staticClass: "fas fa-lg fa-map-marker-alt" })

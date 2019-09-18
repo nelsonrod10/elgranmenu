@@ -13,7 +13,7 @@
                 <div class="columns is-centered">
                     <div class="column is-three-fifths">
                         <div class="columns is-mobile is-vcentered  has-text-centered">
-                            <div class="column is-4">
+                            <div class="column is-4 box">
                                 <div>
                                     <span class="icon is-large has-text-danger">
                                         <i class="fas fa-lg fa-search"></i>
@@ -25,7 +25,7 @@
                                     </span>    
                                 </div>
                             </div>
-                            <div class="column is-4">
+                            <div class="column is-4 box">
                                 <div>
                                     <span class="icon is-large has-text-success">
                                         <i class="fas fa-lg fa-mouse-pointer"></i>
@@ -37,7 +37,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="column is-4">
+                            <div class="column is-4 box">
                                 <div>
                                     <span class="icon is-large  has-text-info">
                                         <i class="fas fa-lg fa-map-marker-alt"></i>
