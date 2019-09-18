@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <span><b>Buscar en </b></span>
+                            <span class="tooltip is-tooltip-bottom is-tooltip-active " data-tooltip="¿Buscas algún sector?"><b>Buscar por sectores en </b></span>
                             <a v-for="(item, index) in listadoCiudades" v-on:click="SectoresPorCiudad(index)">{{index}} | </a> 
                         </div>
                     </div>

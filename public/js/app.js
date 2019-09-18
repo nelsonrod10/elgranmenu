@@ -65981,7 +65981,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", [_c("b", [_vm._v("Buscar en ")])])
+    return _c(
+      "span",
+      {
+        staticClass: "tooltip is-tooltip-bottom is-tooltip-active ",
+        attrs: { "data-tooltip": "¿Buscas algún sector?" }
+      },
+      [_c("b", [_vm._v("Buscar por sectores en ")])]
+    )
   }
 ]
 render._withStripped = true
