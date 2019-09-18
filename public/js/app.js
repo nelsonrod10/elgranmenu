@@ -2659,6 +2659,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2680,7 +2685,8 @@ __webpack_require__.r(__webpack_exports__);
       nombresPlatosCarta: [],
       nombresPlatosDia: [],
       buscarPlato: '',
-      listadoCiudades: {}
+      listadoCiudades: {},
+      launchModal: 'modal'
     };
   },
   methods: {
@@ -2711,6 +2717,12 @@ __webpack_require__.r(__webpack_exports__);
           ciudad: ciudad
         }
       });
+    },
+    LaunchModalInfo: function LaunchModalInfo() {
+      this.launchModal = 'modal is-active';
+    },
+    CloseModalInfo: function CloseModalInfo() {
+      this.launchModal = 'modal';
     }
   }
 });
@@ -65776,7 +65788,8 @@ var render = function() {
                     attrs: {
                       list: "nombres-platos",
                       type: "text",
-                      placeholder: "nombre del plato o ingrediente que buscas"
+                      placeholder: "nombre del plato o ingrediente que buscas",
+                      autofocus: ""
                     },
                     domProps: { value: _vm.buscarPlato },
                     on: {
@@ -65817,7 +65830,7 @@ var render = function() {
                     _c(
                       "router-link",
                       {
-                        staticClass: "button is-info",
+                        staticClass: "button is-danger",
                         attrs: {
                           to: {
                             name: "listado-restaurantes",
@@ -65874,6 +65887,21 @@ var staticRenderFns = [
     return _c("div", { staticClass: "columns is-centered" }, [
       _c("div", { staticClass: "column is-three-fifths" }, [
         _c("div", { staticClass: "box" }, [
+          _c("div", { staticClass: "columns is-centered" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "column has-text-centered is-size-5 is-size-6-mobile"
+              },
+              [
+                _vm._v(
+                  "\n                                Te llevamos al restaurante que necesitas para tú almuerzo\n                            "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
           _c(
             "div",
             {

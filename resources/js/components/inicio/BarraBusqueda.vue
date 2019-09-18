@@ -13,6 +13,11 @@
                 <div class="columns is-centered">
                     <div class="column is-three-fifths">
                         <div class="box">
+                            <div class="columns is-centered">
+                                <div class="column has-text-centered is-size-5 is-size-6-mobile">
+                                    Te llevamos al restaurante que necesitas para tú almuerzo
+                                </div>
+                            </div>
                             <div class="columns is-mobile is-vcentered  has-text-centered">
                                 <div class="column is-4">
                                     <div>
@@ -64,14 +69,14 @@
                         </div>
                         <div class="field has-addons">
                             <div class="control is-expanded">
-                                <input list="nombres-platos" class="input" type="text" placeholder="nombre del plato o ingrediente que buscas" v-on:keyup="BuscarPlato" v-model="buscarPlato">
+                                <input list="nombres-platos" class="input" type="text" placeholder="nombre del plato o ingrediente que buscas" v-on:keyup="BuscarPlato" v-model="buscarPlato" autofocus>
                                 <datalist id="nombres-platos">
                                     <option v-for="platoCarta in nombresPlatosCarta" :value="platoCarta.nombre"></option>
                                     <option v-for="platoDia in nombresPlatosDia" :value="platoDia.nombre"></option>    
                                 </datalist>                     
                             </div>
                             <div class="control">
-                                <router-link class="button is-info" :to="{name:'listado-restaurantes',params:{platoBuscado:buscarPlato}}">Buscar</router-link>
+                                <router-link class="button is-danger" :to="{name:'listado-restaurantes',params:{platoBuscado:buscarPlato}}">Buscar</router-link>
                             </div>
                         </div>
                         <div class="">
@@ -114,6 +119,7 @@
                 nombresPlatosDia      : [],
                 buscarPlato           : '',
                 listadoCiudades       : {},
+                launchModal           : 'modal',
             }
         },
         methods:{
@@ -141,7 +147,16 @@
 
             SectoresPorCiudad(ciudad){
                 this.$router.push({name:'sectores-ciudad',params:{ciudad:ciudad}});
+            },
+
+            LaunchModalInfo(){
+                this.launchModal = 'modal is-active'
+            },
+
+            CloseModalInfo(){
+                this.launchModal = 'modal'
             }
+            
         },
     }
 </script>
