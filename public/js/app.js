@@ -65918,7 +65918,7 @@ var staticRenderFns = [
                 _c("div", [
                   _c("span", { staticClass: " is-size-6 is-size-7-mobile" }, [
                     _vm._v(
-                      "\n                                        Realizas la búsqueda\n                                    "
+                      "\n                                        Buscas\n                                    "
                     )
                   ])
                 ])
@@ -65936,7 +65936,7 @@ var staticRenderFns = [
                 _c("div", [
                   _c("span", { staticClass: " is-size-6 is-size-7-mobile" }, [
                     _vm._v(
-                      "\n                                        Seleccionas tú favorito\n                                    "
+                      "\n                                        Seleccionas\n                                    "
                     )
                   ])
                 ])
@@ -65952,7 +65952,7 @@ var staticRenderFns = [
                 _c("div", [
                   _c("span", { staticClass: "is-size-6 is-size-7-mobile" }, [
                     _vm._v(
-                      "\n                                        Llegas y disfrutas\n                                    "
+                      "\n                                        Disfrutas\n                                    "
                     )
                   ])
                 ])

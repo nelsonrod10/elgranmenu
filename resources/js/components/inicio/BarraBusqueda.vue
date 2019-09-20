@@ -27,7 +27,7 @@
                                     </div>
                                     <div>
                                         <span class=" is-size-6 is-size-7-mobile">
-                                            Realizas la búsqueda
+                                            Buscas
                                         </span>    
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
                                     </div>
                                     <div>
                                         <span class=" is-size-6 is-size-7-mobile">
-                                            Seleccionas tú favorito
+                                            Seleccionas
                                         </span>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                     </div>
                                     <div>
                                         <span class="is-size-6 is-size-7-mobile">
-                                            Llegas y disfrutas
+                                            Disfrutas
                                         </span>
                                     </div>
                                 </div>
