@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>{{ config('app.name', 'Laravel') }}</title>
       <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+      <link rel="shortcut icon" href="{{ asset('img/favicon.png')}}" type="image/x-icon">
       <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
       <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('template.googleTagManager')

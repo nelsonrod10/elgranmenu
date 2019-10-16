@@ -1,4 +1,4 @@
-<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+<nav class="navbar has-shadow is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ url('/')}}">
         <img src="{{ asset('img/logo.png')}}" width="200" height="50">
